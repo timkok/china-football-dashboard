@@ -32,6 +32,8 @@ data/cl1-fixtures.json
 data/cl2-standings.json
 data/cl2-fixtures.json
 data/meta.json
+data/attendance-csl.json
+data/attendance-meta.json
 ```
 
 每个联赛数据文件结构：
@@ -93,6 +95,31 @@ data/meta.json
    - fallback
    - 非官方备用来源。
 
+## 观众人数数据
+
+新增“球市与观众人数监测”模块读取：
+
+```text
+data/attendance-csl.json
+data/attendance-meta.json
+```
+
+当前观众数据源：
+
+1. Transfermarkt Chinese Super League Attendance figures
+   https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL
+2. Transfermarkt Chinese Super League Attendance development
+   https://www.transfermarkt.com/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL
+3. Transfermarkt `.co.uk` / `.jp` 镜像作为 fallback。
+
+前端不会直接抓 Transfermarkt。原因：
+
+- GitHub Pages 浏览器端会遇到 CORS。
+- Transfermarkt 可能出现 JS / bot verification。
+- 前端抓取不稳定，也不利于缓存和保留旧数据。
+
+观众人数数据是 Transfermarkt 第三方公开数据，非官方，仅供趋势分析参考；如与官方公告不一致，以中足联 / 中国足协官方发布为准。
+
 ## 为什么 GitHub Pages 前端不直接抓网页
 
 GitHub Pages 是纯静态托管，浏览器直接抓官方或第三方网页会遇到：
@@ -135,12 +162,31 @@ workflow 文件：
 ```bash
 npm install
 npm run fetch:data
+npm run fetch:attendance
+```
+
+也可以一次更新全部静态 JSON：
+
+```bash
+npm run fetch:all
 ```
 
 如果 `data/` 目录有变化，自动提交：
 
 ```text
 Update football data
+```
+
+观众人数有独立 workflow：
+
+```text
+.github/workflows/update-attendance.yml
+```
+
+它每 6 小时运行一次，也支持 `workflow_dispatch`。如果 `data/attendance-csl.json` 或 `data/attendance-meta.json` 有变化，会自动提交：
+
+```text
+Update attendance data
 ```
 
 ## 手动运行
@@ -180,6 +226,8 @@ http://localhost:8000/
 - 刷新日志显示最近数据事件。
 - 动态告警支持 Stale Data、Form Alert、Defense Alert、Attack Alert、Fixture Alert、Data Completeness Alert。
 - ECharts 图表包含积分 Top 8、进球 vs 失球、净胜球、最近 5 场状态分布、主客场表现。
+- 球市与观众人数监测：总观众、场均观众、球队主场观众、球场容量、上座率、热度标签、趋势摘要。
+- 观众图表：各队场均观众排名、各队上座率排名。
 - 如果 ECharts CDN 加载失败，页面保留表格并显示图表 fallback 文本。
 
 ## 后续路线图
@@ -187,6 +235,7 @@ http://localhost:8000/
 - 接入官方中足联赛程与积分榜，优先替换 fallback。
 - 生成真实赛程 JSON。
 - 增加中甲 / 中乙真实积分榜和赛程。
+- 接入中甲 / 中乙观众人数数据。
 - 为每条数据增加官方链接和 fallback 链接。
 - 增加历史趋势。
 - 增加数据差异检测。
