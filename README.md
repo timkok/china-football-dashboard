@@ -81,6 +81,7 @@ data/source-comparison.json
 - 联赛热度指数：基于场均观众、平均上座率、同比变化和高需求主场占比计算，属于规则模型。
 - 最热主场 Top 5：按上座率和场均观众排序。
 - 观众趋势同比：读取 `data/attendance-history-csl.json`，展示 2024、2025、2026 场均观众和同比增长。
+- 观众人数 vs 积分散点图：当中超积分榜 JSON 与观众 JSON 可匹配时展示，否则隐藏该图表并保留表格。
 - 赛程完整度监控：以 30 轮为基线，展示已抓取轮次、缺失轮次和异常比赛数。
 - 数据质量告警：识别 stale data、赛程异常、数据缺失和多源冲突。
 - 积分异常解释：积分榜显示扣分徽标和官方积分字段。
@@ -174,6 +175,8 @@ http://localhost:8000/
 npm run fetch:attendance
 npm run fetch:attendance-history
 ```
+
+线上页面如果仍显示旧的 `Mock-first` 文案，通常是浏览器或 GitHub Pages CDN 缓存。可以使用 `https://timkok.github.io/china-football-dashboard/?v=<commit>` 强制读取新 HTML。
 
 只校验并生成质量文件：
 

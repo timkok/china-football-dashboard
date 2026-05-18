@@ -612,20 +612,21 @@
   <main class="shell">
     <section class="hero">
       <div>
-        <div class="eyebrow"><span class="status-dot"></span>CFL Monitor · Mock-first Static Dashboard</div>
+        <div class="eyebrow"><span class="status-dot"></span>CFL Monitor · JSON-first Static Dashboard</div>
         <h1>中国足球职业联赛监测 Dashboard</h1>
-        <p class="subtitle">中超 / 中甲 / 中乙赛程、积分榜、球队状态、数据健康与自动告警监测。静态 GitHub Pages 版本默认使用示例数据，真实数据入口已预留。</p>
+        <p class="subtitle">中超 / 中甲 / 中乙赛程、积分榜、球队状态、观众人数、数据健康与自动告警监测。静态 GitHub Pages 版本优先读取本仓库 JSON，失败后回退到示例数据。</p>
         <p id="dataNotice" class="notice">正在检查本仓库静态 JSON 数据；如果不可用将回退到示例数据。</p>
       </div>
       <div class="hero-side">
         <div class="status-box">
-          <div class="status-row"><span>Mock 数据生成时间</span><strong id="mockGeneratedAt">-</strong></div>
-          <div class="status-row"><span>最近刷新时间</span><strong id="lastRefreshAt">-</strong></div>
-          <div class="status-row"><span>数据年龄</span><strong id="dataAge">-</strong></div>
-          <div class="status-row"><span>数据状态</span><span id="dataModePill" class="pill mock">Mock 数据</span></div>
-          <div class="status-row"><span>数据来源</span><strong id="currentSource">-</strong></div>
-          <div class="status-row"><span>Source URL</span><strong id="currentSourceUrl">-</strong></div>
-          <div class="status-row"><span>官方数据</span><strong id="officialFlag">-</strong></div>
+          <div class="status-row"><span>Mock 数据生成时间</span><strong id="mockGeneratedAt">读取中</strong></div>
+          <div class="status-row"><span>数据最后更新时间</span><strong id="lastRefreshAt">读取中</strong></div>
+          <div class="status-row"><span>数据年龄</span><strong id="dataAge">读取中</strong></div>
+          <div class="status-row"><span>数据模式</span><span id="dataModePill" class="pill mock">读取中</span></div>
+          <div class="status-row"><span>当前联赛</span><strong id="currentLeagueName">中超 CSL</strong></div>
+          <div class="status-row"><span>数据源名称</span><strong id="currentSource">读取中</strong></div>
+          <div class="status-row"><span>Source URL</span><strong id="currentSourceUrl">读取中</strong></div>
+          <div class="status-row"><span>官方数据</span><strong id="officialFlag">读取中</strong></div>
         </div>
         <button id="refreshButton" class="refresh-button" type="button">重新读取本地 JSON</button>
       </div>
@@ -656,6 +657,10 @@
           <article class="panel">
             <div class="panel-header"><h2 class="panel-title">历史场均观众趋势</h2></div>
             <div class="panel-body"><div id="attendanceHistoryChart" class="chart small"></div><div class="chart-fallback">图表库加载失败，已保留观众历史数据。</div></div>
+          </article>
+          <article class="panel" id="attendancePointsPanel">
+            <div class="panel-header"><h2 class="panel-title">观众人数 vs 积分</h2></div>
+            <div class="panel-body"><div id="attendancePointsChart" class="chart small"></div><div class="chart-fallback">当前缺少可匹配积分或图表库加载失败，已保留表格数据。</div></div>
           </article>
         </div>
         <div id="hotHomeTop5" class="health-grid" style="margin-bottom:14px;"></div>
@@ -769,7 +774,7 @@
             <table>
               <thead>
                 <tr>
-                  <th>轮次</th><th>时间</th><th>主队</th><th>比分</th><th>客队</th><th>状态</th><th>场馆</th><th>观众人数</th><th>上座率</th><th>来源</th>
+                  <th>轮次</th><th>时间</th><th>主队</th><th>比分</th><th>客队</th><th>球场</th><th>观众人数</th><th>上座率</th><th>状态</th><th>来源</th>
                 </tr>
               </thead>
               <tbody id="fixturesBody"></tbody>
@@ -1444,6 +1449,21 @@
       return { label: "偏冷", cls: "warning" };
     }
 
+    function attendancePointsRows() {
+      const standings = new Map(league().standings.map(team => [normalizeName(team.name), team]));
+      return state.attendance.teams.map(row => {
+        const team = standings.get(normalizeName(row.teamCn)) || standings.get(normalizeName(row.team));
+        if (!team || typeof row.averageAttendance !== "number" || typeof team.points !== "number") return null;
+        return {
+          name: row.teamCn || row.team,
+          averageAttendance: row.averageAttendance,
+          occupancyRate: row.occupancyRate,
+          points: team.points,
+          rank: team.rank
+        };
+      }).filter(Boolean);
+    }
+
     function averageOccupancy() {
       const rows = state.attendance.teams.filter(team => typeof team.occupancyRate === "number");
       if (!rows.length) return null;
@@ -1710,6 +1730,7 @@
       document.getElementById("mockGeneratedAt").textContent = formatFullDateTime(state.mockGeneratedAt);
       document.getElementById("lastRefreshAt").textContent = formatFullDateTime(source.fetchedAt || state.lastRefreshAt);
       document.getElementById("dataAge").textContent = formatAge(source.fetchedAt || state.lastRefreshAt);
+      document.getElementById("currentLeagueName").textContent = league().name;
       document.getElementById("currentSource").textContent = source.name || "内置示例数据";
       document.getElementById("currentSourceUrl").textContent = source.url || "无";
       document.getElementById("officialFlag").textContent = source.isOfficial ? "是" : "否";
@@ -1843,10 +1864,10 @@
           <td class="team-name">${match.homeTeam}</td>
           <td><strong>${scoreText(match)}</strong></td>
           <td class="team-name">${match.awayTeam}</td>
-          <td>${fixtureBadge(match.status)}</td>
           <td>${match.venue}</td>
           <td>${fixtureAttendance(match) ? formatInteger(fixtureAttendance(match).attendance) : "暂无"}</td>
           <td>${fixtureAttendance(match) ? formatPercent(fixtureAttendance(match).occupancyRate) : "暂无"}</td>
+          <td>${fixtureBadge(match.status)}</td>
           <td>${match.source}</td>
         </tr>
       `);
@@ -2084,6 +2105,9 @@
         const attendanceRows = [...state.attendance.teams].sort((a, b) => b.averageAttendance - a.averageAttendance);
         const occupancyRows = [...state.attendance.teams].sort((a, b) => b.occupancyRate - a.occupancyRate);
         const historyRows = [...(state.attendanceHistory?.data || state.attendance.trend || [])].sort((a, b) => (a.seasonEndYear || 0) - (b.seasonEndYear || 0));
+        const scatterRows = attendancePointsRows();
+        const scatterPanel = document.getElementById("attendancePointsPanel");
+        scatterPanel.style.display = scatterRows.length ? "block" : "none";
 
         chart("pointsChart").setOption({
           ...base,
@@ -2192,6 +2216,30 @@
             areaStyle: { color: "rgba(56,189,248,.14)" }
           }]
         }, true);
+
+        if (scatterRows.length) {
+          chart("attendancePointsChart").setOption({
+            ...base,
+            grid: { left: 72, right: 28, top: 28, bottom: 44 },
+            tooltip: {
+              ...base.tooltip,
+              formatter: params => {
+                const row = scatterRows[params.dataIndex];
+                return `${row.name}<br/>积分：${row.points}<br/>场均观众：${formatInteger(row.averageAttendance)}<br/>上座率：${formatPercent(row.occupancyRate)}<br/>排名：${row.rank}`;
+              }
+            },
+            xAxis: { ...base.xAxis, type: "value", name: "积分", nameTextStyle: { color: "#9eb0c4" } },
+            yAxis: { ...base.yAxis, type: "value", name: "场均观众", nameTextStyle: { color: "#9eb0c4" }, axisLabel: { color: "#9eb0c4", formatter: value => formatInteger(value) } },
+            series: [{
+              name: "观众人数 vs 积分",
+              type: "scatter",
+              symbolSize: item => Math.max(10, Math.min(28, item[2] * 24)),
+              data: scatterRows.map(row => [row.points, row.averageAttendance, row.occupancyRate, row.name]),
+              label: { show: true, formatter: item => item.data[3], color: "#e6eef8", position: "right" },
+              itemStyle: { color: "#38bdf8", opacity: 0.82 }
+            }]
+          }, true);
+        }
       } catch (error) {
         console.error("Chart rendering failed:", error);
         showChartFallback();
