@@ -23,8 +23,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Fetch football data
-        run: npm run fetch:data
+      - name: Fetch football and derived data
+        run: npm run fetch:all
 
       - name: Commit data updates
         run: |

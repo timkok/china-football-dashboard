@@ -7,15 +7,15 @@
   "scripts": {
     "fetch:data": "node scripts/fetch-data.js",
     "fetch:attendance": "node scripts/fetch-attendance.js",
-    "fetch:all": "npm run fetch:data && npm run fetch:attendance"
-  },
-  "dependencies": {
-    "cheerio": "^1.1.2"
-  },
-  "engines": {
-    "node": ">=20"
+    "fetch:attendance-history": "node scripts/fetch-attendance-history.js",
+    "validate:data": "node scripts/validate-data.js",
+    "generate:changelog": "node scripts/generate-changelog.js",
+    "fetch:all": "npm run fetch:data && npm run fetch:attendance && npm run fetch:attendance-history && npm run validate:data && npm run generate:changelog"
   },
   "dependencies": {
     "cheerio": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

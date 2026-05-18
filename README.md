@@ -2,130 +2,100 @@
 
 在线访问地址：[https://timkok.github.io/china-football-dashboard/](https://timkok.github.io/china-football-dashboard/)
 
-中国足球职业联赛监测 Dashboard 是一个 **JSON-first / 真实数据优先 + mock fallback** 的 GitHub Pages 静态 dashboard。页面本身不抓第三方网页，只读取本仓库生成好的 `data/*.json`，用于展示中超 CSL、中甲 China League One、中乙 China League Two 的积分榜、赛程、球队监测、数据健康、刷新日志、图表和动态告警。
+中国足球职业联赛监测 Dashboard 是一个 **JSON-first / 真实数据优先 + mock fallback** 的 GitHub Pages 静态 dashboard。浏览器端只读取本仓库的 `data/*.json`，不直接抓取中足联、Transfermarkt、Sina 或其他第三方网页。
 
 ## 当前状态
 
-- 中超积分榜：优先尝试中国足球职业联赛联合会官网；当前官方公开 HTML 未暴露完整 16 队积分榜时，脚本会使用新浪体育中超积分榜公开数据作为 fallback。
-- 中超赛程：第一阶段仍为 mock fixture fallback。
-- 中甲 / 中乙：第一阶段保留 mock fallback，并在页面中明确标注。
-- 所有 JSON 都包含 `source`、`sourceUrl`、`isOfficial`、`fetchedAt`。
-- 页面会显示数据模式：`Live Official` / `Live Fallback` / `Mock` / `Stale`。
-- 数据超过 12 小时会显示 `Stale`。
-- 非官方数据仅作参考；如与官方公告不一致，以中足联 / 足协官方公告为准。
-
-页面中会显著标注：
-
-```text
-当前使用示例数据 / fallback 数据，不代表官方排名或真实赛果。
-```
+- 中超积分榜：优先尝试中国足球职业联赛联合会官网；当前官方页面不稳定暴露完整结构化表格时，使用新浪体育中超积分榜作为 fallback。
+- 中超观众人数：使用 Transfermarkt 公开观众数据，生成球队主场观众、上座率、联赛热度指数和历史场均观众趋势。
+- 中超赛程：当前仍为 mock fixture fallback。
+- 中甲 / 中乙：当前仍为 mock fallback，页面明确标注“示例”，不代表真实排名或赛果。
+- 所有模块显示 `source`、`sourceUrl`、`isOfficial`、`mode`，其中 `mode` 支持 `official` / `fallback` / `third_party` / `mock` / `stale`。
+- 非官方和第三方数据会显示“非官方，仅供参考”；如与官方公告不一致，以中足联 / 中国足协官方公告为准。
 
 ## 数据文件
 
 GitHub Actions 生成并提交以下静态 JSON：
 
 ```text
+data/meta.json
 data/csl-standings.json
 data/csl-fixtures.json
 data/cl1-standings.json
 data/cl1-fixtures.json
 data/cl2-standings.json
 data/cl2-fixtures.json
-data/meta.json
 data/attendance-csl.json
 data/attendance-meta.json
+data/attendance-history-csl.json
+data/data-quality.json
+data/changelog.json
+data/source-comparison.json
 ```
 
-每个联赛数据文件结构：
+每个数据文件都会尽量包含来源信息：
 
 ```json
 {
-  "league": "csl",
-  "season": 2026,
-  "leagueName": "中超",
-  "type": "standings",
   "source": "新浪体育中超积分榜",
-  "sourceId": "sina-sports",
   "sourceUrl": "https://sports.sina.com.cn/csl/table/",
   "isOfficial": false,
   "mode": "fallback",
-  "fetchedAt": "2026-05-18T04:04:18.498Z",
-  "schemaVersion": 1,
-  "data": [
-    {
-      "rank": 1,
-      "team": "成都蓉城",
-      "played": 12,
-      "wins": 11,
-      "draws": 1,
-      "losses": 0,
-      "goalsFor": 32,
-      "goalsAgainst": 10,
-      "goalDiff": 22,
-      "points": 34
-    }
-  ]
+  "fetchedAt": "2026-05-18T22:10:19.247Z"
 }
 ```
 
-`data/meta.json` 记录本次更新时间、数据源状态和各联赛数据状态：
+积分榜模型预留扣分字段：
 
 ```json
 {
-  "updatedAt": "2026-05-18T04:04:18.498Z",
-  "mode": "fallback",
-  "sources": [],
-  "leagues": {
-    "csl": { "standings": "fallback", "fixtures": "mock" },
-    "cl1": { "standings": "mock", "fixtures": "mock" },
-    "cl2": { "standings": "mock", "fixtures": "mock" }
-  }
+  "deductions": 0,
+  "deductionReason": "",
+  "pointsBeforeDeductions": 24,
+  "pointsOfficial": 24
 }
 ```
+
+扣分数据必须以官方公告为准；当前脚本无法稳定抓取官方扣分公告时保持空值或 0。
 
 ## 数据源优先级
 
 1. 中国足球职业联赛联合会官网：https://www.cfl-china.cn/
-   - official
-   - 优先用于中超、中甲、中乙赛程和积分榜。
+   - `official`
+   - 优先用于中超、中甲、中乙赛程、积分榜和官方公告。
 2. 新浪体育中超积分榜：https://sports.sina.com.cn/csl/table/
-   - fallback
-   - 当前第一阶段用于中超积分榜 fallback。
-3. 懂球帝 / 球迷屋 / Sofascore / Flashscore / Soccerway
-   - fallback
-   - 非官方备用来源。
+   - `fallback`
+   - 当前用于中超积分榜 fallback。
+3. Transfermarkt Chinese Super League Attendance：
+   - https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL
+   - https://www.transfermarkt.com/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL
+   - `third_party`
+   - 用于中超观众人数、上座率和历史场均观众趋势。
+4. 懂球帝 / 球迷屋 / Soccerway / Sofascore / Flashscore / FootyStats
+   - `fallback` 或 `third_party`
+   - 仅作为校验或备用来源，不使用需要登录、付费或绕过反爬的数据源。
 
-## 观众人数数据
+## 新增产品化能力
 
-新增“球市与观众人数监测”模块读取：
+- 数据源可信度标签：每个模块展示来源、URL、官方标记和数据模式。
+- 联赛热度指数：基于场均观众、平均上座率、同比变化和高需求主场占比计算，属于规则模型。
+- 最热主场 Top 5：按上座率和场均观众排序。
+- 观众趋势同比：读取 `data/attendance-history-csl.json`，展示 2024、2025、2026 场均观众和同比增长。
+- 赛程完整度监控：以 30 轮为基线，展示已抓取轮次、缺失轮次和异常比赛数。
+- 数据质量告警：识别 stale data、赛程异常、数据缺失和多源冲突。
+- 积分异常解释：积分榜显示扣分徽标和官方积分字段。
+- 升降级 / 亚冠 / 争冠规则预测：基于积分、剩余轮次、近 5 场、净胜球计算，页面明确标注“规则模型预测，非官方”。
+- 主客场拆分：球队详情和图表展示主客场胜平负，并联动主场观众和上座率。
+- 焦点比赛卡片：识别前 4 交锋、德比、争冠关键战、保级关键战和高上座预期比赛。
+- 数据变更日志：`data/changelog.json` 记录 fetch 后排名、积分、观众和异常变化。
+- 多数据源比对：`data/source-comparison.json` 为后续多源字段差异和 Data Conflict Alert 预留结构。
 
-```text
-data/attendance-csl.json
-data/attendance-meta.json
-```
-
-当前观众数据源：
-
-1. Transfermarkt Chinese Super League Attendance figures
-   https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL
-2. Transfermarkt Chinese Super League Attendance development
-   https://www.transfermarkt.com/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL
-3. Transfermarkt `.co.uk` / `.jp` 镜像作为 fallback。
-
-前端不会直接抓 Transfermarkt。原因：
-
-- GitHub Pages 浏览器端会遇到 CORS。
-- Transfermarkt 可能出现 JS / bot verification。
-- 前端抓取不稳定，也不利于缓存和保留旧数据。
-
-观众人数数据是 Transfermarkt 第三方公开数据，非官方，仅供趋势分析参考；如与官方公告不一致，以中足联 / 中国足协官方发布为准。
-
-## 为什么 GitHub Pages 前端不直接抓网页
+## 为什么不在前端直接抓网页
 
 GitHub Pages 是纯静态托管，浏览器直接抓官方或第三方网页会遇到：
 
 - CORS 限制。
-- 反爬策略或频率限制。
+- 反爬、机器人验证或频率限制。
 - 页面结构变化导致解析不稳定。
 - 需要登录态、Cookie 或动态 JavaScript 渲染。
 - API key 不能安全写入公开 HTML。
@@ -136,11 +106,11 @@ GitHub Pages 是纯静态托管，浏览器直接抓官方或第三方网页会�
 2. Node.js 脚本标准化为 `data/*.json`。
 3. 前端只读取同仓库静态 JSON。
 4. 抓取失败时保留上一次成功 JSON，不覆盖为空数据。
-5. JSON 不存在或过旧时，页面回退到内置 mock，并明确标注。
+5. JSON 不存在、过旧或校验失败时回退到 mock，并在页面显著标注。
 
-## GitHub Actions 更新机制
+## GitHub Actions
 
-workflow 文件：
+主 workflow：
 
 ```text
 .github/workflows/update-data.yml
@@ -151,62 +121,44 @@ workflow 文件：
 - 每 6 小时自动运行一次。
 - 支持 `workflow_dispatch` 手动运行。
 
-手动触发方式：
-
-1. 打开 GitHub 仓库的 `Actions` 页面。
-2. 选择 `Update football data` workflow。
-3. 点击 `Run workflow`。
-
 执行内容：
 
 ```bash
 npm install
-npm run fetch:data
-npm run fetch:attendance
-```
-
-也可以一次更新全部静态 JSON：
-
-```bash
 npm run fetch:all
 ```
 
-如果 `data/` 目录有变化，自动提交：
+`fetch:all` 会依次运行：
+
+```bash
+npm run fetch:data
+npm run fetch:attendance
+npm run fetch:attendance-history
+npm run validate:data
+npm run generate:changelog
+```
+
+如果 `data/` 有变化，自动提交：
 
 ```text
 Update football data
 ```
 
-观众人数有独立 workflow：
+观众人数仍保留独立 workflow：
 
 ```text
 .github/workflows/update-attendance.yml
 ```
 
-它每 6 小时运行一次，也支持 `workflow_dispatch`。如果 `data/attendance-csl.json` 或 `data/attendance-meta.json` 有变化，会自动提交：
+它可以单独更新 `data/attendance-csl.json` 和 `data/attendance-meta.json`。
 
-```text
-Update attendance data
-```
-
-## 手动运行
+## 本地运行
 
 本地需要 Node.js 20+。
 
 ```bash
 npm install
-npm run fetch:data
-```
-
-然后直接打开：
-
-```bash
-open index.html
-```
-
-或启动静态服务：
-
-```bash
+npm run fetch:all
 python3 -m http.server 8000
 ```
 
@@ -216,26 +168,32 @@ python3 -m http.server 8000
 http://localhost:8000/
 ```
 
-## 功能列表
+只更新观众数据：
 
-- 真实 JSON 优先，mock fallback。
-- 中超 / 中甲 / 中乙 tab 切换。
-- 中甲 / 中乙 tab 明确标注 `示例`，表示当前仍为 mock fallback。
-- 积分榜、赛程、球队监测全部基于当前 JSON 或 fallback 数据渲染。
-- 数据健康模块展示模式、来源、官方标记、刷新时间、数据年龄、完整度。
-- 刷新日志显示最近数据事件。
-- 动态告警支持 Stale Data、Form Alert、Defense Alert、Attack Alert、Fixture Alert、Data Completeness Alert。
-- ECharts 图表包含积分 Top 8、进球 vs 失球、净胜球、最近 5 场状态分布、主客场表现。
-- 球市与观众人数监测：总观众、场均观众、球队主场观众、球场容量、上座率、热度标签、趋势摘要。
-- 观众图表：各队场均观众排名、各队上座率排名。
-- 如果 ECharts CDN 加载失败，页面保留表格并显示图表 fallback 文本。
+```bash
+npm run fetch:attendance
+npm run fetch:attendance-history
+```
+
+只校验并生成质量文件：
+
+```bash
+npm run validate:data
+npm run generate:changelog
+```
+
+## 免责声明
+
+- Transfermarkt、Sina 和其他 fallback / third-party 来源均非官方数据源。
+- 页面中的联赛热度指数、焦点指数、升降级和亚冠资格预测均为规则模型，不是官方结论，也不是机器学习预测。
+- 当前中甲 / 中乙以及中超赛程仍包含 mock fallback；页面会明确标注。
+- 观众人数和上座率仅供趋势分析参考；如与中足联、中国足协或俱乐部官方公告不一致，以官方发布为准。
 
 ## 后续路线图
 
 - 接入官方中足联赛程与积分榜，优先替换 fallback。
-- 生成真实赛程 JSON。
-- 增加中甲 / 中乙真实积分榜和赛程。
-- 接入中甲 / 中乙观众人数数据。
-- 为每条数据增加官方链接和 fallback 链接。
-- 增加历史趋势。
-- 增加数据差异检测。
+- 接入中甲 / 中乙真实积分榜、赛程和观众数据。
+- 生成真实 match-level attendance JSON。
+- 接入第二观众来源并启用字段级 source comparison。
+- 增加历史排名、历史积分和观众趋势差异检测。
+- 将扣分公告结构化并加入 changelog。
