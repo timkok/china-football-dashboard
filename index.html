@@ -1,0 +1,1355 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>中国足球职业联赛监测 Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+
+  <!-- 2. Styles -->
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #071018;
+      --panel: rgba(16, 28, 42, 0.86);
+      --panel-strong: rgba(22, 38, 56, 0.94);
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #e5eef8;
+      --muted: #9fb0c2;
+      --soft: #6f8194;
+      --gold: #f8c14d;
+      --green: #22c55e;
+      --red: #fb7185;
+      --blue: #38bdf8;
+      --orange: #fb923c;
+      --violet: #a78bfa;
+      --shadow: 0 20px 70px rgba(0, 0, 0, 0.32);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 34rem),
+        linear-gradient(135deg, #071018 0%, #0d1d29 46%, #0b1220 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      letter-spacing: 0;
+    }
+
+    button, select {
+      font: inherit;
+    }
+
+    .app-shell {
+      width: min(1480px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 40px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: end;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background:
+        linear-gradient(115deg, rgba(17, 37, 55, 0.95), rgba(17, 24, 39, 0.78)),
+        linear-gradient(90deg, rgba(34, 197, 94, 0.12), rgba(56, 189, 248, 0.1));
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      width: fit-content;
+      padding: 7px 10px;
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      border-radius: 999px;
+      color: #c8e7f7;
+      background: rgba(8, 47, 73, 0.42);
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 52px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 14px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: grid;
+      gap: 12px;
+      min-width: 280px;
+      justify-items: end;
+    }
+
+    .status-card {
+      width: 100%;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(8, 16, 26, 0.5);
+    }
+
+    .status-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 5px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .status-pill, .badge, .form-pill, .match-status, .zone-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .status-pill {
+      gap: 8px;
+      padding: 7px 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #04111d;
+      background: var(--green);
+    }
+
+    .status-pill.stale {
+      color: #1f1300;
+      background: var(--orange);
+    }
+
+    .status-pill.live {
+      color: #03151d;
+      background: var(--blue);
+    }
+
+    .refresh-button {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 13px 16px;
+      color: #04111d;
+      background: linear-gradient(135deg, #38bdf8, #22c55e);
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 12px 32px rgba(34, 197, 94, 0.22);
+      transition: transform 0.18s ease, filter 0.18s ease;
+    }
+
+    .refresh-button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    .refresh-button:disabled {
+      cursor: wait;
+      opacity: 0.78;
+      transform: none;
+    }
+
+    .sample-note {
+      margin: 18px 0 0;
+      color: #fed7aa;
+      font-size: 13px;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0;
+    }
+
+    .metric-card, .panel {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .metric-card {
+      min-height: 118px;
+      padding: 18px;
+      border-radius: 16px;
+    }
+
+    .metric-label {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .metric-value {
+      margin-top: 10px;
+      font-size: 30px;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .metric-foot {
+      margin-top: 8px;
+      color: var(--soft);
+      font-size: 12px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin: 20px 0;
+      padding: 8px;
+      width: fit-content;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(7, 16, 24, 0.6);
+    }
+
+    .tab-button {
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 18px;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .tab-button.active {
+      color: #04111d;
+      background: linear-gradient(135deg, var(--gold), #5eead4);
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(360px, 0.75fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .panel-header {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.52);
+    }
+
+    .panel-title {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .panel-subtitle {
+      margin: 4px 0 0;
+      color: var(--soft);
+      font-size: 12px;
+    }
+
+    .panel-body {
+      padding: 18px 20px 20px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 780px;
+    }
+
+    th, td {
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+      text-align: left;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    th {
+      color: #bdd2e7;
+      font-weight: 750;
+      background: rgba(2, 6, 23, 0.26);
+    }
+
+    tr:hover td {
+      background: rgba(56, 189, 248, 0.06);
+    }
+
+    .team-name {
+      font-weight: 800;
+      color: #f8fafc;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .positive {
+      color: #86efac;
+      font-weight: 800;
+    }
+
+    .negative {
+      color: #fda4af;
+      font-weight: 800;
+    }
+
+    .zone-pill {
+      margin-left: 8px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .zone-top {
+      color: #2b1900;
+      background: #facc15;
+    }
+
+    .zone-risk {
+      color: #30040b;
+      background: #fb7185;
+    }
+
+    .form-row {
+      display: inline-flex;
+      gap: 5px;
+    }
+
+    .form-pill {
+      width: 23px;
+      height: 23px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .form-W {
+      color: #04210f;
+      background: #4ade80;
+    }
+
+    .form-D {
+      color: #14213d;
+      background: #bae6fd;
+    }
+
+    .form-L {
+      color: #3a0710;
+      background: #fb7185;
+    }
+
+    .fixture-controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .select-control {
+      min-width: 160px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      color: var(--text);
+      background: rgba(2, 6, 23, 0.56);
+      outline: none;
+    }
+
+    .match-status {
+      padding: 5px 9px;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .status-scheduled {
+      color: #071018;
+      background: #93c5fd;
+    }
+
+    .status-live {
+      color: #052e16;
+      background: #4ade80;
+    }
+
+    .status-finished {
+      color: #172554;
+      background: #c7d2fe;
+    }
+
+    .status-postponed {
+      color: #431407;
+      background: #fdba74;
+    }
+
+    .side-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .team-monitor-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .team-kpi {
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(2, 6, 23, 0.32);
+    }
+
+    .team-kpi span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .team-kpi strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 22px;
+    }
+
+    .recent-list, .alert-list, .source-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .recent-item, .alert-item, .source-item {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(2, 6, 23, 0.32);
+    }
+
+    .recent-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 10px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .alert-item {
+      border-left: 4px solid var(--orange);
+    }
+
+    .alert-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-weight: 850;
+    }
+
+    .alert-copy {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .badge {
+      padding: 4px 8px;
+      color: #071018;
+      background: #e2e8f0;
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .badge.high {
+      background: #fb7185;
+    }
+
+    .badge.medium {
+      background: #fdba74;
+    }
+
+    .badge.info {
+      background: #67e8f9;
+    }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .chart {
+      width: 100%;
+      height: 320px;
+    }
+
+    .source-item {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .source-item strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .source-type {
+      color: #071018;
+      background: #a7f3d0;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    footer {
+      margin-top: 22px;
+      color: var(--soft);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 1180px) {
+      .metrics-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .app-shell {
+        width: min(100% - 20px, 1480px);
+        padding-top: 14px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .hero-actions {
+        min-width: 0;
+        justify-items: stretch;
+      }
+
+      .metrics-grid, .charts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tabs {
+        width: 100%;
+        overflow-x: auto;
+      }
+
+      .tab-button {
+        flex: 1 0 auto;
+      }
+
+      .panel-header {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .fixture-controls {
+        width: 100%;
+      }
+
+      .select-control {
+        width: 100%;
+      }
+
+      .team-monitor-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .recent-item {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 1. HTML Layout -->
+  <main class="app-shell">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">CFL Monitor · 2026 Season</div>
+        <h1>中国足球职业联赛监测 Dashboard</h1>
+        <p class="subtitle">中超 / 中甲 / 中乙 实时赛程、积分榜与球队状态。当前版本默认使用 mock 数据，并预留官方与第三方真实数据接入函数。</p>
+        <p class="sample-note">示例数据，仅用于 Dashboard 演示；请勿作为赛事预测或官方排名依据。</p>
+      </div>
+      <div class="hero-actions">
+        <div class="status-card">
+          <div class="status-line"><span>数据最后更新时间</span><strong id="lastUpdated">-</strong></div>
+          <div class="status-line"><span>数据状态</span><span id="dataStatus" class="status-pill">Mock 数据</span></div>
+          <div class="status-line"><span>当前联赛</span><strong id="currentLeagueName">中超 CSL</strong></div>
+        </div>
+        <button id="refreshButton" class="refresh-button" type="button">刷新数据</button>
+      </div>
+    </section>
+
+    <section id="metricsGrid" class="metrics-grid" aria-label="核心指标"></section>
+
+    <nav class="tabs" aria-label="联赛切换">
+      <button class="tab-button active" data-league="csl" type="button">中超 CSL</button>
+      <button class="tab-button" data-league="cl1" type="button">中甲</button>
+      <button class="tab-button" data-league="cl2" type="button">中乙</button>
+    </nav>
+
+    <section class="main-grid">
+      <div>
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">积分榜</h2>
+              <p class="panel-subtitle">前 2 名标记为争冠/亚冠区，后 2 名标记为降级风险区</p>
+            </div>
+          </div>
+          <div class="panel-body table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>排名</th>
+                  <th>球队</th>
+                  <th>场次</th>
+                  <th>胜</th>
+                  <th>平</th>
+                  <th>负</th>
+                  <th>进球</th>
+                  <th>失球</th>
+                  <th>净胜球</th>
+                  <th>积分</th>
+                  <th>近 5 场</th>
+                </tr>
+              </thead>
+              <tbody id="standingsBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel" style="margin-top: 18px;">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">赛程与赛果</h2>
+              <p class="panel-subtitle">支持球队与比赛状态筛选</p>
+            </div>
+            <div class="fixture-controls">
+              <select id="fixtureTeamFilter" class="select-control" aria-label="按球队筛选"></select>
+              <select id="fixtureStatusFilter" class="select-control" aria-label="按状态筛选">
+                <option value="all">全部状态</option>
+                <option value="scheduled">未开始</option>
+                <option value="live">进行中</option>
+                <option value="finished">已完赛</option>
+              </select>
+            </div>
+          </div>
+          <div class="panel-body table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>轮次</th>
+                  <th>时间</th>
+                  <th>主队</th>
+                  <th>比分</th>
+                  <th>客队</th>
+                  <th>状态</th>
+                </tr>
+              </thead>
+              <tbody id="fixturesBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="charts-grid" aria-label="图表">
+          <article class="panel">
+            <div class="panel-header"><h2 class="panel-title">积分榜 Top 8</h2></div>
+            <div class="panel-body"><div id="pointsChart" class="chart"></div></div>
+          </article>
+          <article class="panel">
+            <div class="panel-header"><h2 class="panel-title">进球 vs 失球</h2></div>
+            <div class="panel-body"><div id="goalsChart" class="chart"></div></div>
+          </article>
+          <article class="panel">
+            <div class="panel-header"><h2 class="panel-title">各队净胜球</h2></div>
+            <div class="panel-body"><div id="goalDiffChart" class="chart"></div></div>
+          </article>
+          <article class="panel">
+            <div class="panel-header"><h2 class="panel-title">最近 5 场状态分布</h2></div>
+            <div class="panel-body"><div id="formChart" class="chart"></div></div>
+          </article>
+        </section>
+      </div>
+
+      <aside class="side-stack">
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">球队监测</h2>
+              <p class="panel-subtitle">选择球队查看排名、攻防和近期比赛</p>
+            </div>
+            <select id="teamMonitorSelect" class="select-control" aria-label="选择球队"></select>
+          </div>
+          <div class="panel-body">
+            <div id="teamSummary"></div>
+            <ul id="teamRecentFixtures" class="recent-list" style="margin-top: 14px;"></ul>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">告警区</h2>
+              <p class="panel-subtitle">根据 mock 数据自动生成</p>
+            </div>
+          </div>
+          <div class="panel-body">
+            <ul id="alertList" class="alert-list"></ul>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title">数据源配置</h2>
+              <p class="panel-subtitle">当前不请求真实 API，未来可替换 fetchLiveData()</p>
+            </div>
+          </div>
+          <div class="panel-body">
+            <ul id="sourceList" class="source-list"></ul>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <footer>china-football-dashboard · Mock-first static HTML · 官方数据接入优先参考 cfl-china.cn</footer>
+  </main>
+
+  <script>
+    // 3. Mock Data
+    const dataSources = [
+      {
+        name: "官方中足联",
+        url: "https://www.cfl-china.cn/",
+        type: "official",
+        coverage: ["中超赛程", "中超积分榜", "中甲赛程", "中甲积分榜", "中乙赛程", "中乙积分榜"],
+        priority: 1
+      },
+      {
+        name: "新浪体育中超积分榜",
+        url: "https://sports.sina.com.cn/",
+        type: "fallback",
+        coverage: ["中超积分榜"],
+        priority: 2
+      },
+      {
+        name: "Sofascore",
+        url: "https://www.sofascore.com/",
+        type: "third-party fallback",
+        coverage: ["赛程", "赛果", "球队状态"],
+        priority: 3
+      },
+      {
+        name: "Flashscore",
+        url: "https://www.flashscore.com/",
+        type: "third-party fallback",
+        coverage: ["赛程", "即时比分", "赛果"],
+        priority: 4
+      },
+      {
+        name: "Soccerway",
+        url: "https://int.soccerway.com/",
+        type: "third-party fallback",
+        coverage: ["赛程", "积分榜", "球队资料"],
+        priority: 5
+      },
+      {
+        name: "Sportmonks",
+        url: "https://www.sportmonks.com/",
+        type: "optional api",
+        coverage: ["付费 API 赛程与统计"],
+        priority: 6
+      },
+      {
+        name: "TheSportsDB / API-Football",
+        url: "https://www.thesportsdb.com/",
+        type: "optional api",
+        coverage: ["可选 API fallback"],
+        priority: 7
+      }
+    ];
+
+    const dashboardState = {
+      activeLeague: "csl",
+      selectedTeam: "上海海港",
+      fixtureTeam: "all",
+      fixtureStatus: "all",
+      dataMode: "mock",
+      fetchedAt: "2026-05-17T09:45:00-04:00",
+      charts: {}
+    };
+
+    const leagues = {
+      csl: {
+        name: "中超 CSL",
+        standings: [
+          { rank: 1, team: "上海海港", played: 12, wins: 8, draws: 3, losses: 1, gf: 28, ga: 12, points: 27, form: ["W", "W", "D", "W", "W"] },
+          { rank: 2, team: "上海申花", played: 12, wins: 7, draws: 4, losses: 1, gf: 22, ga: 9, points: 25, form: ["W", "D", "W", "W", "D"] },
+          { rank: 3, team: "成都蓉城", played: 12, wins: 7, draws: 2, losses: 3, gf: 20, ga: 13, points: 23, form: ["L", "W", "W", "D", "W"] },
+          { rank: 4, team: "山东泰山", played: 12, wins: 6, draws: 4, losses: 2, gf: 21, ga: 15, points: 22, form: ["D", "W", "D", "W", "L"] },
+          { rank: 5, team: "北京国安", played: 12, wins: 6, draws: 3, losses: 3, gf: 19, ga: 14, points: 21, form: ["W", "L", "W", "D", "W"] },
+          { rank: 6, team: "天津津门虎", played: 12, wins: 4, draws: 5, losses: 3, gf: 16, ga: 15, points: 17, form: ["D", "D", "L", "W", "D"] },
+          { rank: 7, team: "武汉三镇", played: 12, wins: 3, draws: 4, losses: 5, gf: 14, ga: 21, points: 13, form: ["L", "D", "L", "D", "L"] },
+          { rank: 8, team: "青岛海牛", played: 12, wins: 2, draws: 3, losses: 7, gf: 10, ga: 24, points: 9, form: ["L", "L", "D", "L", "D"] }
+        ],
+        fixtures: [
+          { round: 11, date: "2026-05-09T19:35:00+08:00", home: "上海申花", away: "北京国安", homeScore: 2, awayScore: 1, status: "finished" },
+          { round: 11, date: "2026-05-10T15:30:00+08:00", home: "成都蓉城", away: "天津津门虎", homeScore: 1, awayScore: 1, status: "finished" },
+          { round: 11, date: "2026-05-10T19:35:00+08:00", home: "山东泰山", away: "武汉三镇", homeScore: 3, awayScore: 2, status: "finished" },
+          { round: 11, date: "2026-05-11T19:35:00+08:00", home: "青岛海牛", away: "上海海港", homeScore: 0, awayScore: 3, status: "finished" },
+          { round: 12, date: "2026-05-17T19:35:00+08:00", home: "北京国安", away: "上海海港", homeScore: 1, awayScore: 1, status: "live" },
+          { round: 12, date: "2026-05-18T19:35:00+08:00", home: "武汉三镇", away: "上海申花", homeScore: null, awayScore: null, status: "scheduled" },
+          { round: 12, date: "2026-05-19T19:35:00+08:00", home: "天津津门虎", away: "山东泰山", homeScore: null, awayScore: null, status: "scheduled" },
+          { round: 12, date: "2026-05-20T19:35:00+08:00", home: "成都蓉城", away: "青岛海牛", homeScore: null, awayScore: null, status: "postponed" }
+        ]
+      },
+      cl1: {
+        name: "中甲 China League One",
+        standings: [
+          { rank: 1, team: "云南玉昆", played: 10, wins: 7, draws: 2, losses: 1, gf: 21, ga: 8, points: 23, form: ["W", "W", "W", "D", "W"] },
+          { rank: 2, team: "大连英博", played: 10, wins: 6, draws: 3, losses: 1, gf: 18, ga: 9, points: 21, form: ["D", "W", "W", "D", "W"] },
+          { rank: 3, team: "广州队", played: 10, wins: 6, draws: 1, losses: 3, gf: 17, ga: 11, points: 19, form: ["W", "L", "W", "W", "D"] },
+          { rank: 4, team: "重庆铜梁龙", played: 10, wins: 5, draws: 3, losses: 2, gf: 16, ga: 12, points: 18, form: ["D", "W", "L", "W", "W"] },
+          { rank: 5, team: "南京城市", played: 10, wins: 4, draws: 3, losses: 3, gf: 13, ga: 12, points: 15, form: ["L", "D", "W", "D", "W"] },
+          { rank: 6, team: "苏州东吴", played: 10, wins: 3, draws: 3, losses: 4, gf: 12, ga: 15, points: 12, form: ["D", "L", "D", "W", "L"] },
+          { rank: 7, team: "广西平果哈嘹", played: 10, wins: 2, draws: 3, losses: 5, gf: 10, ga: 17, points: 9, form: ["L", "D", "L", "D", "L"] },
+          { rank: 8, team: "黑龙江冰城", played: 10, wins: 1, draws: 3, losses: 6, gf: 8, ga: 20, points: 6, form: ["L", "L", "D", "L", "L"] }
+        ],
+        fixtures: [
+          { round: 9, date: "2026-05-08T19:30:00+08:00", home: "云南玉昆", away: "苏州东吴", homeScore: 2, awayScore: 0, status: "finished" },
+          { round: 9, date: "2026-05-09T15:30:00+08:00", home: "广州队", away: "南京城市", homeScore: 2, awayScore: 1, status: "finished" },
+          { round: 9, date: "2026-05-09T19:30:00+08:00", home: "大连英博", away: "广西平果哈嘹", homeScore: 3, awayScore: 1, status: "finished" },
+          { round: 9, date: "2026-05-10T19:30:00+08:00", home: "重庆铜梁龙", away: "黑龙江冰城", homeScore: 2, awayScore: 2, status: "finished" },
+          { round: 10, date: "2026-05-17T15:30:00+08:00", home: "南京城市", away: "云南玉昆", homeScore: 0, awayScore: 0, status: "live" },
+          { round: 10, date: "2026-05-18T19:30:00+08:00", home: "苏州东吴", away: "大连英博", homeScore: null, awayScore: null, status: "scheduled" },
+          { round: 10, date: "2026-05-19T19:30:00+08:00", home: "广西平果哈嘹", away: "重庆铜梁龙", homeScore: null, awayScore: null, status: "scheduled" },
+          { round: 10, date: "2026-05-20T19:30:00+08:00", home: "黑龙江冰城", away: "广州队", homeScore: null, awayScore: null, status: "postponed" }
+        ]
+      },
+      cl2: {
+        name: "中乙 China League Two",
+        standings: [
+          { rank: 1, team: "陕西联合", played: 8, wins: 6, draws: 1, losses: 1, gf: 17, ga: 6, points: 19, form: ["W", "W", "D", "W", "W"] },
+          { rank: 2, team: "广东广州豹", played: 8, wins: 5, draws: 2, losses: 1, gf: 15, ga: 7, points: 17, form: ["W", "D", "W", "W", "L"] },
+          { rank: 3, team: "深圳青年人", played: 8, wins: 4, draws: 3, losses: 1, gf: 14, ga: 9, points: 15, form: ["D", "W", "D", "W", "W"] },
+          { rank: 4, team: "广西蓝航", played: 8, wins: 4, draws: 2, losses: 2, gf: 12, ga: 10, points: 14, form: ["W", "L", "W", "D", "D"] },
+          { rank: 5, team: "海口名城", played: 8, wins: 3, draws: 2, losses: 3, gf: 11, ga: 12, points: 11, form: ["L", "W", "D", "L", "W"] },
+          { rank: 6, team: "湖北青年星", played: 8, wins: 2, draws: 3, losses: 3, gf: 9, ga: 13, points: 9, form: ["D", "L", "D", "W", "L"] },
+          { rank: 7, team: "湖南湘涛", played: 8, wins: 1, draws: 3, losses: 4, gf: 8, ga: 15, points: 6, form: ["L", "D", "L", "D", "L"] },
+          { rank: 8, team: "泰安天贶", played: 8, wins: 1, draws: 2, losses: 5, gf: 7, ga: 16, points: 5, form: ["L", "L", "D", "L", "D"] }
+        ],
+        fixtures: [
+          { round: 7, date: "2026-05-07T15:30:00+08:00", home: "陕西联合", away: "湖北青年星", homeScore: 2, awayScore: 0, status: "finished" },
+          { round: 7, date: "2026-05-08T15:30:00+08:00", home: "广东广州豹", away: "湖南湘涛", homeScore: 3, awayScore: 1, status: "finished" },
+          { round: 7, date: "2026-05-09T15:30:00+08:00", home: "深圳青年人", away: "海口名城", homeScore: 2, awayScore: 2, status: "finished" },
+          { round: 7, date: "2026-05-10T15:30:00+08:00", home: "广西蓝航", away: "泰安天贶", homeScore: 1, awayScore: 0, status: "finished" },
+          { round: 8, date: "2026-05-17T15:30:00+08:00", home: "泰安天贶", away: "陕西联合", homeScore: 0, awayScore: 1, status: "live" },
+          { round: 8, date: "2026-05-18T15:30:00+08:00", home: "湖南湘涛", away: "深圳青年人", homeScore: null, awayScore: null, status: "scheduled" },
+          { round: 8, date: "2026-05-19T15:30:00+08:00", home: "湖北青年星", away: "广西蓝航", homeScore: null, awayScore: null, status: "scheduled" },
+          { round: 8, date: "2026-05-20T15:30:00+08:00", home: "海口名城", away: "广东广州豹", homeScore: null, awayScore: null, status: "postponed" }
+        ]
+      }
+    };
+
+    const statusLabels = {
+      scheduled: "未开始",
+      live: "进行中",
+      finished: "已完赛",
+      postponed: "延期"
+    };
+
+    // 4. Data Helpers
+    function activeLeagueData() {
+      return leagues[dashboardState.activeLeague];
+    }
+
+    function goalDiff(team) {
+      return team.gf - team.ga;
+    }
+
+    function formatGoalDiff(value) {
+      return value > 0 ? `+${value}` : `${value}`;
+    }
+
+    function formatDateTime(dateString) {
+      return new Intl.DateTimeFormat("zh-CN", {
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit"
+      }).format(new Date(dateString));
+    }
+
+    function hoursSinceFetched() {
+      return (Date.now() - new Date(dashboardState.fetchedAt).getTime()) / 36e5;
+    }
+
+    function isStale() {
+      return hoursSinceFetched() > 12;
+    }
+
+    function dataStatusText() {
+      if (isStale()) return "Stale 数据";
+      return dashboardState.dataMode === "live" ? "Live 数据" : "Mock 数据";
+    }
+
+    function calculateMetrics() {
+      const league = activeLeagueData();
+      const today = "2026-05-17";
+      const todayMatches = league.fixtures.filter(match => match.date.startsWith(today)).length;
+      const finished = league.fixtures.filter(match => match.status === "finished");
+      const goals = finished.reduce((sum, match) => sum + match.homeScore + match.awayScore, 0);
+      const alerts = generateAlerts();
+
+      return [
+        { label: "今日比赛数", value: todayMatches, foot: "按 2026-05-17 示例日期统计" },
+        { label: "近期已完赛场次", value: finished.length, foot: "当前联赛 mock 赛程" },
+        { label: "总进球数", value: goals, foot: "仅统计已完赛比赛" },
+        { label: "平均每场进球", value: finished.length ? (goals / finished.length).toFixed(2) : "0.00", foot: "总进球 / 已完赛场次" },
+        { label: "数据源数量", value: dataSources.length, foot: "官方优先，第三方 fallback" },
+        { label: "异常告警数量", value: alerts.length, foot: "Stale / Form / Defense / Fixture" }
+      ];
+    }
+
+    function formCounts() {
+      const counts = { W: 0, D: 0, L: 0 };
+      activeLeagueData().standings.forEach(team => {
+        team.form.forEach(result => {
+          counts[result] += 1;
+        });
+      });
+      return counts;
+    }
+
+    function teamFixtures(teamName) {
+      return activeLeagueData().fixtures
+        .filter(match => match.home === teamName || match.away === teamName)
+        .sort((a, b) => new Date(a.date) - new Date(b.date));
+    }
+
+    function generateAlerts() {
+      const league = activeLeagueData();
+      const alerts = [];
+      const averageGoalsAgainst = league.standings.reduce((sum, team) => sum + team.ga, 0) / league.standings.length;
+
+      if (isStale()) {
+        alerts.push({
+          type: "Stale Data",
+          severity: "high",
+          message: `数据已超过 12 小时未更新，当前约 ${hoursSinceFetched().toFixed(1)} 小时。`
+        });
+      }
+
+      league.standings.forEach(team => {
+        if (team.form.slice(-3).every(result => result !== "W")) {
+          alerts.push({
+            type: "Form Alert",
+            severity: "medium",
+            message: `${team.team} 连续 3 场不胜，需要关注近期状态。`
+          });
+        }
+        if (team.ga > averageGoalsAgainst) {
+          alerts.push({
+            type: "Defense Alert",
+            severity: "info",
+            message: `${team.team} 失球 ${team.ga}，高于联赛平均 ${averageGoalsAgainst.toFixed(1)}。`
+          });
+        }
+      });
+
+      league.fixtures.filter(match => match.status === "postponed").forEach(match => {
+        alerts.push({
+          type: "Fixture Alert",
+          severity: "medium",
+          message: `${match.home} vs ${match.away} 标记为延期。`
+        });
+      });
+
+      return alerts;
+    }
+
+    function ensureSelectedTeam() {
+      const league = activeLeagueData();
+      if (!league.standings.some(team => team.team === dashboardState.selectedTeam)) {
+        dashboardState.selectedTeam = league.standings[0].team;
+      }
+    }
+
+    // 5. Rendering Functions
+    function renderStatus() {
+      const status = document.getElementById("dataStatus");
+      document.getElementById("lastUpdated").textContent = new Intl.DateTimeFormat("zh-CN", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit"
+      }).format(new Date(dashboardState.fetchedAt));
+      document.getElementById("currentLeagueName").textContent = activeLeagueData().name;
+      status.textContent = dataStatusText();
+      status.className = `status-pill ${isStale() ? "stale" : dashboardState.dataMode === "live" ? "live" : ""}`;
+    }
+
+    function renderMetrics() {
+      document.getElementById("metricsGrid").innerHTML = calculateMetrics().map(metric => `
+        <article class="metric-card">
+          <div class="metric-label">${metric.label}</div>
+          <div class="metric-value">${metric.value}</div>
+          <div class="metric-foot">${metric.foot}</div>
+        </article>
+      `).join("");
+    }
+
+    function renderForm(form) {
+      return `<span class="form-row">${form.map(result => `<span class="form-pill form-${result}">${result}</span>`).join("")}</span>`;
+    }
+
+    function renderStandings() {
+      const total = activeLeagueData().standings.length;
+      document.getElementById("standingsBody").innerHTML = activeLeagueData().standings.map(team => {
+        const gd = goalDiff(team);
+        const zone = team.rank <= 2
+          ? `<span class="zone-pill zone-top">争冠/亚冠区</span>`
+          : team.rank > total - 2
+            ? `<span class="zone-pill zone-risk">降级风险区</span>`
+            : "";
+
+        return `
+          <tr>
+            <td>${team.rank}</td>
+            <td><span class="team-name">${team.team}</span>${zone}</td>
+            <td>${team.played}</td>
+            <td>${team.wins}</td>
+            <td>${team.draws}</td>
+            <td>${team.losses}</td>
+            <td>${team.gf}</td>
+            <td>${team.ga}</td>
+            <td class="${gd >= 0 ? "positive" : "negative"}">${formatGoalDiff(gd)}</td>
+            <td><strong>${team.points}</strong></td>
+            <td>${renderForm(team.form)}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function renderFilters() {
+      const options = activeLeagueData().standings.map(team => `<option value="${team.team}">${team.team}</option>`).join("");
+      document.getElementById("fixtureTeamFilter").innerHTML = `<option value="all">全部球队</option>${options}`;
+      document.getElementById("fixtureTeamFilter").value = dashboardState.fixtureTeam;
+      document.getElementById("teamMonitorSelect").innerHTML = options;
+      document.getElementById("teamMonitorSelect").value = dashboardState.selectedTeam;
+    }
+
+    function renderFixtures() {
+      const teamFilter = dashboardState.fixtureTeam;
+      const statusFilter = dashboardState.fixtureStatus;
+      const rows = activeLeagueData().fixtures
+        .filter(match => teamFilter === "all" || match.home === teamFilter || match.away === teamFilter)
+        .filter(match => {
+          if (statusFilter === "all") return true;
+          if (statusFilter === "finished") return match.status === "finished";
+          if (statusFilter === "scheduled") return match.status === "scheduled";
+          if (statusFilter === "live") return match.status === "live";
+          return true;
+        })
+        .map(match => {
+          const score = match.homeScore === null ? "vs" : `${match.homeScore} - ${match.awayScore}`;
+          return `
+            <tr>
+              <td>第 ${match.round} 轮</td>
+              <td>${formatDateTime(match.date)}</td>
+              <td class="team-name">${match.home}</td>
+              <td><strong>${score}</strong></td>
+              <td class="team-name">${match.away}</td>
+              <td><span class="match-status status-${match.status}">${statusLabels[match.status]}</span></td>
+            </tr>
+          `;
+        });
+
+      document.getElementById("fixturesBody").innerHTML = rows.length
+        ? rows.join("")
+        : `<tr><td colspan="6" class="muted">没有符合筛选条件的比赛。</td></tr>`;
+    }
+
+    function renderTeamMonitor() {
+      const team = activeLeagueData().standings.find(item => item.team === dashboardState.selectedTeam);
+      const gd = goalDiff(team);
+      document.getElementById("teamSummary").innerHTML = `
+        <div class="team-name" style="font-size: 20px;">${team.team}</div>
+        <div style="margin-top: 10px;">${renderForm(team.form)}</div>
+        <div class="team-monitor-grid">
+          <div class="team-kpi"><span>当前排名</span><strong>${team.rank}</strong></div>
+          <div class="team-kpi"><span>积分</span><strong>${team.points}</strong></div>
+          <div class="team-kpi"><span>进球</span><strong>${team.gf}</strong></div>
+          <div class="team-kpi"><span>失球</span><strong>${team.ga}</strong></div>
+          <div class="team-kpi"><span>净胜球</span><strong class="${gd >= 0 ? "positive" : "negative"}">${formatGoalDiff(gd)}</strong></div>
+          <div class="team-kpi"><span>场次</span><strong>${team.played}</strong></div>
+        </div>
+      `;
+
+      document.getElementById("teamRecentFixtures").innerHTML = teamFixtures(team.team).map(match => {
+        const score = match.homeScore === null ? "vs" : `${match.homeScore}-${match.awayScore}`;
+        return `
+          <li class="recent-item">
+            <span>第 ${match.round} 轮</span>
+            <strong>${match.home} ${score} ${match.away}</strong>
+            <span class="match-status status-${match.status}">${statusLabels[match.status]}</span>
+          </li>
+        `;
+      }).join("");
+    }
+
+    function renderAlerts() {
+      const alerts = generateAlerts();
+      document.getElementById("alertList").innerHTML = alerts.length
+        ? alerts.map(alert => `
+          <li class="alert-item">
+            <div class="alert-title">
+              <span>${alert.type}</span>
+              <span class="badge ${alert.severity}">${alert.severity}</span>
+            </div>
+            <div class="alert-copy">${alert.message}</div>
+          </li>
+        `).join("")
+        : `<li class="alert-item"><div class="alert-title">No Alert</div><div class="alert-copy">当前 mock 数据未触发告警。</div></li>`;
+    }
+
+    function renderSources() {
+      document.getElementById("sourceList").innerHTML = dataSources.map(source => `
+        <li class="source-item">
+          <span>
+            <strong>${source.priority}. ${source.name}</strong>
+            ${source.coverage.join(" / ")}
+          </span>
+          <span class="source-type">${source.type}</span>
+        </li>
+      `).join("");
+    }
+
+    function renderAll() {
+      ensureSelectedTeam();
+      renderStatus();
+      renderMetrics();
+      renderStandings();
+      renderFilters();
+      renderFixtures();
+      renderTeamMonitor();
+      renderAlerts();
+      renderSources();
+      renderCharts();
+    }
+
+    // 6. Chart Functions
+    function chartThemeOptions() {
+      return {
+        backgroundColor: "transparent",
+        textStyle: { color: "#dbeafe" },
+        grid: { left: 42, right: 18, top: 42, bottom: 62 },
+        tooltip: {
+          trigger: "axis",
+          backgroundColor: "rgba(15, 23, 42, 0.96)",
+          borderColor: "rgba(148, 163, 184, 0.22)",
+          textStyle: { color: "#e5eef8" }
+        },
+        xAxis: {
+          axisLabel: { color: "#9fb0c2", interval: 0, rotate: 30 },
+          axisLine: { lineStyle: { color: "rgba(148, 163, 184, 0.25)" } },
+          axisTick: { show: false }
+        },
+        yAxis: {
+          splitLine: { lineStyle: { color: "rgba(148, 163, 184, 0.12)" } },
+          axisLabel: { color: "#9fb0c2" }
+        }
+      };
+    }
+
+    function getChart(id) {
+      if (!dashboardState.charts[id]) {
+        dashboardState.charts[id] = echarts.init(document.getElementById(id));
+      }
+      return dashboardState.charts[id];
+    }
+
+    function renderCharts() {
+      if (!window.echarts) return;
+      const standings = activeLeagueData().standings;
+      const names = standings.map(team => team.team);
+      const base = chartThemeOptions();
+
+      getChart("pointsChart").setOption({
+        ...base,
+        xAxis: { ...base.xAxis, type: "category", data: names },
+        yAxis: { ...base.yAxis, type: "value" },
+        series: [{
+          name: "积分",
+          data: standings.map(team => team.points),
+          type: "bar",
+          barMaxWidth: 32,
+          itemStyle: { color: "#f8c14d", borderRadius: [6, 6, 0, 0] }
+        }]
+      }, true);
+
+      getChart("goalsChart").setOption({
+        ...base,
+        legend: { top: 4, textStyle: { color: "#dbeafe" } },
+        xAxis: { ...base.xAxis, type: "category", data: names },
+        yAxis: { ...base.yAxis, type: "value" },
+        series: [
+          { name: "进球", data: standings.map(team => team.gf), type: "bar", itemStyle: { color: "#22c55e", borderRadius: [6, 6, 0, 0] } },
+          { name: "失球", data: standings.map(team => team.ga), type: "bar", itemStyle: { color: "#fb7185", borderRadius: [6, 6, 0, 0] } }
+        ]
+      }, true);
+
+      getChart("goalDiffChart").setOption({
+        ...base,
+        xAxis: { ...base.xAxis, type: "category", data: names },
+        yAxis: { ...base.yAxis, type: "value" },
+        series: [{
+          name: "净胜球",
+          data: standings.map(team => goalDiff(team)),
+          type: "bar",
+          itemStyle: {
+            borderRadius: [6, 6, 0, 0],
+            color: params => params.value >= 0 ? "#38bdf8" : "#fb7185"
+          }
+        }]
+      }, true);
+
+      const counts = formCounts();
+      getChart("formChart").setOption({
+        backgroundColor: "transparent",
+        tooltip: {
+          trigger: "item",
+          backgroundColor: "rgba(15, 23, 42, 0.96)",
+          textStyle: { color: "#e5eef8" }
+        },
+        legend: { bottom: 0, textStyle: { color: "#dbeafe" } },
+        series: [{
+          name: "最近 5 场",
+          type: "pie",
+          radius: ["44%", "70%"],
+          center: ["50%", "46%"],
+          label: { color: "#e5eef8" },
+          data: [
+            { value: counts.W, name: "胜 W", itemStyle: { color: "#22c55e" } },
+            { value: counts.D, name: "平 D", itemStyle: { color: "#38bdf8" } },
+            { value: counts.L, name: "负 L", itemStyle: { color: "#fb7185" } }
+          ]
+        }]
+      }, true);
+    }
+
+    // 7. Event Listeners
+    document.querySelectorAll(".tab-button").forEach(button => {
+      button.addEventListener("click", () => {
+        dashboardState.activeLeague = button.dataset.league;
+        dashboardState.fixtureTeam = "all";
+        dashboardState.fixtureStatus = "all";
+        document.querySelectorAll(".tab-button").forEach(tab => tab.classList.toggle("active", tab === button));
+        document.getElementById("fixtureStatusFilter").value = "all";
+        renderAll();
+      });
+    });
+
+    document.getElementById("fixtureTeamFilter").addEventListener("change", event => {
+      dashboardState.fixtureTeam = event.target.value;
+      renderFixtures();
+    });
+
+    document.getElementById("fixtureStatusFilter").addEventListener("change", event => {
+      dashboardState.fixtureStatus = event.target.value;
+      renderFixtures();
+    });
+
+    document.getElementById("teamMonitorSelect").addEventListener("change", event => {
+      dashboardState.selectedTeam = event.target.value;
+      renderTeamMonitor();
+    });
+
+    document.getElementById("refreshButton").addEventListener("click", async () => {
+      const button = document.getElementById("refreshButton");
+      button.disabled = true;
+      button.textContent = "刷新中...";
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      dashboardState.fetchedAt = new Date().toISOString();
+      dashboardState.dataMode = "mock";
+      button.disabled = false;
+      button.textContent = "刷新数据";
+      renderAll();
+    });
+
+    window.addEventListener("resize", () => {
+      Object.values(dashboardState.charts).forEach(chart => chart.resize());
+    });
+
+    document.addEventListener("DOMContentLoaded", renderAll);
+
+    // 8. Future Live Data Integration
+    async function fetchLiveData() {
+      /*
+        TODO:
+        1. 优先从官方中足联 https://www.cfl-china.cn/ 获取中超、中甲、中乙赛程和积分榜。
+        2. 如果官方数据不可用，再按 dataSources priority 使用新浪体育、Sofascore、Flashscore、Soccerway fallback。
+        3. 如使用 Sportmonks / TheSportsDB / API-Football，请把 API key 放在后端或安全代理层，不要写入静态 HTML。
+        4. 将真实 API 响应转换为当前 leagues 数据结构：
+           { name, standings: [{ rank, team, played, wins, draws, losses, gf, ga, points, form }], fixtures: [...] }
+        5. 成功后设置 dashboardState.dataMode = "live" 与 dashboardState.fetchedAt = new Date().toISOString()。
+      */
+      return Promise.resolve(leagues);
+    }
+  </script>
+</body>
+</html>
