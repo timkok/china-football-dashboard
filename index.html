@@ -568,7 +568,7 @@
         <div class="eyebrow"><span class="status-dot"></span>CFL Monitor · Mock-first Static Dashboard</div>
         <h1>中国足球职业联赛监测 Dashboard</h1>
         <p class="subtitle">中超 / 中甲 / 中乙赛程、积分榜、球队状态、数据健康与自动告警监测。静态 GitHub Pages 版本默认使用示例数据，真实数据入口已预留。</p>
-        <p class="notice">当前为示例数据，仅用于 Dashboard 演示，不代表官方排名或真实赛果。</p>
+        <p id="dataNotice" class="notice">正在检查本仓库静态 JSON 数据；如果不可用将回退到示例数据。</p>
       </div>
       <div class="hero-side">
         <div class="status-box">
@@ -576,6 +576,8 @@
           <div class="status-row"><span>最近刷新时间</span><strong id="lastRefreshAt">-</strong></div>
           <div class="status-row"><span>数据年龄</span><strong id="dataAge">-</strong></div>
           <div class="status-row"><span>数据状态</span><span id="dataModePill" class="pill mock">Mock 数据</span></div>
+          <div class="status-row"><span>数据来源</span><strong id="currentSource">-</strong></div>
+          <div class="status-row"><span>官方数据</span><strong id="officialFlag">-</strong></div>
         </div>
         <button id="refreshButton" class="refresh-button" type="button">刷新数据</button>
       </div>
@@ -734,12 +736,18 @@
       </aside>
     </section>
 
-    <footer>china-football-dashboard · GitHub Pages 静态站点 · Mock-first with live-data hooks</footer>
+    <footer>china-football-dashboard · GitHub Pages 静态站点 · Live JSON first with mock fallback</footer>
   </main>
 
   <script>
     // 3. Mock Data
     const MOCK_GENERATED_AT = new Date().toISOString();
+    const DATA_FILES = {
+      meta: "data/meta.json",
+      csl: { standings: "data/csl-standings.json", fixtures: "data/csl-fixtures.json" },
+      cl1: { standings: "data/cl1-standings.json", fixtures: "data/cl1-fixtures.json" },
+      cl2: { standings: "data/cl2-standings.json", fixtures: "data/cl2-fixtures.json" }
+    };
     const TARGETS = {
       csl: { teams: 16, fixtures: 12 },
       cl1: { teams: 16, fixtures: 12 },
@@ -756,18 +764,33 @@
         usage: ["standings", "fixtures", "news"]
       },
       {
+        id: "sina-sports",
+        name: "新浪体育中超积分榜",
+        priority: 2,
+        type: "fallback",
+        usage: ["standings", "fixtures"]
+      },
+      {
         id: "dongqiudi",
         name: "懂球帝",
-        priority: 2,
+        priority: 3,
         type: "fallback",
         usage: ["standings", "fixtures"]
       },
       {
         id: "aicai",
         name: "新浪爱彩",
-        priority: 3,
+        priority: 4,
         type: "fallback",
         usage: ["standings", "fixtures"]
+      },
+      {
+        id: "qiumiwu",
+        name: "球迷屋",
+        url: "https://www.qiumiwu.com/league/zhongchao/standings",
+        priority: 5,
+        type: "fallback",
+        usage: ["standings"]
       }
     ];
 
@@ -898,6 +921,11 @@
       mockGeneratedAt: MOCK_GENERATED_AT,
       lastRefreshAt: MOCK_GENERATED_AT,
       lastRefreshSuccess: true,
+      currentSource: "内置示例数据",
+      currentSourceUrl: "",
+      isOfficial: false,
+      dataWarning: "当前使用示例数据 / fallback 数据，不代表官方排名或真实赛果。",
+      meta: null,
       leagues: MOCK_LEAGUES,
       charts: {},
       logs: [
@@ -908,6 +936,17 @@
     // 4. Data Helpers
     function league() {
       return state.leagues[state.activeLeague];
+    }
+
+    function activeSource() {
+      const data = league();
+      return {
+        name: data.source || state.currentSource || "内置示例数据",
+        url: data.sourceUrl || state.currentSourceUrl || "",
+        isOfficial: Boolean(data.isOfficial || state.isOfficial),
+        fetchedAt: data.fetchedAt || state.lastRefreshAt,
+        mode: data.dataMode || state.dataMode
+      };
     }
 
     function teamById(id) {
@@ -933,19 +972,182 @@
     }
 
     function dataAgeHours() {
-      return (Date.now() - new Date(state.lastRefreshAt).getTime()) / 36e5;
+      return (Date.now() - new Date(activeSource().fetchedAt || state.lastRefreshAt).getTime()) / 36e5;
     }
 
     function effectiveMode() {
       if (state.transientStatus) return state.transientStatus;
       if (dataAgeHours() > 12) return "Stale";
-      return state.dataMode;
+      return activeSource().mode || state.dataMode;
+    }
+
+    function displayModeLabel() {
+      const mode = effectiveMode();
+      const labels = {
+        Live: "Live 数据",
+        Fallback: "Fallback 数据",
+        Mock: "Mock 数据",
+        Stale: "Stale 数据",
+        Refreshing: "刷新中"
+      };
+      return labels[mode] || `${mode} 数据`;
     }
 
     function modeClass() {
       const mode = effectiveMode().toLowerCase();
       if (mode === "refreshing") return "loading";
       return mode;
+    }
+
+    async function fetchJson(path) {
+      const response = await fetch(`${path}?v=${Date.now()}`, { cache: "no-store" });
+      if (!response.ok) throw new Error(`${path} returned ${response.status}`);
+      return response.json();
+    }
+
+    function payloadFreshness(payloads) {
+      const timestamps = payloads
+        .map(payload => payload && payload.fetchedAt)
+        .filter(Boolean)
+        .map(value => new Date(value).getTime())
+        .filter(value => Number.isFinite(value));
+      if (!timestamps.length) return null;
+      return new Date(Math.max(...timestamps)).toISOString();
+    }
+
+    function deriveLeagueMode(payloads, fallbackMode = "Mock") {
+      const usable = payloads.filter(Boolean);
+      if (!usable.length) return fallbackMode;
+      if (usable.some(payload => payload.mode === "fallback" || payload.isOfficial === false)) return "Fallback";
+      return "Live";
+    }
+
+    function normalizeTeamFromPayload(item, leagueKey, index, payload) {
+      const played = Number(item.played ?? item.matches ?? 0);
+      const wins = Number(item.wins ?? 0);
+      const draws = Number(item.draws ?? 0);
+      const losses = Number(item.losses ?? Math.max(0, played - wins - draws));
+      const goalsFor = Number(item.goalsFor ?? item.gf ?? 0);
+      const goalsAgainst = Number(item.goalsAgainst ?? item.ga ?? 0);
+      const goalDiff = Number(item.goalDiff ?? goalsFor - goalsAgainst);
+      const points = Number(item.points ?? wins * 3 + draws);
+      const homeRecord = item.homeRecord || { wins: 0, draws: 0, losses: 0, points: 0 };
+      const awayRecord = item.awayRecord || { wins: 0, draws: 0, losses: 0, points: 0 };
+
+      return {
+        id: item.id || `${leagueKey}-team-${String(index + 1).padStart(2, "0")}`,
+        rank: Number(item.rank ?? index + 1),
+        name: item.name || item.team || `Team ${index + 1}`,
+        shortName: item.shortName || item.name || item.team || `T${index + 1}`,
+        city: item.city || "未标注",
+        played,
+        wins,
+        draws,
+        losses,
+        goalsFor,
+        goalsAgainst,
+        goalDiff,
+        points,
+        form: Array.isArray(item.form) && item.form.length ? item.form : ["D", "D", "D", "D", "D"],
+        homeRecord,
+        awayRecord,
+        source: item.source || payload.source || "json",
+        sourceUrl: item.sourceUrl || payload.sourceUrl || "",
+        isOfficial: Boolean(item.isOfficial ?? payload.isOfficial),
+        updatedAt: item.updatedAt || payload.fetchedAt || new Date().toISOString()
+      };
+    }
+
+    function normalizeFixtureFromPayload(item, leagueKey, index, payload) {
+      return {
+        id: item.id || `${leagueKey}-fixture-${String(index + 1).padStart(2, "0")}`,
+        league: item.league || leagueKey,
+        round: item.round || "-",
+        date: item.date || payload.fetchedAt || new Date().toISOString(),
+        homeTeam: item.homeTeam || item.home || "待定",
+        awayTeam: item.awayTeam || item.away || "待定",
+        homeScore: item.homeScore ?? null,
+        awayScore: item.awayScore ?? null,
+        status: item.status || "scheduled",
+        venue: item.venue || "待定",
+        source: item.source || payload.source || "json",
+        sourceUrl: item.sourceUrl || payload.sourceUrl || "",
+        isOfficial: Boolean(item.isOfficial ?? payload.isOfficial),
+        fetchedAt: item.fetchedAt || payload.fetchedAt || new Date().toISOString()
+      };
+    }
+
+    function applyPayloadsToLeague(leagueKey, standingsPayload, fixturesPayload) {
+      const current = state.leagues[leagueKey];
+      const payloads = [standingsPayload, fixturesPayload].filter(Boolean);
+      const standings = standingsPayload && Array.isArray(standingsPayload.data) && standingsPayload.data.length
+        ? standingsPayload.data.map((item, index) => normalizeTeamFromPayload(item, leagueKey, index, standingsPayload))
+        : current.standings;
+      const fixtures = fixturesPayload && Array.isArray(fixturesPayload.data) && fixturesPayload.data.length
+        ? fixturesPayload.data.map((item, index) => normalizeFixtureFromPayload(item, leagueKey, index, fixturesPayload))
+        : current.fixtures;
+      const sourcePayload = standingsPayload || fixturesPayload;
+
+      state.leagues[leagueKey] = {
+        ...current,
+        standings,
+        fixtures,
+        dataMode: deriveLeagueMode(payloads, current.dataMode || "Mock"),
+        source: sourcePayload?.source || current.source || "内置示例数据",
+        sourceUrl: sourcePayload?.sourceUrl || current.sourceUrl || "",
+        isOfficial: Boolean(sourcePayload?.isOfficial),
+        fetchedAt: sourcePayload?.fetchedAt || payloadFreshness(payloads) || current.fetchedAt || MOCK_GENERATED_AT,
+        usingMockStandings: !standingsPayload,
+        usingMockFixtures: !fixturesPayload
+      };
+    }
+
+    async function loadStaticData() {
+      try {
+        const meta = await fetchJson(DATA_FILES.meta);
+        state.meta = meta;
+        const loadedPayloads = [];
+
+        for (const leagueKey of Object.keys(DATA_FILES).filter(key => key !== "meta")) {
+          let standingsPayload = null;
+          let fixturesPayload = null;
+          try {
+            standingsPayload = await fetchJson(DATA_FILES[leagueKey].standings);
+            loadedPayloads.push(standingsPayload);
+          } catch (error) {
+            console.warn(`Standings JSON unavailable for ${leagueKey}:`, error);
+          }
+          try {
+            fixturesPayload = await fetchJson(DATA_FILES[leagueKey].fixtures);
+            loadedPayloads.push(fixturesPayload);
+          } catch (error) {
+            console.warn(`Fixtures JSON unavailable for ${leagueKey}:`, error);
+          }
+          applyPayloadsToLeague(leagueKey, standingsPayload, fixturesPayload);
+        }
+
+        if (!loadedPayloads.length) throw new Error("No league JSON payloads loaded");
+        const freshest = payloadFreshness(loadedPayloads) || meta.generatedAt || new Date().toISOString();
+        state.lastRefreshAt = freshest;
+        state.lastRefreshSuccess = meta.status !== "error";
+        state.dataMode = deriveLeagueMode(loadedPayloads, meta.mode === "mock" ? "Mock" : "Fallback");
+        state.currentSource = meta.primarySource || state.leagues[state.activeLeague].source || "静态 JSON";
+        state.currentSourceUrl = meta.primarySourceUrl || state.leagues[state.activeLeague].sourceUrl || "";
+        state.isOfficial = loadedPayloads.some(payload => payload.isOfficial);
+        state.dataWarning = state.dataMode === "Live"
+          ? "当前优先使用本仓库 data/*.json 静态数据；请以页面标注的数据源和更新时间为准。"
+          : "当前使用示例数据 / fallback 数据，不代表官方排名或真实赛果。";
+        state.logs.unshift({ time: new Date().toISOString(), type: "scheduled", message: `已读取 data/*.json，模式：${state.dataMode}。` });
+      } catch (error) {
+        console.warn("Static JSON load failed; using mock fallback.", error);
+        state.dataMode = "Mock";
+        state.currentSource = "内置示例数据";
+        state.currentSourceUrl = "";
+        state.isOfficial = false;
+        state.lastRefreshSuccess = false;
+        state.dataWarning = "当前使用示例数据 / fallback 数据，不代表官方排名或真实赛果。";
+        state.logs.unshift({ time: new Date().toISOString(), type: "fallback", message: "data/*.json 不存在或读取失败，已回退到内置 mock 数据。" });
+      }
     }
 
     function recordToText(record) {
@@ -1024,12 +1226,15 @@
     function updateDataHealth(data) {
       const validation = validateLeagueData(data);
       const alerts = generateAlerts();
+      const source = activeSource();
       return {
         mode: effectiveMode(),
-        lastRefreshAt: state.lastRefreshAt,
-        age: formatAge(state.lastRefreshAt),
+        lastRefreshAt: source.fetchedAt || state.lastRefreshAt,
+        age: formatAge(source.fetchedAt || state.lastRefreshAt),
         sourceCount: DATA_SOURCES.length,
         lastRefreshSuccess: state.lastRefreshSuccess,
+        sourceName: source.name,
+        isOfficial: source.isOfficial,
         teamText: `${validation.teamCount} / ${data.targetTeams}`,
         fixtureText: `${validation.fixtureCount} / ${data.targetFixtures}`,
         teamCompleteness: validation.teamCompleteness,
@@ -1086,14 +1291,16 @@
 
     // 5. Rendering Functions
     function renderStatus() {
+      const source = activeSource();
       document.getElementById("mockGeneratedAt").textContent = formatFullDateTime(state.mockGeneratedAt);
-      document.getElementById("lastRefreshAt").textContent = formatFullDateTime(state.lastRefreshAt);
-      document.getElementById("dataAge").textContent = formatAge(state.lastRefreshAt);
+      document.getElementById("lastRefreshAt").textContent = formatFullDateTime(source.fetchedAt || state.lastRefreshAt);
+      document.getElementById("dataAge").textContent = formatAge(source.fetchedAt || state.lastRefreshAt);
+      document.getElementById("currentSource").textContent = source.name || "内置示例数据";
+      document.getElementById("officialFlag").textContent = source.isOfficial ? "是" : "否";
+      document.getElementById("dataNotice").textContent = state.dataWarning;
       const pill = document.getElementById("dataModePill");
-      const mode = effectiveMode();
-      const label = mode === "Refreshing" ? "刷新中" : `${mode} 数据`;
       pill.className = `pill ${modeClass()}`;
-      pill.textContent = label;
+      pill.textContent = displayModeLabel();
     }
 
     function renderMetrics() {
@@ -1107,7 +1314,8 @@
     }
 
     function renderStandings() {
-      document.getElementById("standingsSubtitle").textContent = `${league().name} · ${league().standings.length} 支球队 · 当前为示例数据`;
+      const source = activeSource();
+      document.getElementById("standingsSubtitle").textContent = `${league().name} · ${league().standings.length} 支球队 · 来源：${source.name} · fetchedAt：${formatFullDateTime(source.fetchedAt || state.lastRefreshAt)}`;
       document.getElementById("standingsBody").innerHTML = league().standings.map(team => {
         const zone = rankZone(team, state.activeLeague);
         return `
@@ -1126,6 +1334,7 @@
             <td>${recordToText(team.homeRecord)}</td>
             <td>${recordToText(team.awayRecord)}</td>
             <td>${formHtml(team.form)}</td>
+            <td style="display:none">${team.source}</td>
           </tr>
         `;
       }).join("");
@@ -1161,8 +1370,10 @@
       document.getElementById("dataHealth").innerHTML = `
         <div class="health-item"><span>当前数据模式</span><strong>${health.mode}</strong></div>
         <div class="health-item"><span>最近刷新时间</span><strong>${formatAge(health.lastRefreshAt)}</strong></div>
+        <div class="health-item"><span>当前数据来源</span><strong>${health.sourceName}</strong></div>
+        <div class="health-item"><span>官方数据</span><strong>${health.isOfficial ? "是" : "否"}</strong></div>
         <div class="health-item"><span>数据源数量</span><strong>${health.sourceCount}</strong></div>
-        <div class="health-item"><span>最近一次刷新</span><strong>${health.lastRefreshSuccess ? "成功" : "失败"}</strong></div>
+        <div class="health-item"><span>最近一次刷新</span><strong>${health.lastRefreshSuccess ? "成功" : "失败 / fallback"}</strong></div>
         <div class="health-item"><span>积分榜球队数 / 目标</span><strong>${health.teamText}</strong><div class="progress"><i style="width:${health.teamCompleteness * 100}%"></i></div></div>
         <div class="health-item"><span>赛程场次数 / 目标</span><strong>${health.fixtureText}</strong><div class="progress"><i style="width:${health.fixtureCompleteness * 100}%"></i></div></div>
         <div class="health-item"><span>异常数量</span><strong>${health.alertCount}</strong></div>
@@ -1216,7 +1427,17 @@
     }
 
     function renderSources() {
-      document.getElementById("sourceList").innerHTML = DATA_SOURCES.map(source => `
+      const sourceRows = [
+        {
+          priority: "当前",
+          name: activeSource().name,
+          url: activeSource().url,
+          type: activeSource().isOfficial ? "official" : "fallback",
+          usage: ["active data"]
+        },
+        ...DATA_SOURCES
+      ];
+      document.getElementById("sourceList").innerHTML = sourceRows.map(source => `
         <li class="source-item">
           <span><strong>${source.priority}. ${source.name}</strong>${source.usage.join(" / ")}${source.url ? `<br><span class="muted">${source.url}</span>` : ""}</span>
           <span class="badge ${source.type === "official" ? "info" : "fallback"}">${source.type}</span>
@@ -1379,11 +1600,9 @@
       renderStatus();
       renderDataHealth();
       await new Promise(resolve => setTimeout(resolve, 1000));
+      await loadStaticData();
       state.transientStatus = "";
-      state.dataMode = "Mock";
-      state.lastRefreshSuccess = true;
-      state.lastRefreshAt = new Date().toISOString();
-      state.logs.unshift({ time: state.lastRefreshAt, type: "manual", message: `${league().name} 手动刷新完成，当前仍使用 mock 数据。` });
+      state.logs.unshift({ time: new Date().toISOString(), type: "manual", message: `${league().name} 手动刷新完成，当前模式：${effectiveMode()}。` });
       button.disabled = false;
       button.textContent = "刷新数据";
       renderAll();
@@ -1393,40 +1612,40 @@
       Object.values(state.charts).forEach(item => item.resize());
     });
 
-    document.addEventListener("DOMContentLoaded", renderAll);
+    document.addEventListener("DOMContentLoaded", async () => {
+      await loadStaticData();
+      renderAll();
+    });
 
     // 8. Future Live Data Integration
     async function fetchLiveData() {
       /*
-        TODO:
-        当前 GitHub Pages 是纯静态站点，直接抓取官方网页可能遇到 CORS、反爬、登录态和页面结构变化限制。
-        推荐真实接入方案：
-        1. GitHub Actions 定时抓取官方中足联与 fallback 数据源，生成 data/*.json。
-        2. 前端只读取同源静态 JSON 文件。
-        3. 抓取失败时保留上一次成功数据，并将 dataMode 标记为 Fallback 或 Stale。
-        4. 如需实时抓取，使用 serverless proxy，不要在 HTML 中暴露 API key。
+        GitHub Pages 前端只读取本仓库 data/*.json，不直接抓取官方或第三方网页。
+        真正的网页抓取在 scripts/fetch-data.js 中由 GitHub Actions 执行。
+        静态站直接抓外站可能遇到 CORS、反爬、登录态和 API key 泄露问题。
       */
-      return Promise.resolve(state.leagues);
+      await loadStaticData();
+      return state.leagues;
     }
 
     async function fetchOfficialCflData() {
-      // TODO: 接入 https://www.cfl-china.cn/ 的官方赛程、积分榜与新闻快照。
+      // Browser runtime intentionally does not call this. Official crawling belongs in GitHub Actions / scripts/fetch-data.js.
       return null;
     }
 
     async function fetchFallbackData() {
-      // TODO: 官方不可用时按 DATA_SOURCES priority 接入懂球帝、彩票站点或其他合规 fallback。
+      // Browser runtime intentionally does not call this. Fallback crawling belongs in GitHub Actions / scripts/fetch-data.js.
       return null;
     }
 
     function normalizeStandings(raw) {
-      // TODO: 将官方或第三方原始积分榜字段映射到本页面 Team schema。
-      return raw;
+      if (!raw || !Array.isArray(raw.data)) return [];
+      return raw.data.map((item, index) => normalizeTeamFromPayload(item, raw.league || state.activeLeague, index, raw));
     }
 
     function normalizeFixtures(raw) {
-      // TODO: 将官方或第三方原始赛程字段映射到本页面 Fixture schema。
-      return raw;
+      if (!raw || !Array.isArray(raw.data)) return [];
+      return raw.data.map((item, index) => normalizeFixtureFromPayload(item, raw.league || state.activeLeague, index, raw));
     }
   </script>
 </body>

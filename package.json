@@ -1,0 +1,13 @@
+{
+  "name": "china-football-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static China football league dashboard with GitHub Actions data refresh.",
+  "type": "module",
+  "scripts": {
+    "fetch:data": "node scripts/fetch-data.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "generatedAt": "2026-05-18T01:53:41.054Z",
+  "season": 2026,
+  "status": "success",
+  "mode": "fallback",
+  "primarySource": "球迷屋",
+  "primarySourceUrl": "https://www.qiumiwu.com/league/zhongchao/standings",
+  "isOfficial": false,
+  "files": [
+    "csl-standings.json",
+    "csl-fixtures.json",
+    "cl1-standings.json",
+    "cl1-fixtures.json",
+    "cl2-standings.json",
+    "cl2-fixtures.json"
+  ],
+  "logs": [
+    {
+      "level": "warning",
+      "message": "Official CFL standings unavailable: Official CFL public HTML does not expose a complete 16-team standings table yet"
+    },
+    {
+      "level": "warning",
+      "message": "Sina fallback unavailable: Sina public article currently exposes standings as images/text rather than a complete parsable table"
+    },
+    {
+      "level": "info",
+      "message": "Qiumiwu fallback CSL standings fetch succeeded"
+    }
+  ]
+}
