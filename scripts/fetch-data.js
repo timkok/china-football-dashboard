@@ -16,8 +16,9 @@ const SOURCES = {
   },
   sina: {
     id: "sina-sports",
-    name: "新浪体育",
-    url: "https://k.sina.com.cn/article_7857201856_1d45362c0019050f90.html",
+    name: "新浪体育中超积分榜",
+    url: "https://sports.sina.com.cn/csl/table/",
+    apiUrl: "https://api.sports.sina.com.cn/?p=sports&s=sport_client&a=index&_sport_t_=football&_sport_s_=opta&_sport_a_=teamOrder&use_type=team&type=213&callback=callScoreList",
     isOfficial: false
   },
   qiumiwu: {
@@ -114,10 +115,55 @@ async function fetchOfficialCslStandings() {
 }
 
 async function fetchSinaCslStandings() {
-  console.log(`[fallback] Fetching ${SOURCES.sina.url}`);
-  const html = await getText(SOURCES.sina.url);
-  if (!html.includes("2026中超积分榜")) throw new Error("Sina page did not include CSL standings marker");
-  throw new Error("Sina public article currently exposes standings as images/text rather than a complete parsable table");
+  console.log(`[fallback] Fetching ${SOURCES.sina.apiUrl}`);
+  const jsonp = await getText(SOURCES.sina.apiUrl);
+  const match = jsonp.match(/^callScoreList\(([\s\S]+)\)\s*;?$/);
+  if (!match) throw new Error("Sina standings API did not return expected JSONP");
+  const payload = JSON.parse(match[1]);
+  const rows = Object.values(payload?.result?.data || {});
+  if (rows.length < 8) throw new Error(`Sina standings returned too few teams: ${rows.length}`);
+
+  return rows
+    .map(row => {
+      const team = row.team_cn;
+      const [shortName, city] = TEAM_META[team] || [team.slice(0, 3), "未标注"];
+      const wins = parseNumber(row.win);
+      const draws = parseNumber(row.draw);
+      const losses = parseNumber(row.lose);
+      return {
+        rank: parseNumber(row.team_order),
+        team,
+        name: team,
+        shortName,
+        city,
+        played: parseNumber(row.count),
+        wins,
+        draws,
+        losses,
+        goalsFor: parseNumber(row.goal),
+        goalsAgainst: parseNumber(row.losegoal),
+        goalDiff: parseNumber(row.truegoal),
+        points: parseNumber(row.score),
+        form: FORM_PATTERNS[(parseNumber(row.team_order) - 1) % FORM_PATTERNS.length],
+        homeRecord: {
+          wins: parseNumber(row.home_win),
+          draws: parseNumber(row.home_draw),
+          losses: parseNumber(row.home_lose),
+          points: parseNumber(row.home_score)
+        },
+        awayRecord: {
+          wins: parseNumber(row.away_win),
+          draws: parseNumber(row.away_draw),
+          losses: parseNumber(row.away_lose),
+          points: parseNumber(row.away_score)
+        },
+        source: SOURCES.sina.name,
+        sourceUrl: SOURCES.sina.url,
+        isOfficial: false,
+        updatedAt: NOW
+      };
+    })
+    .sort((a, b) => a.rank - b.rank);
 }
 
 async function fetchQiumiwuCslStandings() {
@@ -239,17 +285,35 @@ function buildMockFixtures(league, teams) {
 }
 
 function payload({ league, type, source, sourceUrl, isOfficial, mode, data, fetchedAt = NOW }) {
+  const leagueNames = { csl: "中超", cl1: "中甲", cl2: "中乙" };
+  const sourceEntry = Object.values(SOURCES).find(item => item.name === source || item.url === sourceUrl);
   return {
     league,
+    leagueName: leagueNames[league] || league,
     season: SEASON,
     type,
+    sourceId: sourceEntry?.id || source.toLowerCase().replace(/\s+/g, "-"),
     mode,
     source,
     sourceUrl,
     isOfficial,
     fetchedAt,
+    schemaVersion: 1,
     data
   };
+}
+
+function validateStandingsPayload(contents) {
+  if (!contents || !Array.isArray(contents.data)) throw new Error("standings payload missing data array");
+  if (contents.data.length < 8) throw new Error(`standings payload has only ${contents.data.length} teams`);
+  contents.data.forEach((team, index) => {
+    if (!team.team && !team.name) throw new Error(`team row ${index + 1} missing team`);
+    for (const field of ["played", "points", "wins", "draws", "losses", "goalsFor", "goalsAgainst", "goalDiff"]) {
+      if (typeof team[field] !== "number" || Number.isNaN(team[field])) {
+        throw new Error(`team row ${index + 1} has invalid numeric field ${field}`);
+      }
+    }
+  });
 }
 
 async function writeJsonSafely(fileName, contents, { preserveOnFailure = true } = {}) {
@@ -260,6 +324,7 @@ async function writeJsonSafely(fileName, contents, { preserveOnFailure = true } 
     }
     throw new Error(`${fileName} has no data`);
   }
+  if (fileName.endsWith("standings.json")) validateStandingsPayload(contents);
   await writeFile(path.join(DATA_DIR, fileName), `${JSON.stringify(contents, null, 2)}\n`);
   console.log(`[write] data/${fileName}: ${contents.data.length} rows from ${contents.source}`);
   return true;
@@ -337,20 +402,52 @@ async function main() {
   }
 
   const meta = {
-    generatedAt: NOW,
-    season: SEASON,
-    status: cslStandingsPayload ? "success" : "partial",
+    updatedAt: NOW,
     mode: cslStandingsPayload?.mode || "mock",
-    primarySource: cslStandingsPayload?.source || "mock",
-    primarySourceUrl: cslStandingsPayload?.sourceUrl || "",
-    isOfficial: Boolean(cslStandingsPayload?.isOfficial),
-    files: [
-      "csl-standings.json", "csl-fixtures.json", "cl1-standings.json", "cl1-fixtures.json", "cl2-standings.json", "cl2-fixtures.json"
+    sources: [
+      {
+        id: SOURCES.official.id,
+        name: SOURCES.official.name,
+        url: "https://www.cfl-china.cn/",
+        isOfficial: true,
+        status: logs.some(item => item.message.startsWith("Official CFL standings fetch succeeded")) ? "ok" : "error",
+        lastFetchedAt: NOW
+      },
+      {
+        id: SOURCES.sina.id,
+        name: SOURCES.sina.name,
+        url: SOURCES.sina.url,
+        isOfficial: false,
+        status: cslStandingsPayload?.sourceId === SOURCES.sina.id || cslStandingsPayload?.source === SOURCES.sina.name ? "ok" : "error",
+        lastFetchedAt: cslStandingsPayload?.source === SOURCES.sina.name ? cslStandingsPayload.fetchedAt : NOW
+      },
+      {
+        id: SOURCES.qiumiwu.id,
+        name: SOURCES.qiumiwu.name,
+        url: SOURCES.qiumiwu.url,
+        isOfficial: false,
+        status: cslStandingsPayload?.source === SOURCES.qiumiwu.name ? "ok" : "unused",
+        lastFetchedAt: cslStandingsPayload?.source === SOURCES.qiumiwu.name ? cslStandingsPayload.fetchedAt : NOW
+      }
     ],
+    leagues: {
+      csl: {
+        standings: cslStandingsPayload ? (cslStandingsPayload.isOfficial ? "ok" : "fallback") : "error",
+        fixtures: "mock"
+      },
+      cl1: {
+        standings: "mock",
+        fixtures: "mock"
+      },
+      cl2: {
+        standings: "mock",
+        fixtures: "mock"
+      }
+    },
     logs
   };
   await writeFile(path.join(DATA_DIR, "meta.json"), `${JSON.stringify(meta, null, 2)}\n`);
-  console.log(`[write] data/meta.json: ${meta.status}, mode=${meta.mode}`);
+  console.log(`[write] data/meta.json: mode=${meta.mode}`);
 }
 
 main().catch(error => {

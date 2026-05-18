@@ -1,12 +1,15 @@
 {
   "league": "cl1",
+  "leagueName": "中甲",
   "season": 2026,
   "type": "fixtures",
+  "sourceId": "mock-fallback",
   "mode": "mock",
   "source": "mock fallback",
   "sourceUrl": "",
   "isOfficial": false,
-  "fetchedAt": "2026-05-18T01:53:41.054Z",
+  "fetchedAt": "2026-05-18T04:05:49.397Z",
+  "schemaVersion": 1,
   "data": [
     {
       "id": "cl1-fixture-01",
@@ -22,7 +25,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl1-fixture-02",
@@ -38,7 +41,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl1-fixture-03",
@@ -54,7 +57,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl1-fixture-04",
@@ -70,7 +73,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl1-fixture-05",
@@ -86,7 +89,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl1-fixture-06",
@@ -102,7 +105,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl1-fixture-07",
@@ -118,7 +121,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl1-fixture-08",
@@ -134,7 +137,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl1-fixture-09",
@@ -150,7 +153,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl1-fixture-10",
@@ -166,7 +169,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl1-fixture-11",
@@ -182,7 +185,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl1-fixture-12",
@@ -198,7 +201,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl1-fixture-13",
@@ -214,7 +217,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl1-fixture-14",
@@ -230,7 +233,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     }
   ]
 }

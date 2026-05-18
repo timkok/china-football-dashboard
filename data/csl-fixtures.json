@@ -1,12 +1,15 @@
 {
   "league": "csl",
+  "leagueName": "中超",
   "season": 2026,
   "type": "fixtures",
+  "sourceId": "mock-fixture-fallback",
   "mode": "mock",
   "source": "mock fixture fallback",
   "sourceUrl": "",
   "isOfficial": false,
-  "fetchedAt": "2026-05-18T01:53:41.054Z",
+  "fetchedAt": "2026-05-18T04:05:49.397Z",
+  "schemaVersion": 1,
   "data": [
     {
       "id": "csl-fixture-01",
@@ -22,7 +25,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "csl-fixture-02",
@@ -38,7 +41,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "csl-fixture-03",
@@ -54,7 +57,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "csl-fixture-04",
@@ -70,7 +73,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "csl-fixture-05",
@@ -86,7 +89,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "csl-fixture-06",
@@ -94,7 +97,7 @@
       "round": 15,
       "date": "2026-05-15T11:30:00.000Z",
       "homeTeam": "青岛西海岸",
-      "awayTeam": "深圳新鹏城",
+      "awayTeam": "深圳新鵬城",
       "homeScore": 3,
       "awayScore": 0,
       "status": "live",
@@ -102,7 +105,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "csl-fixture-07",
@@ -118,7 +121,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "csl-fixture-08",
@@ -134,7 +137,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "csl-fixture-09",
@@ -150,7 +153,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "csl-fixture-10",
@@ -166,23 +169,23 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "csl-fixture-11",
       "league": "csl",
       "round": 18,
       "date": "2026-05-20T11:35:00.000Z",
-      "homeTeam": "深圳新鹏城",
+      "homeTeam": "深圳新鵬城",
       "awayTeam": "天津津门虎",
       "homeScore": null,
       "awayScore": null,
       "status": "scheduled",
-      "venue": "深圳体育中心",
+      "venue": "未标注体育中心",
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "csl-fixture-12",
@@ -198,7 +201,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "csl-fixture-13",
@@ -214,7 +217,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "csl-fixture-14",
@@ -230,7 +233,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "fetchedAt": "2026-05-18T01:53:41.054Z"
+      "fetchedAt": "2026-05-18T04:05:49.397Z"
     }
   ]
 }

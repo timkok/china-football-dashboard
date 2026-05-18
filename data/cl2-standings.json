@@ -1,12 +1,15 @@
 {
   "league": "cl2",
+  "leagueName": "中乙",
   "season": 2026,
   "type": "standings",
+  "sourceId": "mock-fallback",
   "mode": "mock",
   "source": "mock fallback",
   "sourceUrl": "",
   "isOfficial": false,
-  "fetchedAt": "2026-05-18T01:53:41.054Z",
+  "fetchedAt": "2026-05-18T04:05:49.397Z",
+  "schemaVersion": 1,
   "data": [
     {
       "id": "cl2-team-02",
@@ -44,7 +47,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-01",
@@ -82,7 +85,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-03",
@@ -120,7 +123,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-06",
@@ -158,7 +161,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-04",
@@ -196,7 +199,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-08",
@@ -234,7 +237,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-05",
@@ -272,7 +275,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-07",
@@ -310,7 +313,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-10",
@@ -348,7 +351,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-12",
@@ -386,7 +389,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-11",
@@ -424,7 +427,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-09",
@@ -462,7 +465,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-13",
@@ -500,7 +503,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-16",
@@ -538,7 +541,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-14",
@@ -576,7 +579,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-18",
@@ -614,7 +617,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-15",
@@ -652,7 +655,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-17",
@@ -690,7 +693,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-19",
@@ -728,7 +731,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     },
     {
       "id": "cl2-team-20",
@@ -766,7 +769,7 @@
       "source": "mock",
       "sourceUrl": "",
       "isOfficial": false,
-      "updatedAt": "2026-05-18T01:53:41.054Z"
+      "updatedAt": "2026-05-18T04:05:49.397Z"
     }
   ]
 }
