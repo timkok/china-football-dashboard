@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-19T19:35:24.447Z",
+  "updatedAt": "2026-05-19T19:41:53.629Z",
   "mode": "mock",
   "primarySource": "内置示例数据",
   "primarySourceUrl": "",
@@ -10,7 +10,7 @@
       "url": "https://www.cfl-china.cn/",
       "isOfficial": true,
       "status": "unused",
-      "lastFetchedAt": "2026-05-19T19:35:24.447Z"
+      "lastFetchedAt": "2026-05-19T19:41:53.629Z"
     }
   ],
   "leagues": {

@@ -1,6 +1,6 @@
 {
   "league": "csl",
-  "fetchedAt": "2026-05-19T19:35:24.447Z",
+  "fetchedAt": "2026-05-19T19:41:53.629Z",
   "mode": "mock",
   "source": "内置示例数据",
   "isOfficial": false,
@@ -17,7 +17,7 @@
       "status": "finished",
       "venue": "上海体育中心体育场",
       "source": "mock",
-      "fetchedAt": "2026-05-19T19:35:24.447Z"
+      "fetchedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "csl-fixture-02",
@@ -31,7 +31,7 @@
       "status": "finished",
       "venue": "上海专业足球场",
       "source": "mock",
-      "fetchedAt": "2026-05-19T19:35:24.447Z"
+      "fetchedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "csl-fixture-03",
@@ -45,7 +45,7 @@
       "status": "finished",
       "venue": "成都奥体中心",
       "source": "mock",
-      "fetchedAt": "2026-05-19T19:35:24.447Z"
+      "fetchedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "csl-fixture-04",
@@ -59,7 +59,7 @@
       "status": "finished",
       "venue": "济南市体育场",
       "source": "mock",
-      "fetchedAt": "2026-05-19T19:35:24.447Z"
+      "fetchedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "csl-fixture-05",
@@ -73,7 +73,7 @@
       "status": "finished",
       "venue": "杭州凤凰山体育公园",
       "source": "mock",
-      "fetchedAt": "2026-05-19T19:35:24.447Z"
+      "fetchedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "csl-fixture-06",
@@ -87,7 +87,7 @@
       "status": "live",
       "venue": "武汉龙泉驿足球场",
       "source": "mock",
-      "fetchedAt": "2026-05-19T19:35:24.447Z"
+      "fetchedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "csl-fixture-07",
@@ -101,7 +101,7 @@
       "status": "scheduled",
       "venue": "北京体育中心体育场",
       "source": "mock",
-      "fetchedAt": "2026-05-19T19:35:24.447Z"
+      "fetchedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "csl-fixture-08",
@@ -115,7 +115,7 @@
       "status": "scheduled",
       "venue": "天津专业足球场",
       "source": "mock",
-      "fetchedAt": "2026-05-19T19:35:24.447Z"
+      "fetchedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "csl-fixture-09",
@@ -129,7 +129,7 @@
       "status": "scheduled",
       "venue": "郑州奥体中心",
       "source": "mock",
-      "fetchedAt": "2026-05-19T19:35:24.447Z"
+      "fetchedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "csl-fixture-10",
@@ -143,7 +143,7 @@
       "status": "postponed",
       "venue": "深圳市体育场",
       "source": "mock",
-      "fetchedAt": "2026-05-19T19:35:24.447Z"
+      "fetchedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "csl-fixture-11",
@@ -157,7 +157,7 @@
       "status": "scheduled",
       "venue": "长春凤凰山体育公园",
       "source": "mock",
-      "fetchedAt": "2026-05-19T19:35:24.447Z"
+      "fetchedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "csl-fixture-12",
@@ -171,7 +171,7 @@
       "status": "finished",
       "venue": "青岛龙泉驿足球场",
       "source": "mock",
-      "fetchedAt": "2026-05-19T19:35:24.447Z"
+      "fetchedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "csl-fixture-13",
@@ -185,7 +185,7 @@
       "status": "scheduled",
       "venue": "梅州体育中心体育场",
       "source": "mock",
-      "fetchedAt": "2026-05-19T19:35:24.447Z"
+      "fetchedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "csl-fixture-14",
@@ -199,7 +199,7 @@
       "status": "finished",
       "venue": "沧州专业足球场",
       "source": "mock",
-      "fetchedAt": "2026-05-19T19:35:24.447Z"
+      "fetchedAt": "2026-05-19T19:41:53.629Z"
     }
   ]
 }

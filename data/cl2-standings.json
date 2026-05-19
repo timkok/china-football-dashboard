@@ -1,6 +1,6 @@
 {
   "league": "cl2",
-  "fetchedAt": "2026-05-19T19:35:24.447Z",
+  "fetchedAt": "2026-05-19T19:41:53.629Z",
   "mode": "mock",
   "source": "内置示例数据",
   "isOfficial": false,
@@ -39,7 +39,7 @@
         "points": 14
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-01",
@@ -75,7 +75,7 @@
         "points": 13
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-03",
@@ -111,7 +111,7 @@
         "points": 14
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-04",
@@ -147,7 +147,7 @@
         "points": 13
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-06",
@@ -183,7 +183,7 @@
         "points": 10
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-05",
@@ -219,7 +219,7 @@
         "points": 10
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-08",
@@ -255,7 +255,7 @@
         "points": 11
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-07",
@@ -291,7 +291,7 @@
         "points": 11
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-12",
@@ -327,7 +327,7 @@
         "points": 11
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-09",
@@ -363,7 +363,7 @@
         "points": 10
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-10",
@@ -399,7 +399,7 @@
         "points": 10
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-11",
@@ -435,7 +435,7 @@
         "points": 7
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-13",
@@ -471,7 +471,7 @@
         "points": 8
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-14",
@@ -507,7 +507,7 @@
         "points": 7
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-16",
@@ -543,7 +543,7 @@
         "points": 7
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-18",
@@ -579,7 +579,7 @@
         "points": 5
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-15",
@@ -615,7 +615,7 @@
         "points": 4
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-17",
@@ -651,7 +651,7 @@
         "points": 5
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-19",
@@ -687,7 +687,7 @@
         "points": 4
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     },
     {
       "id": "cl2-team-20",
@@ -723,7 +723,7 @@
         "points": 4
       },
       "source": "mock",
-      "updatedAt": "2026-05-19T19:35:24.447Z"
+      "updatedAt": "2026-05-19T19:41:53.629Z"
     }
   ]
 }
