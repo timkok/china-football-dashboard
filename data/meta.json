@@ -1,8 +1,9 @@
 {
-  "updatedAt": "2026-05-19T20:00:00.000Z",
+  "updatedAt": "2026-05-19T20:15:00.000Z",
+  "status": "ok",
   "mode": "real-data-only",
   "primarySource": "新浪体育 / Transfermarkt",
-  "primarySourceUrl": "",
+  "primarySourceUrl": "https://sports.sina.com.cn/csl/table/",
   "sources": [
     {
       "id": "cfl-official",
@@ -10,7 +11,7 @@
       "url": "https://www.cfl-china.cn/",
       "isOfficial": true,
       "status": "unused",
-      "lastFetchedAt": "2026-05-19T20:00:00.000Z"
+      "lastFetchedAt": null
     },
     {
       "id": "sina-sports",
@@ -18,7 +19,7 @@
       "url": "https://sports.sina.com.cn/csl/table/",
       "isOfficial": false,
       "status": "ok",
-      "lastFetchedAt": "2026-05-19T20:00:00.000Z"
+      "lastFetchedAt": "2026-05-19T20:15:00.000Z"
     },
     {
       "id": "tm-csl",
@@ -26,7 +27,7 @@
       "url": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
       "isOfficial": false,
       "status": "ok",
-      "lastFetchedAt": "2026-05-19T20:00:00.000Z"
+      "lastFetchedAt": "2026-05-19T20:15:00.000Z"
     }
   ],
   "leagues": {
@@ -46,7 +47,7 @@
   "logs": [
     {
       "level": "info",
-      "message": "Initialized strict real-data-only mode."
+      "message": "Strict real-data-only mode. CSL standings and attendance loaded from fallback sources."
     }
   ]
 }

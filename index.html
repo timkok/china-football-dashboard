@@ -161,6 +161,7 @@
     .pill.fallback { background: #facc15; }
     .pill.stale { background: #fb923c; }
     .pill.loading { background: #a78bfa; }
+    .pill.error { background: #f87171; color: #fff; }
 
     .refresh-button {
       width: 100%;
@@ -624,14 +625,14 @@
   <main class="shell">
     <section class="hero">
       <div>
-        <div class="eyebrow"><span class="status-dot"></span>CFL Monitor · JSON-first Static Dashboard</div>
+        <div class="eyebrow"><span class="status-dot"></span>CFL Monitor · Real-Data Dashboard</div>
         <h1>中国足球职业联赛监测 Dashboard</h1>
-        <p class="subtitle">中超 / 中甲 / 中乙赛程、积分榜、球队状态、观众人数、数据健康与自动告警监测。静态 GitHub Pages 版本优先读取本仓库 JSON，失败后回退到示例数据。</p>
-        <p id="dataNotice" class="notice">正在检查本仓库静态 JSON 数据；如果不可用将回退到示例数据。</p>
+        <p class="subtitle">中超 / 中甲 / 中乙赛程、积分榜、球队状态、观众人数、数据健康与自动告警监测。真实数据优先，默认禁止 mock。</p>
+        <p id="dataNotice" class="notice">正在读取真实 JSON 数据...</p>
       </div>
       <div class="hero-side">
         <div class="status-box">
-          <div class="status-row"><span>Mock 数据生成时间</span><strong id="mockGeneratedAt">读取中</strong></div>
+          <div class="status-row"><span>页面加载时间</span><strong id="mockGeneratedAt">读取中</strong></div>
           <div class="status-row"><span>数据最后更新时间</span><strong id="lastRefreshAt">读取中</strong></div>
           <div class="status-row"><span>数据年龄</span><strong id="dataAge">读取中</strong></div>
           <div class="status-row"><span>数据模式</span><span id="dataModePill" class="pill mock">读取中</span></div>
@@ -860,7 +861,7 @@
       </aside>
     </section>
 
-    <footer>china-football-dashboard · GitHub Pages 静态站点 · Live JSON first with mock fallback</footer>
+    <footer>china-football-dashboard · GitHub Pages 静态站点 · 真实数据优先，默认禁止 mock</footer>
   </main>
 
   <script>
@@ -1088,32 +1089,36 @@
 
     const state = {
       activeLeague: "csl",
-      selectedTeamId: MOCK_LEAGUES.csl.standings[0].id,
+      selectedTeamId: null,
       fixtureTeam: "all",
       fixtureStatus: "all",
-      dataMode: "Mock",
+      dataMode: "Loading",
       transientStatus: "",
-      mockGeneratedAt: MOCK_GENERATED_AT,
-      lastRefreshAt: MOCK_GENERATED_AT,
-      lastRefreshSuccess: true,
-      currentSource: "内置示例数据",
-      currentSourceUrl: "",
+      mockGeneratedAt: null,
+      lastRefreshAt: null,
+      lastRefreshSuccess: null,
+      currentSource: "读取中",
+      currentSourceUrl: "读取中",
       isOfficial: false,
-      dataWarning: "当前使用示例数据 / fallback 数据，不代表官方排名或真实赛果。",
+      dataWarning: "数据正在读取中...",
       meta: null,
-      attendance: MOCK_ATTENDANCE,
+      attendance: { teams: [] },
       attendanceMeta: null,
-      attendanceHistory: null,
+      attendanceHistory: { seasons: [] },
       changelog: null,
       sourceComparison: null,
       dataQuality: null,
-      attendanceMode: "Mock",
-      attendanceWarning: "当前观众人数为示例数据，不代表真实球市表现。",
-      leagues: MOCK_LEAGUES,
+      attendanceMode: "Loading",
+      attendanceWarning: "",
+      leagues: {
+        csl: { id: "csl", name: "中超 CSL", alias: "中超", standings: [], fixtures: [], dataMode: "Loading", source: "读取中", sourceUrl: "读取中", isOfficial: false, fetchedAt: null, standingsStatus: "pending", standingsMessage: "等待读取", fixturesStatus: "pending", fixturesMessage: "等待读取" },
+        cl1: { id: "cl1", name: "中甲 China League One", alias: "中甲", standings: [], fixtures: [], dataMode: "Loading", source: "读取中", sourceUrl: "读取中", isOfficial: false, fetchedAt: null, standingsStatus: "pending", standingsMessage: "等待读取", fixturesStatus: "pending", fixturesMessage: "等待读取" },
+        cl2: { id: "cl2", name: "中乙 China League Two", alias: "中乙", standings: [], fixtures: [], dataMode: "Loading", source: "读取中", sourceUrl: "读取中", isOfficial: false, fetchedAt: null, standingsStatus: "pending", standingsMessage: "等待读取", fixturesStatus: "pending", fixturesMessage: "等待读取" }
+      },
       charts: {},
       healthStatus: null,
       logs: [
-        { time: MOCK_GENERATED_AT, type: "scheduled", message: "初始化 mock 数据快照，页面已加载中超默认视图。" }
+        { time: new Date().toISOString(), type: "scheduled", message: "正在读取真实 JSON 数据..." }
       ]
     };
 
@@ -1125,7 +1130,7 @@
     function activeSource() {
       const data = league();
       return {
-        name: data?.source || state.currentSource || "内置示例数据",
+        name: data?.source || state.currentSource || "暂无数据源",
         url: data?.sourceUrl || state.currentSourceUrl || "",
         isOfficial: Boolean(data?.isOfficial || state.isOfficial),
         fetchedAt: data?.fetchedAt || state.lastRefreshAt,
@@ -1188,27 +1193,64 @@
 
     function effectiveMode() {
       if (state.transientStatus) return state.transientStatus;
+      
+      const DEMO_MODE = new URLSearchParams(location.search).get("demo") === "1";
+      if (DEMO_MODE) return "Demo";
+
+      // If loadRealJsonOnly hasn't finished/started
+      if (!state.healthStatus) return "Loading";
+
+      // If critical meta.json failed to load
+      if (!state.healthStatus.meta.ok) return "Error";
+
+      // Check the active league's status
+      const activeLeague = state.activeLeague;
+      const stdStatus = state.healthStatus[`standings_${activeLeague}`];
+
+      // If standings failed to fetch (e.g. 404, network error) or has "error" status
+      if (stdStatus && (!stdStatus.ok || stdStatus.status === "error")) {
+        return "Error";
+      }
+
+      // If active league data is missing
+      const leagueData = state.leagues[activeLeague];
+      if (leagueData.dataMode === "Missing") {
+        return "Missing";
+      }
+
+      // Check data age (in hours)
       const hours = dataAgeHours();
-      if (hours > 12 && !isNaN(hours)) return "Stale";
-      return activeSource().mode || state.dataMode;
+      if (hours > 12 && !isNaN(hours)) return "Expired";
+
+      return leagueData.dataMode === "Fallback" ? "Fallback" : "Live";
     }
 
     function displayModeLabel() {
       const mode = effectiveMode();
       const labels = {
-        Live: activeSource().isOfficial ? "Live Official" : "Live Fallback",
-        Fallback: "Live Fallback",
-        Mock: "Mock 示例数据",
-        Stale: "Stale",
-        Refreshing: "刷新中"
+        Loading: "读取中",
+        Demo: "Demo 演示",
+        Live: "已加载",
+        Fallback: "已加载",
+        Missing: "缺失",
+        Expired: "过期",
+        Error: "抓取失败"
       };
-      return labels[mode] || `${mode} 数据`;
+      return labels[mode] || mode;
     }
 
     function modeClass() {
-      const mode = effectiveMode().toLowerCase();
-      if (mode === "refreshing") return "loading";
-      return mode;
+      const mode = effectiveMode();
+      const classes = {
+        Loading: "loading",
+        Demo: "mock",
+        Live: "live",
+        Fallback: "fallback",
+        Missing: "stale",
+        Expired: "stale",
+        Error: "error"
+      };
+      return classes[mode] || "mock";
     }
 
     async function safeFetchJson(path) {
@@ -1769,14 +1811,14 @@
       const data = league();
       if (!data) {
         return {
-          source: state.currentSource || "内置示例数据",
+          source: state.currentSource || "暂无数据源",
           sourceUrl: state.currentSourceUrl || "",
           isOfficial: Boolean(state.isOfficial),
-          mode: String(state.dataMode || "mock").toLowerCase(),
+          mode: String(state.dataMode || "Loading").toLowerCase(),
           fetchedAt: state.lastRefreshAt
         };
       }
-      const mode = String(data.mode || data.dataMode || state.dataMode || "mock").toLowerCase();
+      const mode = String(data.mode || data.dataMode || state.dataMode || "Loading").toLowerCase();
       return {
         source: data.source,
         sourceUrl: data.sourceUrl,
@@ -1990,11 +2032,12 @@
     // 5. Rendering Functions
     function renderStatus() {
       const source = activeSource();
-      document.getElementById("mockGeneratedAt").textContent = formatFullDateTime(state.mockGeneratedAt);
+      document.getElementById("mockGeneratedAt").textContent = formatFullDateTime(new Date().toISOString());
       document.getElementById("lastRefreshAt").textContent = formatFullDateTime(source.fetchedAt || state.lastRefreshAt);
       document.getElementById("dataAge").textContent = formatAge(source.fetchedAt || state.lastRefreshAt);
-      document.getElementById("currentLeagueName").textContent = league().name;
-      document.getElementById("currentSource").textContent = source.name || "内置示例数据";
+      const leagueData = league();
+      document.getElementById("currentLeagueName").textContent = leagueData?.name || "中超 CSL";
+      document.getElementById("currentSource").textContent = source.name || "暂无数据源";
       document.getElementById("currentSourceUrl").textContent = source.url || "无";
       document.getElementById("officialFlag").textContent = source.isOfficial ? "是" : "否";
       document.getElementById("dataNotice").textContent = state.dataWarning;
