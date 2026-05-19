@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-19T19:42:01.270Z",
+  "generatedAt": "2026-05-19T19:54:16.265Z",
   "status": "ok",
   "expectedRounds": 30,
   "leagues": {
     "csl": {
-      "standings": "mock",
+      "standings": "fallback",
       "fixtures": "mock",
       "scheduleCompleteness": {
         "expectedRounds": 30,
