@@ -3,454 +3,147 @@
   "leagueName": "中超",
   "season": 2026,
   "type": "attendance",
-  "source": "Transfermarkt",
-  "sourceUrl": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
+  "source": "内置示例数据",
+  "sourceUrl": "",
   "isOfficial": false,
-  "mode": "third_party",
-  "fetchedAt": "2026-05-19T15:59:44.494Z",
+  "mode": "mock",
+  "fetchedAt": "2026-05-19T19:35:24.447Z",
   "schemaVersion": 1,
   "summary": {
-    "matches": 98,
-    "totalAttendance": 3004829,
-    "averageAttendance": 30661,
-    "highestAverageTeam": "Dalian Yingbo",
-    "highestAverageAttendance": 60739
+    "matches": 48,
+    "totalAttendance": 1124000,
+    "averageAttendance": 23417,
+    "highestAverageTeam": "北京国安",
+    "highestAverageAttendance": 43000
   },
   "teams": [
     {
       "rank": 1,
-      "team": "Dalian Yingbo",
-      "teamCn": "大连英博",
-      "stadium": "Dalian Suoyuwan Football Stadium",
-      "stadiumCn": "大连梭鱼湾足球场",
-      "capacity": 65277,
-      "matches": 6,
-      "totalAttendance": 364436,
-      "averageAttendance": 60739,
-      "occupancyRate": 0.9304808738146667,
-      "source": "Transfermarkt"
-    },
-    {
-      "rank": 2,
-      "team": "Beijing Guoan",
+      "team": "北京国安",
       "teamCn": "北京国安",
       "stadium": "Workers Stadium",
       "stadiumCn": "北京工人体育场",
       "capacity": 68000,
       "matches": 6,
-      "totalAttendance": 298711,
-      "averageAttendance": 49785,
-      "occupancyRate": 0.7321323529411765,
-      "source": "Transfermarkt"
+      "totalAttendance": 258000,
+      "averageAttendance": 43000,
+      "occupancyRate": 0.6323529411764706,
+      "source": "mock attendance fallback"
     },
     {
-      "rank": 3,
-      "team": "Shanghai Shenhua",
+      "rank": 2,
+      "team": "上海申花",
       "teamCn": "上海申花",
       "stadium": "Shanghai Stadium",
       "stadiumCn": "上海体育场",
       "capacity": 70381,
       "matches": 6,
-      "totalAttendance": 269553,
-      "averageAttendance": 44926,
-      "occupancyRate": 0.6383256844887114,
-      "source": "Transfermarkt"
+      "totalAttendance": 246000,
+      "averageAttendance": 41000,
+      "occupancyRate": 0.5825435842059646,
+      "source": "mock attendance fallback"
     },
     {
-      "rank": 4,
-      "team": "Chengdu Rongcheng",
+      "rank": 3,
+      "team": "成都蓉城",
       "teamCn": "成都蓉城",
       "stadium": "Phoenix Hill Sports Park Football Stadium",
       "stadiumCn": "凤凰山体育公园专业足球场",
       "capacity": 50695,
       "matches": 6,
-      "totalAttendance": 247713,
-      "averageAttendance": 41286,
-      "occupancyRate": 0.8143998421935102,
-      "source": "Transfermarkt"
+      "totalAttendance": 228000,
+      "averageAttendance": 38000,
+      "occupancyRate": 0.7495808265114903,
+      "source": "mock attendance fallback"
+    },
+    {
+      "rank": 4,
+      "team": "上海海港",
+      "teamCn": "上海海港",
+      "stadium": "Pudong Football Stadium",
+      "stadiumCn": "浦东足球场",
+      "capacity": 37000,
+      "matches": 6,
+      "totalAttendance": 156000,
+      "averageAttendance": 26000,
+      "occupancyRate": 0.7027027027027027,
+      "source": "mock attendance fallback"
     },
     {
       "rank": 5,
-      "team": "Chongqing Tonglianglong",
-      "teamCn": "重庆铜梁龙",
-      "stadium": "Chongqing Longxing Football Stadium",
-      "stadiumCn": "重庆龙兴足球场",
-      "capacity": 60000,
-      "matches": 6,
-      "totalAttendance": 246683,
-      "averageAttendance": 41114,
-      "occupancyRate": 0.6852333333333334,
-      "source": "Transfermarkt"
-    },
-    {
-      "rank": 6,
-      "team": "Shandong Taishan",
+      "team": "山东泰山",
       "teamCn": "山东泰山",
       "stadium": "Ji'nan Olympic Sports Center",
       "stadiumCn": "济南奥体中心",
       "capacity": 56808,
-      "matches": 7,
-      "totalAttendance": 209323,
-      "averageAttendance": 29903,
-      "occupancyRate": 0.5263871285734404,
-      "source": "Transfermarkt"
+      "matches": 6,
+      "totalAttendance": 180000,
+      "averageAttendance": 30000,
+      "occupancyRate": 0.5280946345585129,
+      "source": "mock attendance fallback"
     },
     {
-      "rank": 7,
-      "team": "Tianjin Jinmen Tiger",
+      "rank": 6,
+      "team": "天津津门虎",
       "teamCn": "天津津门虎",
       "stadium": "TEDA Football Stadium",
       "stadiumCn": "泰达足球场",
       "capacity": 35680,
-      "matches": 7,
-      "totalAttendance": 173187,
-      "averageAttendance": 24741,
-      "occupancyRate": 0.6934136771300449,
-      "source": "Transfermarkt"
-    },
-    {
-      "rank": 8,
-      "team": "Qingdao Hainiu",
-      "teamCn": "青岛海牛",
-      "stadium": "Qingdao Youth Football Stadium",
-      "stadiumCn": "青岛青春足球场",
-      "capacity": 53317,
       "matches": 6,
-      "totalAttendance": 172540,
-      "averageAttendance": 28757,
-      "occupancyRate": 0.5393589286719058,
-      "source": "Transfermarkt"
+      "totalAttendance": 150000,
+      "averageAttendance": 25000,
+      "occupancyRate": 0.7006726457399103,
+      "source": "mock attendance fallback"
     },
     {
-      "rank": 9,
-      "team": "Zhejiang FC",
+      "rank": 7,
+      "team": "浙江队",
       "teamCn": "浙江队",
       "stadium": "Huanglong Sports Centre Stadium",
       "stadiumCn": "黄龙体育中心",
       "capacity": 52000,
       "matches": 6,
-      "totalAttendance": 155839,
-      "averageAttendance": 25973,
-      "occupancyRate": 0.49948076923076923,
-      "source": "Transfermarkt"
+      "totalAttendance": 132000,
+      "averageAttendance": 22000,
+      "occupancyRate": 0.4230769230769231,
+      "source": "mock attendance fallback"
     },
     {
-      "rank": 10,
-      "team": "Liaoning Tieren",
-      "teamCn": "辽宁铁人",
-      "stadium": "Tiexi New District Sports Center Stadium",
-      "stadiumCn": "铁西体育场",
-      "capacity": 40000,
-      "matches": 5,
-      "totalAttendance": 152827,
-      "averageAttendance": 30565,
-      "occupancyRate": 0.764125,
-      "source": "Transfermarkt"
-    },
-    {
-      "rank": 11,
-      "team": "Shenzhen Peng City",
-      "teamCn": "深圳新鹏城",
-      "stadium": "Shenzhen Sports Center Stadium",
-      "stadiumCn": "Shenzhen Sports Center Stadium",
-      "capacity": 45000,
-      "matches": 7,
-      "totalAttendance": 141133,
-      "averageAttendance": 20162,
-      "occupancyRate": 0.44804444444444447,
-      "source": "Transfermarkt"
-    },
-    {
-      "rank": 12,
-      "team": "Shanghai Port",
-      "teamCn": "上海海港",
-      "stadium": "SAIC Motor Pudong Arena",
-      "stadiumCn": "SAIC Motor Pudong Arena",
-      "capacity": 33765,
-      "matches": 7,
-      "totalAttendance": 135323,
-      "averageAttendance": 19332,
-      "occupancyRate": 0.5725455353176366,
-      "source": "Transfermarkt"
-    },
-    {
-      "rank": 13,
-      "team": "Yunnan Yukun",
-      "teamCn": "云南玉昆",
-      "stadium": "Yuxi Plateau Sports Center Stadium",
-      "stadiumCn": "玉溪高原体育中心",
-      "capacity": 30000,
+      "rank": 8,
+      "team": "青岛海牛",
+      "teamCn": "青岛海牛",
+      "stadium": "Qingdao Youth Football Stadium",
+      "stadiumCn": "青岛青春足球场",
+      "capacity": 53317,
       "matches": 6,
-      "totalAttendance": 131003,
-      "averageAttendance": 21834,
-      "occupancyRate": 0.7278,
-      "source": "Transfermarkt"
-    },
-    {
-      "rank": 14,
-      "team": "Henan FC",
-      "teamCn": "河南队",
-      "stadium": "Zhengzhou Hanghai Stadium",
-      "stadiumCn": "郑州航海体育场",
-      "capacity": 28000,
-      "matches": 6,
-      "totalAttendance": 116160,
-      "averageAttendance": 19360,
-      "occupancyRate": 0.6914285714285714,
-      "source": "Transfermarkt"
-    },
-    {
-      "rank": 15,
-      "team": "Wuhan Three Towns",
-      "teamCn": "武汉三镇",
-      "stadium": "Wuhan Sports Centre Stadium",
-      "stadiumCn": "Wuhan Sports Centre Stadium",
-      "capacity": 45000,
-      "matches": 6,
-      "totalAttendance": 110354,
-      "averageAttendance": 18392,
-      "occupancyRate": 0.40871111111111114,
-      "source": "Transfermarkt"
-    },
-    {
-      "rank": 16,
-      "team": "Qingdao West Coast",
-      "teamCn": "青岛西海岸",
-      "stadium": "West Coast University City Sports Center Stadium",
-      "stadiumCn": "西海岸大学城体育中心",
-      "capacity": 20000,
-      "matches": 5,
-      "totalAttendance": 80044,
-      "averageAttendance": 16009,
-      "occupancyRate": 0.80045,
-      "source": "Transfermarkt"
+      "totalAttendance": 120000,
+      "averageAttendance": 20000,
+      "occupancyRate": 0.37511487893167283,
+      "source": "mock attendance fallback"
     }
   ],
   "matches": [],
   "trend": [
     {
-      "season": "25/26",
-      "matches": 100,
-      "totalAttendance": 3004829,
-      "averageAttendance": 30662,
-      "highestAverageTeam": "Dalian Yingbo",
-      "highestAverageAttendance": 60739
-    },
-    {
-      "season": "24/25",
+      "season": "2024",
       "matches": 240,
-      "totalAttendance": 6180990,
-      "averageAttendance": 25754,
-      "highestAverageTeam": "Dalian Yingbo",
-      "highestAverageAttendance": 58268
+      "totalAttendance": 4560000,
+      "averageAttendance": 19000,
+      "yoyGrowth": null
     },
     {
-      "season": "23/24",
+      "season": "2025",
       "matches": 240,
-      "totalAttendance": 4663407,
-      "averageAttendance": 19594,
-      "highestAverageTeam": "Beijing Guoan",
-      "highestAverageAttendance": 46444
+      "totalAttendance": 5040000,
+      "averageAttendance": 21000,
+      "yoyGrowth": 0.105
     },
     {
-      "season": "22/23",
-      "matches": 240,
-      "totalAttendance": 4705359,
-      "averageAttendance": 19938,
-      "highestAverageTeam": "Beijing Guoan",
-      "highestAverageAttendance": 43769
-    },
-    {
-      "season": "21/22",
-      "matches": 306,
-      "totalAttendance": 208090,
-      "averageAttendance": 4427,
-      "highestAverageTeam": "Dalian Professional",
-      "highestAverageAttendance": 5442
-    },
-    {
-      "season": "20/21",
-      "matches": 176,
-      "totalAttendance": 199655,
-      "averageAttendance": 2980,
-      "highestAverageTeam": "Guangzhou FC (1954 - 2024)",
-      "highestAverageAttendance": 7336
-    },
-    {
-      "season": "19/20",
-      "matches": 112,
-      "totalAttendance": 25645,
-      "averageAttendance": 1282,
-      "highestAverageTeam": "Dalian Professional",
-      "highestAverageAttendance": 856
-    },
-    {
-      "season": "18/19",
-      "matches": 240,
-      "totalAttendance": 5595368,
-      "averageAttendance": 23314,
-      "highestAverageTeam": "Guangzhou Evergrande Taobao",
-      "highestAverageAttendance": 45795
-    },
-    {
-      "season": "17/18",
-      "matches": 240,
-      "totalAttendance": 5750421,
-      "averageAttendance": 23960,
-      "highestAverageTeam": "Guangzhou Evergrande Taobao",
-      "highestAverageAttendance": 47002
-    },
-    {
-      "season": "16/17",
-      "matches": 240,
-      "totalAttendance": 5676298,
-      "averageAttendance": 23850,
-      "highestAverageTeam": "Guangzhou Evergrande Taobao",
-      "highestAverageAttendance": 45589
-    },
-    {
-      "season": "15/16",
-      "matches": 240,
-      "totalAttendance": 5798947,
-      "averageAttendance": 24162,
-      "highestAverageTeam": "Guangzhou Evergrande Taobao",
-      "highestAverageAttendance": 44883
-    },
-    {
-      "season": "14/15",
-      "matches": 240,
-      "totalAttendance": 5317885,
-      "averageAttendance": 22158,
-      "highestAverageTeam": "Guangzhou Evergrande Taobao",
-      "highestAverageAttendance": 45889
-    },
-    {
-      "season": "13/14",
-      "matches": 240,
-      "totalAttendance": 4554694,
-      "averageAttendance": 18978,
-      "highestAverageTeam": "Guangzhou Evergrande",
-      "highestAverageAttendance": 42154
-    },
-    {
-      "season": "12/13",
-      "matches": 240,
-      "totalAttendance": 4457016,
-      "averageAttendance": 18571,
-      "highestAverageTeam": "Guangzhou Evergrande",
-      "highestAverageAttendance": 40428
-    },
-    {
-      "season": "11/12",
-      "matches": 240,
-      "totalAttendance": 4497528,
-      "averageAttendance": 18818,
-      "highestAverageTeam": "Guangzhou Evergrande",
-      "highestAverageAttendance": 37250
-    },
-    {
-      "season": "10/11",
-      "matches": 240,
-      "totalAttendance": 4242026,
-      "averageAttendance": 17675,
-      "highestAverageTeam": "Guangzhou Evergrande",
-      "highestAverageAttendance": 45666
-    },
-    {
-      "season": "09/10",
-      "matches": 240,
-      "totalAttendance": 3497303,
-      "averageAttendance": 14572,
-      "highestAverageTeam": "Beijing Guoan",
-      "highestAverageAttendance": 33342
-    },
-    {
-      "season": "08/09",
-      "matches": 240,
-      "totalAttendance": 3846583,
-      "averageAttendance": 16094,
-      "highestAverageTeam": "Beijing Guoan",
-      "highestAverageAttendance": 36805
-    },
-    {
-      "season": "07/08",
-      "matches": 29,
-      "totalAttendance": 430959,
-      "averageAttendance": 14861,
-      "highestAverageTeam": "Shaanxi Chanba",
-      "highestAverageAttendance": 37303
-    },
-    {
-      "season": "06/07",
-      "matches": 210,
-      "totalAttendance": 3153500,
-      "averageAttendance": 15089,
-      "highestAverageTeam": "Shaanxi Chanba",
-      "highestAverageAttendance": 24643
-    },
-    {
-      "season": "05/06",
-      "matches": 156,
-      "totalAttendance": 1783500,
-      "averageAttendance": 11433,
-      "highestAverageTeam": "Shandong Luneng Taishan",
-      "highestAverageAttendance": 31300
-    },
-    {
-      "season": "99/00",
-      "matches": 26,
-      "totalAttendance": 518000,
-      "averageAttendance": 19923,
-      "highestAverageTeam": "Dalian Shide",
-      "highestAverageAttendance": 40000
-    },
-    {
-      "season": "98/99",
-      "matches": 26,
-      "totalAttendance": 521000,
-      "averageAttendance": 20038,
-      "highestAverageTeam": "Beijing Guoan",
-      "highestAverageAttendance": 45000
-    },
-    {
-      "season": "97/98",
-      "matches": 26,
-      "totalAttendance": 788000,
-      "averageAttendance": 30308,
-      "highestAverageTeam": "Beijing Guoan",
-      "highestAverageAttendance": 45000
-    },
-    {
-      "season": "96/97",
-      "matches": 23,
-      "totalAttendance": 497000,
-      "averageAttendance": 22591,
-      "highestAverageTeam": "Sichuan Quanxing",
-      "highestAverageAttendance": 42000
-    },
-    {
-      "season": "95/96",
-      "matches": 22,
-      "totalAttendance": 613000,
-      "averageAttendance": 27864,
-      "highestAverageTeam": "Jinan Taishan General",
-      "highestAverageAttendance": 48000
-    },
-    {
-      "season": "94/95",
-      "matches": 22,
-      "totalAttendance": 595000,
-      "averageAttendance": 27045,
-      "highestAverageTeam": "Sichuan Quanxing",
-      "highestAverageAttendance": 40000
-    },
-    {
-      "season": "93/94",
-      "matches": 28,
-      "totalAttendance": 421300,
-      "averageAttendance": 19150,
-      "highestAverageTeam": "Dalian Wanda",
-      "highestAverageAttendance": 38000
+      "season": "2026",
+      "matches": 48,
+      "totalAttendance": 1124000,
+      "averageAttendance": 23417,
+      "yoyGrowth": 0.115
     }
   ]
 }

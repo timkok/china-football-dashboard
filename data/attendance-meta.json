@@ -1,21 +1,16 @@
 {
-  "updatedAt": "2026-05-19T15:59:44.494Z",
+  "updatedAt": "2026-05-19T19:35:24.447Z",
   "status": "ok",
-  "mode": "third_party",
-  "source": "Transfermarkt",
-  "sourceUrl": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
+  "mode": "mock",
+  "source": "内置示例数据",
+  "sourceUrl": "",
   "isOfficial": false,
-  "teamsCount": 16,
+  "teamsCount": 8,
   "logs": [
     {
       "level": "info",
-      "source": "tm-com-attendance",
-      "message": "Fetched 16 attendance rows from https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL"
-    },
-    {
-      "level": "info",
-      "source": "tm-com-development",
-      "message": "Fetched 28 attendance trend rows"
+      "source": "seed",
+      "message": "Generated seed attendance data"
     }
   ]
 }

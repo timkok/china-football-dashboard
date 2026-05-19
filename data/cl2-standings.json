@@ -1,15 +1,9 @@
 {
   "league": "cl2",
-  "leagueName": "中乙",
-  "season": 2026,
-  "type": "standings",
-  "sourceId": "mock-fallback",
+  "fetchedAt": "2026-05-19T19:35:24.447Z",
   "mode": "mock",
-  "source": "mock fallback",
-  "sourceUrl": "",
+  "source": "内置示例数据",
   "isOfficial": false,
-  "fetchedAt": "2026-05-19T15:28:54.524Z",
-  "schemaVersion": 1,
   "data": [
     {
       "id": "cl2-team-02",
@@ -18,13 +12,13 @@
       "shortName": "广州豹",
       "city": "广州",
       "played": 11,
-      "wins": 8,
+      "wins": 9,
       "draws": 3,
       "losses": 0,
-      "goalsFor": 28,
-      "goalsAgainst": 10,
-      "goalDiff": 18,
-      "points": 27,
+      "goalsFor": 31,
+      "goalsAgainst": 11,
+      "goalDiff": 20,
+      "points": 30,
       "form": [
         "W",
         "D",
@@ -33,10 +27,10 @@
         "D"
       ],
       "homeRecord": {
-        "wins": 4,
+        "wins": 5,
         "draws": 1,
         "losses": 0,
-        "points": 13
+        "points": 16
       },
       "awayRecord": {
         "wins": 4,
@@ -45,9 +39,7 @@
         "points": 14
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl2-team-01",
@@ -56,13 +48,13 @@
       "shortName": "陕西",
       "city": "西安",
       "played": 10,
-      "wins": 8,
+      "wins": 9,
       "draws": 2,
       "losses": 0,
-      "goalsFor": 28,
-      "goalsAgainst": 8,
-      "goalDiff": 20,
-      "points": 26,
+      "goalsFor": 31,
+      "goalsAgainst": 9,
+      "goalDiff": 22,
+      "points": 29,
       "form": [
         "W",
         "W",
@@ -71,10 +63,10 @@
         "W"
       ],
       "homeRecord": {
-        "wins": 4,
+        "wins": 5,
         "draws": 1,
         "losses": 0,
-        "points": 13
+        "points": 16
       },
       "awayRecord": {
         "wins": 4,
@@ -83,9 +75,7 @@
         "points": 13
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl2-team-03",
@@ -94,13 +84,13 @@
       "shortName": "深圳青年",
       "city": "深圳",
       "played": 12,
-      "wins": 7,
+      "wins": 8,
       "draws": 4,
-      "losses": 1,
-      "goalsFor": 28,
-      "goalsAgainst": 12,
-      "goalDiff": 16,
-      "points": 25,
+      "losses": 0,
+      "goalsFor": 31,
+      "goalsAgainst": 13,
+      "goalDiff": 18,
+      "points": 28,
       "form": [
         "L",
         "W",
@@ -109,25 +99,59 @@
         "W"
       ],
       "homeRecord": {
-        "wins": 3,
+        "wins": 4,
         "draws": 2,
         "losses": 0,
-        "points": 11
+        "points": 14
       },
       "awayRecord": {
         "wins": 4,
         "draws": 2,
-        "losses": 1,
+        "losses": 0,
         "points": 14
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
+    },
+    {
+      "id": "cl2-team-04",
+      "rank": 4,
+      "name": "广西蓝航",
+      "shortName": "蓝航",
+      "city": "柳州",
+      "played": 10,
+      "wins": 8,
+      "draws": 1,
+      "losses": 1,
+      "goalsFor": 31,
+      "goalsAgainst": 15,
+      "goalDiff": 16,
+      "points": 25,
+      "form": [
+        "D",
+        "W",
+        "D",
+        "W",
+        "L"
+      ],
+      "homeRecord": {
+        "wins": 4,
+        "draws": 0,
+        "losses": 0,
+        "points": 12
+      },
+      "awayRecord": {
+        "wins": 4,
+        "draws": 1,
+        "losses": 1,
+        "points": 13
+      },
+      "source": "mock",
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl2-team-06",
-      "rank": 4,
+      "rank": 5,
       "name": "湖北青年星",
       "shortName": "湖北青年",
       "city": "武汉",
@@ -135,9 +159,9 @@
       "wins": 7,
       "draws": 2,
       "losses": 3,
-      "goalsFor": 24,
-      "goalsAgainst": 13,
-      "goalDiff": 11,
+      "goalsFor": 27,
+      "goalsAgainst": 14,
+      "goalDiff": 13,
       "points": 23,
       "form": [
         "D",
@@ -147,63 +171,59 @@
         "D"
       ],
       "homeRecord": {
-        "wins": 3,
+        "wins": 4,
         "draws": 1,
         "losses": 1,
-        "points": 10
+        "points": 13
       },
       "awayRecord": {
-        "wins": 4,
+        "wins": 3,
         "draws": 1,
         "losses": 2,
-        "points": 13
+        "points": 10
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
-      "id": "cl2-team-04",
-      "rank": 5,
-      "name": "广西蓝航",
-      "shortName": "蓝航",
-      "city": "柳州",
-      "played": 10,
+      "id": "cl2-team-05",
+      "rank": 6,
+      "name": "海口名城",
+      "shortName": "海口",
+      "city": "海口",
+      "played": 11,
       "wins": 7,
       "draws": 1,
-      "losses": 2,
-      "goalsFor": 28,
-      "goalsAgainst": 14,
-      "goalDiff": 14,
+      "losses": 3,
+      "goalsFor": 27,
+      "goalsAgainst": 17,
+      "goalDiff": 10,
       "points": 22,
       "form": [
-        "D",
+        "W",
+        "L",
         "W",
         "D",
-        "W",
-        "L"
+        "W"
       ],
       "homeRecord": {
-        "wins": 3,
+        "wins": 4,
         "draws": 0,
         "losses": 1,
-        "points": 9
+        "points": 12
       },
       "awayRecord": {
-        "wins": 4,
+        "wins": 3,
         "draws": 1,
-        "losses": 1,
-        "points": 13
+        "losses": 2,
+        "points": 10
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl2-team-08",
-      "rank": 6,
+      "rank": 7,
       "name": "泰安天贶",
       "shortName": "泰安",
       "city": "泰安",
@@ -211,9 +231,9 @@
       "wins": 6,
       "draws": 4,
       "losses": 1,
-      "goalsFor": 24,
-      "goalsAgainst": 17,
-      "goalDiff": 7,
+      "goalsFor": 27,
+      "goalsAgainst": 18,
+      "goalDiff": 9,
       "points": 22,
       "form": [
         "L",
@@ -235,47 +255,7 @@
         "points": 11
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
-    },
-    {
-      "id": "cl2-team-05",
-      "rank": 7,
-      "name": "海口名城",
-      "shortName": "海口",
-      "city": "海口",
-      "played": 11,
-      "wins": 6,
-      "draws": 1,
-      "losses": 4,
-      "goalsFor": 24,
-      "goalsAgainst": 16,
-      "goalDiff": 8,
-      "points": 19,
-      "form": [
-        "W",
-        "L",
-        "W",
-        "D",
-        "W"
-      ],
-      "homeRecord": {
-        "wins": 3,
-        "draws": 0,
-        "losses": 2,
-        "points": 9
-      },
-      "awayRecord": {
-        "wins": 3,
-        "draws": 1,
-        "losses": 2,
-        "points": 10
-      },
-      "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl2-team-07",
@@ -284,18 +264,54 @@
       "shortName": "湘涛",
       "city": "长沙",
       "played": 10,
-      "wins": 5,
+      "wins": 6,
       "draws": 3,
-      "losses": 2,
-      "goalsFor": 24,
-      "goalsAgainst": 15,
-      "goalDiff": 9,
-      "points": 18,
+      "losses": 1,
+      "goalsFor": 27,
+      "goalsAgainst": 16,
+      "goalDiff": 11,
+      "points": 21,
       "form": [
         "L",
         "D",
         "L",
         "D",
+        "L"
+      ],
+      "homeRecord": {
+        "wins": 3,
+        "draws": 1,
+        "losses": 0,
+        "points": 10
+      },
+      "awayRecord": {
+        "wins": 3,
+        "draws": 2,
+        "losses": 1,
+        "points": 11
+      },
+      "source": "mock",
+      "updatedAt": "2026-05-19T19:35:24.447Z"
+    },
+    {
+      "id": "cl2-team-12",
+      "rank": 9,
+      "name": "泉州亚新",
+      "shortName": "泉州",
+      "city": "泉州",
+      "played": 12,
+      "wins": 5,
+      "draws": 3,
+      "losses": 4,
+      "goalsFor": 23,
+      "goalsAgainst": 21,
+      "goalDiff": 2,
+      "points": 18,
+      "form": [
+        "D",
+        "W",
+        "D",
+        "W",
         "L"
       ],
       "homeRecord": {
@@ -307,17 +323,51 @@
       "awayRecord": {
         "wins": 3,
         "draws": 2,
-        "losses": 1,
+        "losses": 3,
         "points": 11
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
+    },
+    {
+      "id": "cl2-team-09",
+      "rank": 10,
+      "name": "廊坊荣耀之城",
+      "shortName": "廊坊",
+      "city": "廊坊",
+      "played": 12,
+      "wins": 5,
+      "draws": 1,
+      "losses": 6,
+      "goalsFor": 23,
+      "goalsAgainst": 20,
+      "goalDiff": 3,
+      "points": 16,
+      "form": [
+        "W",
+        "W",
+        "D",
+        "W",
+        "W"
+      ],
+      "homeRecord": {
+        "wins": 2,
+        "draws": 0,
+        "losses": 2,
+        "points": 6
+      },
+      "awayRecord": {
+        "wins": 3,
+        "draws": 1,
+        "losses": 4,
+        "points": 10
+      },
+      "source": "mock",
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl2-team-10",
-      "rank": 9,
+      "rank": 11,
       "name": "北京理工",
       "shortName": "北理工",
       "city": "北京",
@@ -325,9 +375,9 @@
       "wins": 5,
       "draws": 1,
       "losses": 4,
-      "goalsFor": 20,
-      "goalsAgainst": 21,
-      "goalDiff": -1,
+      "goalsFor": 23,
+      "goalsAgainst": 22,
+      "goalDiff": 1,
       "points": 16,
       "form": [
         "W",
@@ -339,61 +389,21 @@
       "homeRecord": {
         "wins": 2,
         "draws": 0,
-        "losses": 2,
+        "losses": 1,
         "points": 6
       },
       "awayRecord": {
         "wins": 3,
         "draws": 1,
-        "losses": 2,
+        "losses": 3,
         "points": 10
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
-    },
-    {
-      "id": "cl2-team-12",
-      "rank": 10,
-      "name": "泉州亚新",
-      "shortName": "泉州",
-      "city": "泉州",
-      "played": 12,
-      "wins": 4,
-      "draws": 3,
-      "losses": 5,
-      "goalsFor": 20,
-      "goalsAgainst": 20,
-      "goalDiff": 0,
-      "points": 15,
-      "form": [
-        "D",
-        "W",
-        "D",
-        "W",
-        "L"
-      ],
-      "homeRecord": {
-        "wins": 2,
-        "draws": 1,
-        "losses": 2,
-        "points": 7
-      },
-      "awayRecord": {
-        "wins": 2,
-        "draws": 2,
-        "losses": 3,
-        "points": 8
-      },
-      "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl2-team-11",
-      "rank": 11,
+      "rank": 12,
       "name": "山东泰山B队",
       "shortName": "泰山B",
       "city": "济南",
@@ -401,9 +411,9 @@
       "wins": 4,
       "draws": 2,
       "losses": 5,
-      "goalsFor": 20,
-      "goalsAgainst": 18,
-      "goalDiff": 2,
+      "goalsFor": 23,
+      "goalsAgainst": 19,
+      "goalDiff": 4,
       "points": 14,
       "form": [
         "L",
@@ -425,47 +435,7 @@
         "points": 7
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
-    },
-    {
-      "id": "cl2-team-09",
-      "rank": 12,
-      "name": "廊坊荣耀之城",
-      "shortName": "廊坊",
-      "city": "廊坊",
-      "played": 12,
-      "wins": 4,
-      "draws": 1,
-      "losses": 7,
-      "goalsFor": 20,
-      "goalsAgainst": 19,
-      "goalDiff": 1,
-      "points": 13,
-      "form": [
-        "W",
-        "W",
-        "D",
-        "W",
-        "W"
-      ],
-      "homeRecord": {
-        "wins": 2,
-        "draws": 0,
-        "losses": 3,
-        "points": 6
-      },
-      "awayRecord": {
-        "wins": 2,
-        "draws": 1,
-        "losses": 4,
-        "points": 7
-      },
-      "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl2-team-13",
@@ -477,9 +447,9 @@
       "wins": 3,
       "draws": 4,
       "losses": 3,
-      "goalsFor": 16,
-      "goalsAgainst": 22,
-      "goalDiff": -6,
+      "goalsFor": 19,
+      "goalsAgainst": 23,
+      "goalDiff": -4,
       "points": 13,
       "form": [
         "W",
@@ -501,13 +471,47 @@
         "points": 8
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
+    },
+    {
+      "id": "cl2-team-14",
+      "rank": 14,
+      "name": "日照宇启",
+      "shortName": "日照",
+      "city": "日照",
+      "played": 11,
+      "wins": 4,
+      "draws": 1,
+      "losses": 6,
+      "goalsFor": 19,
+      "goalsAgainst": 25,
+      "goalDiff": -6,
+      "points": 13,
+      "form": [
+        "D",
+        "D",
+        "L",
+        "W",
+        "D"
+      ],
+      "homeRecord": {
+        "wins": 2,
+        "draws": 0,
+        "losses": 2,
+        "points": 6
+      },
+      "awayRecord": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 4,
+        "points": 7
+      },
+      "source": "mock",
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl2-team-16",
-      "rank": 14,
+      "rank": 15,
       "name": "南通海门珂缔缘",
       "shortName": "海门",
       "city": "南通",
@@ -515,9 +519,9 @@
       "wins": 3,
       "draws": 2,
       "losses": 5,
-      "goalsFor": 16,
-      "goalsAgainst": 23,
-      "goalDiff": -7,
+      "goalsFor": 19,
+      "goalsAgainst": 24,
+      "goalDiff": -5,
       "points": 11,
       "form": [
         "L",
@@ -539,47 +543,7 @@
         "points": 7
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
-    },
-    {
-      "id": "cl2-team-14",
-      "rank": 15,
-      "name": "日照宇启",
-      "shortName": "日照",
-      "city": "日照",
-      "played": 11,
-      "wins": 3,
-      "draws": 1,
-      "losses": 7,
-      "goalsFor": 16,
-      "goalsAgainst": 24,
-      "goalDiff": -8,
-      "points": 10,
-      "form": [
-        "D",
-        "D",
-        "L",
-        "W",
-        "D"
-      ],
-      "homeRecord": {
-        "wins": 1,
-        "draws": 0,
-        "losses": 3,
-        "points": 3
-      },
-      "awayRecord": {
-        "wins": 2,
-        "draws": 1,
-        "losses": 4,
-        "points": 7
-      },
-      "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl2-team-18",
@@ -591,9 +555,9 @@
       "wins": 2,
       "draws": 4,
       "losses": 6,
-      "goalsFor": 12,
-      "goalsAgainst": 27,
-      "goalDiff": -15,
+      "goalsFor": 15,
+      "goalsAgainst": 28,
+      "goalDiff": -13,
       "points": 10,
       "form": [
         "W",
@@ -605,19 +569,17 @@
       "homeRecord": {
         "wins": 1,
         "draws": 2,
-        "losses": 3,
+        "losses": 2,
         "points": 5
       },
       "awayRecord": {
         "wins": 1,
         "draws": 2,
-        "losses": 3,
+        "losses": 4,
         "points": 5
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl2-team-15",
@@ -629,9 +591,9 @@
       "wins": 2,
       "draws": 1,
       "losses": 9,
-      "goalsFor": 16,
-      "goalsAgainst": 26,
-      "goalDiff": -10,
+      "goalsFor": 19,
+      "goalsAgainst": 27,
+      "goalDiff": -8,
       "points": 7,
       "form": [
         "L",
@@ -643,19 +605,17 @@
       "homeRecord": {
         "wins": 1,
         "draws": 0,
-        "losses": 4,
+        "losses": 3,
         "points": 3
       },
       "awayRecord": {
         "wins": 1,
         "draws": 1,
-        "losses": 5,
+        "losses": 6,
         "points": 4
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl2-team-17",
@@ -667,9 +627,9 @@
       "wins": 1,
       "draws": 3,
       "losses": 7,
-      "goalsFor": 12,
-      "goalsAgainst": 25,
-      "goalDiff": -13,
+      "goalsFor": 15,
+      "goalsAgainst": 26,
+      "goalDiff": -11,
       "points": 6,
       "form": [
         "W",
@@ -681,19 +641,17 @@
       "homeRecord": {
         "wins": 0,
         "draws": 1,
-        "losses": 3,
+        "losses": 2,
         "points": 1
       },
       "awayRecord": {
         "wins": 1,
         "draws": 2,
-        "losses": 4,
+        "losses": 5,
         "points": 5
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl2-team-19",
@@ -705,9 +663,9 @@
       "wins": 1,
       "draws": 1,
       "losses": 8,
-      "goalsFor": 12,
-      "goalsAgainst": 29,
-      "goalDiff": -17,
+      "goalsFor": 15,
+      "goalsAgainst": 30,
+      "goalDiff": -15,
       "points": 4,
       "form": [
         "L",
@@ -719,19 +677,17 @@
       "homeRecord": {
         "wins": 0,
         "draws": 0,
-        "losses": 4,
+        "losses": 3,
         "points": 0
       },
       "awayRecord": {
         "wins": 1,
         "draws": 1,
-        "losses": 4,
+        "losses": 5,
         "points": 4
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl2-team-20",
@@ -743,9 +699,9 @@
       "wins": 1,
       "draws": 1,
       "losses": 9,
-      "goalsFor": 12,
-      "goalsAgainst": 31,
-      "goalDiff": -19,
+      "goalsFor": 15,
+      "goalsAgainst": 32,
+      "goalDiff": -17,
       "points": 4,
       "form": [
         "D",
@@ -757,19 +713,17 @@
       "homeRecord": {
         "wins": 0,
         "draws": 0,
-        "losses": 4,
+        "losses": 3,
         "points": 0
       },
       "awayRecord": {
         "wins": 1,
         "draws": 1,
-        "losses": 5,
+        "losses": 6,
         "points": 4
       },
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T15:28:54.524Z"
+      "updatedAt": "2026-05-19T19:35:24.447Z"
     }
   ]
 }

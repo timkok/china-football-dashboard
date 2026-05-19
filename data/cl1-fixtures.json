@@ -1,15 +1,9 @@
 {
   "league": "cl1",
-  "leagueName": "中甲",
-  "season": 2026,
-  "type": "fixtures",
-  "sourceId": "mock-fallback",
+  "fetchedAt": "2026-05-19T19:35:24.447Z",
   "mode": "mock",
-  "source": "mock fallback",
-  "sourceUrl": "",
+  "source": "内置示例数据",
   "isOfficial": false,
-  "fetchedAt": "2026-05-19T15:28:54.524Z",
-  "schemaVersion": 1,
   "data": [
     {
       "id": "cl1-fixture-01",
@@ -17,15 +11,13 @@
       "round": 13,
       "date": "2026-05-10T11:35:00.000Z",
       "homeTeam": "大连英博",
-      "awayTeam": "南京城市",
+      "awayTeam": "石家庄功夫",
       "homeScore": 1,
       "awayScore": 1,
       "status": "finished",
-      "venue": "大连体育中心",
+      "venue": "大连体育中心体育场",
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "fetchedAt": "2026-05-19T15:28:54.524Z"
+      "fetchedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl1-fixture-02",
@@ -33,15 +25,13 @@
       "round": 13,
       "date": "2026-05-11T12:30:00.000Z",
       "homeTeam": "云南玉昆",
-      "awayTeam": "石家庄功夫",
+      "awayTeam": "南京城市",
       "homeScore": 3,
       "awayScore": 2,
       "status": "finished",
-      "venue": "玉溪体育中心",
+      "venue": "玉溪专业足球场",
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "fetchedAt": "2026-05-19T15:28:54.524Z"
+      "fetchedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl1-fixture-03",
@@ -53,11 +43,9 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "finished",
-      "venue": "重庆体育中心",
+      "venue": "重庆奥体中心",
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "fetchedAt": "2026-05-19T15:28:54.524Z"
+      "fetchedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl1-fixture-04",
@@ -69,11 +57,9 @@
       "homeScore": 3,
       "awayScore": 1,
       "status": "finished",
-      "venue": "广州体育中心",
+      "venue": "广州市体育场",
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "fetchedAt": "2026-05-19T15:28:54.524Z"
+      "fetchedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl1-fixture-05",
@@ -85,43 +71,37 @@
       "homeScore": 1,
       "awayScore": 2,
       "status": "finished",
-      "venue": "苏州体育中心",
+      "venue": "苏州凤凰山体育公园",
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "fetchedAt": "2026-05-19T15:28:54.524Z"
+      "fetchedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl1-fixture-06",
       "league": "cl1",
       "round": 15,
       "date": "2026-05-15T11:30:00.000Z",
-      "homeTeam": "南京城市",
+      "homeTeam": "石家庄功夫",
       "awayTeam": "延边龙鼎",
       "homeScore": 3,
       "awayScore": 0,
       "status": "live",
-      "venue": "南京体育中心",
+      "venue": "石家庄龙泉驿足球场",
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "fetchedAt": "2026-05-19T15:28:54.524Z"
+      "fetchedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl1-fixture-07",
       "league": "cl1",
       "round": 16,
       "date": "2026-05-16T12:35:00.000Z",
-      "homeTeam": "石家庄功夫",
+      "homeTeam": "南京城市",
       "awayTeam": "上海嘉定汇龙",
       "homeScore": null,
       "awayScore": null,
       "status": "scheduled",
-      "venue": "石家庄体育中心",
+      "venue": "南京体育中心体育场",
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "fetchedAt": "2026-05-19T15:28:54.524Z"
+      "fetchedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl1-fixture-08",
@@ -133,11 +113,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "scheduled",
-      "venue": "平果体育中心",
+      "venue": "平果专业足球场",
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "fetchedAt": "2026-05-19T15:28:54.524Z"
+      "fetchedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl1-fixture-09",
@@ -149,11 +127,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "scheduled",
-      "venue": "沈阳体育中心",
+      "venue": "沈阳奥体中心",
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "fetchedAt": "2026-05-19T15:28:54.524Z"
+      "fetchedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl1-fixture-10",
@@ -165,11 +141,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "postponed",
-      "venue": "佛山体育中心",
+      "venue": "佛山市体育场",
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "fetchedAt": "2026-05-19T15:28:54.524Z"
+      "fetchedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl1-fixture-11",
@@ -181,11 +155,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "scheduled",
-      "venue": "延吉体育中心",
+      "venue": "延吉凤凰山体育公园",
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "fetchedAt": "2026-05-19T15:28:54.524Z"
+      "fetchedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl1-fixture-12",
@@ -197,11 +169,9 @@
       "homeScore": 3,
       "awayScore": 0,
       "status": "finished",
-      "venue": "上海体育中心",
+      "venue": "上海龙泉驿足球场",
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "fetchedAt": "2026-05-19T15:28:54.524Z"
+      "fetchedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl1-fixture-13",
@@ -213,11 +183,9 @@
       "homeScore": null,
       "awayScore": null,
       "status": "scheduled",
-      "venue": "哈尔滨体育中心",
+      "venue": "哈尔滨体育中心体育场",
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "fetchedAt": "2026-05-19T15:28:54.524Z"
+      "fetchedAt": "2026-05-19T19:35:24.447Z"
     },
     {
       "id": "cl1-fixture-14",
@@ -229,11 +197,9 @@
       "homeScore": 3,
       "awayScore": 2,
       "status": "finished",
-      "venue": "无锡体育中心",
+      "venue": "无锡专业足球场",
       "source": "mock",
-      "sourceUrl": "",
-      "isOfficial": false,
-      "fetchedAt": "2026-05-19T15:28:54.524Z"
+      "fetchedAt": "2026-05-19T19:35:24.447Z"
     }
   ]
 }
