@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>中国足球职业联赛监测 Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+  <script>
+    if (!window.echarts) {
+      console.warn("jsDelivr ECharts load failed, trying cdnjs...");
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.1/echarts.min.js"><\/script>');
+    }
+  </script>
+  <script>
+    if (!window.echarts) {
+      console.warn("cdnjs ECharts load failed, trying unpkg...");
+      document.write('<script src="https://unpkg.com/echarts@5.5.1/dist/echarts.min.js"><\/script>');
+    }
+  </script>
 
   <!-- 2. Styles -->
   <style>
@@ -1112,16 +1124,18 @@
     function activeSource() {
       const data = league();
       return {
-        name: data.source || state.currentSource || "内置示例数据",
-        url: data.sourceUrl || state.currentSourceUrl || "",
-        isOfficial: Boolean(data.isOfficial || state.isOfficial),
-        fetchedAt: data.fetchedAt || state.lastRefreshAt,
-        mode: data.dataMode || state.dataMode
+        name: data?.source || state.currentSource || "内置示例数据",
+        url: data?.sourceUrl || state.currentSourceUrl || "",
+        isOfficial: Boolean(data?.isOfficial || state.isOfficial),
+        fetchedAt: data?.fetchedAt || state.lastRefreshAt,
+        mode: data?.dataMode || state.dataMode
       };
     }
 
     function teamById(id) {
-      return league().standings.find(team => team.id === id) || league().standings[0];
+      const standings = league()?.standings || [];
+      if (!standings.length) return null;
+      return standings.find(team => team.id === id) || standings[0];
     }
 
     function formatDateTime(value) {
@@ -1164,12 +1178,17 @@
     }
 
     function dataAgeHours() {
-      return (Date.now() - new Date(activeSource().fetchedAt || state.lastRefreshAt).getTime()) / 36e5;
+      const active = activeSource();
+      const refTime = active.fetchedAt || active.generatedAt || state.lastRefreshAt;
+      if (!refTime) return 0;
+      const t = new Date(refTime).getTime();
+      return isNaN(t) ? 0 : (Date.now() - t) / 36e5;
     }
 
     function effectiveMode() {
       if (state.transientStatus) return state.transientStatus;
-      if (dataAgeHours() > 12) return "Stale";
+      const hours = dataAgeHours();
+      if (hours > 12 && !isNaN(hours)) return "Stale";
       return activeSource().mode || state.dataMode;
     }
 
@@ -1216,7 +1235,7 @@
 
     function payloadFreshness(payloads) {
       const timestamps = payloads
-        .map(payload => payload && payload.fetchedAt)
+        .map(payload => payload && (payload.fetchedAt || payload.generatedAt))
         .filter(Boolean)
         .map(value => new Date(value).getTime())
         .filter(value => Number.isFinite(value));
@@ -1241,8 +1260,19 @@
       const goalsAgainst = Number(item.goalsAgainst ?? item.ga ?? 0);
       const goalDiff = Number(item.goalDiff ?? goalsFor - goalsAgainst);
       const points = Number(item.points ?? wins * 3 + draws);
-      const homeRecord = item.homeRecord || { wins: 0, draws: 0, losses: 0, points: 0 };
-      const awayRecord = item.awayRecord || { wins: 0, draws: 0, losses: 0, points: 0 };
+      
+      const homeRecord = {
+        wins: Number(item.homeRecord?.wins ?? 0),
+        draws: Number(item.homeRecord?.draws ?? 0),
+        losses: Number(item.homeRecord?.losses ?? 0),
+        points: Number(item.homeRecord?.points ?? (Number(item.homeRecord?.wins ?? 0) * 3 + Number(item.homeRecord?.draws ?? 0)))
+      };
+      const awayRecord = {
+        wins: Number(item.awayRecord?.wins ?? 0),
+        draws: Number(item.awayRecord?.draws ?? 0),
+        losses: Number(item.awayRecord?.losses ?? 0),
+        points: Number(item.awayRecord?.points ?? (Number(item.awayRecord?.wins ?? 0) * 3 + Number(item.awayRecord?.draws ?? 0)))
+      };
 
       return {
         id: item.id || `${leagueKey}-team-${String(index + 1).padStart(2, "0")}`,
@@ -1268,7 +1298,7 @@
         source: item.source || payload.source || "json",
         sourceUrl: item.sourceUrl || payload.sourceUrl || "",
         isOfficial: Boolean(item.isOfficial ?? payload.isOfficial),
-        updatedAt: item.updatedAt || payload.fetchedAt || new Date().toISOString()
+        updatedAt: item.updatedAt || payload.fetchedAt || payload.generatedAt || new Date().toISOString()
       };
     }
 
@@ -1277,7 +1307,7 @@
         id: item.id || `${leagueKey}-fixture-${String(index + 1).padStart(2, "0")}`,
         league: item.league || leagueKey,
         round: item.round || "-",
-        date: item.date || payload.fetchedAt || new Date().toISOString(),
+        date: item.date || payload.fetchedAt || payload.generatedAt || new Date().toISOString(),
         homeTeam: item.homeTeam || item.home || "待定",
         awayTeam: item.awayTeam || item.away || "待定",
         homeScore: item.homeScore ?? null,
@@ -1287,7 +1317,7 @@
         source: item.source || payload.source || "json",
         sourceUrl: item.sourceUrl || payload.sourceUrl || "",
         isOfficial: Boolean(item.isOfficial ?? payload.isOfficial),
-        fetchedAt: item.fetchedAt || payload.fetchedAt || new Date().toISOString()
+        fetchedAt: item.fetchedAt || payload.fetchedAt || payload.generatedAt || new Date().toISOString()
       };
     }
 
@@ -1310,7 +1340,7 @@
         source: sourcePayload?.source || current.source || "内置示例数据",
         sourceUrl: sourcePayload?.sourceUrl || current.sourceUrl || "",
         isOfficial: Boolean(sourcePayload?.isOfficial),
-        fetchedAt: sourcePayload?.fetchedAt || payloadFreshness(payloads) || current.fetchedAt || MOCK_GENERATED_AT,
+        fetchedAt: sourcePayload?.fetchedAt || sourcePayload?.generatedAt || payloadFreshness(payloads) || current.fetchedAt || MOCK_GENERATED_AT,
         usingMockStandings: !standingsPayload,
         usingMockFixtures: !fixturesPayload
       };
@@ -1538,7 +1568,8 @@
     }
 
     function averageOccupancy() {
-      const rows = state.attendance.teams.filter(team => typeof team.occupancyRate === "number");
+      const teams = state.attendance?.teams || [];
+      const rows = teams.filter(team => typeof team.occupancyRate === "number");
       if (!rows.length) return null;
       return rows.reduce((sum, team) => sum + team.occupancyRate, 0) / rows.length;
     }
@@ -1565,36 +1596,47 @@
     }
 
     function leagueHeatIndex() {
-      const avgAttendance = state.attendance.summary?.averageAttendance || 0;
+      const avgAttendance = state.attendance?.summary?.averageAttendance || 0;
       const avgOcc = averageOccupancy() || 0;
       const growth = latestYoYGrowth() || 0;
-      const highDemandShare = state.attendance.teams.length
-        ? state.attendance.teams.filter(team => team.occupancyRate >= 0.9).length / state.attendance.teams.length
+      const teams = state.attendance?.teams || [];
+      const highDemandShare = teams.length
+        ? teams.filter(team => team.occupancyRate >= 0.9).length / teams.length
         : 0;
       const score = Math.round(Math.min(100, (avgAttendance / 60000) * 35 + avgOcc * 35 + Math.max(-0.2, Math.min(0.4, growth)) * 50 + highDemandShare * 20));
       return Math.max(0, score);
     }
 
     function predictionScores(team) {
-      const remaining = Math.max(0, 30 - team.played);
-      const formScore = team.form.reduce((sum, item) => sum + (item === "W" ? 3 : item === "D" ? 1 : 0), 0);
-      const maxPoints = team.points + remaining * 3;
-      const titleRaceScore = Math.min(100, Math.round((team.points / Math.max(1, league().standings[0].points)) * 45 + (maxPoints / 90) * 25 + formScore * 2 + Math.max(0, team.goalDiff) * 0.6));
-      const continentalQualificationScore = Math.min(100, Math.round(titleRaceScore * 0.72 + (team.rank <= 4 ? 25 : 0)));
-      const relegationRiskScore = Math.min(100, Math.round((team.rank / league().standings.length) * 55 + Math.max(0, -team.goalDiff) * 1.2 + (15 - formScore) * 2));
-      const promotionScore = state.activeLeague === "cl1" ? Math.min(100, Math.round(titleRaceScore * 0.75 + (team.rank <= 2 ? 30 : 0))) : 0;
+      if (!team) return { titleRaceScore: 0, continentalQualificationScore: 0, relegationRiskScore: 0, promotionScore: 0 };
+      const remaining = Math.max(0, 30 - (team.played || 0));
+      const form = Array.isArray(team.form) ? team.form : [];
+      const formScore = form.reduce((sum, item) => sum + (item === "W" ? 3 : item === "D" ? 1 : 0), 0);
+      const maxPoints = (team.points || 0) + remaining * 3;
+      const standings = league()?.standings || [];
+      const firstTeam = standings[0];
+      const maxLeaderPoints = firstTeam ? (firstTeam.points || 1) : 1;
+      const teamPoints = team.points || 0;
+      const teamRank = team.rank || 1;
+      const teamGoalDiff = team.goalDiff || 0;
+      const titleRaceScore = Math.min(100, Math.round((teamPoints / Math.max(1, maxLeaderPoints)) * 45 + (maxPoints / 90) * 25 + formScore * 2 + Math.max(0, teamGoalDiff) * 0.6));
+      const continentalQualificationScore = Math.min(100, Math.round(titleRaceScore * 0.72 + (teamRank <= 4 ? 25 : 0)));
+      const relegationRiskScore = Math.min(100, Math.round((teamRank / (standings.length || 1)) * 55 + Math.max(0, -teamGoalDiff) * 1.2 + (15 - formScore) * 2));
+      const promotionScore = state.activeLeague === "cl1" ? Math.min(100, Math.round(titleRaceScore * 0.75 + (teamRank <= 2 ? 30 : 0))) : 0;
       return { titleRaceScore, continentalQualificationScore, relegationRiskScore, promotionScore };
     }
 
     function focusMatches() {
-      const standings = new Map(league().standings.map(team => [team.name, team]));
-      return league().fixtures.map(match => {
+      const standingsList = league()?.standings || [];
+      const standings = new Map(standingsList.map(team => [team.name, team]));
+      const fixturesList = league()?.fixtures || [];
+      return fixturesList.map(match => {
         const home = standings.get(match.homeTeam);
         const away = standings.get(match.awayTeam);
         if (!home || !away) return null;
         const rankDiff = Math.abs(home.rank - away.rank);
         const topFour = home.rank <= 4 && away.rank <= 4;
-        const relegation = home.rank >= league().standings.length - 3 || away.rank >= league().standings.length - 3;
+        const relegation = home.rank >= standingsList.length - 3 || away.rank >= standingsList.length - 3;
         const derby = home.city && away.city && home.city === away.city;
         const homeAttendance = attendanceForTeam(match.homeTeam);
         const demand = homeAttendance?.occupancyRate || 0;
@@ -1611,6 +1653,15 @@
 
     function currentLeagueSourcePayload() {
       const data = league();
+      if (!data) {
+        return {
+          source: state.currentSource || "内置示例数据",
+          sourceUrl: state.currentSourceUrl || "",
+          isOfficial: Boolean(state.isOfficial),
+          mode: String(state.dataMode || "mock").toLowerCase(),
+          fetchedAt: state.lastRefreshAt
+        };
+      }
       const mode = String(data.mode || data.dataMode || state.dataMode || "mock").toLowerCase();
       return {
         source: data.source,
@@ -1631,7 +1682,7 @@
     }
 
     function rankZone(team, leagueKey) {
-      const total = league().standings.length;
+      const total = (league()?.standings || []).length;
       if (leagueKey === "cl1") {
         if (team.rank <= 2) return { label: "升级区", cls: "zone-top", rankCls: "rank-top" };
         if (team.rank > total - 2) return { label: "降级区", cls: "zone-risk", rankCls: "rank-risk" };
@@ -1661,13 +1712,15 @@
 
     function calculateMetrics() {
       const data = league();
-      const finished = data.fixtures.filter(match => match.status === "finished");
+      if (!data) return [];
+      const fixtures = data.fixtures || [];
+      const finished = fixtures.filter(match => match.status === "finished");
       const todayKey = new Date().toISOString().slice(0, 10);
-      const todayMatches = data.fixtures.filter(match => match.date.slice(0, 10) === todayKey).length;
-      const goals = finished.reduce((sum, match) => sum + match.homeScore + match.awayScore, 0);
+      const todayMatches = fixtures.filter(match => match.date && typeof match.date === "string" && match.date.slice(0, 10) === todayKey).length;
+      const goals = finished.reduce((sum, match) => sum + (Number(match.homeScore) || 0) + (Number(match.awayScore) || 0), 0);
       const alerts = generateAlerts();
       return [
-        { label: "今日比赛数", value: todayMatches, foot: `${data.name} 当前快照`, color: "var(--blue)" },
+        { label: "今日比赛数", value: todayMatches, foot: `${data.name || '当前联赛'} 快照`, color: "var(--blue)" },
         { label: "近期已完赛", value: finished.length, foot: "已完赛赛程样本", color: "var(--green)" },
         { label: "总进球数", value: goals, foot: "仅统计已完赛", color: "var(--yellow)" },
         { label: "平均每场进球", value: finished.length ? (goals / finished.length).toFixed(2) : "0.00", foot: "总进球 / 已完赛", color: "var(--violet)" },
@@ -1677,13 +1730,24 @@
     }
 
     function validateLeagueData(data) {
-      const target = TARGETS[data.id];
-      const teamCount = data.standings.length;
-      const fixtureCount = data.fixtures.length;
+      if (!data) {
+        return {
+          teamCount: 0,
+          fixtureCount: 0,
+          teamCompleteness: 0,
+          fixtureCompleteness: 0,
+          isComplete: false,
+          teamFieldsOk: false,
+          fixtureFieldsOk: false
+        };
+      }
+      const target = TARGETS[data.id] || { teams: 16, fixtures: 240 };
+      const teamCount = (data.standings || []).length;
+      const fixtureCount = (data.fixtures || []).length;
       const requiredTeamFields = ["id", "name", "shortName", "city", "played", "wins", "draws", "losses", "goalsFor", "goalsAgainst", "goalDiff", "points", "form", "homeRecord", "awayRecord", "source", "updatedAt"];
       const requiredFixtureFields = ["id", "league", "round", "date", "homeTeam", "awayTeam", "homeScore", "awayScore", "status", "venue", "source", "fetchedAt"];
-      const teamFieldsOk = data.standings.every(team => requiredTeamFields.every(field => field in team));
-      const fixtureFieldsOk = data.fixtures.every(match => requiredFixtureFields.every(field => field in match));
+      const teamFieldsOk = (data.standings || []).every(team => requiredTeamFields.every(field => field in team));
+      const fixtureFieldsOk = (data.fixtures || []).every(match => requiredFixtureFields.every(field => field in match));
       return {
         teamCount,
         fixtureCount,
@@ -1707,8 +1771,8 @@
         lastRefreshSuccess: state.lastRefreshSuccess,
         sourceName: source.name,
         isOfficial: source.isOfficial,
-        teamText: `${validation.teamCount} / ${data.targetTeams}`,
-        fixtureText: `${validation.fixtureCount} / ${data.targetFixtures}`,
+        teamText: `${validation.teamCount} / ${(data && data.targetTeams) || 0}`,
+        fixtureText: `${validation.fixtureCount} / ${(data && data.targetFixtures) || 0}`,
         teamCompleteness: validation.teamCompleteness,
         fixtureCompleteness: validation.fixtureCompleteness,
         alertCount: alerts.length
@@ -1716,24 +1780,33 @@
     }
 
     function hasConsecutiveNoWin(form) {
+      if (!Array.isArray(form)) return false;
       return form.some((_, index) => index <= form.length - 3 && form.slice(index, index + 3).every(result => result !== "W"));
     }
 
     function generateAlerts() {
       const data = league();
+      if (!data) return [];
       const validation = validateLeagueData(data);
       const alerts = [];
-      const avgGaPerMatch = data.standings.reduce((sum, team) => sum + team.goalsAgainst / team.played, 0) / data.standings.length;
-      const avgGfPerMatch = data.standings.reduce((sum, team) => sum + team.goalsFor / team.played, 0) / data.standings.length;
+      const standings = data.standings || [];
+      const fixtures = data.fixtures || [];
+
+      const avgGaPerMatch = standings.length
+        ? (standings.reduce((sum, team) => sum + (team.goalsAgainst / (team.played || 1)), 0) / standings.length)
+        : 0;
+      const avgGfPerMatch = standings.length
+        ? (standings.reduce((sum, team) => sum + (team.goalsFor / (team.played || 1)), 0) / standings.length)
+        : 0;
 
       if (dataAgeHours() > 12) {
         alerts.push({ level: "critical", type: "Stale Data", target: "全站数据", message: `数据年龄为 ${formatAge(state.lastRefreshAt)}，超过 12 小时阈值。`, action: "触发手动刷新或检查定时数据管道。" });
       }
 
-      data.standings.forEach(team => {
-        const gaRate = team.goalsAgainst / team.played;
-        const gfRate = team.goalsFor / team.played;
-        if (hasConsecutiveNoWin(team.form)) {
+      standings.forEach(team => {
+        const gaRate = team.played ? team.goalsAgainst / team.played : 0;
+        const gfRate = team.played ? team.goalsFor / team.played : 0;
+        if (team.form && Array.isArray(team.form) && hasConsecutiveNoWin(team.form)) {
           alerts.push({ level: "warning", type: "Form Alert", target: team.name, message: "最近 5 场中存在连续 3 场不胜。", action: "关注球队状态、伤停和赛程密度。" });
         }
         if (gaRate > avgGaPerMatch * 1.3) {
@@ -1744,17 +1817,17 @@
         }
       });
 
-      data.fixtures.filter(match => match.status === "postponed").forEach(match => {
+      fixtures.filter(match => match.status === "postponed").forEach(match => {
         alerts.push({ level: "warning", type: "Fixture Alert", target: `${match.homeTeam} vs ${match.awayTeam}`, message: "比赛状态为延期。", action: "等待官方重新确认开球时间和场地。" });
       });
 
-        if (!validation.isComplete) {
-        alerts.push({ level: "critical", type: "Data Completeness Alert", target: data.name, message: `球队完整度 ${validation.teamCount}/${data.targetTeams}，赛程完整度 ${validation.fixtureCount}/${data.targetFixtures}。`, action: "检查数据源映射、字段标准化和 fallback 数据。" });
+      if (!validation.isComplete) {
+        alerts.push({ level: "critical", type: "Data Completeness Alert", target: data.name || "当前联赛", message: `球队完整度 ${validation.teamCount}/${data.targetTeams || 0}，赛程完整度 ${validation.fixtureCount}/${data.targetFixtures || 0}。`, action: "检查数据源映射、字段标准化和 fallback 数据。" });
       }
 
       const schedule = state.dataQuality?.leagues?.[state.activeLeague]?.scheduleCompleteness;
       if (schedule?.anomalyCount) {
-        alerts.push({ level: "warning", type: "Schedule Quality Alert", target: data.name, message: `赛程存在 ${schedule.anomalyCount} 个异常。`, action: "检查空时间、完赛比分缺失或重复比赛。" });
+        alerts.push({ level: "warning", type: "Schedule Quality Alert", target: data.name || "当前联赛", message: `赛程存在 ${schedule.anomalyCount} 个异常。`, action: "检查空时间、完赛比分缺失或重复比赛。" });
       }
       const conflicts = state.sourceComparison?.comparisons?.flatMap(item => item.conflicts || []) || [];
       if (conflicts.length) {
@@ -1762,15 +1835,16 @@
       }
 
       if (state.activeLeague === "csl") {
-        const attendanceAgeDays = (Date.now() - new Date(state.attendance.fetchedAt).getTime()) / 864e5;
+        const attendanceAgeDays = state.attendance?.fetchedAt ? (Date.now() - new Date(state.attendance.fetchedAt).getTime()) / 864e5 : 999;
         const avgOcc = averageOccupancy();
-        if (attendanceAgeDays > 7) {
+        if (attendanceAgeDays > 7 && state.attendance?.fetchedAt) {
           alerts.push({ level: "warning", type: "Attendance Stale Alert", target: "中超观众数据", message: `观众数据已 ${Math.floor(attendanceAgeDays)} 天未更新。`, action: "检查 update-attendance GitHub Actions 或手动运行 fetch:attendance。" });
         }
-        if (!state.attendance.teams.length || state.attendance.mode === "mock") {
+        const attendanceTeams = state.attendance?.teams || [];
+        if (!attendanceTeams.length || state.attendance?.mode === "mock") {
           alerts.push({ level: "critical", type: "Data Missing Alert", target: "观众人数", message: "当前联赛没有可用真实观众数据。", action: "检查 Transfermarkt 抓取脚本和旧 JSON 是否存在。" });
         }
-        state.attendance.teams.forEach(row => {
+        attendanceTeams.forEach(row => {
           if (row.occupancyRate < 0.4) {
             alerts.push({ level: "warning", type: "Low Occupancy Alert", target: row.teamCn || row.team, message: `上座率 ${formatPercent(row.occupancyRate)}，低于 40%。`, action: "关注票务、赛程时间和本地推广机会。" });
           }
@@ -1778,22 +1852,24 @@
             alerts.push({ level: "info", type: "High Demand Alert", target: row.teamCn || row.team, message: `上座率 ${formatPercent(row.occupancyRate)}，需求接近满载。`, action: "关注扩容、票价和高需求场次服务能力。" });
           }
         });
-        data.standings.filter(team => team.rank <= 6).forEach(team => {
+        standings.filter(team => team.rank <= 6).forEach(team => {
           const row = attendanceForTeam(team.name);
           if (row && avgOcc !== null && row.occupancyRate < avgOcc) {
             alerts.push({ level: "info", type: "Attendance Growth Opportunity", target: team.name, message: `竞技排名前 6，但上座率 ${formatPercent(row.occupancyRate)} 低于联赛均值 ${formatPercent(avgOcc)}。`, action: "可结合成绩窗口加强主场营销和会员转化。" });
           }
         });
       } else {
-        alerts.push({ level: "info", type: "Data Missing Alert", target: data.name, message: "当前联赛暂未接入观众人数数据。", action: "后续接入中甲 / 中乙稳定观众数据源。" });
+        alerts.push({ level: "info", type: "Data Missing Alert", target: data.name || "当前联赛", message: "当前联赛暂未接入观众人数数据。", action: "后续接入中甲 / 中乙稳定观众数据源。" });
       }
 
       return alerts;
     }
 
     function ensureSelectedTeam() {
-      if (!league().standings.some(team => team.id === state.selectedTeamId)) {
-        state.selectedTeamId = league().standings[0].id;
+      const standings = league()?.standings || [];
+      if (!standings.length) return;
+      if (!standings.some(team => team.id === state.selectedTeamId)) {
+        state.selectedTeamId = standings[0].id;
       }
     }
 
@@ -1824,12 +1900,14 @@
     }
 
     function renderAttendance() {
-      const attendance = state.attendance;
+      const attendance = state.attendance || {};
       const summary = attendance.summary || {};
       const avgOcc = averageOccupancy();
-      const sourceText = attendance.mode === "mock" ? attendance.source : `${attendance.source}${attendance.isOfficial ? "" : " · third-party"}`;
+      const sourceText = attendance.mode === "mock" ? (attendance.source || "mock") : `${attendance.source || "Transfermarkt"}${attendance.isOfficial ? "" : " · third-party"}`;
       const badge = document.getElementById("attendanceSourceBadge");
-      badge.outerHTML = `<span class="badge ${attendance.mode === "mock" ? "mock" : "third_party"}" id="attendanceSourceBadge">${attendance.mode === "mock" ? "mock 示例" : "Transfermarkt 非官方，仅供参考"}</span>`;
+      if (badge) {
+        badge.outerHTML = `<span class="badge ${attendance.mode === "mock" ? "mock" : "third_party"}" id="attendanceSourceBadge">${attendance.mode === "mock" ? "mock 示例" : "Transfermarkt 非官方，仅供参考"}</span>`;
+      }
       const heatIndex = leagueHeatIndex();
 
       document.getElementById("attendanceMetrics").innerHTML = [
@@ -1854,8 +1932,9 @@
         ? `观众人数趋势：${latestTrend.season} 赛季 ${formatInteger(latestTrend.matches)} 场，总观众 ${formatInteger(latestTrend.totalAttendance)}，场均 ${formatInteger(latestTrend.averageAttendance)}，同比 ${latestTrend.yoyGrowth === null || latestTrend.yoyGrowth === undefined ? "暂无" : formatPercent(latestTrend.yoyGrowth)}。`
         : "观众人数趋势：暂无稳定历史趋势数据，当前先展示球队主场观众快照。";
 
-      const hotHomes = [...attendance.teams]
-        .sort((a, b) => (b.occupancyRate * 100000 + b.averageAttendance) - (a.occupancyRate * 100000 + a.averageAttendance))
+      const teams = attendance.teams || [];
+      const hotHomes = [...teams]
+        .sort((a, b) => ((b.occupancyRate || 0) * 100000 + (b.averageAttendance || 0)) - ((a.occupancyRate || 0) * 100000 + (a.averageAttendance || 0)))
         .slice(0, 5);
       document.getElementById("hotHomeTop5").innerHTML = hotHomes.map((team, index) => {
         const heat = attendanceHeatLabel(team.occupancyRate);
@@ -1869,7 +1948,7 @@
         `;
       }).join("");
 
-      document.getElementById("attendanceBody").innerHTML = attendance.teams.map(team => {
+      document.getElementById("attendanceBody").innerHTML = teams.map(team => {
         const heat = attendanceHeatLabel(team.occupancyRate);
         return `
           <tr>
@@ -1889,8 +1968,9 @@
 
     function renderStandings() {
       const source = activeSource();
-      document.getElementById("standingsSubtitle").textContent = `${league().name} · ${league().standings.length} 支球队 · 来源：${source.name} · fetchedAt：${formatFullDateTime(source.fetchedAt || state.lastRefreshAt)}`;
-      document.getElementById("standingsBody").innerHTML = league().standings.map(team => {
+      const standings = league()?.standings || [];
+      document.getElementById("standingsSubtitle").textContent = `${league()?.name || "当前联赛"} · ${standings.length} 支球队 · 来源：${source.name} · fetchedAt：${formatFullDateTime(source.fetchedAt || state.lastRefreshAt)}`;
+      document.getElementById("standingsBody").innerHTML = standings.map(team => {
         const zone = rankZone(team, state.activeLeague);
         return `
           <tr>
@@ -1921,11 +2001,12 @@
     }
 
     function renderFilters() {
-      const options = league().standings.map(team => `<option value="${team.name}">${team.name}</option>`).join("");
+      const standings = league()?.standings || [];
+      const options = standings.map(team => `<option value="${team.name}">${team.name}</option>`).join("");
       document.getElementById("fixtureTeamFilter").innerHTML = `<option value="all">全部球队</option>${options}`;
       document.getElementById("fixtureTeamFilter").value = state.fixtureTeam;
       document.getElementById("fixtureStatusFilter").value = state.fixtureStatus;
-      document.getElementById("teamMonitorSelect").innerHTML = league().standings.map(team => `<option value="${team.id}">${team.name}</option>`).join("");
+      document.getElementById("teamMonitorSelect").innerHTML = standings.map(team => `<option value="${team.id}">${team.name}</option>`).join("");
       document.getElementById("teamMonitorSelect").value = state.selectedTeamId;
     }
 
@@ -2052,6 +2133,11 @@
 
     function renderTeamMonitor() {
       const team = teamById(state.selectedTeamId);
+      if (!team) {
+        document.getElementById("teamSummary").innerHTML = `<div class="muted">当前无可展示球队</div>`;
+        document.getElementById("teamFixtures").innerHTML = `<li class="recent-item muted">暂无该队近期比赛。</li>`;
+        return;
+      }
       const attendance = attendanceForTeam(team.name);
       const scores = predictionScores(team);
       document.getElementById("teamSummary").innerHTML = `
@@ -2063,17 +2149,18 @@
           <div class="team-kpi"><span>进球</span><strong>${team.goalsFor}</strong></div>
           <div class="team-kpi"><span>失球</span><strong>${team.goalsAgainst}</strong></div>
           <div class="team-kpi"><span>净胜球</span><strong class="${team.goalDiff >= 0 ? "positive" : "negative"}">${team.goalDiff > 0 ? "+" : ""}${team.goalDiff}</strong></div>
-          <div class="team-kpi"><span>主 / 客积分</span><strong>${team.homeRecord.points} / ${team.awayRecord.points}</strong></div>
+          <div class="team-kpi"><span>主 / 客积分</span><strong>${team.homeRecord?.points ?? 0} / ${team.awayRecord?.points ?? 0}</strong></div>
           <div class="team-kpi"><span>争冠 / 亚冠</span><strong>${scores.titleRaceScore} / ${scores.continentalQualificationScore}</strong></div>
           <div class="team-kpi"><span>降级风险 / 升级</span><strong>${scores.relegationRiskScore} / ${scores.promotionScore || "不适用"}</strong></div>
-          <div class="team-kpi"><span>主场球场</span><strong style="font-size:15px;">${attendance ? attendance.stadiumCn : "暂无"}</strong></div>
+          <div class="team-kpi"><span>主场球场</span><strong style="font-size:15px;">${attendance ? (attendance.stadiumCn || attendance.stadium) : "暂无"}</strong></div>
           <div class="team-kpi"><span>球场容量</span><strong>${attendance ? formatInteger(attendance.capacity) : "暂无"}</strong></div>
           <div class="team-kpi"><span>场均观众</span><strong>${attendance ? formatInteger(attendance.averageAttendance) : "暂无"}</strong></div>
           <div class="team-kpi"><span>上座率 / 排名</span><strong>${attendance ? `${formatPercent(attendance.occupancyRate)} / ${attendance.rank}` : "暂无"}</strong></div>
         </div>
       `;
 
-      const related = league().fixtures.filter(match => match.homeTeam === team.name || match.awayTeam === team.name);
+      const fixtures = league()?.fixtures || [];
+      const related = fixtures.filter(match => match.homeTeam === team.name || match.awayTeam === team.name);
       document.getElementById("teamFixtures").innerHTML = related.length ? related.map(match => `
         <li class="recent-item">
           <div class="log-head"><span>第 ${match.round} 轮</span>${fixtureBadge(match.status)}</div>
@@ -2225,14 +2312,15 @@
     }
 
     function renderCharts() {
-      const standingsData = league().standings || [];
+      const data = league();
+      const standingsData = data?.standings || [];
       const hasStandings = standingsData.length > 0;
       
       const attendance = state.attendance || {};
       const attendanceTeams = attendance.teams || [];
       const hasAttendance = attendanceTeams.length > 0;
       
-      const historyRows = [...(state.attendanceHistory?.data || state.attendance.trend || [])].sort((a, b) => (a.seasonEndYear || 0) - (b.seasonEndYear || 0));
+      const historyRows = [...(state.attendanceHistory?.data || state.attendance?.trend || [])].sort((a, b) => (a.seasonEndYear || 0) - (b.seasonEndYear || 0));
       const hasHistory = historyRows.length > 0;
       
       const scatterRows = attendancePointsRows();
@@ -2412,7 +2500,7 @@
         state.activeLeague = button.dataset.league;
         state.fixtureTeam = "all";
         state.fixtureStatus = "all";
-        state.selectedTeamId = league().standings[0].id;
+        state.selectedTeamId = league()?.standings?.[0]?.id || "";
         document.querySelectorAll(".tab-button").forEach(tab => tab.classList.toggle("active", tab === button));
         renderAll();
       });
@@ -2445,7 +2533,7 @@
       await new Promise(resolve => setTimeout(resolve, 1000));
       await loadDashboardData();
       state.transientStatus = "";
-      state.logs.unshift({ time: new Date().toISOString(), type: "manual", message: `${league().name} 手动刷新完成，当前模式：${effectiveMode()}。` });
+      state.logs.unshift({ time: new Date().toISOString(), type: "manual", message: `${league()?.name || "当前联赛"} 手动刷新完成，当前模式：${effectiveMode()}。` });
       button.disabled = false;
       button.textContent = "重新读取本地 JSON";
       renderAll();
