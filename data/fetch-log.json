@@ -1,0 +1,30 @@
+{
+  "lastRunAt": "2026-05-19T20:08:50.676Z",
+  "status": "ok",
+  "logs": [
+    {
+      "script": "fetch-standings.js",
+      "status": "ok",
+      "exitCode": 0,
+      "message": "Executed successfully."
+    },
+    {
+      "script": "fetch-attendance.js",
+      "status": "ok",
+      "exitCode": 0,
+      "message": "Executed successfully."
+    },
+    {
+      "script": "fetch-attendance-history.js",
+      "status": "ok",
+      "exitCode": 0,
+      "message": "Executed successfully."
+    },
+    {
+      "script": "fetch-official-feed.js",
+      "status": "ok",
+      "exitCode": 0,
+      "message": "Executed successfully."
+    }
+  ]
+}

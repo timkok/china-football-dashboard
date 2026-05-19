@@ -3,13 +3,13 @@
   "leagueName": "中超",
   "season": 2026,
   "type": "standings",
-  "sourceId": "sina-sports",
   "mode": "fallback",
   "source": "新浪体育中超积分榜",
   "sourceUrl": "https://sports.sina.com.cn/csl/table/",
   "isOfficial": false,
-  "fetchedAt": "2026-05-19T19:54:08.986Z",
-  "schemaVersion": 1,
+  "fetchedAt": "2026-05-19T20:08:50.742Z",
+  "status": "ok",
+  "disclaimer": "非官方 fallback 数据，如有变化，以中足联或中国足协官方公告为准。",
   "data": [
     {
       "rank": 1,
@@ -28,7 +28,7 @@
       "form": [
         "W",
         "W",
-        "D",
+        "W",
         "W",
         "W"
       ],
@@ -43,11 +43,7 @@
         "draws": 1,
         "losses": 0,
         "points": 16
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 2,
@@ -65,10 +61,10 @@
       "points": 20,
       "form": [
         "W",
-        "D",
         "W",
         "W",
-        "D"
+        "W",
+        "W"
       ],
       "homeRecord": {
         "wins": 3,
@@ -81,11 +77,7 @@
         "draws": 2,
         "losses": 2,
         "points": 8
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 3,
@@ -102,10 +94,10 @@
       "goalDiff": 4,
       "points": 19,
       "form": [
-        "L",
         "W",
         "W",
-        "D",
+        "W",
+        "W",
         "W"
       ],
       "homeRecord": {
@@ -119,11 +111,7 @@
         "draws": 0,
         "losses": 3,
         "points": 9
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 4,
@@ -140,11 +128,11 @@
       "goalDiff": -5,
       "points": 19,
       "form": [
-        "D",
         "W",
-        "D",
         "W",
-        "L"
+        "W",
+        "W",
+        "W"
       ],
       "homeRecord": {
         "wins": 4,
@@ -157,11 +145,7 @@
         "draws": 1,
         "losses": 4,
         "points": 7
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 5,
@@ -179,9 +163,9 @@
       "points": 17,
       "form": [
         "W",
-        "L",
         "W",
-        "D",
+        "W",
+        "W",
         "W"
       ],
       "homeRecord": {
@@ -195,11 +179,7 @@
         "draws": 0,
         "losses": 2,
         "points": 9
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 6,
@@ -216,11 +196,11 @@
       "goalDiff": -7,
       "points": 14,
       "form": [
-        "D",
-        "D",
-        "L",
         "W",
-        "D"
+        "W",
+        "W",
+        "W",
+        "W"
       ],
       "homeRecord": {
         "wins": 1,
@@ -233,11 +213,7 @@
         "draws": 3,
         "losses": 3,
         "points": 6
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 7,
@@ -254,11 +230,11 @@
       "goalDiff": 3,
       "points": 12,
       "form": [
-        "L",
-        "D",
-        "L",
-        "D",
-        "L"
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
       ],
       "homeRecord": {
         "wins": 2,
@@ -271,11 +247,7 @@
         "draws": 3,
         "losses": 2,
         "points": 9
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 8,
@@ -292,11 +264,11 @@
       "goalDiff": -1,
       "points": 12,
       "form": [
-        "L",
-        "L",
-        "D",
-        "L",
-        "D"
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
       ],
       "homeRecord": {
         "wins": 3,
@@ -309,11 +281,7 @@
         "draws": 2,
         "losses": 3,
         "points": 8
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 9,
@@ -332,7 +300,7 @@
       "form": [
         "W",
         "W",
-        "D",
+        "W",
         "W",
         "W"
       ],
@@ -347,11 +315,7 @@
         "draws": 2,
         "losses": 2,
         "points": 8
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 10,
@@ -369,10 +333,10 @@
       "points": 11,
       "form": [
         "W",
-        "D",
         "W",
         "W",
-        "D"
+        "W",
+        "W"
       ],
       "homeRecord": {
         "wins": 3,
@@ -385,11 +349,7 @@
         "draws": 2,
         "losses": 3,
         "points": 5
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 11,
@@ -406,10 +366,10 @@
       "goalDiff": -3,
       "points": 11,
       "form": [
-        "L",
         "W",
         "W",
-        "D",
+        "W",
+        "W",
         "W"
       ],
       "homeRecord": {
@@ -423,11 +383,7 @@
         "draws": 1,
         "losses": 3,
         "points": 7
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 12,
@@ -444,11 +400,11 @@
       "goalDiff": -7,
       "points": 11,
       "form": [
-        "D",
         "W",
-        "D",
         "W",
-        "L"
+        "W",
+        "W",
+        "W"
       ],
       "homeRecord": {
         "wins": 3,
@@ -461,11 +417,7 @@
         "draws": 1,
         "losses": 5,
         "points": 1
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 13,
@@ -483,9 +435,9 @@
       "points": 10,
       "form": [
         "W",
-        "L",
         "W",
-        "D",
+        "W",
+        "W",
         "W"
       ],
       "homeRecord": {
@@ -499,18 +451,14 @@
         "draws": 1,
         "losses": 4,
         "points": 4
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 14,
       "team": "辽宁铁人",
       "name": "辽宁铁人",
-      "shortName": "铁人",
-      "city": "沈阳",
+      "shortName": "辽宁铁",
+      "city": "未标注",
       "played": 12,
       "wins": 2,
       "draws": 2,
@@ -520,11 +468,11 @@
       "goalDiff": -10,
       "points": 8,
       "form": [
-        "D",
-        "D",
-        "L",
         "W",
-        "D"
+        "W",
+        "W",
+        "W",
+        "W"
       ],
       "homeRecord": {
         "wins": 2,
@@ -537,11 +485,7 @@
         "draws": 2,
         "losses": 5,
         "points": 2
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 15,
@@ -558,11 +502,11 @@
       "goalDiff": -8,
       "points": 5,
       "form": [
-        "L",
-        "D",
-        "L",
-        "D",
-        "L"
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
       ],
       "homeRecord": {
         "wins": 2,
@@ -575,11 +519,7 @@
         "draws": 3,
         "losses": 3,
         "points": 3
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     },
     {
       "rank": 16,
@@ -596,11 +536,11 @@
       "goalDiff": -3,
       "points": 1,
       "form": [
-        "L",
-        "L",
-        "D",
-        "L",
-        "D"
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
       ],
       "homeRecord": {
         "wins": 0,
@@ -613,11 +553,7 @@
         "draws": 2,
         "losses": 2,
         "points": 8
-      },
-      "source": "新浪体育中超积分榜",
-      "sourceUrl": "https://sports.sina.com.cn/csl/table/",
-      "isOfficial": false,
-      "updatedAt": "2026-05-19T19:54:08.986Z"
+      }
     }
   ]
 }

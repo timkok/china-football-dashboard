@@ -1,15 +1,25 @@
 import * as cheerio from "cheerio";
-import { mkdir, writeFile, readFile } from "node:fs/promises";
-import { existsSync } from "node:fs";
+import { writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 
-const DATA_DIR = path.join(process.cwd(), "data");
+const ROOT = process.cwd();
+const DATA_DIR = path.join(ROOT, "data");
 const NOW = new Date().toISOString();
-const SOURCE_URL = "https://www.transfermarkt.com/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL";
 
-function normalizeNumber(value) {
-  if (value === null || value === undefined) return 0;
-  const raw = String(value).trim();
+const SOURCES = [
+  {
+    name: "Transfermarkt UK",
+    url: "https://www.transfermarkt.co.uk/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL"
+  },
+  {
+    name: "Transfermarkt",
+    url: "https://www.transfermarkt.com/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL"
+  }
+];
+
+function normalizeNumber(val) {
+  if (val === null || val === undefined) return 0;
+  const raw = String(val).trim();
   if (!raw || raw === "-") return 0;
   const cleaned = raw.replace(/\s/g, "");
   if (/^\d{1,3}(\.\d{3})+$/.test(cleaned)) return Number(cleaned.replace(/\./g, ""));
@@ -18,35 +28,45 @@ function normalizeNumber(value) {
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
-function seasonEndYear(season) {
-  const match = String(season).match(/(\d{2})\/(\d{2})/);
-  if (!match) return Number(season) || 0;
-  return 2000 + Number(match[2]);
-}
-
 async function getHtml(url) {
   const response = await fetch(url, {
     headers: {
-      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/125 Safari/537.36",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
       "accept-language": "en-US,en;q=0.9,zh-CN;q=0.8"
     }
   });
-  if (!response.ok) throw new Error(`${url} returned ${response.status}`);
+  if (!response.ok) throw new Error(`HTTP ${response.status} when fetching ${url}`);
   return response.text();
 }
 
-function parseHistory(html) {
+function parseHistoryHtml(html, source) {
   const $ = cheerio.load(html);
-  const rows = [];
   const table = $("table.items").first();
-  if (!table.length) throw new Error("History items table not found");
-  
+  if (!table.length) throw new Error("Transfermarkt UK history table not found");
+
+  const seasons = [];
   table.find("> tbody > tr").each((_, row) => {
     const cells = $(row).children("td").map((__, cell) => $(cell).text().replace(/\s+/g, " ").trim()).get();
     if (cells.length < 4 || !cells[0]) return;
-    rows.push({
-      season: cells[0],
-      seasonEndYear: seasonEndYear(cells[0]),
+
+    const season = cells[0]; // e.g. "2024" or "24/25" or "23"
+    
+    // Compute seasonEndYear
+    let seasonEndYear = 0;
+    if (season.includes("/")) {
+      const parts = season.split("/");
+      const lastPart = parts[parts.length - 1];
+      seasonEndYear = lastPart.length === 2 ? 2000 + parseInt(lastPart) : parseInt(lastPart);
+    } else {
+      const parsedYear = parseInt(season);
+      if (parsedYear > 1900 && parsedYear < 2100) {
+        seasonEndYear = parsedYear;
+      }
+    }
+
+    seasons.push({
+      season,
+      seasonEndYear,
       matches: normalizeNumber(cells[1]),
       totalAttendance: normalizeNumber(cells[2]),
       averageAttendance: normalizeNumber(cells[3]),
@@ -55,74 +75,51 @@ function parseHistory(html) {
     });
   });
 
-  const filtered = rows
-    .filter(row => row.seasonEndYear >= 2024 && row.seasonEndYear <= 2026)
-    .sort((a, b) => a.seasonEndYear - b.seasonEndYear)
-    .map((row, index, array) => {
-      const previous = array[index - 1];
-      const yoyGrowth = previous && previous.averageAttendance
-        ? (row.averageAttendance - previous.averageAttendance) / previous.averageAttendance
-        : null;
-      return { ...row, yoyGrowth };
-    });
+  if (seasons.length < 3) {
+    throw new Error(`Historical data has too few seasons: ${seasons.length}`);
+  }
 
-  if (filtered.length < 1) throw new Error(`Too few recent attendance history rows: ${filtered.length}`);
-  return filtered;
+  return {
+    league: "csl",
+    leagueName: "中超",
+    type: "attendance-history",
+    mode: "third_party",
+    source: "Transfermarkt",
+    sourceUrl: source.url,
+    isOfficial: false,
+    fetchedAt: NOW,
+    status: "ok",
+    seasons
+  };
 }
 
 async function main() {
   await mkdir(DATA_DIR, { recursive: true });
-  const targetPath = path.join(DATA_DIR, "attendance-history-csl.json");
+  let history = null;
+  let usedSource = null;
 
-  try {
-    const html = await getHtml(SOURCE_URL);
-    const data = parseHistory(html);
-    const payload = {
-      league: "csl",
-      leagueName: "中超",
-      season: 2026,
-      type: "attendance_history",
-      source: "Transfermarkt",
-      sourceUrl: SOURCE_URL,
-      isOfficial: false,
-      mode: "third_party",
-      fetchedAt: NOW,
-      schemaVersion: 1,
-      data
-    };
-    await writeFile(targetPath, `${JSON.stringify(payload, null, 2)}\n`);
-    console.log(`[write] data/attendance-history-csl.json: ${data.length} rows`);
-  } catch (error) {
-    console.warn(`[warning] Failed to fetch history from Transfermarkt: ${error.message}`);
-    if (existsSync(targetPath)) {
-      console.log(`[info] Preserved existing data/attendance-history-csl.json`);
-    } else {
-      // Write default fallback history
-      const fallbackPayload = {
-        league: "csl",
-        leagueName: "中超",
-        season: 2026,
-        type: "attendance_history",
-        source: "内置示例数据",
-        sourceUrl: "",
-        isOfficial: false,
-        mode: "mock",
-        fetchedAt: NOW,
-        schemaVersion: 1,
-        data: [
-          { season: "2024", seasonEndYear: 2024, matches: 240, totalAttendance: 4560000, averageAttendance: 19000, yoyGrowth: null },
-          { season: "2025", seasonEndYear: 2025, matches: 240, totalAttendance: 5040000, averageAttendance: 21000, yoyGrowth: 0.105 },
-          { season: "2026", seasonEndYear: 2026, matches: 48, totalAttendance: 1124000, averageAttendance: 23417, yoyGrowth: 0.115 }
-        ]
-      };
-      await writeFile(targetPath, `${JSON.stringify(fallbackPayload, null, 2)}\n`);
-      console.log(`[write] data/attendance-history-csl.json: generated default fallback history data`);
+  for (const source of SOURCES) {
+    try {
+      console.log(`[history] Trying ${source.url}`);
+      const html = await getHtml(source.url);
+      history = parseHistoryHtml(html, source);
+      usedSource = source;
+      break;
+    } catch (err) {
+      console.warn(`[history] Source ${source.name} failed: ${err.message}`);
     }
   }
+
+  if (!history) {
+    throw new Error("Failed to crawl CSL attendance history from Transfermarkt");
+  }
+
+  const destPath = path.join(DATA_DIR, "csl-attendance-history.json");
+  await writeFile(destPath, JSON.stringify(history, null, 2) + "\n");
+  console.log(`[write] ${destPath} successfully created with ${history.seasons.length} seasons.`);
 }
 
-main().catch(error => {
-  console.error(`[fatal] ${error.stack || error.message}`);
+main().catch(err => {
+  console.error(`[fatal] History crawl failed: ${err.stack || err.message}`);
   process.exitCode = 1;
 });
-

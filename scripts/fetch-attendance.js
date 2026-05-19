@@ -1,37 +1,24 @@
 import * as cheerio from "cheerio";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { existsSync } from "node:fs";
+import { writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 
 const ROOT = process.cwd();
 const DATA_DIR = path.join(ROOT, "data");
-const NOW = new Date().toISOString();
 const SEASON = 2026;
+const NOW = new Date().toISOString();
 
 const SOURCES = [
   {
-    id: "tm-com-attendance",
     name: "Transfermarkt",
-    url: "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
-    type: "team"
+    url: "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL"
   },
   {
-    id: "tm-com-development",
-    name: "Transfermarkt",
-    url: "https://www.transfermarkt.com/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL",
-    type: "development"
-  },
-  {
-    id: "tm-uk-development",
     name: "Transfermarkt UK",
-    url: "https://www.transfermarkt.co.uk/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL",
-    type: "development"
+    url: "https://www.transfermarkt.co.uk/chinese-super-league/besucherzahlen/wettbewerb/CSL"
   },
   {
-    id: "tm-jp-attendance",
     name: "Transfermarkt JP",
-    url: "https://www.transfermarkt.jp/chinese-super-league/besucherzahlen/wettbewerb/CSL",
-    type: "team"
+    url: "https://www.transfermarkt.jp/chinese-super-league/besucherzahlen/wettbewerb/CSL"
   }
 ];
 
@@ -51,7 +38,11 @@ const TEAM_CN = {
   "Henan FC": "河南队",
   "Wuhan Three Towns": "武汉三镇",
   "Shenzhen Peng City": "深圳新鹏城",
-  "Qingdao West Coast": "青岛西海岸"
+  "Qingdao West Coast": "青岛西海岸",
+  "Cangzhou Mighty Lions": "沧州雄狮",
+  "Changchun Yatai": "长春亚泰",
+  "Meizhou Hakka": "梅州客家",
+  "Nantong Zhiyun": "南通支云"
 };
 
 const STADIUM_CN = {
@@ -73,9 +64,9 @@ const STADIUM_CN = {
   "West Coast University City Sports Center Stadium": "西海岸大学城体育中心"
 };
 
-function normalizeNumber(value) {
-  if (value === null || value === undefined) return 0;
-  const raw = String(value).trim();
+function normalizeNumber(val) {
+  if (val === null || val === undefined) return 0;
+  const raw = String(val).trim();
   if (!raw || raw === "-") return 0;
   const cleaned = raw.replace(/\s/g, "");
   if (/^\d{1,3}(\.\d{3})+$/.test(cleaned)) return Number(cleaned.replace(/\./g, ""));
@@ -84,18 +75,14 @@ function normalizeNumber(value) {
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
-function formatError(error) {
-  return error && error.message ? error.message : String(error);
-}
-
 async function getHtml(url) {
   const response = await fetch(url, {
     headers: {
-      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/125 Safari/537.36",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
       "accept-language": "en-US,en;q=0.9,zh-CN;q=0.8"
     }
   });
-  if (!response.ok) throw new Error(`${url} returned ${response.status}`);
+  if (!response.ok) throw new Error(`HTTP ${response.status} when fetching ${url}`);
   return response.text();
 }
 
@@ -130,16 +117,18 @@ function parseAttendanceHtml(html, source) {
       matches: averageAttendance ? Math.round(totalAttendance / averageAttendance) : 0,
       totalAttendance,
       averageAttendance,
-      occupancyRate,
-      source: source.name
+      occupancyRate
     });
   });
 
-  validateTeams(teams);
+  if (teams.length < 8) {
+    throw new Error(`Attendance table parsed too few teams: ${teams.length}`);
+  }
+
   const totalCells = table.find("> tfoot > tr > td").map((_, cell) => $(cell).text().replace(/\s+/g, " ").trim()).get();
-  const totalAttendance = normalizeNumber(totalCells[3] || teams.reduce((sum, team) => sum + team.totalAttendance, 0));
-  const averageAttendance = normalizeNumber(totalCells[4] || Math.round(totalAttendance / teams.reduce((sum, team) => sum + team.matches, 0)));
-  const matches = teams.reduce((sum, team) => sum + team.matches, 0) || (averageAttendance ? Math.round(totalAttendance / averageAttendance) : 0);
+  const totalAttendance = normalizeNumber(totalCells[3] || teams.reduce((sum, t) => sum + t.totalAttendance, 0));
+  const averageAttendance = normalizeNumber(totalCells[4] || Math.round(totalAttendance / teams.reduce((sum, t) => sum + t.matches, 0)));
+  const matches = teams.reduce((sum, t) => sum + t.matches, 0) || (averageAttendance ? Math.round(totalAttendance / averageAttendance) : 0);
   const highest = [...teams].sort((a, b) => b.averageAttendance - a.averageAttendance)[0];
 
   return {
@@ -147,130 +136,51 @@ function parseAttendanceHtml(html, source) {
     leagueName: "中超",
     season: SEASON,
     type: "attendance",
+    mode: "third_party",
     source: "Transfermarkt",
     sourceUrl: source.url,
     isOfficial: false,
-    mode: "third_party",
     fetchedAt: NOW,
-    schemaVersion: 1,
+    status: "ok",
+    disclaimer: "观众人数来自第三方公开来源 Transfermarkt，非官方数据，仅供趋势分析参考。",
     summary: {
       matches,
       totalAttendance,
       averageAttendance,
-      highestAverageTeam: highest.team,
-      highestAverageAttendance: highest.averageAttendance
+      highestAverageTeam: highest ? (highest.teamCn || highest.team) : "",
+      highestAverageAttendance: highest ? highest.averageAttendance : 0
     },
-    teams,
-    matches: [],
-    trend: []
+    teams
   };
-}
-
-function parseTrendHtml(html) {
-  const $ = cheerio.load(html);
-  const table = $("table.items").first();
-  const trend = [];
-  table.find("> tbody > tr").each((_, row) => {
-    const cells = $(row).children("td").map((__, cell) => $(cell).text().replace(/\s+/g, " ").trim()).get();
-    if (cells.length < 4 || !cells[0]) return;
-    trend.push({
-      season: cells[0],
-      matches: normalizeNumber(cells[1]),
-      totalAttendance: normalizeNumber(cells[2]),
-      averageAttendance: normalizeNumber(cells[3]),
-      highestAverageTeam: cells[5] || "",
-      highestAverageAttendance: normalizeNumber(cells[6])
-    });
-  });
-  return trend;
-}
-
-function validateTeams(teams) {
-  if (!Array.isArray(teams) || teams.length < 8) {
-    throw new Error(`Attendance data has too few teams: ${teams?.length || 0}`);
-  }
-  teams.forEach(team => {
-    if (typeof team.capacity !== "number" || typeof team.averageAttendance !== "number") {
-      throw new Error(`${team.team} has invalid capacity or average attendance`);
-    }
-    if (team.occupancyRate !== null && (team.occupancyRate < 0 || team.occupancyRate > 1.2)) {
-      throw new Error(`${team.team} has out-of-range occupancy rate ${team.occupancyRate}`);
-    }
-  });
-}
-
-async function writeJson(fileName, payload) {
-  await writeFile(path.join(DATA_DIR, fileName), `${JSON.stringify(payload, null, 2)}\n`);
-}
-
-async function readExistingMeta() {
-  const file = path.join(DATA_DIR, "attendance-meta.json");
-  if (!existsSync(file)) return null;
-  try {
-    return JSON.parse(await readFile(file, "utf8"));
-  } catch {
-    return null;
-  }
 }
 
 async function main() {
   await mkdir(DATA_DIR, { recursive: true });
-  const logs = [];
   let attendance = null;
   let usedSource = null;
 
   for (const source of SOURCES) {
     try {
+      console.log(`[attendance] Trying ${source.url}`);
       const html = await getHtml(source.url);
       attendance = parseAttendanceHtml(html, source);
       usedSource = source;
-      logs.push({ level: "info", source: source.id, message: `Fetched ${attendance.teams.length} attendance rows from ${source.url}` });
       break;
-    } catch (error) {
-      logs.push({ level: "warning", source: source.id, message: formatError(error) });
+    } catch (err) {
+      console.warn(`[attendance] Source ${source.name} failed: ${err.message}`);
     }
   }
 
-  if (attendance) {
-    try {
-      const trendHtml = await getHtml(SOURCES[1].url);
-      attendance.trend = parseTrendHtml(trendHtml);
-      logs.push({ level: "info", source: SOURCES[1].id, message: `Fetched ${attendance.trend.length} attendance trend rows` });
-    } catch (error) {
-      logs.push({ level: "warning", source: SOURCES[1].id, message: `Attendance trend unavailable: ${formatError(error)}` });
-    }
-    await writeJson("attendance-csl.json", attendance);
-    await writeJson("attendance-meta.json", {
-      updatedAt: NOW,
-      status: "ok",
-      mode: "third_party",
-      source: usedSource.name,
-      sourceUrl: usedSource.url,
-      isOfficial: false,
-      teamsCount: attendance.teams.length,
-      logs
-    });
-    console.log(`[write] data/attendance-csl.json: ${attendance.teams.length} teams from ${usedSource.url}`);
-    console.log("[write] data/attendance-meta.json: ok");
-    return;
+  if (!attendance) {
+    throw new Error("Failed to crawl CSL attendance from all Transfermarkt mirrors");
   }
 
-  const previous = readExistingMeta();
-  await writeJson("attendance-meta.json", {
-    updatedAt: NOW,
-    status: "error",
-    mode: previous?.mode || "mock",
-    source: previous?.source || "none",
-    sourceUrl: previous?.sourceUrl || "",
-    isOfficial: false,
-    preservedPreviousData: existsSync(path.join(DATA_DIR, "attendance-csl.json")),
-    logs
-  });
-  console.error("[error] Transfermarkt attendance fetch failed; preserved previous attendance-csl.json if present");
-  process.exitCode = existsSync(path.join(DATA_DIR, "attendance-csl.json")) ? 0 : 1;
+  const destPath = path.join(DATA_DIR, "csl-attendance.json");
+  await writeFile(destPath, JSON.stringify(attendance, null, 2) + "\n");
+  console.log(`[write] ${destPath} successfully created with ${attendance.teams.length} teams.`);
 }
 
-main().catch(error => {
-  console.error(`[fatal] ${error.stack || error.message}`);
+main().catch(err => {
+  console.error(`[fatal] Attendance crawl failed: ${err.stack || err.message}`);
   process.exitCode = 1;
 });

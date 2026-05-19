@@ -1,14 +1,16 @@
 {
-  "updatedAt": "2026-05-19T19:54:08.986Z",
-  "mode": "fallback",
+  "updatedAt": "2026-05-19T20:00:00.000Z",
+  "mode": "real-data-only",
+  "primarySource": "新浪体育 / Transfermarkt",
+  "primarySourceUrl": "",
   "sources": [
     {
       "id": "cfl-official",
       "name": "中国足球职业联赛联合会官网",
       "url": "https://www.cfl-china.cn/",
       "isOfficial": true,
-      "status": "error",
-      "lastFetchedAt": "2026-05-19T19:54:08.986Z"
+      "status": "unused",
+      "lastFetchedAt": "2026-05-19T20:00:00.000Z"
     },
     {
       "id": "sina-sports",
@@ -16,39 +18,35 @@
       "url": "https://sports.sina.com.cn/csl/table/",
       "isOfficial": false,
       "status": "ok",
-      "lastFetchedAt": "2026-05-19T19:54:08.986Z"
+      "lastFetchedAt": "2026-05-19T20:00:00.000Z"
     },
     {
-      "id": "qiumiwu",
-      "name": "球迷屋",
-      "url": "https://www.qiumiwu.com/league/zhongchao/standings",
+      "id": "tm-csl",
+      "name": "Transfermarkt",
+      "url": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
       "isOfficial": false,
-      "status": "unused",
-      "lastFetchedAt": "2026-05-19T19:54:08.986Z"
+      "status": "ok",
+      "lastFetchedAt": "2026-05-19T20:00:00.000Z"
     }
   ],
   "leagues": {
     "csl": {
-      "standings": "fallback",
-      "fixtures": "mock"
+      "standings": "ok",
+      "fixtures": "missing"
     },
     "cl1": {
-      "standings": "mock",
-      "fixtures": "mock"
+      "standings": "missing",
+      "fixtures": "missing"
     },
     "cl2": {
-      "standings": "mock",
-      "fixtures": "mock"
+      "standings": "missing",
+      "fixtures": "missing"
     }
   },
   "logs": [
     {
-      "level": "warning",
-      "message": "Official CFL standings unavailable: Official CFL public HTML does not expose a complete 16-team standings table yet"
-    },
-    {
       "level": "info",
-      "message": "Sina fallback CSL standings fetch succeeded"
+      "message": "Initialized strict real-data-only mode."
     }
   ]
 }

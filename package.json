@@ -6,12 +6,12 @@
   "type": "module",
   "scripts": {
     "seed": "node scripts/seed-data.js",
-    "fetch:data": "node scripts/fetch-data.js",
+    "fetch:standings": "node scripts/fetch-standings.js",
     "fetch:attendance": "node scripts/fetch-attendance.js",
     "fetch:attendance-history": "node scripts/fetch-attendance-history.js",
+    "fetch:official-feed": "node scripts/fetch-official-feed.js",
     "validate:data": "node scripts/validate-data.js",
-    "generate:changelog": "node scripts/generate-changelog.js",
-    "fetch:all": "npm run fetch:data && npm run fetch:attendance && npm run fetch:attendance-history && npm run validate:data && npm run generate:changelog"
+    "fetch:all": "node scripts/fetch-all.js && node scripts/validate-data.js"
   },
   "dependencies": {
     "cheerio": "^1.2.0"

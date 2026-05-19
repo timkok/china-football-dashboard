@@ -1,0 +1,265 @@
+{
+  "league": "csl",
+  "leagueName": "中超",
+  "type": "attendance-history",
+  "mode": "third_party",
+  "source": "Transfermarkt",
+  "sourceUrl": "https://www.transfermarkt.co.uk/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL",
+  "isOfficial": false,
+  "fetchedAt": "2026-05-19T20:08:56.891Z",
+  "status": "ok",
+  "seasons": [
+    {
+      "season": "25/26",
+      "seasonEndYear": 2026,
+      "matches": 100,
+      "totalAttendance": 3056914,
+      "averageAttendance": 30569,
+      "highestAverageTeam": "Dalian Yingbo",
+      "highestAverageAttendance": 60739
+    },
+    {
+      "season": "24/25",
+      "seasonEndYear": 2025,
+      "matches": 240,
+      "totalAttendance": 6180990,
+      "averageAttendance": 25754,
+      "highestAverageTeam": "Dalian Yingbo",
+      "highestAverageAttendance": 58268
+    },
+    {
+      "season": "23/24",
+      "seasonEndYear": 2024,
+      "matches": 240,
+      "totalAttendance": 4663407,
+      "averageAttendance": 19594,
+      "highestAverageTeam": "Beijing Guoan",
+      "highestAverageAttendance": 46444
+    },
+    {
+      "season": "22/23",
+      "seasonEndYear": 2023,
+      "matches": 240,
+      "totalAttendance": 4705359,
+      "averageAttendance": 19938,
+      "highestAverageTeam": "Beijing Guoan",
+      "highestAverageAttendance": 43769
+    },
+    {
+      "season": "21/22",
+      "seasonEndYear": 2022,
+      "matches": 306,
+      "totalAttendance": 208090,
+      "averageAttendance": 4427,
+      "highestAverageTeam": "Dalian Professional",
+      "highestAverageAttendance": 5442
+    },
+    {
+      "season": "20/21",
+      "seasonEndYear": 2021,
+      "matches": 176,
+      "totalAttendance": 199655,
+      "averageAttendance": 2980,
+      "highestAverageTeam": "Guangzhou FC (1954 - 2024)",
+      "highestAverageAttendance": 7336
+    },
+    {
+      "season": "19/20",
+      "seasonEndYear": 2020,
+      "matches": 112,
+      "totalAttendance": 25645,
+      "averageAttendance": 1282,
+      "highestAverageTeam": "Dalian Professional",
+      "highestAverageAttendance": 856
+    },
+    {
+      "season": "18/19",
+      "seasonEndYear": 2019,
+      "matches": 240,
+      "totalAttendance": 5595368,
+      "averageAttendance": 23314,
+      "highestAverageTeam": "Guangzhou Evergrande Taobao",
+      "highestAverageAttendance": 45795
+    },
+    {
+      "season": "17/18",
+      "seasonEndYear": 2018,
+      "matches": 240,
+      "totalAttendance": 5750421,
+      "averageAttendance": 23960,
+      "highestAverageTeam": "Guangzhou Evergrande Taobao",
+      "highestAverageAttendance": 47002
+    },
+    {
+      "season": "16/17",
+      "seasonEndYear": 2017,
+      "matches": 240,
+      "totalAttendance": 5676298,
+      "averageAttendance": 23850,
+      "highestAverageTeam": "Guangzhou Evergrande Taobao",
+      "highestAverageAttendance": 45589
+    },
+    {
+      "season": "15/16",
+      "seasonEndYear": 2016,
+      "matches": 240,
+      "totalAttendance": 5798947,
+      "averageAttendance": 24162,
+      "highestAverageTeam": "Guangzhou Evergrande Taobao",
+      "highestAverageAttendance": 44883
+    },
+    {
+      "season": "14/15",
+      "seasonEndYear": 2015,
+      "matches": 240,
+      "totalAttendance": 5317885,
+      "averageAttendance": 22158,
+      "highestAverageTeam": "Guangzhou Evergrande Taobao",
+      "highestAverageAttendance": 45889
+    },
+    {
+      "season": "13/14",
+      "seasonEndYear": 2014,
+      "matches": 240,
+      "totalAttendance": 4554694,
+      "averageAttendance": 18978,
+      "highestAverageTeam": "Guangzhou Evergrande",
+      "highestAverageAttendance": 42154
+    },
+    {
+      "season": "12/13",
+      "seasonEndYear": 2013,
+      "matches": 240,
+      "totalAttendance": 4457016,
+      "averageAttendance": 18571,
+      "highestAverageTeam": "Guangzhou Evergrande",
+      "highestAverageAttendance": 40428
+    },
+    {
+      "season": "11/12",
+      "seasonEndYear": 2012,
+      "matches": 240,
+      "totalAttendance": 4497528,
+      "averageAttendance": 18818,
+      "highestAverageTeam": "Guangzhou Evergrande",
+      "highestAverageAttendance": 37250
+    },
+    {
+      "season": "10/11",
+      "seasonEndYear": 2011,
+      "matches": 240,
+      "totalAttendance": 4242026,
+      "averageAttendance": 17675,
+      "highestAverageTeam": "Guangzhou Evergrande",
+      "highestAverageAttendance": 45666
+    },
+    {
+      "season": "09/10",
+      "seasonEndYear": 2010,
+      "matches": 240,
+      "totalAttendance": 3497303,
+      "averageAttendance": 14572,
+      "highestAverageTeam": "Beijing Guoan",
+      "highestAverageAttendance": 33342
+    },
+    {
+      "season": "08/09",
+      "seasonEndYear": 2009,
+      "matches": 240,
+      "totalAttendance": 3846583,
+      "averageAttendance": 16094,
+      "highestAverageTeam": "Beijing Guoan",
+      "highestAverageAttendance": 36805
+    },
+    {
+      "season": "07/08",
+      "seasonEndYear": 2008,
+      "matches": 29,
+      "totalAttendance": 430959,
+      "averageAttendance": 14861,
+      "highestAverageTeam": "Shaanxi Chanba",
+      "highestAverageAttendance": 37303
+    },
+    {
+      "season": "06/07",
+      "seasonEndYear": 2007,
+      "matches": 210,
+      "totalAttendance": 3153500,
+      "averageAttendance": 15089,
+      "highestAverageTeam": "Shaanxi Chanba",
+      "highestAverageAttendance": 24643
+    },
+    {
+      "season": "05/06",
+      "seasonEndYear": 2006,
+      "matches": 156,
+      "totalAttendance": 1783500,
+      "averageAttendance": 11433,
+      "highestAverageTeam": "Shandong Luneng Taishan",
+      "highestAverageAttendance": 31300
+    },
+    {
+      "season": "99/00",
+      "seasonEndYear": 2000,
+      "matches": 26,
+      "totalAttendance": 518000,
+      "averageAttendance": 19923,
+      "highestAverageTeam": "Dalian Shide",
+      "highestAverageAttendance": 40000
+    },
+    {
+      "season": "98/99",
+      "seasonEndYear": 2099,
+      "matches": 26,
+      "totalAttendance": 521000,
+      "averageAttendance": 20038,
+      "highestAverageTeam": "Beijing Guoan",
+      "highestAverageAttendance": 45000
+    },
+    {
+      "season": "97/98",
+      "seasonEndYear": 2098,
+      "matches": 26,
+      "totalAttendance": 788000,
+      "averageAttendance": 30308,
+      "highestAverageTeam": "Beijing Guoan",
+      "highestAverageAttendance": 45000
+    },
+    {
+      "season": "96/97",
+      "seasonEndYear": 2097,
+      "matches": 23,
+      "totalAttendance": 497000,
+      "averageAttendance": 22591,
+      "highestAverageTeam": "Sichuan Quanxing",
+      "highestAverageAttendance": 42000
+    },
+    {
+      "season": "95/96",
+      "seasonEndYear": 2096,
+      "matches": 22,
+      "totalAttendance": 613000,
+      "averageAttendance": 27864,
+      "highestAverageTeam": "Jinan Taishan General",
+      "highestAverageAttendance": 48000
+    },
+    {
+      "season": "94/95",
+      "seasonEndYear": 2095,
+      "matches": 22,
+      "totalAttendance": 595000,
+      "averageAttendance": 27045,
+      "highestAverageTeam": "Sichuan Quanxing",
+      "highestAverageAttendance": 40000
+    },
+    {
+      "season": "93/94",
+      "seasonEndYear": 2094,
+      "matches": 28,
+      "totalAttendance": 421300,
+      "averageAttendance": 19150,
+      "highestAverageTeam": "Dalian Wanda",
+      "highestAverageAttendance": 38000
+    }
+  ]
+}
