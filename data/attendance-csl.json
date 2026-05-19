@@ -7,12 +7,12 @@
   "sourceUrl": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
   "isOfficial": false,
   "mode": "third_party",
-  "fetchedAt": "2026-05-19T10:25:28.739Z",
+  "fetchedAt": "2026-05-19T15:28:58.061Z",
   "schemaVersion": 1,
   "summary": {
-    "matches": 96,
-    "totalAttendance": 2970770,
-    "averageAttendance": 30945,
+    "matches": 98,
+    "totalAttendance": 3004829,
+    "averageAttendance": 30661,
     "highestAverageTeam": "Dalian Yingbo",
     "highestAverageAttendance": 60739
   },
@@ -97,6 +97,19 @@
     },
     {
       "rank": 7,
+      "team": "Tianjin Jinmen Tiger",
+      "teamCn": "天津津门虎",
+      "stadium": "TEDA Football Stadium",
+      "stadiumCn": "泰达足球场",
+      "capacity": 35680,
+      "matches": 7,
+      "totalAttendance": 173187,
+      "averageAttendance": 24741,
+      "occupancyRate": 0.6934136771300449,
+      "source": "Transfermarkt"
+    },
+    {
+      "rank": 8,
       "team": "Qingdao Hainiu",
       "teamCn": "青岛海牛",
       "stadium": "Qingdao Youth Football Stadium",
@@ -109,7 +122,7 @@
       "source": "Transfermarkt"
     },
     {
-      "rank": 8,
+      "rank": 9,
       "team": "Zhejiang FC",
       "teamCn": "浙江队",
       "stadium": "Huanglong Sports Centre Stadium",
@@ -119,19 +132,6 @@
       "totalAttendance": 155839,
       "averageAttendance": 25973,
       "occupancyRate": 0.49948076923076923,
-      "source": "Transfermarkt"
-    },
-    {
-      "rank": 9,
-      "team": "Tianjin Jinmen Tiger",
-      "teamCn": "天津津门虎",
-      "stadium": "TEDA Football Stadium",
-      "stadiumCn": "泰达足球场",
-      "capacity": 35680,
-      "matches": 6,
-      "totalAttendance": 154448,
-      "averageAttendance": 25741,
-      "occupancyRate": 0.7214405829596413,
       "source": "Transfermarkt"
     },
     {
@@ -149,6 +149,19 @@
     },
     {
       "rank": 11,
+      "team": "Shenzhen Peng City",
+      "teamCn": "深圳新鹏城",
+      "stadium": "Shenzhen Sports Center Stadium",
+      "stadiumCn": "Shenzhen Sports Center Stadium",
+      "capacity": 45000,
+      "matches": 7,
+      "totalAttendance": 141133,
+      "averageAttendance": 20162,
+      "occupancyRate": 0.44804444444444447,
+      "source": "Transfermarkt"
+    },
+    {
+      "rank": 12,
       "team": "Shanghai Port",
       "teamCn": "上海海港",
       "stadium": "SAIC Motor Pudong Arena",
@@ -161,7 +174,7 @@
       "source": "Transfermarkt"
     },
     {
-      "rank": 12,
+      "rank": 13,
       "team": "Yunnan Yukun",
       "teamCn": "云南玉昆",
       "stadium": "Yuxi Plateau Sports Center Stadium",
@@ -171,19 +184,6 @@
       "totalAttendance": 131003,
       "averageAttendance": 21834,
       "occupancyRate": 0.7278,
-      "source": "Transfermarkt"
-    },
-    {
-      "rank": 13,
-      "team": "Shenzhen Peng City",
-      "teamCn": "深圳新鹏城",
-      "stadium": "Shenzhen Sports Center Stadium",
-      "stadiumCn": "Shenzhen Sports Center Stadium",
-      "capacity": 45000,
-      "matches": 6,
-      "totalAttendance": 125813,
-      "averageAttendance": 20969,
-      "occupancyRate": 0.46597777777777777,
       "source": "Transfermarkt"
     },
     {
@@ -230,9 +230,9 @@
   "trend": [
     {
       "season": "25/26",
-      "matches": 96,
-      "totalAttendance": 2970770,
-      "averageAttendance": 30946,
+      "matches": 100,
+      "totalAttendance": 3004829,
+      "averageAttendance": 30662,
       "highestAverageTeam": "Dalian Yingbo",
       "highestAverageAttendance": 60739
     },
