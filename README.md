@@ -62,25 +62,20 @@ data/data-quality.json             # 数据质量分析与告警归档
 
 ## GitHub Actions
 
-主 workflow：
-```text
-.github/workflows/update-data.yml
-```
+项目包含两个自动化工作流：
 
-触发方式：
-- 每 6 小时自动运行一次。
-- 支持 `workflow_dispatch` 手动运行。
-
-执行内容：
-```bash
-npm install
-npm run fetch:all
-```
+1. **数据自动更新工作流 (`.github/workflows/update-data.yml`)**：
+   - 触发方式：每 6 小时自动运行一次，或通过 `workflow_dispatch` 手动触发。
+   - 执行内容：运行 `npm run fetch:all` 抓取数据、校验数据，并生成变更日志。如果检测到数据有变化，自动提交并 push 到 `main` 分支。
+2. **静态站点部署工作流 (`.github/workflows/deploy.yml`)**：
+   - 触发方式：当 `main` 分支有代码或数据推送（push）时自动运行。
+   - 执行内容：自动将最新的 `main` 分支内容部署到 `gh-pages` 分支，更新静态网站。
 
 `fetch:all` 执行流程：
 1. 运行 `scripts/fetch-all.js` 依次触发各模块抓取（积分榜、观众数据、历史数据、官方公告），并写入 `data/fetch-log.json`。
 2. 运行 `scripts/validate-data.js` 对抓取到的 JSON 文件进行格式及字段一致性校验，并输出 `data/data-quality.json`。
-3. 如果 `data/` 目录有数据更新，则自动提交并推送到 GitHub。
+3. 运行 `scripts/generate-changelog.js` 对比上一次抓取，生成排名、积分和观众人数的差异汇总 `data/changelog.json` 和双源信度评估 `data/source-comparison.json`。
+4. 如果 `data/` 目录有数据更新，则自动提交并推送到 GitHub。
 
 ## 本地运行
 

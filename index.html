@@ -1,6 +1,35 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
+  <script>
+    // Global Error and Promise Rejection Handler for Diagnostics
+    (function() {
+      function showError(title, msgStr) {
+        // Wait until document body is parsed to append
+        if (!document.body) {
+          window.addEventListener("DOMContentLoaded", () => showError(title, msgStr));
+          return;
+        }
+        const existing = document.getElementById("global-diagnostic-error");
+        if (existing) return; // avoid duplicates
+        const div = document.createElement("div");
+        div.id = "global-diagnostic-error";
+        div.style.cssText = "position:fixed;top:0;left:0;width:100%;background:#ef4444;color:#fff;padding:16px;z-index:100000;font-family:monospace;font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,0.25);word-break:break-all;line-height:1.5;";
+        div.innerHTML = `<div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;">
+          <div><strong>${title}:</strong> <span>${msgStr}</span></div>
+          <button onclick="this.parentElement.parentElement.remove()" style="background:rgba(255,255,255,0.2);border:none;color:#fff;padding:4px 8px;border-radius:4px;cursor:pointer;font-family:inherit;">关闭</button>
+        </div>`;
+        document.body.appendChild(div);
+      }
+      window.onerror = function(msg, url, line, col, err) {
+        showError("JS Error", `${msg} (at ${url || 'inline'}:${line}:${col})`);
+        return false;
+      };
+      window.addEventListener("unhandledrejection", function(event) {
+        showError("Promise Rejection", event.reason?.stack || event.reason?.message || event.reason || "Unknown Rejection");
+      });
+    })();
+  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>中国足球职业联赛监测 Dashboard</title>
@@ -2739,58 +2768,78 @@
     }
 
     // 7. Event Listeners
-    document.querySelectorAll(".tab-button").forEach(button => {
-      button.addEventListener("click", () => {
-        state.activeLeague = button.dataset.league;
-        state.fixtureTeam = "all";
-        state.fixtureStatus = "all";
-        state.selectedTeamId = league()?.standings?.[0]?.id || "";
-        document.querySelectorAll(".tab-button").forEach(tab => tab.classList.toggle("active", tab === button));
-        renderAll();
+    function setupEventListeners() {
+      document.querySelectorAll(".tab-button").forEach(button => {
+        button.addEventListener("click", () => {
+          state.activeLeague = button.dataset.league;
+          state.fixtureTeam = "all";
+          state.fixtureStatus = "all";
+          state.selectedTeamId = league()?.standings?.[0]?.id || "";
+          document.querySelectorAll(".tab-button").forEach(tab => tab.classList.toggle("active", tab === button));
+          renderAll();
+        });
       });
-    });
 
-    document.getElementById("fixtureTeamFilter").addEventListener("change", event => {
-      state.fixtureTeam = event.target.value;
-      renderFixtures();
-    });
+      const fixtureTeamFilter = document.getElementById("fixtureTeamFilter");
+      if (fixtureTeamFilter) {
+        fixtureTeamFilter.addEventListener("change", event => {
+          state.fixtureTeam = event.target.value;
+          renderFixtures();
+        });
+      }
 
-    document.getElementById("fixtureStatusFilter").addEventListener("change", event => {
-      state.fixtureStatus = event.target.value;
-      renderFixtures();
-    });
+      const fixtureStatusFilter = document.getElementById("fixtureStatusFilter");
+      if (fixtureStatusFilter) {
+        fixtureStatusFilter.addEventListener("change", event => {
+          state.fixtureStatus = event.target.value;
+          renderFixtures();
+        });
+      }
 
-    document.getElementById("teamMonitorSelect").addEventListener("change", event => {
-      state.selectedTeamId = event.target.value;
-      renderTeamMonitor();
-      renderCharts();
-    });
+      const teamMonitorSelect = document.getElementById("teamMonitorSelect");
+      if (teamMonitorSelect) {
+        teamMonitorSelect.addEventListener("change", event => {
+          state.selectedTeamId = event.target.value;
+          renderTeamMonitor();
+          renderCharts();
+        });
+      }
 
-    document.getElementById("refreshButton").addEventListener("click", async () => {
-      const button = document.getElementById("refreshButton");
-      button.disabled = true;
-      button.textContent = "读取中...";
-      state.transientStatus = "Refreshing";
-      state.lastRefreshAt = new Date().toISOString();
-      renderStatus();
-      renderDataHealth();
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const refreshButton = document.getElementById("refreshButton");
+      if (refreshButton) {
+        refreshButton.addEventListener("click", async () => {
+          refreshButton.disabled = true;
+          refreshButton.textContent = "读取中...";
+          state.transientStatus = "Refreshing";
+          state.lastRefreshAt = new Date().toISOString();
+          renderStatus();
+          renderDataHealth();
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          await loadDashboardData();
+          state.transientStatus = "";
+          state.logs.unshift({ time: new Date().toISOString(), type: "manual", message: `${league()?.name || "当前联赛"} 手动刷新完成，当前模式：${effectiveMode()}。` });
+          refreshButton.disabled = false;
+          refreshButton.textContent = "重新读取本地 JSON";
+          renderAll();
+        });
+      }
+
+      window.addEventListener("resize", () => {
+        Object.values(state.charts).forEach(item => item.resize());
+      });
+    }
+
+    async function initDashboard() {
+      setupEventListeners();
       await loadDashboardData();
-      state.transientStatus = "";
-      state.logs.unshift({ time: new Date().toISOString(), type: "manual", message: `${league()?.name || "当前联赛"} 手动刷新完成，当前模式：${effectiveMode()}。` });
-      button.disabled = false;
-      button.textContent = "重新读取本地 JSON";
       renderAll();
-    });
+    }
 
-    window.addEventListener("resize", () => {
-      Object.values(state.charts).forEach(item => item.resize());
-    });
-
-    document.addEventListener("DOMContentLoaded", async () => {
-      await loadDashboardData();
-      renderAll();
-    });
+    if (document.readyState === "interactive" || document.readyState === "complete") {
+      initDashboard();
+    } else {
+      document.addEventListener("DOMContentLoaded", initDashboard);
+    }
 
     // 8. Future Live Data Integration
     async function fetchLiveData() {

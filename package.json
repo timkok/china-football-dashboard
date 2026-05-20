@@ -11,7 +11,7 @@
     "fetch:attendance-history": "node scripts/fetch-attendance-history.js",
     "fetch:official-feed": "node scripts/fetch-official-feed.js",
     "validate:data": "node scripts/validate-data.js",
-    "fetch:all": "node scripts/fetch-all.js && node scripts/validate-data.js"
+    "fetch:all": "node scripts/fetch-all.js && node scripts/validate-data.js && node scripts/generate-changelog.js"
   },
   "dependencies": {
     "cheerio": "^1.2.0"

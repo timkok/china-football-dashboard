@@ -73,8 +73,8 @@ function generateSourceComparison(csl, attendance) {
 
 async function main() {
   const previous = await readJson("changelog.json", null);
-  const csl = await readJson("csl-standings.json");
-  const attendance = await readJson("attendance-csl.json");
+  const csl = await readJson("csl-standings.json") || { data: [] };
+  const attendance = await readJson("csl-attendance.json") || { teams: [] };
   const dataQuality = await readJson("data-quality.json", { issues: [] });
   const standingChanges = diffStandings(previous, csl);
   const attendanceChanges = diffAttendance(previous, attendance);
