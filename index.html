@@ -64,9 +64,9 @@
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 18px;
+      gap: 14px;
       align-items: center;
-      padding: 18px 20px;
+      padding: 14px 18px;
       border: 1px solid var(--line);
       border-radius: 16px;
       background: linear-gradient(115deg, rgba(18, 34, 50, 0.95), rgba(12, 22, 34, 0.78));
@@ -181,9 +181,9 @@
 
     .metrics {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 12px;
-      margin: 14px 0;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+      gap: 10px;
+      margin: 12px 0;
     }
 
     .metric, .panel {
@@ -194,50 +194,63 @@
     }
 
     .metric {
-      min-height: 108px;
-      padding: 15px;
+      min-height: 100px;
+      padding: 14px;
       border-radius: 14px;
       position: relative;
       overflow: hidden;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+      cursor: default;
+    }
+
+    .metric:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.35);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.32), 0 0 0 1px rgba(56, 189, 248, 0.15);
     }
 
     .metric::after {
       content: "";
       position: absolute;
-      inset: auto 14px 12px auto;
-      width: 28px;
-      height: 28px;
+      inset: auto 12px 10px auto;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
-      background: rgba(56, 189, 248, 0.16);
-      border: 1px solid rgba(56, 189, 248, 0.22);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      transition: background 0.18s ease;
+    }
+
+    .metric:hover::after {
+      background: rgba(56, 189, 248, 0.22);
     }
 
     .metric-top {
       display: flex;
-      gap: 8px;
+      gap: 7px;
       align-items: center;
       color: var(--muted);
-      font-size: 12px;
+      font-size: 11.5px;
     }
 
     .metric-icon {
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       border-radius: 3px;
       background: var(--blue);
     }
 
     .metric-value {
-      margin-top: 9px;
-      font-size: 27px;
+      margin-top: 7px;
+      font-size: 25px;
       font-weight: 900;
       letter-spacing: 0;
     }
 
     .metric-foot {
-      margin-top: 7px;
+      margin-top: 5px;
       color: var(--soft);
-      font-size: 12px;
+      font-size: 11px;
       line-height: 1.35;
     }
 
@@ -358,9 +371,14 @@
       font-weight: 900;
     }
 
+    .rank-1 { background: linear-gradient(135deg, rgba(250, 204, 21, 0.35), rgba(234, 179, 8, 0.22)); color: #fde68a; box-shadow: 0 0 8px rgba(250, 204, 21, 0.2); font-size: 14px; }
+    .rank-2 { background: linear-gradient(135deg, rgba(192, 192, 210, 0.3), rgba(148, 163, 184, 0.2)); color: #e2e8f0; box-shadow: 0 0 6px rgba(192, 192, 210, 0.15); }
+    .rank-3 { background: linear-gradient(135deg, rgba(205, 127, 50, 0.3), rgba(180, 110, 40, 0.2)); color: #fcd9b6; box-shadow: 0 0 6px rgba(205, 127, 50, 0.15); }
     .rank-top { background: rgba(250, 204, 21, 0.22); color: #fde68a; }
     .rank-up { background: rgba(56, 189, 248, 0.2); color: #bae6fd; }
     .rank-risk { background: rgba(251, 113, 133, 0.22); color: #fecdd3; }
+
+    tr.relegation-separator td { border-top: 2px dashed rgba(251, 113, 133, 0.45); }
 
     .zone {
       margin-left: 7px;
@@ -600,7 +618,7 @@
     }
 
     @media (max-width: 1180px) {
-      .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .top-grid, .layout { grid-template-columns: 1fr; }
     }
 
@@ -608,7 +626,8 @@
       .shell { width: min(100% - 18px, 1500px); padding-top: 10px; }
       .hero { grid-template-columns: 1fr; padding: 15px; }
       .hero-side { min-width: 0; }
-      .metrics, .health-grid, .team-grid, .chart-grid { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .health-grid, .team-grid, .chart-grid { grid-template-columns: 1fr; }
       .mini-kpis { grid-template-columns: 1fr; }
       .compact-row { grid-template-columns: 1fr; }
       .tabs { width: 100%; overflow-x: auto; }
@@ -1869,19 +1888,27 @@
     function calculateMetrics() {
       const data = league();
       if (!data) return [];
+      const standings = data.standings || [];
       const fixtures = data.fixtures || [];
       const finished = fixtures.filter(match => match.status === "finished");
       const todayKey = new Date().toISOString().slice(0, 10);
       const todayMatches = fixtures.filter(match => match.date && typeof match.date === "string" && match.date.slice(0, 10) === todayKey).length;
       const goals = finished.reduce((sum, match) => sum + (Number(match.homeScore) || 0) + (Number(match.awayScore) || 0), 0);
       const alerts = generateAlerts();
+      const leader = standings.length ? standings[0] : null;
+      const relegationCount = standings.filter(team => {
+        const total = standings.length;
+        return total >= 16 ? team.rank >= total - 1 : team.rank >= total;
+      }).length;
       return [
-        { label: "今日比赛数", value: todayMatches, foot: `${data.name || '当前联赛'} 快照`, color: "var(--blue)" },
-        { label: "近期已完赛", value: finished.length, foot: "已完赛赛程样本", color: "var(--green)" },
-        { label: "总进球数", value: goals, foot: "仅统计已完赛", color: "var(--yellow)" },
-        { label: "平均每场进球", value: finished.length ? (goals / finished.length).toFixed(2) : "0.00", foot: "总进球 / 已完赛", color: "var(--violet)" },
-        { label: "数据源数量", value: DATA_SOURCES.length, foot: "官方优先 + fallback", color: "var(--orange)" },
-        { label: "异常告警", value: alerts.length, foot: "动态规则生成", color: alerts.length ? "var(--red)" : "var(--green)" }
+        { label: "⚽ 今日比赛", value: todayMatches, foot: `${data.alias || '当前联赛'} 快照`, color: "var(--blue)" },
+        { label: "✅ 已完赛", value: finished.length, foot: "赛程样本", color: "var(--green)" },
+        { label: "🥅 总进球", value: goals, foot: "仅统计已完赛", color: "var(--yellow)" },
+        { label: "📊 场均进球", value: finished.length ? (goals / finished.length).toFixed(2) : "0.00", foot: "总进球 / 已完赛", color: "var(--violet)" },
+        { label: "🏆 领头羊", value: leader ? leader.shortName : "暂无", foot: leader ? `${leader.points} 分 · ${leader.played} 场` : "等待数据", color: "var(--yellow)" },
+        { label: "⚠️ 降级区", value: relegationCount, foot: standings.length ? `后 ${relegationCount} 名有降级风险` : "暂无积分数据", color: relegationCount ? "var(--red)" : "var(--green)" },
+        { label: "📡 数据源", value: DATA_SOURCES.length, foot: "官方 + fallback", color: "var(--orange)" },
+        { label: "🔔 告警", value: alerts.length, foot: "动态规则生成", color: alerts.length ? "var(--red)" : "var(--green)" }
       ];
     }
 
@@ -2145,7 +2172,7 @@
     function renderStandings() {
       const source = activeSource();
       const standings = league()?.standings || [];
-      document.getElementById("standingsSubtitle").textContent = `${league()?.name || "当前联赛"} · ${standings.length} 支球队 · 来源：${source.name} · fetchedAt：${formatFullDateTime(source.fetchedAt || state.lastRefreshAt)}`;
+      document.getElementById("standingsSubtitle").textContent = `${league()?.name || "当前联赛"} · ${standings.length} 支球队 · 来源：${source.name} · ${formatFullDateTime(source.fetchedAt || state.lastRefreshAt)}`;
       
       if (standings.length === 0) {
         const msg = league()?.standingsMessage || "暂无真实数据，该模块尚未接入稳定真实数据源";
@@ -2160,11 +2187,16 @@
         return;
       }
 
+      const totalTeams = standings.length;
+      const relegationLine = totalTeams >= 16 ? totalTeams - 2 : totalTeams - 1;
+
       document.getElementById("standingsBody").innerHTML = standings.map(team => {
         const zone = rankZone(team, state.activeLeague);
+        const medalCls = team.rank <= 3 ? ` rank-${team.rank}` : "";
+        const isRelegationStart = team.rank === relegationLine + 1 && totalTeams >= 10;
         return `
-          <tr>
-            <td><span class="rank-cell ${zone.rankCls}">${team.rank}</span></td>
+          <tr${isRelegationStart ? ' class="relegation-separator"' : ""}>
+            <td><span class="rank-cell ${zone.rankCls}${medalCls}">${team.rank}</span></td>
             <td><span class="team-name">${team.name}</span><span class="zone ${zone.cls}">${zone.label}</span></td>
             <td>${team.city}</td>
             <td>${team.played}</td>
