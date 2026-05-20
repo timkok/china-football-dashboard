@@ -8,6 +8,7 @@ const NOW = new Date().toISOString();
 
 const SCRIPTS = [
   { name: "fetch-standings.js", path: "./scripts/fetch-standings.js" },
+  { name: "fetch-fixtures.js", path: "./scripts/fetch-fixtures.js" },
   { name: "fetch-attendance.js", path: "./scripts/fetch-attendance.js" },
   { name: "fetch-attendance-history.js", path: "./scripts/fetch-attendance-history.js" },
   { name: "fetch-official-feed.js", path: "./scripts/fetch-official-feed.js" }

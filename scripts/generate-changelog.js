@@ -44,33 +44,6 @@ function diffAttendance(previous, current) {
   }).filter(row => row.averageAttendanceChange || row.occupancyRateChange).slice(0, 12);
 }
 
-function generateSourceComparison(csl, attendance) {
-  return {
-    generatedAt: NOW,
-    status: "ok",
-    comparisons: [
-      {
-        fieldGroup: "standings",
-        league: "csl",
-        primarySource: csl.source,
-        primarySourceUrl: csl.sourceUrl,
-        comparedSources: [],
-        conflicts: [],
-        note: "当前积分榜只有一个可解析结构化来源；发现第二来源后将逐字段比对排名和积分。"
-      },
-      {
-        fieldGroup: "attendance",
-        league: "csl",
-        primarySource: attendance.source,
-        primarySourceUrl: attendance.sourceUrl,
-        comparedSources: [],
-        conflicts: [],
-        note: "观众人数当前使用 Transfermarkt 单源数据；后续接入 FootyStats 后比对总观众、场均观众和上座率。"
-      }
-    ]
-  };
-}
-
 async function main() {
   const previous = await readJson("changelog.json", null);
   const csl = await readJson("csl-standings.json") || { data: [] };
@@ -97,9 +70,7 @@ async function main() {
     }
   };
   await writeFile(path.join(DATA_DIR, "changelog.json"), `${JSON.stringify(changelog, null, 2)}\n`);
-  await writeFile(path.join(DATA_DIR, "source-comparison.json"), `${JSON.stringify(generateSourceComparison(csl, attendance), null, 2)}\n`);
   console.log("[write] data/changelog.json");
-  console.log("[write] data/source-comparison.json");
 }
 
 main().catch(error => {

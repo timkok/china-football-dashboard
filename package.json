@@ -7,11 +7,14 @@
   "scripts": {
     "seed": "node scripts/seed-data.js",
     "fetch:standings": "node scripts/fetch-standings.js",
+    "fetch:fixtures": "node scripts/fetch-fixtures.js",
     "fetch:attendance": "node scripts/fetch-attendance.js",
     "fetch:attendance-history": "node scripts/fetch-attendance-history.js",
     "fetch:official-feed": "node scripts/fetch-official-feed.js",
+    "compare:sources": "node scripts/compare-sources.js",
+    "generate:changelog": "node scripts/generate-changelog.js",
     "validate:data": "node scripts/validate-data.js",
-    "fetch:all": "node scripts/fetch-all.js && node scripts/validate-data.js && node scripts/generate-changelog.js"
+    "fetch:all": "node scripts/fetch-all.js && npm run compare:sources && npm run generate:changelog && npm run validate:data"
   },
   "dependencies": {
     "cheerio": "^1.2.0"

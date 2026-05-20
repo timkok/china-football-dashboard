@@ -1,7 +1,14 @@
 {
   "league": "csl",
-  "status": "missing",
+  "leagueName": "中超",
+  "season": 2026,
+  "type": "fixtures",
   "mode": "real-data-only",
-  "message": "中超真实完整赛程尚未接入",
+  "source": "",
+  "sourceUrl": "",
+  "isOfficial": false,
+  "fetchedAt": null,
+  "status": "missing",
+  "message": "暂无真实赛程数据，等待官方或稳定数据源接入。",
   "data": []
 }
