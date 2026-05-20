@@ -7,13 +7,13 @@
   "source": "Transfermarkt",
   "sourceUrl": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
   "isOfficial": false,
-  "fetchedAt": "2026-05-20T09:38:06.632Z",
+  "fetchedAt": "2026-05-20T15:25:52.299Z",
   "status": "ok",
   "disclaimer": "观众人数来自第三方公开来源 Transfermarkt，非官方数据，仅供趋势分析参考。",
   "summary": {
-    "matches": 100,
-    "totalAttendance": 3056914,
-    "averageAttendance": 30569,
+    "matches": 104,
+    "totalAttendance": 3160762,
+    "averageAttendance": 30391,
     "highestAverageTeam": "大连英博",
     "highestAverageAttendance": 60739
   },
@@ -44,6 +44,18 @@
     },
     {
       "rank": 3,
+      "team": "Shanghai Shenhua",
+      "teamCn": "上海申花",
+      "stadium": "Shanghai Stadium",
+      "stadiumCn": "上海体育场",
+      "capacity": 70381,
+      "matches": 7,
+      "totalAttendance": 298410,
+      "averageAttendance": 42630,
+      "occupancyRate": 0.6057032437731774
+    },
+    {
+      "rank": 4,
       "team": "Chengdu Rongcheng",
       "teamCn": "成都蓉城",
       "stadium": "Phoenix Hill Sports Park Football Stadium",
@@ -55,28 +67,16 @@
       "occupancyRate": 0.8148535358516619
     },
     {
-      "rank": 4,
-      "team": "Shanghai Shenhua",
-      "teamCn": "上海申花",
-      "stadium": "Shanghai Stadium",
-      "stadiumCn": "上海体育场",
-      "capacity": 70381,
-      "matches": 6,
-      "totalAttendance": 269553,
-      "averageAttendance": 44926,
-      "occupancyRate": 0.6383256844887114
-    },
-    {
       "rank": 5,
       "team": "Chongqing Tonglianglong",
       "teamCn": "重庆铜梁龙",
       "stadium": "Chongqing Longxing Football Stadium",
       "stadiumCn": "重庆龙兴足球场",
       "capacity": 60000,
-      "matches": 6,
-      "totalAttendance": 246683,
-      "averageAttendance": 41114,
-      "occupancyRate": 0.6852333333333334
+      "matches": 7,
+      "totalAttendance": 285253,
+      "averageAttendance": 40750,
+      "occupancyRate": 0.6791666666666667
     },
     {
       "rank": 6,
@@ -92,6 +92,18 @@
     },
     {
       "rank": 7,
+      "team": "Zhejiang FC",
+      "teamCn": "浙江队",
+      "stadium": "Huanglong Sports Centre Stadium",
+      "stadiumCn": "黄龙体育中心",
+      "capacity": 52000,
+      "matches": 7,
+      "totalAttendance": 174740,
+      "averageAttendance": 24963,
+      "occupancyRate": 0.4800576923076923
+    },
+    {
+      "rank": 8,
       "team": "Tianjin Jinmen Tiger",
       "teamCn": "天津津门虎",
       "stadium": "TEDA Football Stadium",
@@ -103,7 +115,7 @@
       "occupancyRate": 0.6934136771300449
     },
     {
-      "rank": 8,
+      "rank": 9,
       "team": "Qingdao Hainiu",
       "teamCn": "青岛海牛",
       "stadium": "Qingdao Youth Football Stadium",
@@ -115,28 +127,16 @@
       "occupancyRate": 0.5393589286719058
     },
     {
-      "rank": 9,
-      "team": "Zhejiang FC",
-      "teamCn": "浙江队",
-      "stadium": "Huanglong Sports Centre Stadium",
-      "stadiumCn": "黄龙体育中心",
-      "capacity": 52000,
-      "matches": 6,
-      "totalAttendance": 155839,
-      "averageAttendance": 25973,
-      "occupancyRate": 0.49948076923076923
-    },
-    {
       "rank": 10,
       "team": "Liaoning Tieren",
       "teamCn": "辽宁铁人",
       "stadium": "Tiexi New District Sports Center Stadium",
       "stadiumCn": "铁西体育场",
       "capacity": 40000,
-      "matches": 5,
-      "totalAttendance": 152827,
-      "averageAttendance": 30565,
-      "occupancyRate": 0.764125
+      "matches": 6,
+      "totalAttendance": 170347,
+      "averageAttendance": 28391,
+      "occupancyRate": 0.709775
     },
     {
       "rank": 11,
