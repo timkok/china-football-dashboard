@@ -1174,8 +1174,8 @@
       mockGeneratedAt: null,
       lastRefreshAt: null,
       lastRefreshSuccess: null,
-      currentSource: "读取中",
-      currentSourceUrl: "读取中",
+      currentSource: "暂无数据源",
+      currentSourceUrl: "",
       isOfficial: false,
       dataWarning: "数据正在读取中...",
       meta: null,
@@ -1188,9 +1188,9 @@
       attendanceMode: "Loading",
       attendanceWarning: "",
       leagues: {
-        csl: { id: "csl", name: "中超 CSL", alias: "中超", standings: [], fixtures: [], dataMode: "Loading", source: "读取中", sourceUrl: "读取中", isOfficial: false, fetchedAt: null, standingsStatus: "pending", standingsMessage: "等待读取", fixturesStatus: "pending", fixturesMessage: "等待读取" },
-        cl1: { id: "cl1", name: "中甲 China League One", alias: "中甲", standings: [], fixtures: [], dataMode: "Loading", source: "读取中", sourceUrl: "读取中", isOfficial: false, fetchedAt: null, standingsStatus: "pending", standingsMessage: "等待读取", fixturesStatus: "pending", fixturesMessage: "等待读取" },
-        cl2: { id: "cl2", name: "中乙 China League Two", alias: "中乙", standings: [], fixtures: [], dataMode: "Loading", source: "读取中", sourceUrl: "读取中", isOfficial: false, fetchedAt: null, standingsStatus: "pending", standingsMessage: "等待读取", fixturesStatus: "pending", fixturesMessage: "等待读取" }
+        csl: { id: "csl", name: "中超 CSL", alias: "中超", standings: [], fixtures: [], dataMode: "Loading", source: "暂无数据源", sourceUrl: "", isOfficial: false, fetchedAt: null, standingsStatus: "pending", standingsMessage: "等待读取", fixturesStatus: "pending", fixturesMessage: "等待读取" },
+        cl1: { id: "cl1", name: "中甲 China League One", alias: "中甲", standings: [], fixtures: [], dataMode: "Loading", source: "暂无数据源", sourceUrl: "", isOfficial: false, fetchedAt: null, standingsStatus: "pending", standingsMessage: "等待读取", fixturesStatus: "pending", fixturesMessage: "等待读取" },
+        cl2: { id: "cl2", name: "中乙 China League Two", alias: "中乙", standings: [], fixtures: [], dataMode: "Loading", source: "暂无数据源", sourceUrl: "", isOfficial: false, fetchedAt: null, standingsStatus: "pending", standingsMessage: "等待读取", fixturesStatus: "pending", fixturesMessage: "等待读取" }
       },
       charts: {},
       healthStatus: null,
@@ -1576,115 +1576,134 @@
         errors: []
       };
 
-      // Load meta.json
-      const meta = await loadAndRecordJson("meta", DATA_FILES.meta);
-      state.meta = meta;
+      try {
+        // Load meta.json
+        const meta = await loadAndRecordJson("meta", DATA_FILES.meta);
+        state.meta = meta;
 
-      const loadedPayloads = [];
+        const loadedPayloads = [];
 
-      // Load leagues
-      for (const leagueKey of ["csl", "cl1", "cl2"]) {
-        const stdData = await loadAndRecordJson(`standings_${leagueKey}`, DATA_FILES[leagueKey].standings, validateLoadedData);
-        const stdRecord = state.healthStatus[`standings_${leagueKey}`];
-        const stdOk = stdRecord.ok && stdRecord.status !== "missing" && stdRecord.status !== "error" && stdData && Array.isArray(stdData.data);
+        // Load leagues
+        for (const leagueKey of ["csl", "cl1", "cl2"]) {
+          const stdData = await loadAndRecordJson(`standings_${leagueKey}`, DATA_FILES[leagueKey].standings, validateLoadedData);
+          const stdRecord = state.healthStatus[`standings_${leagueKey}`];
+          const stdOk = stdRecord.ok && stdRecord.status !== "missing" && stdRecord.status !== "error" && stdData && Array.isArray(stdData.data);
 
-        let standings = [];
-        if (stdOk) {
-          standings = stdData.data.map((item, index) => normalizeTeamFromPayload(item, leagueKey, index, stdData));
-          loadedPayloads.push(stdData);
+          let standings = [];
+          if (stdOk) {
+            standings = stdData.data.map((item, index) => normalizeTeamFromPayload(item, leagueKey, index, stdData));
+            loadedPayloads.push(stdData);
+          }
+
+          const fixData = await loadAndRecordJson(`fixtures_${leagueKey}`, DATA_FILES[leagueKey].fixtures);
+          const fixRecord = state.healthStatus[`fixtures_${leagueKey}`];
+          const fixOk = fixRecord.ok && fixRecord.status !== "missing" && fixRecord.status !== "error" && fixData && Array.isArray(fixData.data);
+
+          let fixtures = [];
+          if (fixOk) {
+            fixtures = fixData.data.map((item, index) => normalizeFixtureFromPayload(item, leagueKey, index, fixData));
+            loadedPayloads.push(fixData);
+          }
+
+          const sourcePayload = stdOk ? stdData : (fixOk ? fixData : null);
+          const mode = sourcePayload?.mode || "real-data-only";
+
+          state.leagues[leagueKey] = {
+            id: leagueKey,
+            name: leagueKey === "csl" ? "中超 CSL" : leagueKey === "cl1" ? "中甲 China League One" : "中乙 China League Two",
+            alias: leagueKey === "csl" ? "中超" : leagueKey === "cl1" ? "中甲" : "中乙",
+            standings,
+            fixtures,
+            dataMode: stdOk || fixOk ? (mode === "fallback" ? "Fallback" : "Live") : "Missing",
+            source: stdOk ? stdData.source : (fixOk ? fixData.source : "暂无数据源"),
+            sourceUrl: stdOk ? stdData.sourceUrl : (fixOk ? fixData.sourceUrl : ""),
+            isOfficial: Boolean(stdOk ? stdData.isOfficial : (fixOk ? fixData.isOfficial : false)),
+            fetchedAt: stdOk ? stdData.fetchedAt : (fixOk ? fixData.fetchedAt : null),
+            standingsStatus: stdRecord.status,
+            standingsMessage: stdRecord.error || (stdOk ? "已加载" : "暂无真实数据"),
+            fixturesStatus: fixRecord.status,
+            fixturesMessage: fixRecord.error || (fixOk ? "已加载" : "暂无真实数据")
+          };
         }
 
-        const fixData = await loadAndRecordJson(`fixtures_${leagueKey}`, DATA_FILES[leagueKey].fixtures);
-        const fixRecord = state.healthStatus[`fixtures_${leagueKey}`];
-        const fixOk = fixRecord.ok && fixRecord.status !== "missing" && fixRecord.status !== "error" && fixData && Array.isArray(fixData.data);
+        // Load attendance
+        const attData = await loadAndRecordJson("attendance", DATA_FILES.attendance, validateAttendanceData);
+        const attRecord = state.healthStatus.attendance;
+        const attOk = attRecord.ok && attRecord.status !== "missing" && attRecord.status !== "error" && attData && Array.isArray(attData.teams);
 
-        let fixtures = [];
-        if (fixOk) {
-          fixtures = fixData.data.map((item, index) => normalizeFixtureFromPayload(item, leagueKey, index, fixData));
-          loadedPayloads.push(fixData);
+        if (attOk) {
+          state.attendance = attData;
+          state.attendanceStatus = "ok";
+          state.attendanceMode = attData.mode === "third_party" ? "Third-party" : "Mock";
+          state.attendanceWarning = "观众人数数据来自第三方公开来源 Transfermarkt，非官方数据，仅供趋势分析参考；如与官方公告不一致，以官方发布为准。";
+        } else {
+          state.attendance = { teams: [] };
+          state.attendanceStatus = attRecord.status;
+          state.attendanceMessage = attRecord.error || "暂无真实数据";
+          state.attendanceMode = "无数据";
+          state.attendanceWarning = "";
         }
 
-        const sourcePayload = stdOk ? stdData : (fixOk ? fixData : null);
-        const mode = sourcePayload?.mode || "real-data-only";
+        // Load attendanceHistory
+        const attHistData = await loadAndRecordJson("attendanceHistory", DATA_FILES.attendanceHistory);
+        const attHistRecord = state.healthStatus.attendanceHistory;
+        const attHistOk = attHistRecord.ok && attHistRecord.status !== "missing" && attHistRecord.status !== "error" && attHistData && Array.isArray(attHistData.seasons);
 
-        state.leagues[leagueKey] = {
-          id: leagueKey,
-          name: leagueKey === "csl" ? "中超 CSL" : leagueKey === "cl1" ? "中甲 China League One" : "中乙 China League Two",
-          alias: leagueKey === "csl" ? "中超" : leagueKey === "cl1" ? "中甲" : "中乙",
-          standings,
-          fixtures,
-          dataMode: stdOk || fixOk ? (mode === "fallback" ? "Fallback" : "Live") : "Missing",
-          source: stdOk ? stdData.source : (fixOk ? fixData.source : "暂无数据源"),
-          sourceUrl: stdOk ? stdData.sourceUrl : (fixOk ? fixData.sourceUrl : ""),
-          isOfficial: Boolean(stdOk ? stdData.isOfficial : (fixOk ? fixData.isOfficial : false)),
-          fetchedAt: stdOk ? stdData.fetchedAt : (fixOk ? fixData.fetchedAt : null),
-          standingsStatus: stdRecord.status,
-          standingsMessage: stdRecord.error || (stdOk ? "已加载" : "暂无真实数据"),
-          fixturesStatus: fixRecord.status,
-          fixturesMessage: fixRecord.error || (fixOk ? "已加载" : "暂无真实数据")
-        };
-      }
-
-      // Load attendance
-      const attData = await loadAndRecordJson("attendance", DATA_FILES.attendance, validateAttendanceData);
-      const attRecord = state.healthStatus.attendance;
-      const attOk = attRecord.ok && attRecord.status !== "missing" && attRecord.status !== "error" && attData && Array.isArray(attData.teams);
-
-      if (attOk) {
-        state.attendance = attData;
-        state.attendanceStatus = "ok";
-        state.attendanceMode = attData.mode === "third_party" ? "Third-party" : "Mock";
-        state.attendanceWarning = "观众人数数据来自第三方公开来源 Transfermarkt，非官方数据，仅供趋势分析参考；如与官方公告不一致，以官方发布为准。";
-      } else {
-        state.attendance = { teams: [] };
-        state.attendanceStatus = attRecord.status;
-        state.attendanceMessage = attRecord.error || "暂无真实数据";
-        state.attendanceMode = "无数据";
-        state.attendanceWarning = "";
-      }
-
-      // Load attendanceHistory
-      const attHistData = await loadAndRecordJson("attendanceHistory", DATA_FILES.attendanceHistory);
-      const attHistRecord = state.healthStatus.attendanceHistory;
-      const attHistOk = attHistRecord.ok && attHistRecord.status !== "missing" && attHistRecord.status !== "error" && attHistData && Array.isArray(attHistData.seasons);
-
-      if (attHistOk) {
-        state.attendanceHistory = attHistData;
-        state.attendanceHistoryStatus = "ok";
-      } else {
-        state.attendanceHistory = { seasons: [] };
-        state.attendanceHistoryStatus = attHistRecord.status;
-      }
-
-      // Load officialFeed
-      const feedData = await loadAndRecordJson("officialFeed", DATA_FILES.officialFeed);
-      const feedRecord = state.healthStatus.officialFeed;
-      state.officialFeed = feedRecord.ok && Array.isArray(feedData) ? feedData : [];
-
-      // Load other non-critical JSONs
-      for (const [key, path] of [
-        ["changelog", DATA_FILES.changelog],
-        ["sourceComparison", DATA_FILES.sourceComparison],
-        ["dataQuality", DATA_FILES.dataQuality],
-        ["fetchLog", DATA_FILES.fetchLog]
-      ]) {
-        await loadAndRecordJson(key, path);
-        if (state.healthStatus[key].ok) {
-          state[key] = state.healthStatus[key].data;
+        if (attHistOk) {
+          state.attendanceHistory = attHistData;
+          state.attendanceHistoryStatus = "ok";
+        } else {
+          state.attendanceHistory = { seasons: [] };
+          state.attendanceHistoryStatus = attHistRecord.status;
         }
-      }
 
-      const freshest = payloadFreshness(loadedPayloads) || meta?.updatedAt || meta?.generatedAt || new Date().toISOString();
-      state.lastRefreshAt = freshest;
-      state.lastRefreshSuccess = meta ? meta.status !== "error" : false;
-      
-      const hasRealStandings = loadedPayloads.some(p => p.type === "standings" && p.status !== "missing" && p.status !== "error");
-      state.dataMode = hasRealStandings ? "Live" : "Stale";
-      state.currentSource = meta?.primarySource || state.leagues[state.activeLeague].source || "未识别数据源";
-      state.currentSourceUrl = meta?.primarySourceUrl || state.leagues[state.activeLeague].sourceUrl || "";
-      state.isOfficial = loadedPayloads.some(payload => payload.isOfficial);
-      state.dataWarning = "当前线上模式为真实数据优先，默认禁止 mock。真实数据缺失时显示空状态。";
-      state.logs.unshift({ time: new Date().toISOString(), type: "scheduled", message: `已成功加载真实数据。模式：${state.dataMode}。` });
+        // Load officialFeed
+        const feedData = await loadAndRecordJson("officialFeed", DATA_FILES.officialFeed);
+        const feedRecord = state.healthStatus.officialFeed;
+        state.officialFeed = feedRecord.ok && Array.isArray(feedData) ? feedData : [];
+
+        // Load other non-critical JSONs
+        for (const [key, path] of [
+          ["changelog", DATA_FILES.changelog],
+          ["sourceComparison", DATA_FILES.sourceComparison],
+          ["dataQuality", DATA_FILES.dataQuality],
+          ["fetchLog", DATA_FILES.fetchLog]
+        ]) {
+          await loadAndRecordJson(key, path);
+          if (state.healthStatus[key].ok) {
+            state[key] = state.healthStatus[key].data;
+          }
+        }
+
+        const freshest = payloadFreshness(loadedPayloads) || meta?.updatedAt || meta?.generatedAt || new Date().toISOString();
+        state.lastRefreshAt = freshest;
+        state.lastRefreshSuccess = meta ? meta.status !== "error" : false;
+        
+        const hasRealStandings = loadedPayloads.some(p => p.type === "standings" && p.status !== "missing" && p.status !== "error");
+        state.dataMode = hasRealStandings ? "Live" : "Stale";
+        state.currentSource = meta?.primarySource || state.leagues[state.activeLeague].source || "未识别数据源";
+        state.currentSourceUrl = meta?.primarySourceUrl || state.leagues[state.activeLeague].sourceUrl || "";
+        state.isOfficial = loadedPayloads.some(payload => payload.isOfficial);
+        
+        if (state.healthStatus.errors.length > 0) {
+          state.dataWarning = "真实数据读取失败";
+        } else {
+          state.dataWarning = "当前线上模式为真实数据优先，默认禁止 mock。真实数据缺失时显示空状态。";
+        }
+        state.logs.unshift({ time: new Date().toISOString(), type: "scheduled", message: `已成功加载真实数据。模式：${state.dataMode}。` });
+
+      } catch (err) {
+        for (const leagueKey of ["csl", "cl1", "cl2"]) {
+          if (state.leagues[leagueKey].dataMode === "Loading") {
+            state.leagues[leagueKey].dataMode = "Missing";
+            state.leagues[leagueKey].source = "暂无数据源";
+            state.leagues[leagueKey].sourceUrl = "";
+          }
+        }
+        state.dataMode = "Stale";
+        state.dataWarning = "真实数据读取失败";
+        throw err;
+      }
     }
 
     function loadDemoData() {
@@ -1763,8 +1782,8 @@
           useJsonData();
         } catch (error) {
           console.error("Dashboard JSON load failed:", error);
-          // When not in demo mode, do not fallback to mock; instead keep empty states and log error.
-          state.logs.unshift({ time: new Date().toISOString(), type: "scheduled", message: `数据读取失败: ${error.message}` });
+          state.dataWarning = "真实数据读取失败";
+          state.logs.unshift({ time: new Date().toISOString(), type: "error", message: `数据读取失败: ${error.message}` });
         }
       }
     }
