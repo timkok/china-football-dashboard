@@ -7,15 +7,15 @@
   "source": "Transfermarkt",
   "sourceUrl": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
   "isOfficial": false,
-  "fetchedAt": "2026-05-23T13:39:29.186Z",
+  "fetchedAt": "2026-05-23T19:13:29.705Z",
   "status": "ok",
   "disclaimer": "观众人数来自第三方公开来源 Transfermarkt，非官方数据，仅供趋势分析参考。",
   "summary": {
-    "matches": 104,
-    "totalAttendance": 3160762,
-    "averageAttendance": 30391,
+    "matches": 107,
+    "totalAttendance": 3292353,
+    "averageAttendance": 30769,
     "highestAverageTeam": "大连英博",
-    "highestAverageAttendance": 60739
+    "highestAverageAttendance": 60970
   },
   "teams": [
     {
@@ -25,10 +25,10 @@
       "stadium": "Dalian Suoyuwan Football Stadium",
       "stadiumCn": "大连梭鱼湾足球场",
       "capacity": 65277,
-      "matches": 6,
-      "totalAttendance": 364436,
-      "averageAttendance": 60739,
-      "occupancyRate": 0.9304808738146667
+      "matches": 7,
+      "totalAttendance": 426792,
+      "averageAttendance": 60970,
+      "occupancyRate": 0.9340196393829373
     },
     {
       "rank": 2,
@@ -37,10 +37,10 @@
       "stadium": "Workers Stadium",
       "stadiumCn": "北京工人体育场",
       "capacity": 68000,
-      "matches": 6,
-      "totalAttendance": 298711,
-      "averageAttendance": 49785,
-      "occupancyRate": 0.7321323529411765
+      "matches": 7,
+      "totalAttendance": 346764,
+      "averageAttendance": 49538,
+      "occupancyRate": 0.7285
     },
     {
       "rank": 3,
@@ -140,6 +140,18 @@
     },
     {
       "rank": 11,
+      "team": "Shanghai Port",
+      "teamCn": "上海海港",
+      "stadium": "SAIC Motor Pudong Arena",
+      "stadiumCn": "SAIC Motor Pudong Arena",
+      "capacity": 33765,
+      "matches": 8,
+      "totalAttendance": 156505,
+      "averageAttendance": 19563,
+      "occupancyRate": 0.5793869391381609
+    },
+    {
+      "rank": 12,
       "team": "Shenzhen Peng City",
       "teamCn": "深圳新鹏城",
       "stadium": "Shenzhen Sports Center Stadium",
@@ -149,18 +161,6 @@
       "totalAttendance": 141133,
       "averageAttendance": 20162,
       "occupancyRate": 0.44804444444444447
-    },
-    {
-      "rank": 12,
-      "team": "Shanghai Port",
-      "teamCn": "上海海港",
-      "stadium": "SAIC Motor Pudong Arena",
-      "stadiumCn": "SAIC Motor Pudong Arena",
-      "capacity": 33765,
-      "matches": 7,
-      "totalAttendance": 135323,
-      "averageAttendance": 19332,
-      "occupancyRate": 0.5725455353176366
     },
     {
       "rank": 13,
