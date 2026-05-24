@@ -7,13 +7,13 @@
   "source": "Transfermarkt",
   "sourceUrl": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
   "isOfficial": false,
-  "fetchedAt": "2026-05-24T08:32:02.419Z",
+  "fetchedAt": "2026-05-24T13:39:35.886Z",
   "status": "ok",
   "disclaimer": "观众人数来自第三方公开来源 Transfermarkt，非官方数据，仅供趋势分析参考。",
   "summary": {
-    "matches": 107,
-    "totalAttendance": 3292353,
-    "averageAttendance": 30769,
+    "matches": 109,
+    "totalAttendance": 3343079,
+    "averageAttendance": 30670,
     "highestAverageTeam": "大连英博",
     "highestAverageAttendance": 60970
   },
@@ -92,6 +92,18 @@
     },
     {
       "rank": 7,
+      "team": "Qingdao Hainiu",
+      "teamCn": "青岛海牛",
+      "stadium": "Qingdao Youth Football Stadium",
+      "stadiumCn": "青岛青春足球场",
+      "capacity": 53317,
+      "matches": 7,
+      "totalAttendance": 204872,
+      "averageAttendance": 29267,
+      "occupancyRate": 0.5489243580846634
+    },
+    {
+      "rank": 8,
       "team": "Zhejiang FC",
       "teamCn": "浙江队",
       "stadium": "Huanglong Sports Centre Stadium",
@@ -103,7 +115,7 @@
       "occupancyRate": 0.4800576923076923
     },
     {
-      "rank": 8,
+      "rank": 9,
       "team": "Tianjin Jinmen Tiger",
       "teamCn": "天津津门虎",
       "stadium": "TEDA Football Stadium",
@@ -113,18 +125,6 @@
       "totalAttendance": 173187,
       "averageAttendance": 24741,
       "occupancyRate": 0.6934136771300449
-    },
-    {
-      "rank": 9,
-      "team": "Qingdao Hainiu",
-      "teamCn": "青岛海牛",
-      "stadium": "Qingdao Youth Football Stadium",
-      "stadiumCn": "青岛青春足球场",
-      "capacity": 53317,
-      "matches": 6,
-      "totalAttendance": 172540,
-      "averageAttendance": 28757,
-      "occupancyRate": 0.5393589286719058
     },
     {
       "rank": 10,
@@ -152,6 +152,18 @@
     },
     {
       "rank": 12,
+      "team": "Yunnan Yukun",
+      "teamCn": "云南玉昆",
+      "stadium": "Yuxi Plateau Sports Center Stadium",
+      "stadiumCn": "玉溪高原体育中心",
+      "capacity": 30000,
+      "matches": 7,
+      "totalAttendance": 149397,
+      "averageAttendance": 21342,
+      "occupancyRate": 0.7114
+    },
+    {
+      "rank": 13,
       "team": "Shenzhen Peng City",
       "teamCn": "深圳新鹏城",
       "stadium": "Shenzhen Sports Center Stadium",
@@ -161,18 +173,6 @@
       "totalAttendance": 141133,
       "averageAttendance": 20162,
       "occupancyRate": 0.44804444444444447
-    },
-    {
-      "rank": 13,
-      "team": "Yunnan Yukun",
-      "teamCn": "云南玉昆",
-      "stadium": "Yuxi Plateau Sports Center Stadium",
-      "stadiumCn": "玉溪高原体育中心",
-      "capacity": 30000,
-      "matches": 6,
-      "totalAttendance": 131003,
-      "averageAttendance": 21834,
-      "occupancyRate": 0.7278
     },
     {
       "rank": 14,
