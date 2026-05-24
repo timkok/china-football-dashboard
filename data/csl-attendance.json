@@ -7,13 +7,13 @@
   "source": "Transfermarkt",
   "sourceUrl": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
   "isOfficial": false,
-  "fetchedAt": "2026-05-24T13:39:35.886Z",
+  "fetchedAt": "2026-05-24T19:20:08.733Z",
   "status": "ok",
   "disclaimer": "观众人数来自第三方公开来源 Transfermarkt，非官方数据，仅供趋势分析参考。",
   "summary": {
-    "matches": 109,
-    "totalAttendance": 3343079,
-    "averageAttendance": 30670,
+    "matches": 112,
+    "totalAttendance": 3408498,
+    "averageAttendance": 30433,
     "highestAverageTeam": "大连英博",
     "highestAverageAttendance": 60970
   },
@@ -49,10 +49,10 @@
       "stadium": "Shanghai Stadium",
       "stadiumCn": "上海体育场",
       "capacity": 70381,
-      "matches": 7,
-      "totalAttendance": 298410,
-      "averageAttendance": 42630,
-      "occupancyRate": 0.6057032437731774
+      "matches": 8,
+      "totalAttendance": 330622,
+      "averageAttendance": 41328,
+      "occupancyRate": 0.5872039328796124
     },
     {
       "rank": 4,
@@ -85,10 +85,10 @@
       "stadium": "Ji'nan Olympic Sports Center",
       "stadiumCn": "济南奥体中心",
       "capacity": 56808,
-      "matches": 7,
-      "totalAttendance": 209323,
-      "averageAttendance": 29903,
-      "occupancyRate": 0.5263871285734404
+      "matches": 8,
+      "totalAttendance": 222884,
+      "averageAttendance": 27861,
+      "occupancyRate": 0.4904414871144909
     },
     {
       "rank": 7,
@@ -109,10 +109,10 @@
       "stadium": "Huanglong Sports Centre Stadium",
       "stadiumCn": "黄龙体育中心",
       "capacity": 52000,
-      "matches": 7,
-      "totalAttendance": 174740,
-      "averageAttendance": 24963,
-      "occupancyRate": 0.4800576923076923
+      "matches": 8,
+      "totalAttendance": 194386,
+      "averageAttendance": 24298,
+      "occupancyRate": 0.46726923076923077
     },
     {
       "rank": 9,
