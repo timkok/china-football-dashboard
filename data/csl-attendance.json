@@ -7,13 +7,13 @@
   "source": "Transfermarkt",
   "sourceUrl": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
   "isOfficial": false,
-  "fetchedAt": "2026-05-29T15:39:21.521Z",
+  "fetchedAt": "2026-05-29T20:28:25.317Z",
   "status": "ok",
   "disclaimer": "观众人数来自第三方公开来源 Transfermarkt，非官方数据，仅供趋势分析参考。",
   "summary": {
-    "matches": 112,
-    "totalAttendance": 3408498,
-    "averageAttendance": 30433,
+    "matches": 113,
+    "totalAttendance": 3440257,
+    "averageAttendance": 30444,
     "highestAverageTeam": "大连英博",
     "highestAverageAttendance": 60970
   },
@@ -104,6 +104,18 @@
     },
     {
       "rank": 8,
+      "team": "Liaoning Tieren",
+      "teamCn": "辽宁铁人",
+      "stadium": "Tiexi New District Sports Center Stadium",
+      "stadiumCn": "铁西体育场",
+      "capacity": 40000,
+      "matches": 7,
+      "totalAttendance": 202106,
+      "averageAttendance": 28872,
+      "occupancyRate": 0.7218
+    },
+    {
+      "rank": 9,
       "team": "Zhejiang FC",
       "teamCn": "浙江队",
       "stadium": "Huanglong Sports Centre Stadium",
@@ -115,7 +127,7 @@
       "occupancyRate": 0.46726923076923077
     },
     {
-      "rank": 9,
+      "rank": 10,
       "team": "Tianjin Jinmen Tiger",
       "teamCn": "天津津门虎",
       "stadium": "TEDA Football Stadium",
@@ -125,18 +137,6 @@
       "totalAttendance": 173187,
       "averageAttendance": 24741,
       "occupancyRate": 0.6934136771300449
-    },
-    {
-      "rank": 10,
-      "team": "Liaoning Tieren",
-      "teamCn": "辽宁铁人",
-      "stadium": "Tiexi New District Sports Center Stadium",
-      "stadiumCn": "铁西体育场",
-      "capacity": 40000,
-      "matches": 6,
-      "totalAttendance": 170347,
-      "averageAttendance": 28391,
-      "occupancyRate": 0.709775
     },
     {
       "rank": 11,
