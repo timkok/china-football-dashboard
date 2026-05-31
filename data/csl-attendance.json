@@ -7,13 +7,13 @@
   "source": "Transfermarkt",
   "sourceUrl": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
   "isOfficial": false,
-  "fetchedAt": "2026-05-30T13:43:19.841Z",
+  "fetchedAt": "2026-05-31T04:02:29.727Z",
   "status": "ok",
   "disclaimer": "观众人数来自第三方公开来源 Transfermarkt，非官方数据，仅供趋势分析参考。",
   "summary": {
-    "matches": 114,
-    "totalAttendance": 3459568,
-    "averageAttendance": 30347,
+    "matches": 118,
+    "totalAttendance": 3597047,
+    "averageAttendance": 30483,
     "highestAverageTeam": "大连英博",
     "highestAverageAttendance": 60970
   },
@@ -44,6 +44,30 @@
     },
     {
       "rank": 3,
+      "team": "Chongqing Tonglianglong",
+      "teamCn": "重庆铜梁龙",
+      "stadium": "Chongqing Longxing Football Stadium",
+      "stadiumCn": "重庆龙兴足球场",
+      "capacity": 60000,
+      "matches": 8,
+      "totalAttendance": 341499,
+      "averageAttendance": 42687,
+      "occupancyRate": 0.71145
+    },
+    {
+      "rank": 4,
+      "team": "Chengdu Rongcheng",
+      "teamCn": "成都蓉城",
+      "stadium": "Phoenix Hill Sports Park Football Stadium",
+      "stadiumCn": "凤凰山体育公园专业足球场",
+      "capacity": 50695,
+      "matches": 8,
+      "totalAttendance": 330889,
+      "averageAttendance": 41361,
+      "occupancyRate": 0.8158792780353092
+    },
+    {
+      "rank": 5,
       "team": "Shanghai Shenhua",
       "teamCn": "上海申花",
       "stadium": "Shanghai Stadium",
@@ -53,30 +77,6 @@
       "totalAttendance": 330622,
       "averageAttendance": 41328,
       "occupancyRate": 0.5872039328796124
-    },
-    {
-      "rank": 4,
-      "team": "Chengdu Rongcheng",
-      "teamCn": "成都蓉城",
-      "stadium": "Phoenix Hill Sports Park Football Stadium",
-      "stadiumCn": "凤凰山体育公园专业足球场",
-      "capacity": 50695,
-      "matches": 7,
-      "totalAttendance": 289165,
-      "averageAttendance": 41309,
-      "occupancyRate": 0.8148535358516619
-    },
-    {
-      "rank": 5,
-      "team": "Chongqing Tonglianglong",
-      "teamCn": "重庆铜梁龙",
-      "stadium": "Chongqing Longxing Football Stadium",
-      "stadiumCn": "重庆龙兴足球场",
-      "capacity": 60000,
-      "matches": 7,
-      "totalAttendance": 285253,
-      "averageAttendance": 40750,
-      "occupancyRate": 0.6791666666666667
     },
     {
       "rank": 6,
@@ -140,6 +140,18 @@
     },
     {
       "rank": 11,
+      "team": "Shenzhen Peng City",
+      "teamCn": "深圳新鹏城",
+      "stadium": "Shenzhen Sports Center Stadium",
+      "stadiumCn": "Shenzhen Sports Center Stadium",
+      "capacity": 45000,
+      "matches": 8,
+      "totalAttendance": 161271,
+      "averageAttendance": 20159,
+      "occupancyRate": 0.44797777777777775
+    },
+    {
+      "rank": 12,
       "team": "Shanghai Port",
       "teamCn": "上海海港",
       "stadium": "SAIC Motor Pudong Arena",
@@ -151,7 +163,7 @@
       "occupancyRate": 0.5793869391381609
     },
     {
-      "rank": 12,
+      "rank": 13,
       "team": "Yunnan Yukun",
       "teamCn": "云南玉昆",
       "stadium": "Yuxi Plateau Sports Center Stadium",
@@ -163,28 +175,16 @@
       "occupancyRate": 0.7114
     },
     {
-      "rank": 13,
-      "team": "Shenzhen Peng City",
-      "teamCn": "深圳新鹏城",
-      "stadium": "Shenzhen Sports Center Stadium",
-      "stadiumCn": "Shenzhen Sports Center Stadium",
-      "capacity": 45000,
-      "matches": 7,
-      "totalAttendance": 141133,
-      "averageAttendance": 20162,
-      "occupancyRate": 0.44804444444444447
-    },
-    {
       "rank": 14,
       "team": "Henan FC",
       "teamCn": "河南队",
       "stadium": "Zhengzhou Hanghai Stadium",
       "stadiumCn": "郑州航海体育场",
       "capacity": 28000,
-      "matches": 6,
-      "totalAttendance": 116160,
-      "averageAttendance": 19360,
-      "occupancyRate": 0.6914285714285714
+      "matches": 7,
+      "totalAttendance": 135531,
+      "averageAttendance": 19362,
+      "occupancyRate": 0.6915
     },
     {
       "rank": 15,
