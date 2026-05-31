@@ -1,47 +1,14 @@
 {
-  "generatedAt": "2026-05-31T04:02:34.490Z",
+  "generatedAt": "2026-05-31T08:48:30.780Z",
   "summary": {
     "rankingChanges": 0,
     "pointsChanges": 0,
-    "attendanceChanges": 4,
+    "attendanceChanges": 0,
     "anomalyChanges": 0
   },
   "rankingChanges": [],
   "pointsChanges": [],
-  "attendanceChanges": [
-    {
-      "team": "Chongqing Tonglianglong",
-      "teamCn": "重庆铜梁龙",
-      "averageAttendance": 42687,
-      "averageAttendanceChange": 1937,
-      "occupancyRate": 0.71145,
-      "occupancyRateChange": 0.03228333333333333
-    },
-    {
-      "team": "Chengdu Rongcheng",
-      "teamCn": "成都蓉城",
-      "averageAttendance": 41361,
-      "averageAttendanceChange": 52,
-      "occupancyRate": 0.8158792780353092,
-      "occupancyRateChange": 0.0010257421836473712
-    },
-    {
-      "team": "Shenzhen Peng City",
-      "teamCn": "深圳新鹏城",
-      "averageAttendance": 20159,
-      "averageAttendanceChange": -3,
-      "occupancyRate": 0.44797777777777775,
-      "occupancyRateChange": -0.00006666666666671484
-    },
-    {
-      "team": "Henan FC",
-      "teamCn": "河南队",
-      "averageAttendance": 19362,
-      "averageAttendanceChange": 2,
-      "occupancyRate": 0.6915,
-      "occupancyRateChange": 0.00007142857142861114
-    }
-  ],
+  "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
     "standings": [
