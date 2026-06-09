@@ -7,13 +7,13 @@
   "source": "Transfermarkt",
   "sourceUrl": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
   "isOfficial": false,
-  "fetchedAt": "2026-06-09T09:49:30.781Z",
+  "fetchedAt": "2026-06-09T14:55:49.470Z",
   "status": "ok",
   "disclaimer": "观众人数来自第三方公开来源 Transfermarkt，非官方数据，仅供趋势分析参考。",
   "summary": {
     "matches": 120,
-    "totalAttendance": 3647151,
-    "averageAttendance": 30392,
+    "totalAttendance": 3647241,
+    "averageAttendance": 30393,
     "highestAverageTeam": "大连英博",
     "highestAverageAttendance": 60970
   },
@@ -86,9 +86,9 @@
       "stadiumCn": "济南奥体中心",
       "capacity": 56808,
       "matches": 8,
-      "totalAttendance": 222884,
-      "averageAttendance": 27861,
-      "occupancyRate": 0.4904414871144909
+      "totalAttendance": 222974,
+      "averageAttendance": 27872,
+      "occupancyRate": 0.490635121813829
     },
     {
       "rank": 7,
