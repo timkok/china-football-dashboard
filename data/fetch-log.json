@@ -1,6 +1,6 @@
 {
-  "lastRunAt": "2026-06-18T04:10:18.204Z",
-  "status": "warning",
+  "lastRunAt": "2026-06-18T10:23:14.530Z",
+  "status": "ok",
   "logs": [
     {
       "script": "fetch-standings.js",
@@ -16,15 +16,15 @@
     },
     {
       "script": "fetch-attendance.js",
-      "status": "error",
-      "exitCode": 1,
-      "message": "[attendance] Source Transfermarkt failed: HTTP 403 when fetching https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL\n[attendance] Source Transfermarkt UK failed: HTTP 403 when fetching https://www.transfermarkt.co.uk/chinese-super-league/besucherzahlen/wettbewerb/CSL\n[attendance] Source Transfermarkt JP failed: HTTP 403 when fetching https://www.transfermarkt.jp/chinese-super-league/besucherzahlen/wettbewerb/CSL\n[fatal] Attendance crawl failed: Error: Failed to crawl CSL attendance from all Transfermarkt mirrors\n    at main (file:///home/runner/work/china-football-dashboard/china-football-dashboard/scripts/fetch-attendance.js:175:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+      "status": "ok",
+      "exitCode": 0,
+      "message": "Executed successfully."
     },
     {
       "script": "fetch-attendance-history.js",
-      "status": "error",
-      "exitCode": 1,
-      "message": "[history] Source Transfermarkt UK failed: HTTP 403 when fetching https://www.transfermarkt.co.uk/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL\n[history] Source Transfermarkt failed: HTTP 403 when fetching https://www.transfermarkt.com/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL\n[fatal] History crawl failed: Error: Failed to crawl CSL attendance history from Transfermarkt\n    at main (file:///home/runner/work/china-football-dashboard/china-football-dashboard/scripts/fetch-attendance-history.js:114:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+      "status": "ok",
+      "exitCode": 0,
+      "message": "Executed successfully."
     },
     {
       "script": "fetch-official-feed.js",
