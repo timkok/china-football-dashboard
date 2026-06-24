@@ -6,7 +6,7 @@
   "source": "Transfermarkt",
   "sourceUrl": "https://www.transfermarkt.co.uk/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL",
   "isOfficial": false,
-  "fetchedAt": "2026-06-23T14:53:18.384Z",
+  "fetchedAt": "2026-06-24T03:46:28.148Z",
   "status": "ok",
   "seasons": [
     {
@@ -197,6 +197,15 @@
       "averageAttendance": 11433,
       "highestAverageTeam": "Shandong Luneng Taishan",
       "highestAverageAttendance": 31300
+    },
+    {
+      "season": "00/01",
+      "seasonEndYear": 2001,
+      "matches": 3,
+      "totalAttendance": 82000,
+      "averageAttendance": 27333,
+      "highestAverageTeam": "Beijing Guoan",
+      "highestAverageAttendance": 38000
     },
     {
       "season": "99/00",
