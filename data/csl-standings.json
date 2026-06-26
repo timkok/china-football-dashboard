@@ -7,7 +7,7 @@
   "source": "新浪体育中超积分榜",
   "sourceUrl": "https://sports.sina.com.cn/csl/table/",
   "isOfficial": false,
-  "fetchedAt": "2026-06-26T09:30:28.990Z",
+  "fetchedAt": "2026-06-26T14:27:49.159Z",
   "status": "ok",
   "disclaimer": "非官方 fallback 数据，如有变化，以中足联或中国足协官方公告为准。",
   "data": [
@@ -119,13 +119,13 @@
       "name": "云南玉昆",
       "shortName": "玉昆",
       "city": "玉溪",
-      "played": 15,
+      "played": 16,
       "wins": 6,
       "draws": 3,
-      "losses": 6,
-      "goalsFor": 27,
-      "goalsAgainst": 24,
-      "goalDiff": 3,
+      "losses": 7,
+      "goalsFor": 29,
+      "goalsAgainst": 28,
+      "goalDiff": 1,
       "points": 21,
       "form": [
         "W",
@@ -143,7 +143,7 @@
       "awayRecord": {
         "wins": 3,
         "draws": 2,
-        "losses": 3,
+        "losses": 4,
         "points": 11
       }
     },
@@ -421,6 +421,40 @@
     },
     {
       "rank": 13,
+      "team": "青岛海牛",
+      "name": "青岛海牛",
+      "shortName": "海牛",
+      "city": "青岛",
+      "played": 16,
+      "wins": 6,
+      "draws": 2,
+      "losses": 8,
+      "goalsFor": 26,
+      "goalsAgainst": 27,
+      "goalDiff": -1,
+      "points": 13,
+      "form": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "homeRecord": {
+        "wins": 5,
+        "draws": 1,
+        "losses": 2,
+        "points": 16
+      },
+      "awayRecord": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 6,
+        "points": 4
+      }
+    },
+    {
+      "rank": 14,
       "team": "上海海港",
       "name": "上海海港",
       "shortName": "海港",
@@ -451,40 +485,6 @@
         "draws": 2,
         "losses": 4,
         "points": 5
-      }
-    },
-    {
-      "rank": 14,
-      "team": "青岛海牛",
-      "name": "青岛海牛",
-      "shortName": "海牛",
-      "city": "青岛",
-      "played": 15,
-      "wins": 5,
-      "draws": 2,
-      "losses": 8,
-      "goalsFor": 22,
-      "goalsAgainst": 25,
-      "goalDiff": -3,
-      "points": 10,
-      "form": [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W"
-      ],
-      "homeRecord": {
-        "wins": 4,
-        "draws": 1,
-        "losses": 2,
-        "points": 13
-      },
-      "awayRecord": {
-        "wins": 1,
-        "draws": 1,
-        "losses": 6,
-        "points": 4
       }
     },
     {
