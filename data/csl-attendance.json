@@ -7,13 +7,13 @@
   "source": "Transfermarkt",
   "sourceUrl": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
   "isOfficial": false,
-  "fetchedAt": "2026-06-27T13:46:37.023Z",
+  "fetchedAt": "2026-06-27T19:23:04.570Z",
   "status": "ok",
   "disclaimer": "观众人数来自第三方公开来源 Transfermarkt，非官方数据，仅供趋势分析参考。",
   "summary": {
-    "matches": 122,
-    "totalAttendance": 3696896,
-    "averageAttendance": 30302,
+    "matches": 125,
+    "totalAttendance": 3779017,
+    "averageAttendance": 30232,
     "highestAverageTeam": "大连英博",
     "highestAverageAttendance": 60970
   },
@@ -37,10 +37,10 @@
       "stadium": "Workers Stadium",
       "stadiumCn": "北京工人体育场",
       "capacity": 68000,
-      "matches": 7,
-      "totalAttendance": 346764,
-      "averageAttendance": 49538,
-      "occupancyRate": 0.7285
+      "matches": 8,
+      "totalAttendance": 386910,
+      "averageAttendance": 48364,
+      "occupancyRate": 0.7112352941176471
     },
     {
       "rank": 3,
@@ -49,10 +49,10 @@
       "stadium": "Chongqing Longxing Football Stadium",
       "stadiumCn": "重庆龙兴足球场",
       "capacity": 60000,
-      "matches": 8,
-      "totalAttendance": 341499,
-      "averageAttendance": 42687,
-      "occupancyRate": 0.71145
+      "matches": 9,
+      "totalAttendance": 358355,
+      "averageAttendance": 39817,
+      "occupancyRate": 0.6636166666666666
     },
     {
       "rank": 4,
@@ -145,10 +145,10 @@
       "stadium": "Shenzhen Sports Center Stadium",
       "stadiumCn": "Shenzhen Sports Center Stadium",
       "capacity": 45000,
-      "matches": 8,
-      "totalAttendance": 161271,
-      "averageAttendance": 20159,
-      "occupancyRate": 0.44797777777777775
+      "matches": 9,
+      "totalAttendance": 186390,
+      "averageAttendance": 20710,
+      "occupancyRate": 0.4602222222222222
     },
     {
       "rank": 12,
