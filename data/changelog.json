@@ -1,13 +1,64 @@
 {
-  "generatedAt": "2026-06-28T08:55:07.530Z",
+  "generatedAt": "2026-06-28T13:50:06.502Z",
   "summary": {
-    "rankingChanges": 0,
-    "pointsChanges": 0,
+    "rankingChanges": 5,
+    "pointsChanges": 2,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [],
-  "pointsChanges": [],
+  "rankingChanges": [
+    {
+      "team": "青岛西海岸",
+      "rank": 6,
+      "rankChange": 1,
+      "points": 21,
+      "pointsChange": 3
+    },
+    {
+      "team": "北京国安",
+      "rank": 7,
+      "rankChange": -1,
+      "points": 18,
+      "pointsChange": 0
+    },
+    {
+      "team": "上海申花",
+      "rank": 11,
+      "rankChange": 2,
+      "points": 16,
+      "pointsChange": 3
+    },
+    {
+      "team": "上海海港",
+      "rank": 12,
+      "rankChange": -1,
+      "points": 15,
+      "pointsChange": 0
+    },
+    {
+      "team": "河南队",
+      "rank": 13,
+      "rankChange": -1,
+      "points": 15,
+      "pointsChange": 0
+    }
+  ],
+  "pointsChanges": [
+    {
+      "team": "青岛西海岸",
+      "rank": 6,
+      "rankChange": 1,
+      "points": 21,
+      "pointsChange": 3
+    },
+    {
+      "team": "上海申花",
+      "rank": 11,
+      "rankChange": 2,
+      "points": 16,
+      "pointsChange": 3
+    }
+  ],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
@@ -38,12 +89,12 @@
         "points": 21
       },
       {
-        "team": "北京国安",
+        "team": "青岛西海岸",
         "rank": 6,
-        "points": 18
+        "points": 21
       },
       {
-        "team": "青岛西海岸",
+        "team": "北京国安",
         "rank": 7,
         "points": 18
       },
@@ -63,19 +114,19 @@
         "points": 17
       },
       {
-        "team": "上海海港",
+        "team": "上海申花",
         "rank": 11,
-        "points": 15
+        "points": 16
       },
       {
-        "team": "河南队",
+        "team": "上海海港",
         "rank": 12,
         "points": 15
       },
       {
-        "team": "上海申花",
+        "team": "河南队",
         "rank": 13,
-        "points": 13
+        "points": 15
       },
       {
         "team": "青岛海牛",

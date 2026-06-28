@@ -7,7 +7,7 @@
   "source": "新浪体育中超积分榜",
   "sourceUrl": "https://sports.sina.com.cn/csl/table/",
   "isOfficial": false,
-  "fetchedAt": "2026-06-28T08:54:59.099Z",
+  "fetchedAt": "2026-06-28T13:49:57.290Z",
   "status": "ok",
   "disclaimer": "非官方 fallback 数据，如有变化，以中足联或中国足协官方公告为准。",
   "data": [
@@ -85,13 +85,13 @@
       "name": "大连英博",
       "shortName": "英博",
       "city": "大连",
-      "played": 15,
+      "played": 16,
       "wins": 7,
       "draws": 1,
-      "losses": 7,
-      "goalsFor": 21,
-      "goalsAgainst": 25,
-      "goalDiff": -4,
+      "losses": 8,
+      "goalsFor": 22,
+      "goalsAgainst": 29,
+      "goalDiff": -7,
       "points": 22,
       "form": [
         "W",
@@ -103,7 +103,7 @@
       "homeRecord": {
         "wins": 5,
         "draws": 0,
-        "losses": 2,
+        "losses": 3,
         "points": 15
       },
       "awayRecord": {
@@ -183,6 +183,40 @@
     },
     {
       "rank": 6,
+      "team": "青岛西海岸",
+      "name": "青岛西海岸",
+      "shortName": "西海岸",
+      "city": "青岛",
+      "played": 16,
+      "wins": 4,
+      "draws": 9,
+      "losses": 3,
+      "goalsFor": 20,
+      "goalsAgainst": 24,
+      "goalDiff": -4,
+      "points": 21,
+      "form": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "homeRecord": {
+        "wins": 2,
+        "draws": 6,
+        "losses": 0,
+        "points": 12
+      },
+      "awayRecord": {
+        "wins": 2,
+        "draws": 3,
+        "losses": 3,
+        "points": 9
+      }
+    },
+    {
+      "rank": 7,
       "team": "北京国安",
       "name": "北京国安",
       "shortName": "国安",
@@ -216,52 +250,18 @@
       }
     },
     {
-      "rank": 7,
-      "team": "青岛西海岸",
-      "name": "青岛西海岸",
-      "shortName": "西海岸",
-      "city": "青岛",
-      "played": 15,
-      "wins": 3,
-      "draws": 9,
-      "losses": 3,
-      "goalsFor": 17,
-      "goalsAgainst": 23,
-      "goalDiff": -6,
-      "points": 18,
-      "form": [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W"
-      ],
-      "homeRecord": {
-        "wins": 1,
-        "draws": 6,
-        "losses": 0,
-        "points": 9
-      },
-      "awayRecord": {
-        "wins": 2,
-        "draws": 3,
-        "losses": 3,
-        "points": 9
-      }
-    },
-    {
       "rank": 8,
       "team": "浙江队",
       "name": "浙江队",
       "shortName": "浙江",
       "city": "杭州",
-      "played": 15,
+      "played": 16,
       "wins": 6,
       "draws": 4,
-      "losses": 5,
-      "goalsFor": 20,
-      "goalsAgainst": 23,
-      "goalDiff": -3,
+      "losses": 6,
+      "goalsFor": 21,
+      "goalsAgainst": 26,
+      "goalDiff": -5,
       "points": 17,
       "form": [
         "W",
@@ -279,7 +279,7 @@
       "awayRecord": {
         "wins": 3,
         "draws": 1,
-        "losses": 3,
+        "losses": 4,
         "points": 10
       }
     },
@@ -353,6 +353,40 @@
     },
     {
       "rank": 11,
+      "team": "上海申花",
+      "name": "上海申花",
+      "shortName": "申花",
+      "city": "上海",
+      "played": 16,
+      "wins": 7,
+      "draws": 5,
+      "losses": 4,
+      "goalsFor": 33,
+      "goalsAgainst": 25,
+      "goalDiff": 8,
+      "points": 16,
+      "form": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "homeRecord": {
+        "wins": 4,
+        "draws": 2,
+        "losses": 2,
+        "points": 14
+      },
+      "awayRecord": {
+        "wins": 3,
+        "draws": 3,
+        "losses": 2,
+        "points": 12
+      }
+    },
+    {
+      "rank": 12,
       "team": "上海海港",
       "name": "上海海港",
       "shortName": "海港",
@@ -386,7 +420,7 @@
       }
     },
     {
-      "rank": 12,
+      "rank": 13,
       "team": "河南队",
       "name": "河南队",
       "shortName": "河南",
@@ -417,40 +451,6 @@
         "draws": 2,
         "losses": 3,
         "points": 11
-      }
-    },
-    {
-      "rank": 13,
-      "team": "上海申花",
-      "name": "上海申花",
-      "shortName": "申花",
-      "city": "上海",
-      "played": 15,
-      "wins": 6,
-      "draws": 5,
-      "losses": 4,
-      "goalsFor": 29,
-      "goalsAgainst": 24,
-      "goalDiff": 5,
-      "points": 13,
-      "form": [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W"
-      ],
-      "homeRecord": {
-        "wins": 4,
-        "draws": 2,
-        "losses": 2,
-        "points": 14
-      },
-      "awayRecord": {
-        "wins": 2,
-        "draws": 3,
-        "losses": 2,
-        "points": 9
       }
     },
     {
