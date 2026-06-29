@@ -1,39 +1,14 @@
 {
-  "generatedAt": "2026-06-28T19:23:11.600Z",
+  "generatedAt": "2026-06-29T04:06:42.792Z",
   "summary": {
     "rankingChanges": 0,
     "pointsChanges": 0,
-    "attendanceChanges": 3,
+    "attendanceChanges": 0,
     "anomalyChanges": 0
   },
   "rankingChanges": [],
   "pointsChanges": [],
-  "attendanceChanges": [
-    {
-      "team": "Dalian Yingbo",
-      "teamCn": "大连英博",
-      "averageAttendance": 61146,
-      "averageAttendanceChange": 176,
-      "occupancyRate": 0.9367158417206674,
-      "occupancyRateChange": 0.002696202337730047
-    },
-    {
-      "team": "Henan FC",
-      "teamCn": "河南队",
-      "averageAttendance": 19322,
-      "averageAttendanceChange": -40,
-      "occupancyRate": 0.6900714285714286,
-      "occupancyRateChange": -0.0014285714285714457
-    },
-    {
-      "team": "Qingdao West Coast",
-      "teamCn": "青岛西海岸",
-      "averageAttendance": 15540,
-      "averageAttendanceChange": -173,
-      "occupancyRate": 0.777,
-      "occupancyRateChange": -0.008649999999999936
-    }
-  ],
+  "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
     "standings": [
