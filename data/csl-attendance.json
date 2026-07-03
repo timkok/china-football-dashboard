@@ -7,13 +7,13 @@
   "source": "Transfermarkt",
   "sourceUrl": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
   "isOfficial": false,
-  "fetchedAt": "2026-07-03T14:09:11.684Z",
+  "fetchedAt": "2026-07-03T19:25:20.358Z",
   "status": "ok",
   "disclaimer": "观众人数来自第三方公开来源 Transfermarkt，非官方数据，仅供趋势分析参考。",
   "summary": {
-    "matches": 128,
-    "totalAttendance": 3874763,
-    "averageAttendance": 30271,
+    "matches": 129,
+    "totalAttendance": 3892868,
+    "averageAttendance": 30177,
     "highestAverageTeam": "大连英博",
     "highestAverageAttendance": 61146
   },
@@ -152,6 +152,18 @@
     },
     {
       "rank": 12,
+      "team": "Yunnan Yukun",
+      "teamCn": "云南玉昆",
+      "stadium": "Yuxi Plateau Sports Center Stadium",
+      "stadiumCn": "玉溪高原体育中心",
+      "capacity": 30000,
+      "matches": 8,
+      "totalAttendance": 167502,
+      "averageAttendance": 20938,
+      "occupancyRate": 0.6979333333333333
+    },
+    {
+      "rank": 13,
       "team": "Shanghai Port",
       "teamCn": "上海海港",
       "stadium": "SAIC Motor Pudong Arena",
@@ -163,7 +175,7 @@
       "occupancyRate": 0.5793869391381609
     },
     {
-      "rank": 13,
+      "rank": 14,
       "team": "Henan FC",
       "teamCn": "河南队",
       "stadium": "Zhengzhou Hanghai Stadium",
@@ -173,18 +185,6 @@
       "totalAttendance": 154572,
       "averageAttendance": 19322,
       "occupancyRate": 0.6900714285714286
-    },
-    {
-      "rank": 14,
-      "team": "Yunnan Yukun",
-      "teamCn": "云南玉昆",
-      "stadium": "Yuxi Plateau Sports Center Stadium",
-      "stadiumCn": "玉溪高原体育中心",
-      "capacity": 30000,
-      "matches": 7,
-      "totalAttendance": 149397,
-      "averageAttendance": 21342,
-      "occupancyRate": 0.7114
     },
     {
       "rank": 15,

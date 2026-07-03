@@ -7,7 +7,7 @@
   "source": "新浪体育中超积分榜",
   "sourceUrl": "https://sports.sina.com.cn/csl/table/",
   "isOfficial": false,
-  "fetchedAt": "2026-07-03T14:09:07.731Z",
+  "fetchedAt": "2026-07-03T19:25:16.907Z",
   "status": "ok",
   "disclaimer": "非官方 fallback 数据，如有变化，以中足联或中国足协官方公告为准。",
   "data": [
@@ -81,6 +81,40 @@
     },
     {
       "rank": 3,
+      "team": "云南玉昆",
+      "name": "云南玉昆",
+      "shortName": "玉昆",
+      "city": "玉溪",
+      "played": 17,
+      "wins": 7,
+      "draws": 3,
+      "losses": 7,
+      "goalsFor": 31,
+      "goalsAgainst": 29,
+      "goalDiff": 2,
+      "points": 24,
+      "form": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "homeRecord": {
+        "wins": 4,
+        "draws": 1,
+        "losses": 3,
+        "points": 13
+      },
+      "awayRecord": {
+        "wins": 3,
+        "draws": 2,
+        "losses": 4,
+        "points": 11
+      }
+    },
+    {
+      "rank": 4,
       "team": "大连英博",
       "name": "大连英博",
       "shortName": "英博",
@@ -114,7 +148,7 @@
       }
     },
     {
-      "rank": 4,
+      "rank": 5,
       "team": "山东泰山",
       "name": "山东泰山",
       "shortName": "泰山",
@@ -145,40 +179,6 @@
         "draws": 0,
         "losses": 4,
         "points": 12
-      }
-    },
-    {
-      "rank": 5,
-      "team": "云南玉昆",
-      "name": "云南玉昆",
-      "shortName": "玉昆",
-      "city": "玉溪",
-      "played": 16,
-      "wins": 6,
-      "draws": 3,
-      "losses": 7,
-      "goalsFor": 29,
-      "goalsAgainst": 28,
-      "goalDiff": 1,
-      "points": 21,
-      "form": [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W"
-      ],
-      "homeRecord": {
-        "wins": 3,
-        "draws": 1,
-        "losses": 3,
-        "points": 10
-      },
-      "awayRecord": {
-        "wins": 3,
-        "draws": 2,
-        "losses": 4,
-        "points": 11
       }
     },
     {
@@ -425,13 +425,13 @@
       "name": "河南队",
       "shortName": "河南",
       "city": "郑州",
-      "played": 16,
+      "played": 17,
       "wins": 6,
       "draws": 3,
-      "losses": 7,
-      "goalsFor": 17,
-      "goalsAgainst": 20,
-      "goalDiff": -3,
+      "losses": 8,
+      "goalsFor": 18,
+      "goalsAgainst": 22,
+      "goalDiff": -4,
       "points": 15,
       "form": [
         "W",
@@ -449,7 +449,7 @@
       "awayRecord": {
         "wins": 3,
         "draws": 2,
-        "losses": 3,
+        "losses": 4,
         "points": 11
       }
     },
