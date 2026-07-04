@@ -6,17 +6,17 @@
   "source": "Transfermarkt",
   "sourceUrl": "https://www.transfermarkt.co.uk/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL",
   "isOfficial": false,
-  "fetchedAt": "2026-07-04T08:39:30.908Z",
+  "fetchedAt": "2026-07-04T13:36:41.171Z",
   "status": "ok",
   "seasons": [
     {
       "season": "25/26",
       "seasonEndYear": 2026,
-      "matches": 129,
+      "matches": 133,
       "totalAttendance": 3892868,
       "averageAttendance": 30177,
       "highestAverageTeam": "Dalian Yingbo",
-      "highestAverageAttendance": 61146
+      "highestAverageAttendance": 54352
     },
     {
       "season": "24/25",
