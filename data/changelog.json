@@ -1,96 +1,21 @@
 {
-  "generatedAt": "2026-07-04T19:16:20.330Z",
+  "generatedAt": "2026-07-05T03:35:37.204Z",
   "summary": {
-    "rankingChanges": 5,
-    "pointsChanges": 2,
-    "attendanceChanges": 4,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
+    "attendanceChanges": 1,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "大连英博",
-      "rank": 3,
-      "rankChange": 2,
-      "points": 25,
-      "pointsChange": 3
-    },
-    {
-      "team": "云南玉昆",
-      "rank": 4,
-      "rankChange": -1,
-      "points": 24,
-      "pointsChange": 0
-    },
-    {
-      "team": "青岛西海岸",
-      "rank": 5,
-      "rankChange": -1,
-      "points": 24,
-      "pointsChange": 0
-    },
-    {
-      "team": "天津津门虎",
-      "rank": 15,
-      "rankChange": 1,
-      "points": 8,
-      "pointsChange": 3
-    },
-    {
-      "team": "武汉三镇",
-      "rank": 16,
-      "rankChange": -1,
-      "points": 8,
-      "pointsChange": 0
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "大连英博",
-      "rank": 3,
-      "rankChange": 2,
-      "points": 25,
-      "pointsChange": 3
-    },
-    {
-      "team": "天津津门虎",
-      "rank": 15,
-      "rankChange": 1,
-      "points": 8,
-      "pointsChange": 3
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [
     {
-      "team": "Dalian Yingbo",
-      "teamCn": "大连英博",
-      "averageAttendance": 56725,
-      "averageAttendanceChange": -4421,
-      "occupancyRate": 0.8689890773166659,
-      "occupancyRateChange": -0.0677267644040015
-    },
-    {
-      "team": "Liaoning Tieren",
-      "teamCn": "辽宁铁人",
-      "averageAttendance": 28082,
-      "averageAttendanceChange": -759,
-      "occupancyRate": 0.70205,
-      "occupancyRateChange": -0.018975000000000075
-    },
-    {
-      "team": "Tianjin Jinmen Tiger",
-      "teamCn": "天津津门虎",
-      "averageAttendance": 24713,
-      "averageAttendanceChange": -418,
-      "occupancyRate": 0.6926289237668162,
-      "occupancyRateChange": -0.01171524663677126
-    },
-    {
-      "team": "Qingdao West Coast",
-      "teamCn": "青岛西海岸",
-      "averageAttendance": 15626,
-      "averageAttendanceChange": 86,
-      "occupancyRate": 0.7813,
-      "occupancyRateChange": 0.0042999999999999705
+      "team": "Beijing Guoan",
+      "teamCn": "北京国安",
+      "averageAttendance": 49288,
+      "averageAttendanceChange": 924,
+      "occupancyRate": 0.7248235294117648,
+      "occupancyRateChange": 0.013588235294117679
     }
   ],
   "anomalyChanges": [],
@@ -185,8 +110,8 @@
       },
       {
         "team": "Beijing Guoan",
-        "averageAttendance": 48364,
-        "occupancyRate": 0.7112352941176471
+        "averageAttendance": 49288,
+        "occupancyRate": 0.7248235294117648
       },
       {
         "team": "Chongqing Tonglianglong",
