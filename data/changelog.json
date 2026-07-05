@@ -1,23 +1,14 @@
 {
-  "generatedAt": "2026-07-05T03:35:37.204Z",
+  "generatedAt": "2026-07-05T08:56:29.265Z",
   "summary": {
     "rankingChanges": 0,
     "pointsChanges": 0,
-    "attendanceChanges": 1,
+    "attendanceChanges": 0,
     "anomalyChanges": 0
   },
   "rankingChanges": [],
   "pointsChanges": [],
-  "attendanceChanges": [
-    {
-      "team": "Beijing Guoan",
-      "teamCn": "北京国安",
-      "averageAttendance": 49288,
-      "averageAttendanceChange": 924,
-      "occupancyRate": 0.7248235294117648,
-      "occupancyRateChange": 0.013588235294117679
-    }
-  ],
+  "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
     "standings": [
