@@ -7,15 +7,15 @@
   "source": "Transfermarkt",
   "sourceUrl": "https://www.transfermarkt.com/chinese-super-league/besucherzahlen/wettbewerb/CSL",
   "isOfficial": false,
-  "fetchedAt": "2026-07-05T03:35:31.997Z",
+  "fetchedAt": "2026-07-06T10:26:17.459Z",
   "status": "ok",
   "disclaimer": "观众人数来自第三方公开来源 Transfermarkt，非官方数据，仅供趋势分析参考。",
   "summary": {
-    "matches": 134,
-    "totalAttendance": 4030599,
-    "averageAttendance": 30079,
+    "matches": 135,
+    "totalAttendance": 4099669,
+    "averageAttendance": 30367,
     "highestAverageTeam": "大连英博",
-    "highestAverageAttendance": 56725
+    "highestAverageAttendance": 61032
   },
   "teams": [
     {
@@ -26,9 +26,9 @@
       "stadiumCn": "大连梭鱼湾足球场",
       "capacity": 65277,
       "matches": 9,
-      "totalAttendance": 510529,
-      "averageAttendance": 56725,
-      "occupancyRate": 0.8689890773166659
+      "totalAttendance": 549287,
+      "averageAttendance": 61032,
+      "occupancyRate": 0.9349694379337286
     },
     {
       "rank": 2,
@@ -80,6 +80,18 @@
     },
     {
       "rank": 6,
+      "team": "Qingdao Hainiu",
+      "teamCn": "青岛海牛",
+      "stadium": "Qingdao Youth Football Stadium",
+      "stadiumCn": "青岛青春足球场",
+      "capacity": 53317,
+      "matches": 9,
+      "totalAttendance": 256220,
+      "averageAttendance": 28469,
+      "occupancyRate": 0.5339572744152897
+    },
+    {
+      "rank": 7,
       "team": "Liaoning Tieren",
       "teamCn": "辽宁铁人",
       "stadium": "Tiexi New District Sports Center Stadium",
@@ -89,18 +101,6 @@
       "totalAttendance": 252736,
       "averageAttendance": 28082,
       "occupancyRate": 0.70205
-    },
-    {
-      "rank": 7,
-      "team": "Qingdao Hainiu",
-      "teamCn": "青岛海牛",
-      "stadium": "Qingdao Youth Football Stadium",
-      "stadiumCn": "青岛青春足球场",
-      "capacity": 53317,
-      "matches": 8,
-      "totalAttendance": 225908,
-      "averageAttendance": 28239,
-      "occupancyRate": 0.5296434533075755
     },
     {
       "rank": 8,
