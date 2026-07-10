@@ -1,50 +1,13 @@
 {
-  "generatedAt": "2026-07-10T14:30:28.331Z",
+  "generatedAt": "2026-07-10T19:35:25.064Z",
   "summary": {
-    "rankingChanges": 4,
-    "pointsChanges": 1,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "山东泰山",
-      "rank": 4,
-      "rankChange": 3,
-      "points": 24,
-      "pointsChange": 3
-    },
-    {
-      "team": "云南玉昆",
-      "rank": 5,
-      "rankChange": -1,
-      "points": 24,
-      "pointsChange": 0
-    },
-    {
-      "team": "青岛西海岸",
-      "rank": 6,
-      "rankChange": -1,
-      "points": 24,
-      "pointsChange": 0
-    },
-    {
-      "team": "北京国安",
-      "rank": 7,
-      "rankChange": -1,
-      "points": 21,
-      "pointsChange": 0
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "山东泰山",
-      "rank": 4,
-      "rankChange": 3,
-      "points": 24,
-      "pointsChange": 3
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
