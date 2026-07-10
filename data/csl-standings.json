@@ -7,7 +7,7 @@
   "source": "新浪体育中超积分榜",
   "sourceUrl": "https://sports.sina.com.cn/csl/table/",
   "isOfficial": false,
-  "fetchedAt": "2026-07-10T09:37:52.666Z",
+  "fetchedAt": "2026-07-10T14:29:56.654Z",
   "status": "ok",
   "disclaimer": "非官方 fallback 数据，如有变化，以中足联或中国足协官方公告为准。",
   "data": [
@@ -115,17 +115,51 @@
     },
     {
       "rank": 4,
+      "team": "山东泰山",
+      "name": "山东泰山",
+      "shortName": "泰山",
+      "city": "济南",
+      "played": 18,
+      "wins": 9,
+      "draws": 3,
+      "losses": 6,
+      "goalsFor": 34,
+      "goalsAgainst": 31,
+      "goalDiff": 3,
+      "points": 24,
+      "form": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "homeRecord": {
+        "wins": 5,
+        "draws": 3,
+        "losses": 1,
+        "points": 18
+      },
+      "awayRecord": {
+        "wins": 4,
+        "draws": 0,
+        "losses": 5,
+        "points": 12
+      }
+    },
+    {
+      "rank": 5,
       "team": "云南玉昆",
       "name": "云南玉昆",
       "shortName": "玉昆",
       "city": "玉溪",
-      "played": 17,
+      "played": 18,
       "wins": 7,
       "draws": 3,
-      "losses": 7,
-      "goalsFor": 31,
-      "goalsAgainst": 29,
-      "goalDiff": 2,
+      "losses": 8,
+      "goalsFor": 34,
+      "goalsAgainst": 33,
+      "goalDiff": 1,
       "points": 24,
       "form": [
         "W",
@@ -143,12 +177,12 @@
       "awayRecord": {
         "wins": 3,
         "draws": 2,
-        "losses": 4,
+        "losses": 5,
         "points": 11
       }
     },
     {
-      "rank": 5,
+      "rank": 6,
       "team": "青岛西海岸",
       "name": "青岛西海岸",
       "shortName": "西海岸",
@@ -182,7 +216,7 @@
       }
     },
     {
-      "rank": 6,
+      "rank": 7,
       "team": "北京国安",
       "name": "北京国安",
       "shortName": "国安",
@@ -212,40 +246,6 @@
         "wins": 3,
         "draws": 3,
         "losses": 2,
-        "points": 12
-      }
-    },
-    {
-      "rank": 7,
-      "team": "山东泰山",
-      "name": "山东泰山",
-      "shortName": "泰山",
-      "city": "济南",
-      "played": 17,
-      "wins": 8,
-      "draws": 3,
-      "losses": 6,
-      "goalsFor": 30,
-      "goalsAgainst": 28,
-      "goalDiff": 2,
-      "points": 21,
-      "form": [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W"
-      ],
-      "homeRecord": {
-        "wins": 4,
-        "draws": 3,
-        "losses": 1,
-        "points": 15
-      },
-      "awayRecord": {
-        "wins": 4,
-        "draws": 0,
-        "losses": 5,
         "points": 12
       }
     },
