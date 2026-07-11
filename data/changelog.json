@@ -1,13 +1,71 @@
 {
-  "generatedAt": "2026-07-11T13:22:40.547Z",
+  "generatedAt": "2026-07-11T19:05:50.026Z",
   "summary": {
-    "rankingChanges": 0,
-    "pointsChanges": 0,
+    "rankingChanges": 5,
+    "pointsChanges": 3,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [],
-  "pointsChanges": [],
+  "rankingChanges": [
+    {
+      "team": "成都蓉城",
+      "rank": 1,
+      "rankChange": 0,
+      "points": 42,
+      "pointsChange": 1
+    },
+    {
+      "team": "重庆铜梁龙",
+      "rank": 2,
+      "rankChange": 0,
+      "points": 28,
+      "pointsChange": 1
+    },
+    {
+      "team": "深圳新鵬城",
+      "rank": 9,
+      "rankChange": 2,
+      "points": 20,
+      "pointsChange": 3
+    },
+    {
+      "team": "上海申花",
+      "rank": 10,
+      "rankChange": -1,
+      "points": 19,
+      "pointsChange": 0
+    },
+    {
+      "team": "浙江队",
+      "rank": 11,
+      "rankChange": -1,
+      "points": 17,
+      "pointsChange": 0
+    }
+  ],
+  "pointsChanges": [
+    {
+      "team": "成都蓉城",
+      "rank": 1,
+      "rankChange": 0,
+      "points": 42,
+      "pointsChange": 1
+    },
+    {
+      "team": "重庆铜梁龙",
+      "rank": 2,
+      "rankChange": 0,
+      "points": 28,
+      "pointsChange": 1
+    },
+    {
+      "team": "深圳新鵬城",
+      "rank": 9,
+      "rankChange": 2,
+      "points": 20,
+      "pointsChange": 3
+    }
+  ],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
@@ -15,12 +73,12 @@
       {
         "team": "成都蓉城",
         "rank": 1,
-        "points": 41
+        "points": 42
       },
       {
         "team": "重庆铜梁龙",
         "rank": 2,
-        "points": 27
+        "points": 28
       },
       {
         "team": "大连英博",
@@ -53,17 +111,17 @@
         "points": 20
       },
       {
-        "team": "上海申花",
+        "team": "深圳新鵬城",
         "rank": 9,
+        "points": 20
+      },
+      {
+        "team": "上海申花",
+        "rank": 10,
         "points": 19
       },
       {
         "team": "浙江队",
-        "rank": 10,
-        "points": 17
-      },
-      {
-        "team": "深圳新鵬城",
         "rank": 11,
         "points": 17
       },
