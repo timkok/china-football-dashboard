@@ -4,9 +4,9 @@
   "type": "attendance-history",
   "mode": "third_party",
   "source": "Transfermarkt",
-  "sourceUrl": "https://www.transfermarkt.com/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL",
+  "sourceUrl": "https://www.transfermarkt.co.uk/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL",
   "isOfficial": false,
-  "fetchedAt": "2026-07-12T13:22:55.073Z",
+  "fetchedAt": "2026-07-12T19:07:44.924Z",
   "status": "ok",
   "seasons": [
     {
