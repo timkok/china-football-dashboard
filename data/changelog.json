@@ -1,31 +1,14 @@
 {
-  "generatedAt": "2026-07-12T08:20:23.845Z",
+  "generatedAt": "2026-07-12T13:22:58.392Z",
   "summary": {
     "rankingChanges": 0,
     "pointsChanges": 0,
-    "attendanceChanges": 2,
+    "attendanceChanges": 0,
     "anomalyChanges": 0
   },
   "rankingChanges": [],
   "pointsChanges": [],
-  "attendanceChanges": [
-    {
-      "team": "Chengdu Rongcheng",
-      "teamCn": "成都蓉城",
-      "averageAttendance": 41363,
-      "averageAttendanceChange": 2,
-      "occupancyRate": 0.8159187296577571,
-      "occupancyRateChange": 0.000039451622447894685
-    },
-    {
-      "team": "Shenzhen Peng City",
-      "teamCn": "深圳新鹏城",
-      "averageAttendance": 20437,
-      "averageAttendanceChange": -273,
-      "occupancyRate": 0.45415555555555553,
-      "occupancyRateChange": -0.006066666666666665
-    }
-  ],
+  "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
     "standings": [
