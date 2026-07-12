@@ -1,71 +1,13 @@
 {
-  "generatedAt": "2026-07-11T19:05:50.026Z",
+  "generatedAt": "2026-07-12T02:54:36.551Z",
   "summary": {
-    "rankingChanges": 5,
-    "pointsChanges": 3,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "成都蓉城",
-      "rank": 1,
-      "rankChange": 0,
-      "points": 42,
-      "pointsChange": 1
-    },
-    {
-      "team": "重庆铜梁龙",
-      "rank": 2,
-      "rankChange": 0,
-      "points": 28,
-      "pointsChange": 1
-    },
-    {
-      "team": "深圳新鵬城",
-      "rank": 9,
-      "rankChange": 2,
-      "points": 20,
-      "pointsChange": 3
-    },
-    {
-      "team": "上海申花",
-      "rank": 10,
-      "rankChange": -1,
-      "points": 19,
-      "pointsChange": 0
-    },
-    {
-      "team": "浙江队",
-      "rank": 11,
-      "rankChange": -1,
-      "points": 17,
-      "pointsChange": 0
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "成都蓉城",
-      "rank": 1,
-      "rankChange": 0,
-      "points": 42,
-      "pointsChange": 1
-    },
-    {
-      "team": "重庆铜梁龙",
-      "rank": 2,
-      "rankChange": 0,
-      "points": 28,
-      "pointsChange": 1
-    },
-    {
-      "team": "深圳新鵬城",
-      "rank": 9,
-      "rankChange": 2,
-      "points": 20,
-      "pointsChange": 3
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
