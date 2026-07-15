@@ -1,6 +1,6 @@
 {
-  "lastRunAt": "2026-07-14T19:21:53.507Z",
-  "status": "ok",
+  "lastRunAt": "2026-07-15T02:35:13.795Z",
+  "status": "warning",
   "logs": [
     {
       "script": "fetch-standings.js",
@@ -16,15 +16,15 @@
     },
     {
       "script": "fetch-attendance.js",
-      "status": "ok",
-      "exitCode": 0,
-      "message": "Executed successfully."
+      "status": "error",
+      "exitCode": 1,
+      "message": "[attendance] Source Transfermarkt failed: fetch failed\n[attendance] Source Transfermarkt UK failed: Transfermarkt attendance table not found\n[attendance] Source Transfermarkt JP failed: Transfermarkt attendance table not found\n[fatal] Attendance crawl failed: Error: Failed to crawl CSL attendance from all Transfermarkt mirrors\n    at main (file:///home/runner/work/china-football-dashboard/china-football-dashboard/scripts/fetch-attendance.js:175:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
     },
     {
       "script": "fetch-attendance-history.js",
-      "status": "ok",
-      "exitCode": 0,
-      "message": "Executed successfully."
+      "status": "error",
+      "exitCode": 1,
+      "message": "[history] Source Transfermarkt UK failed: Transfermarkt UK history table not found\n[history] Source Transfermarkt failed: Transfermarkt UK history table not found\n[fatal] History crawl failed: Error: Failed to crawl CSL attendance history from Transfermarkt\n    at main (file:///home/runner/work/china-football-dashboard/china-football-dashboard/scripts/fetch-attendance-history.js:114:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
     },
     {
       "script": "fetch-official-feed.js",

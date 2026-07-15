@@ -1,23 +1,14 @@
 {
-  "generatedAt": "2026-07-14T19:22:02.216Z",
+  "generatedAt": "2026-07-15T02:35:20.414Z",
   "summary": {
     "rankingChanges": 0,
     "pointsChanges": 0,
-    "attendanceChanges": 1,
+    "attendanceChanges": 0,
     "anomalyChanges": 0
   },
   "rankingChanges": [],
   "pointsChanges": [],
-  "attendanceChanges": [
-    {
-      "team": "Zhejiang FC",
-      "teamCn": "浙江队",
-      "averageAttendance": 23933,
-      "averageAttendanceChange": -365,
-      "occupancyRate": 0.46025,
-      "occupancyRateChange": -0.007019230769230778
-    }
-  ],
+  "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
     "standings": [
