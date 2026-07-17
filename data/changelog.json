@@ -1,13 +1,106 @@
 {
-  "generatedAt": "2026-07-17T08:11:48.165Z",
+  "generatedAt": "2026-07-17T13:41:20.081Z",
   "summary": {
-    "rankingChanges": 0,
-    "pointsChanges": 0,
+    "rankingChanges": 8,
+    "pointsChanges": 5,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [],
-  "pointsChanges": [],
+  "rankingChanges": [
+    {
+      "team": "成都蓉城",
+      "rank": 1,
+      "rankChange": 0,
+      "points": 43,
+      "pointsChange": 1
+    },
+    {
+      "team": "青岛西海岸",
+      "rank": 4,
+      "rankChange": 2,
+      "points": 25,
+      "pointsChange": 1
+    },
+    {
+      "team": "山东泰山",
+      "rank": 6,
+      "rankChange": -2,
+      "points": 24,
+      "pointsChange": 0
+    },
+    {
+      "team": "北京国安",
+      "rank": 7,
+      "rankChange": 0,
+      "points": 22,
+      "pointsChange": 1
+    },
+    {
+      "team": "辽宁铁人",
+      "rank": 8,
+      "rankChange": 1,
+      "points": 21,
+      "pointsChange": 1
+    },
+    {
+      "team": "浙江队",
+      "rank": 9,
+      "rankChange": -1,
+      "points": 20,
+      "pointsChange": 0
+    },
+    {
+      "team": "河南队",
+      "rank": 12,
+      "rankChange": 1,
+      "points": 18,
+      "pointsChange": 3
+    },
+    {
+      "team": "上海海港",
+      "rank": 13,
+      "rankChange": -1,
+      "points": 15,
+      "pointsChange": 0
+    }
+  ],
+  "pointsChanges": [
+    {
+      "team": "成都蓉城",
+      "rank": 1,
+      "rankChange": 0,
+      "points": 43,
+      "pointsChange": 1
+    },
+    {
+      "team": "青岛西海岸",
+      "rank": 4,
+      "rankChange": 2,
+      "points": 25,
+      "pointsChange": 1
+    },
+    {
+      "team": "北京国安",
+      "rank": 7,
+      "rankChange": 0,
+      "points": 22,
+      "pointsChange": 1
+    },
+    {
+      "team": "辽宁铁人",
+      "rank": 8,
+      "rankChange": 1,
+      "points": 21,
+      "pointsChange": 1
+    },
+    {
+      "team": "河南队",
+      "rank": 12,
+      "rankChange": 1,
+      "points": 18,
+      "pointsChange": 3
+    }
+  ],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
@@ -15,7 +108,7 @@
       {
         "team": "成都蓉城",
         "rank": 1,
-        "points": 42
+        "points": 43
       },
       {
         "team": "重庆铜梁龙",
@@ -28,9 +121,9 @@
         "points": 25
       },
       {
-        "team": "山东泰山",
+        "team": "青岛西海岸",
         "rank": 4,
-        "points": 24
+        "points": 25
       },
       {
         "team": "云南玉昆",
@@ -38,22 +131,22 @@
         "points": 24
       },
       {
-        "team": "青岛西海岸",
+        "team": "山东泰山",
         "rank": 6,
         "points": 24
       },
       {
         "team": "北京国安",
         "rank": 7,
+        "points": 22
+      },
+      {
+        "team": "辽宁铁人",
+        "rank": 8,
         "points": 21
       },
       {
         "team": "浙江队",
-        "rank": 8,
-        "points": 20
-      },
-      {
-        "team": "辽宁铁人",
         "rank": 9,
         "points": 20
       },
@@ -68,12 +161,12 @@
         "points": 19
       },
       {
-        "team": "上海海港",
+        "team": "河南队",
         "rank": 12,
-        "points": 15
+        "points": 18
       },
       {
-        "team": "河南队",
+        "team": "上海海港",
         "rank": 13,
         "points": 15
       },
