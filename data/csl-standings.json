@@ -7,7 +7,7 @@
   "source": "新浪体育中超积分榜",
   "sourceUrl": "https://sports.sina.com.cn/csl/table/",
   "isOfficial": false,
-  "fetchedAt": "2026-07-18T07:53:28.494Z",
+  "fetchedAt": "2026-07-18T13:18:40.554Z",
   "status": "ok",
   "disclaimer": "非官方 fallback 数据，如有变化，以中足联或中国足协官方公告为准。",
   "data": [
@@ -51,14 +51,14 @@
       "name": "重庆铜梁龙",
       "shortName": "铜梁龙",
       "city": "重庆",
-      "played": 18,
+      "played": 19,
       "wins": 7,
-      "draws": 7,
+      "draws": 8,
       "losses": 4,
-      "goalsFor": 22,
-      "goalsAgainst": 20,
+      "goalsFor": 23,
+      "goalsAgainst": 21,
       "goalDiff": 2,
-      "points": 28,
+      "points": 29,
       "form": [
         "W",
         "W",
@@ -68,9 +68,9 @@
       ],
       "homeRecord": {
         "wins": 4,
-        "draws": 4,
+        "draws": 5,
         "losses": 1,
-        "points": 16
+        "points": 17
       },
       "awayRecord": {
         "wins": 3,
@@ -251,6 +251,40 @@
     },
     {
       "rank": 8,
+      "team": "浙江队",
+      "name": "浙江队",
+      "shortName": "浙江",
+      "city": "杭州",
+      "played": 19,
+      "wins": 7,
+      "draws": 5,
+      "losses": 7,
+      "goalsFor": 27,
+      "goalsAgainst": 32,
+      "goalDiff": -5,
+      "points": 21,
+      "form": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "homeRecord": {
+        "wins": 4,
+        "draws": 3,
+        "losses": 2,
+        "points": 15
+      },
+      "awayRecord": {
+        "wins": 3,
+        "draws": 2,
+        "losses": 5,
+        "points": 11
+      }
+    },
+    {
+      "rank": 9,
       "team": "辽宁铁人",
       "name": "辽宁铁人",
       "shortName": "辽宁铁",
@@ -281,40 +315,6 @@
         "draws": 3,
         "losses": 5,
         "points": 6
-      }
-    },
-    {
-      "rank": 9,
-      "team": "浙江队",
-      "name": "浙江队",
-      "shortName": "浙江",
-      "city": "杭州",
-      "played": 18,
-      "wins": 7,
-      "draws": 4,
-      "losses": 7,
-      "goalsFor": 26,
-      "goalsAgainst": 31,
-      "goalDiff": -5,
-      "points": 20,
-      "form": [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W"
-      ],
-      "homeRecord": {
-        "wins": 4,
-        "draws": 3,
-        "losses": 2,
-        "points": 15
-      },
-      "awayRecord": {
-        "wins": 3,
-        "draws": 1,
-        "losses": 5,
-        "points": 10
       }
     },
     {
