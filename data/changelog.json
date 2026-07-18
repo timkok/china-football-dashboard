@@ -1,48 +1,62 @@
 {
-  "generatedAt": "2026-07-18T13:18:47.817Z",
+  "generatedAt": "2026-07-18T19:06:53.629Z",
   "summary": {
-    "rankingChanges": 3,
-    "pointsChanges": 2,
+    "rankingChanges": 4,
+    "pointsChanges": 3,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
   "rankingChanges": [
     {
-      "team": "重庆铜梁龙",
-      "rank": 2,
-      "rankChange": 0,
-      "points": 29,
-      "pointsChange": 1
-    },
-    {
-      "team": "浙江队",
-      "rank": 8,
+      "team": "大连英博",
+      "rank": 3,
       "rankChange": 1,
-      "points": 21,
-      "pointsChange": 1
+      "points": 28,
+      "pointsChange": 3
     },
     {
-      "team": "辽宁铁人",
-      "rank": 9,
+      "team": "云南玉昆",
+      "rank": 4,
       "rankChange": -1,
-      "points": 21,
+      "points": 25,
       "pointsChange": 0
+    },
+    {
+      "team": "天津津门虎",
+      "rank": 15,
+      "rankChange": 0,
+      "points": 11,
+      "pointsChange": 3
+    },
+    {
+      "team": "武汉三镇",
+      "rank": 16,
+      "rankChange": 0,
+      "points": 11,
+      "pointsChange": 3
     }
   ],
   "pointsChanges": [
     {
-      "team": "重庆铜梁龙",
-      "rank": 2,
-      "rankChange": 0,
-      "points": 29,
-      "pointsChange": 1
+      "team": "大连英博",
+      "rank": 3,
+      "rankChange": 1,
+      "points": 28,
+      "pointsChange": 3
     },
     {
-      "team": "浙江队",
-      "rank": 8,
-      "rankChange": 1,
-      "points": 21,
-      "pointsChange": 1
+      "team": "天津津门虎",
+      "rank": 15,
+      "rankChange": 0,
+      "points": 11,
+      "pointsChange": 3
+    },
+    {
+      "team": "武汉三镇",
+      "rank": 16,
+      "rankChange": 0,
+      "points": 11,
+      "pointsChange": 3
     }
   ],
   "attendanceChanges": [],
@@ -60,12 +74,12 @@
         "points": 29
       },
       {
-        "team": "云南玉昆",
+        "team": "大连英博",
         "rank": 3,
-        "points": 25
+        "points": 28
       },
       {
-        "team": "大连英博",
+        "team": "云南玉昆",
         "rank": 4,
         "points": 25
       },
@@ -122,12 +136,12 @@
       {
         "team": "天津津门虎",
         "rank": 15,
-        "points": 8
+        "points": 11
       },
       {
         "team": "武汉三镇",
         "rank": 16,
-        "points": 8
+        "points": 11
       }
     ],
     "attendance": [
