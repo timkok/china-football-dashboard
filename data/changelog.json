@@ -1,13 +1,85 @@
 {
-  "generatedAt": "2026-07-25T08:08:16.574Z",
+  "generatedAt": "2026-07-25T13:37:12.481Z",
   "summary": {
-    "rankingChanges": 0,
-    "pointsChanges": 0,
+    "rankingChanges": 7,
+    "pointsChanges": 3,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [],
-  "pointsChanges": [],
+  "rankingChanges": [
+    {
+      "team": "青岛西海岸",
+      "rank": 4,
+      "rankChange": 1,
+      "points": 28,
+      "pointsChange": 3
+    },
+    {
+      "team": "云南玉昆",
+      "rank": 5,
+      "rankChange": -1,
+      "points": 25,
+      "pointsChange": 0
+    },
+    {
+      "team": "上海海港",
+      "rank": 11,
+      "rankChange": 2,
+      "points": 19,
+      "pointsChange": 3
+    },
+    {
+      "team": "上海申花",
+      "rank": 12,
+      "rankChange": -1,
+      "points": 19,
+      "pointsChange": 0
+    },
+    {
+      "team": "河南队",
+      "rank": 13,
+      "rankChange": -1,
+      "points": 18,
+      "pointsChange": 0
+    },
+    {
+      "team": "天津津门虎",
+      "rank": 14,
+      "rankChange": 1,
+      "points": 14,
+      "pointsChange": 3
+    },
+    {
+      "team": "青岛海牛",
+      "rank": 15,
+      "rankChange": -1,
+      "points": 14,
+      "pointsChange": 0
+    }
+  ],
+  "pointsChanges": [
+    {
+      "team": "青岛西海岸",
+      "rank": 4,
+      "rankChange": 1,
+      "points": 28,
+      "pointsChange": 3
+    },
+    {
+      "team": "上海海港",
+      "rank": 11,
+      "rankChange": 2,
+      "points": 19,
+      "pointsChange": 3
+    },
+    {
+      "team": "天津津门虎",
+      "rank": 14,
+      "rankChange": 1,
+      "points": 14,
+      "pointsChange": 3
+    }
+  ],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
@@ -28,12 +100,12 @@
         "points": 28
       },
       {
-        "team": "云南玉昆",
+        "team": "青岛西海岸",
         "rank": 4,
-        "points": 25
+        "points": 28
       },
       {
-        "team": "青岛西海岸",
+        "team": "云南玉昆",
         "rank": 5,
         "points": 25
       },
@@ -63,29 +135,29 @@
         "points": 20
       },
       {
-        "team": "上海申花",
+        "team": "上海海港",
         "rank": 11,
         "points": 19
       },
       {
-        "team": "河南队",
+        "team": "上海申花",
         "rank": 12,
+        "points": 19
+      },
+      {
+        "team": "河南队",
+        "rank": 13,
         "points": 18
       },
       {
-        "team": "上海海港",
-        "rank": 13,
-        "points": 16
-      },
-      {
-        "team": "青岛海牛",
+        "team": "天津津门虎",
         "rank": 14,
         "points": 14
       },
       {
-        "team": "天津津门虎",
+        "team": "青岛海牛",
         "rank": 15,
-        "points": 11
+        "points": 14
       },
       {
         "team": "武汉三镇",
