@@ -1,36 +1,13 @@
 {
-  "generatedAt": "2026-07-25T19:09:17.418Z",
+  "generatedAt": "2026-07-26T02:54:54.495Z",
   "summary": {
-    "rankingChanges": 2,
-    "pointsChanges": 1,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "武汉三镇",
-      "rank": 15,
-      "rankChange": 1,
-      "points": 14,
-      "pointsChange": 3
-    },
-    {
-      "team": "青岛海牛",
-      "rank": 16,
-      "rankChange": -1,
-      "points": 14,
-      "pointsChange": 0
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "武汉三镇",
-      "rank": 15,
-      "rankChange": 1,
-      "points": 14,
-      "pointsChange": 3
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
