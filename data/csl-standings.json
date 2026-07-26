@@ -7,7 +7,7 @@
   "source": "新浪体育中超积分榜",
   "sourceUrl": "https://sports.sina.com.cn/csl/table/",
   "isOfficial": false,
-  "fetchedAt": "2026-07-26T13:25:10.132Z",
+  "fetchedAt": "2026-07-26T19:12:48.044Z",
   "status": "ok",
   "disclaimer": "非官方 fallback 数据，如有变化，以中足联或中国足协官方公告为准。",
   "data": [
@@ -17,14 +17,14 @@
       "name": "成都蓉城",
       "shortName": "蓉城",
       "city": "成都",
-      "played": 19,
+      "played": 20,
       "wins": 13,
-      "draws": 4,
+      "draws": 5,
       "losses": 2,
-      "goalsFor": 39,
-      "goalsAgainst": 18,
+      "goalsFor": 41,
+      "goalsAgainst": 20,
       "goalDiff": 21,
-      "points": 43,
+      "points": 44,
       "form": [
         "W",
         "W",
@@ -34,9 +34,9 @@
       ],
       "homeRecord": {
         "wins": 7,
-        "draws": 1,
+        "draws": 2,
         "losses": 1,
-        "points": 22
+        "points": 23
       },
       "awayRecord": {
         "wins": 6,
@@ -119,13 +119,13 @@
       "name": "大连英博",
       "shortName": "英博",
       "city": "大连",
-      "played": 18,
+      "played": 19,
       "wins": 9,
       "draws": 1,
-      "losses": 8,
-      "goalsFor": 28,
-      "goalsAgainst": 32,
-      "goalDiff": -4,
+      "losses": 9,
+      "goalsFor": 30,
+      "goalsAgainst": 35,
+      "goalDiff": -5,
       "points": 28,
       "form": [
         "W",
@@ -143,7 +143,7 @@
       "awayRecord": {
         "wins": 2,
         "draws": 1,
-        "losses": 5,
+        "losses": 6,
         "points": 7
       }
     },
@@ -187,13 +187,13 @@
       "name": "山东泰山",
       "shortName": "泰山",
       "city": "济南",
-      "played": 19,
+      "played": 20,
       "wins": 9,
       "draws": 3,
-      "losses": 7,
-      "goalsFor": 35,
-      "goalsAgainst": 34,
-      "goalDiff": 1,
+      "losses": 8,
+      "goalsFor": 36,
+      "goalsAgainst": 36,
+      "goalDiff": 0,
       "points": 24,
       "form": [
         "W",
@@ -205,7 +205,7 @@
       "homeRecord": {
         "wins": 5,
         "draws": 3,
-        "losses": 1,
+        "losses": 2,
         "points": 18
       },
       "awayRecord": {
@@ -217,18 +217,52 @@
     },
     {
       "rank": 7,
+      "team": "浙江队",
+      "name": "浙江队",
+      "shortName": "浙江",
+      "city": "杭州",
+      "played": 20,
+      "wins": 8,
+      "draws": 5,
+      "losses": 7,
+      "goalsFor": 30,
+      "goalsAgainst": 34,
+      "goalDiff": -4,
+      "points": 24,
+      "form": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "homeRecord": {
+        "wins": 5,
+        "draws": 3,
+        "losses": 2,
+        "points": 18
+      },
+      "awayRecord": {
+        "wins": 3,
+        "draws": 2,
+        "losses": 5,
+        "points": 11
+      }
+    },
+    {
+      "rank": 8,
       "team": "北京国安",
       "name": "北京国安",
       "shortName": "国安",
       "city": "北京",
-      "played": 18,
+      "played": 19,
       "wins": 7,
-      "draws": 6,
+      "draws": 7,
       "losses": 5,
-      "goalsFor": 30,
-      "goalsAgainst": 24,
+      "goalsFor": 32,
+      "goalsAgainst": 26,
       "goalDiff": 6,
-      "points": 22,
+      "points": 23,
       "form": [
         "W",
         "W",
@@ -244,24 +278,24 @@
       },
       "awayRecord": {
         "wins": 3,
-        "draws": 3,
+        "draws": 4,
         "losses": 2,
-        "points": 12
+        "points": 13
       }
     },
     {
-      "rank": 8,
-      "team": "浙江队",
-      "name": "浙江队",
-      "shortName": "浙江",
-      "city": "杭州",
+      "rank": 9,
+      "team": "河南队",
+      "name": "河南队",
+      "shortName": "河南",
+      "city": "郑州",
       "played": 19,
-      "wins": 7,
-      "draws": 5,
-      "losses": 7,
-      "goalsFor": 27,
-      "goalsAgainst": 32,
-      "goalDiff": -5,
+      "wins": 8,
+      "draws": 3,
+      "losses": 8,
+      "goalsFor": 25,
+      "goalsAgainst": 24,
+      "goalDiff": 1,
       "points": 21,
       "form": [
         "W",
@@ -272,19 +306,19 @@
       ],
       "homeRecord": {
         "wins": 4,
-        "draws": 3,
-        "losses": 2,
-        "points": 15
+        "draws": 1,
+        "losses": 4,
+        "points": 13
       },
       "awayRecord": {
-        "wins": 3,
+        "wins": 4,
         "draws": 2,
-        "losses": 5,
-        "points": 11
+        "losses": 4,
+        "points": 14
       }
     },
     {
-      "rank": 9,
+      "rank": 10,
       "team": "辽宁铁人",
       "name": "辽宁铁人",
       "shortName": "辽宁铁",
@@ -318,7 +352,7 @@
       }
     },
     {
-      "rank": 10,
+      "rank": 11,
       "team": "深圳新鵬城",
       "name": "深圳新鵬城",
       "shortName": "深圳新",
@@ -352,7 +386,7 @@
       }
     },
     {
-      "rank": 11,
+      "rank": 12,
       "team": "上海海港",
       "name": "上海海港",
       "shortName": "海港",
@@ -386,7 +420,7 @@
       }
     },
     {
-      "rank": 12,
+      "rank": 13,
       "team": "上海申花",
       "name": "上海申花",
       "shortName": "申花",
@@ -417,40 +451,6 @@
         "draws": 3,
         "losses": 3,
         "points": 12
-      }
-    },
-    {
-      "rank": 13,
-      "team": "河南队",
-      "name": "河南队",
-      "shortName": "河南",
-      "city": "郑州",
-      "played": 18,
-      "wins": 7,
-      "draws": 3,
-      "losses": 8,
-      "goalsFor": 23,
-      "goalsAgainst": 23,
-      "goalDiff": 0,
-      "points": 18,
-      "form": [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W"
-      ],
-      "homeRecord": {
-        "wins": 4,
-        "draws": 1,
-        "losses": 4,
-        "points": 13
-      },
-      "awayRecord": {
-        "wins": 3,
-        "draws": 2,
-        "losses": 4,
-        "points": 11
       }
     },
     {
