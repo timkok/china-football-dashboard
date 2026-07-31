@@ -1,50 +1,13 @@
 {
-  "generatedAt": "2026-07-31T14:10:16.423Z",
+  "generatedAt": "2026-07-31T19:27:37.518Z",
   "summary": {
-    "rankingChanges": 3,
-    "pointsChanges": 2,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "大连英博",
-      "rank": 3,
-      "rankChange": 1,
-      "points": 29,
-      "pointsChange": 1
-    },
-    {
-      "team": "云南玉昆",
-      "rank": 4,
-      "rankChange": -1,
-      "points": 28,
-      "pointsChange": 0
-    },
-    {
-      "team": "河南队",
-      "rank": 9,
-      "rankChange": 0,
-      "points": 22,
-      "pointsChange": 1
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "大连英博",
-      "rank": 3,
-      "rankChange": 1,
-      "points": 29,
-      "pointsChange": 1
-    },
-    {
-      "team": "河南队",
-      "rank": 9,
-      "rankChange": 0,
-      "points": 22,
-      "pointsChange": 1
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
