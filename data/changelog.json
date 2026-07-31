@@ -1,13 +1,50 @@
 {
-  "generatedAt": "2026-07-31T08:51:23.455Z",
+  "generatedAt": "2026-07-31T14:10:16.423Z",
   "summary": {
-    "rankingChanges": 0,
-    "pointsChanges": 0,
+    "rankingChanges": 3,
+    "pointsChanges": 2,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [],
-  "pointsChanges": [],
+  "rankingChanges": [
+    {
+      "team": "大连英博",
+      "rank": 3,
+      "rankChange": 1,
+      "points": 29,
+      "pointsChange": 1
+    },
+    {
+      "team": "云南玉昆",
+      "rank": 4,
+      "rankChange": -1,
+      "points": 28,
+      "pointsChange": 0
+    },
+    {
+      "team": "河南队",
+      "rank": 9,
+      "rankChange": 0,
+      "points": 22,
+      "pointsChange": 1
+    }
+  ],
+  "pointsChanges": [
+    {
+      "team": "大连英博",
+      "rank": 3,
+      "rankChange": 1,
+      "points": 29,
+      "pointsChange": 1
+    },
+    {
+      "team": "河南队",
+      "rank": 9,
+      "rankChange": 0,
+      "points": 22,
+      "pointsChange": 1
+    }
+  ],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
@@ -23,12 +60,12 @@
         "points": 29
       },
       {
-        "team": "云南玉昆",
+        "team": "大连英博",
         "rank": 3,
-        "points": 28
+        "points": 29
       },
       {
-        "team": "大连英博",
+        "team": "云南玉昆",
         "rank": 4,
         "points": 28
       },
@@ -55,7 +92,7 @@
       {
         "team": "河南队",
         "rank": 9,
-        "points": 21
+        "points": 22
       },
       {
         "team": "辽宁铁人",
