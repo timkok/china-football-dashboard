@@ -7,7 +7,7 @@
   "source": "新浪体育中超积分榜",
   "sourceUrl": "https://sports.sina.com.cn/csl/table/",
   "isOfficial": false,
-  "fetchedAt": "2026-08-01T08:22:42.120Z",
+  "fetchedAt": "2026-08-01T13:23:44.028Z",
   "status": "ok",
   "disclaimer": "非官方 fallback 数据，如有变化，以中足联或中国足协官方公告为准。",
   "data": [
@@ -119,13 +119,13 @@
       "name": "云南玉昆",
       "shortName": "玉昆",
       "city": "玉溪",
-      "played": 20,
+      "played": 21,
       "wins": 8,
       "draws": 4,
-      "losses": 8,
-      "goalsFor": 40,
-      "goalsAgainst": 38,
-      "goalDiff": 2,
+      "losses": 9,
+      "goalsFor": 42,
+      "goalsAgainst": 41,
+      "goalDiff": 1,
       "points": 28,
       "form": [
         "W",
@@ -143,7 +143,7 @@
       "awayRecord": {
         "wins": 3,
         "draws": 2,
-        "losses": 5,
+        "losses": 6,
         "points": 11
       }
     },
@@ -459,14 +459,14 @@
       "name": "天津津门虎",
       "shortName": "津门虎",
       "city": "天津",
-      "played": 19,
-      "wins": 6,
+      "played": 20,
+      "wins": 7,
       "draws": 6,
       "losses": 7,
-      "goalsFor": 26,
-      "goalsAgainst": 22,
-      "goalDiff": 4,
-      "points": 14,
+      "goalsFor": 29,
+      "goalsAgainst": 24,
+      "goalDiff": 5,
+      "points": 17,
       "form": [
         "W",
         "W",
@@ -475,10 +475,10 @@
         "W"
       ],
       "homeRecord": {
-        "wins": 2,
+        "wins": 3,
         "draws": 3,
         "losses": 4,
-        "points": 9
+        "points": 12
       },
       "awayRecord": {
         "wins": 4,
