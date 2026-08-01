@@ -1,27 +1,76 @@
 {
-  "generatedAt": "2026-08-01T13:23:59.675Z",
+  "generatedAt": "2026-08-01T19:09:53.160Z",
   "summary": {
-    "rankingChanges": 1,
-    "pointsChanges": 1,
+    "rankingChanges": 5,
+    "pointsChanges": 4,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
   "rankingChanges": [
     {
-      "team": "天津津门虎",
-      "rank": 14,
+      "team": "成都蓉城",
+      "rank": 1,
       "rankChange": 0,
-      "points": 17,
+      "points": 45,
+      "pointsChange": 1
+    },
+    {
+      "team": "山东泰山",
+      "rank": 6,
+      "rankChange": 0,
+      "points": 27,
       "pointsChange": 3
+    },
+    {
+      "team": "北京国安",
+      "rank": 7,
+      "rankChange": 1,
+      "points": 26,
+      "pointsChange": 3
+    },
+    {
+      "team": "浙江队",
+      "rank": 8,
+      "rankChange": -1,
+      "points": 24,
+      "pointsChange": 0
+    },
+    {
+      "team": "武汉三镇",
+      "rank": 15,
+      "rankChange": 0,
+      "points": 15,
+      "pointsChange": 1
     }
   ],
   "pointsChanges": [
     {
-      "team": "天津津门虎",
-      "rank": 14,
+      "team": "成都蓉城",
+      "rank": 1,
       "rankChange": 0,
-      "points": 17,
+      "points": 45,
+      "pointsChange": 1
+    },
+    {
+      "team": "山东泰山",
+      "rank": 6,
+      "rankChange": 0,
+      "points": 27,
       "pointsChange": 3
+    },
+    {
+      "team": "北京国安",
+      "rank": 7,
+      "rankChange": 1,
+      "points": 26,
+      "pointsChange": 3
+    },
+    {
+      "team": "武汉三镇",
+      "rank": 15,
+      "rankChange": 0,
+      "points": 15,
+      "pointsChange": 1
     }
   ],
   "attendanceChanges": [],
@@ -31,7 +80,7 @@
       {
         "team": "成都蓉城",
         "rank": 1,
-        "points": 44
+        "points": 45
       },
       {
         "team": "重庆铜梁龙",
@@ -56,17 +105,17 @@
       {
         "team": "山东泰山",
         "rank": 6,
-        "points": 24
-      },
-      {
-        "team": "浙江队",
-        "rank": 7,
-        "points": 24
+        "points": 27
       },
       {
         "team": "北京国安",
+        "rank": 7,
+        "points": 26
+      },
+      {
+        "team": "浙江队",
         "rank": 8,
-        "points": 23
+        "points": 24
       },
       {
         "team": "河南队",
@@ -101,7 +150,7 @@
       {
         "team": "武汉三镇",
         "rank": 15,
-        "points": 14
+        "points": 15
       },
       {
         "team": "青岛海牛",
