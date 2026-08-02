@@ -1,47 +1,54 @@
 {
-  "generatedAt": "2026-08-02T13:24:08.612Z",
+  "generatedAt": "2026-08-02T19:12:01.361Z",
   "summary": {
     "rankingChanges": 4,
-    "pointsChanges": 1,
+    "pointsChanges": 2,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
   "rankingChanges": [
     {
-      "team": "青岛西海岸",
-      "rank": 2,
-      "rankChange": 3,
-      "points": 31,
+      "team": "辽宁铁人",
+      "rank": 8,
+      "rankChange": 2,
+      "points": 24,
       "pointsChange": 3
     },
     {
-      "team": "重庆铜梁龙",
-      "rank": 3,
+      "team": "浙江队",
+      "rank": 9,
       "rankChange": -1,
-      "points": 29,
+      "points": 24,
       "pointsChange": 0
     },
     {
-      "team": "大连英博",
-      "rank": 4,
-      "rankChange": -1,
-      "points": 29,
-      "pointsChange": 0
+      "team": "深圳新鵬城",
+      "rank": 10,
+      "rankChange": 1,
+      "points": 23,
+      "pointsChange": 3
     },
     {
-      "team": "云南玉昆",
-      "rank": 5,
-      "rankChange": -1,
-      "points": 28,
+      "team": "河南队",
+      "rank": 11,
+      "rankChange": -2,
+      "points": 22,
       "pointsChange": 0
     }
   ],
   "pointsChanges": [
     {
-      "team": "青岛西海岸",
-      "rank": 2,
-      "rankChange": 3,
-      "points": 31,
+      "team": "辽宁铁人",
+      "rank": 8,
+      "rankChange": 2,
+      "points": 24,
+      "pointsChange": 3
+    },
+    {
+      "team": "深圳新鵬城",
+      "rank": 10,
+      "rankChange": 1,
+      "points": 23,
       "pointsChange": 3
     }
   ],
@@ -85,24 +92,24 @@
         "points": 26
       },
       {
-        "team": "浙江队",
+        "team": "辽宁铁人",
         "rank": 8,
         "points": 24
       },
       {
-        "team": "河南队",
+        "team": "浙江队",
         "rank": 9,
-        "points": 22
-      },
-      {
-        "team": "辽宁铁人",
-        "rank": 10,
-        "points": 21
+        "points": 24
       },
       {
         "team": "深圳新鵬城",
+        "rank": 10,
+        "points": 23
+      },
+      {
+        "team": "河南队",
         "rank": 11,
-        "points": 20
+        "points": 22
       },
       {
         "team": "上海海港",
