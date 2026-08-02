@@ -7,7 +7,7 @@
   "source": "新浪体育中超积分榜",
   "sourceUrl": "https://sports.sina.com.cn/csl/table/",
   "isOfficial": false,
-  "fetchedAt": "2026-08-02T08:25:51.645Z",
+  "fetchedAt": "2026-08-02T13:23:53.614Z",
   "status": "ok",
   "disclaimer": "非官方 fallback 数据，如有变化，以中足联或中国足协官方公告为准。",
   "data": [
@@ -47,6 +47,40 @@
     },
     {
       "rank": 2,
+      "team": "青岛西海岸",
+      "name": "青岛西海岸",
+      "shortName": "西海岸",
+      "city": "青岛",
+      "played": 21,
+      "wins": 7,
+      "draws": 10,
+      "losses": 4,
+      "goalsFor": 26,
+      "goalsAgainst": 29,
+      "goalDiff": -3,
+      "points": 31,
+      "form": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "homeRecord": {
+        "wins": 4,
+        "draws": 7,
+        "losses": 0,
+        "points": 19
+      },
+      "awayRecord": {
+        "wins": 3,
+        "draws": 3,
+        "losses": 4,
+        "points": 12
+      }
+    },
+    {
+      "rank": 3,
       "team": "重庆铜梁龙",
       "name": "重庆铜梁龙",
       "shortName": "铜梁龙",
@@ -80,7 +114,7 @@
       }
     },
     {
-      "rank": 3,
+      "rank": 4,
       "team": "大连英博",
       "name": "大连英博",
       "shortName": "英博",
@@ -114,7 +148,7 @@
       }
     },
     {
-      "rank": 4,
+      "rank": 5,
       "team": "云南玉昆",
       "name": "云南玉昆",
       "shortName": "玉昆",
@@ -145,40 +179,6 @@
         "draws": 2,
         "losses": 6,
         "points": 11
-      }
-    },
-    {
-      "rank": 5,
-      "team": "青岛西海岸",
-      "name": "青岛西海岸",
-      "shortName": "西海岸",
-      "city": "青岛",
-      "played": 20,
-      "wins": 6,
-      "draws": 10,
-      "losses": 4,
-      "goalsFor": 24,
-      "goalsAgainst": 29,
-      "goalDiff": -5,
-      "points": 28,
-      "form": [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W"
-      ],
-      "homeRecord": {
-        "wins": 3,
-        "draws": 7,
-        "losses": 0,
-        "points": 16
-      },
-      "awayRecord": {
-        "wins": 3,
-        "draws": 3,
-        "losses": 4,
-        "points": 12
       }
     },
     {
@@ -527,13 +527,13 @@
       "name": "青岛海牛",
       "shortName": "海牛",
       "city": "青岛",
-      "played": 20,
+      "played": 21,
       "wins": 6,
       "draws": 3,
-      "losses": 11,
+      "losses": 12,
       "goalsFor": 30,
-      "goalsAgainst": 38,
-      "goalDiff": -8,
+      "goalsAgainst": 40,
+      "goalDiff": -10,
       "points": 14,
       "form": [
         "W",
@@ -551,7 +551,7 @@
       "awayRecord": {
         "wins": 1,
         "draws": 1,
-        "losses": 8,
+        "losses": 9,
         "points": 4
       }
     }
