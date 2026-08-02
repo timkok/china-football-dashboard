@@ -1,78 +1,13 @@
 {
-  "generatedAt": "2026-08-01T19:09:53.160Z",
+  "generatedAt": "2026-08-02T02:54:08.156Z",
   "summary": {
-    "rankingChanges": 5,
-    "pointsChanges": 4,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "成都蓉城",
-      "rank": 1,
-      "rankChange": 0,
-      "points": 45,
-      "pointsChange": 1
-    },
-    {
-      "team": "山东泰山",
-      "rank": 6,
-      "rankChange": 0,
-      "points": 27,
-      "pointsChange": 3
-    },
-    {
-      "team": "北京国安",
-      "rank": 7,
-      "rankChange": 1,
-      "points": 26,
-      "pointsChange": 3
-    },
-    {
-      "team": "浙江队",
-      "rank": 8,
-      "rankChange": -1,
-      "points": 24,
-      "pointsChange": 0
-    },
-    {
-      "team": "武汉三镇",
-      "rank": 15,
-      "rankChange": 0,
-      "points": 15,
-      "pointsChange": 1
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "成都蓉城",
-      "rank": 1,
-      "rankChange": 0,
-      "points": 45,
-      "pointsChange": 1
-    },
-    {
-      "team": "山东泰山",
-      "rank": 6,
-      "rankChange": 0,
-      "points": 27,
-      "pointsChange": 3
-    },
-    {
-      "team": "北京国安",
-      "rank": 7,
-      "rankChange": 1,
-      "points": 26,
-      "pointsChange": 3
-    },
-    {
-      "team": "武汉三镇",
-      "rank": 15,
-      "rankChange": 0,
-      "points": 15,
-      "pointsChange": 1
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
