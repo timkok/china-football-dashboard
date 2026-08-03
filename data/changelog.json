@@ -1,57 +1,13 @@
 {
-  "generatedAt": "2026-08-02T19:12:01.361Z",
+  "generatedAt": "2026-08-03T02:55:33.342Z",
   "summary": {
-    "rankingChanges": 4,
-    "pointsChanges": 2,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "辽宁铁人",
-      "rank": 8,
-      "rankChange": 2,
-      "points": 24,
-      "pointsChange": 3
-    },
-    {
-      "team": "浙江队",
-      "rank": 9,
-      "rankChange": -1,
-      "points": 24,
-      "pointsChange": 0
-    },
-    {
-      "team": "深圳新鵬城",
-      "rank": 10,
-      "rankChange": 1,
-      "points": 23,
-      "pointsChange": 3
-    },
-    {
-      "team": "河南队",
-      "rank": 11,
-      "rankChange": -2,
-      "points": 22,
-      "pointsChange": 0
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "辽宁铁人",
-      "rank": 8,
-      "rankChange": 2,
-      "points": 24,
-      "pointsChange": 3
-    },
-    {
-      "team": "深圳新鵬城",
-      "rank": 10,
-      "rankChange": 1,
-      "points": 23,
-      "pointsChange": 3
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
