@@ -1,106 +1,13 @@
 {
-  "generatedAt": "2026-08-08T18:38:52.274Z",
+  "generatedAt": "2026-08-09T01:49:59.480Z",
   "summary": {
-    "rankingChanges": 10,
-    "pointsChanges": 3,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "大连英博",
-      "rank": 2,
-      "rankChange": 3,
-      "points": 32,
-      "pointsChange": 3
-    },
-    {
-      "team": "云南玉昆",
-      "rank": 3,
-      "rankChange": 3,
-      "points": 31,
-      "pointsChange": 3
-    },
-    {
-      "team": "青岛西海岸",
-      "rank": 4,
-      "rankChange": -2,
-      "points": 31,
-      "pointsChange": 0
-    },
-    {
-      "team": "北京国安",
-      "rank": 5,
-      "rankChange": -2,
-      "points": 29,
-      "pointsChange": 0
-    },
-    {
-      "team": "重庆铜梁龙",
-      "rank": 6,
-      "rankChange": -2,
-      "points": 29,
-      "pointsChange": 0
-    },
-    {
-      "team": "浙江队",
-      "rank": 8,
-      "rankChange": 1,
-      "points": 24,
-      "pointsChange": 0
-    },
-    {
-      "team": "辽宁铁人",
-      "rank": 9,
-      "rankChange": -1,
-      "points": 24,
-      "pointsChange": 0
-    },
-    {
-      "team": "上海申花",
-      "rank": 11,
-      "rankChange": 2,
-      "points": 22,
-      "pointsChange": 3
-    },
-    {
-      "team": "河南队",
-      "rank": 12,
-      "rankChange": -1,
-      "points": 22,
-      "pointsChange": 0
-    },
-    {
-      "team": "上海海港",
-      "rank": 13,
-      "rankChange": -1,
-      "points": 19,
-      "pointsChange": 0
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "大连英博",
-      "rank": 2,
-      "rankChange": 3,
-      "points": 32,
-      "pointsChange": 3
-    },
-    {
-      "team": "云南玉昆",
-      "rank": 3,
-      "rankChange": 3,
-      "points": 31,
-      "pointsChange": 3
-    },
-    {
-      "team": "上海申花",
-      "rank": 11,
-      "rankChange": 2,
-      "points": 22,
-      "pointsChange": 3
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
