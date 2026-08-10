@@ -1,113 +1,13 @@
 {
-  "generatedAt": "2026-08-09T18:41:56.901Z",
+  "generatedAt": "2026-08-10T01:54:38.170Z",
   "summary": {
-    "rankingChanges": 10,
-    "pointsChanges": 4,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "青岛西海岸",
-      "rank": 2,
-      "rankChange": 2,
-      "points": 32,
-      "pointsChange": 1
-    },
-    {
-      "team": "大连英博",
-      "rank": 3,
-      "rankChange": -1,
-      "points": 32,
-      "pointsChange": 0
-    },
-    {
-      "team": "云南玉昆",
-      "rank": 4,
-      "rankChange": -1,
-      "points": 31,
-      "pointsChange": 0
-    },
-    {
-      "team": "山东泰山",
-      "rank": 5,
-      "rankChange": 2,
-      "points": 30,
-      "pointsChange": 3
-    },
-    {
-      "team": "北京国安",
-      "rank": 6,
-      "rankChange": -1,
-      "points": 29,
-      "pointsChange": 0
-    },
-    {
-      "team": "重庆铜梁龙",
-      "rank": 7,
-      "rankChange": -1,
-      "points": 29,
-      "pointsChange": 0
-    },
-    {
-      "team": "河南队",
-      "rank": 10,
-      "rankChange": 2,
-      "points": 23,
-      "pointsChange": 1
-    },
-    {
-      "team": "深圳新鵬城",
-      "rank": 11,
-      "rankChange": -1,
-      "points": 23,
-      "pointsChange": 0
-    },
-    {
-      "team": "上海海港",
-      "rank": 12,
-      "rankChange": 1,
-      "points": 22,
-      "pointsChange": 3
-    },
-    {
-      "team": "上海申花",
-      "rank": 13,
-      "rankChange": -2,
-      "points": 22,
-      "pointsChange": 0
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "青岛西海岸",
-      "rank": 2,
-      "rankChange": 2,
-      "points": 32,
-      "pointsChange": 1
-    },
-    {
-      "team": "山东泰山",
-      "rank": 5,
-      "rankChange": 2,
-      "points": 30,
-      "pointsChange": 3
-    },
-    {
-      "team": "河南队",
-      "rank": 10,
-      "rankChange": 2,
-      "points": 23,
-      "pointsChange": 1
-    },
-    {
-      "team": "上海海港",
-      "rank": 12,
-      "rankChange": 1,
-      "points": 22,
-      "pointsChange": 3
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
