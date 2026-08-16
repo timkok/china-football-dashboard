@@ -1,134 +1,13 @@
 {
-  "generatedAt": "2026-08-15T18:31:09.464Z",
+  "generatedAt": "2026-08-16T01:22:44.549Z",
   "summary": {
-    "rankingChanges": 12,
-    "pointsChanges": 5,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "成都蓉城",
-      "rank": 1,
-      "rankChange": 0,
-      "points": 48,
-      "pointsChange": 3
-    },
-    {
-      "team": "云南玉昆",
-      "rank": 2,
-      "rankChange": 3,
-      "points": 34,
-      "pointsChange": 3
-    },
-    {
-      "team": "山东泰山",
-      "rank": 3,
-      "rankChange": -1,
-      "points": 33,
-      "pointsChange": 0
-    },
-    {
-      "team": "青岛西海岸",
-      "rank": 4,
-      "rankChange": -1,
-      "points": 33,
-      "pointsChange": 0
-    },
-    {
-      "team": "北京国安",
-      "rank": 5,
-      "rankChange": 2,
-      "points": 32,
-      "pointsChange": 3
-    },
-    {
-      "team": "大连英博",
-      "rank": 6,
-      "rankChange": -2,
-      "points": 32,
-      "pointsChange": 0
-    },
-    {
-      "team": "重庆铜梁龙",
-      "rank": 7,
-      "rankChange": -1,
-      "points": 30,
-      "pointsChange": 0
-    },
-    {
-      "team": "深圳新鵬城",
-      "rank": 8,
-      "rankChange": 4,
-      "points": 26,
-      "pointsChange": 3
-    },
-    {
-      "team": "上海海港",
-      "rank": 9,
-      "rankChange": -1,
-      "points": 25,
-      "pointsChange": 0
-    },
-    {
-      "team": "上海申花",
-      "rank": 10,
-      "rankChange": 3,
-      "points": 25,
-      "pointsChange": 3
-    },
-    {
-      "team": "浙江队",
-      "rank": 11,
-      "rankChange": -2,
-      "points": 24,
-      "pointsChange": 0
-    },
-    {
-      "team": "辽宁铁人",
-      "rank": 12,
-      "rankChange": -2,
-      "points": 24,
-      "pointsChange": 0
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "成都蓉城",
-      "rank": 1,
-      "rankChange": 0,
-      "points": 48,
-      "pointsChange": 3
-    },
-    {
-      "team": "云南玉昆",
-      "rank": 2,
-      "rankChange": 3,
-      "points": 34,
-      "pointsChange": 3
-    },
-    {
-      "team": "北京国安",
-      "rank": 5,
-      "rankChange": 2,
-      "points": 32,
-      "pointsChange": 3
-    },
-    {
-      "team": "深圳新鵬城",
-      "rank": 8,
-      "rankChange": 4,
-      "points": 26,
-      "pointsChange": 3
-    },
-    {
-      "team": "上海申花",
-      "rank": 10,
-      "rankChange": 3,
-      "points": 25,
-      "pointsChange": 3
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
