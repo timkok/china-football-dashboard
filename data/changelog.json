@@ -1,50 +1,13 @@
 {
-  "generatedAt": "2026-08-19T18:36:52.935Z",
+  "generatedAt": "2026-08-20T01:17:57.632Z",
   "summary": {
-    "rankingChanges": 3,
-    "pointsChanges": 2,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "大连英博",
-      "rank": 6,
-      "rankChange": 0,
-      "points": 33,
-      "pointsChange": 1
-    },
-    {
-      "team": "上海海港",
-      "rank": 8,
-      "rankChange": 1,
-      "points": 26,
-      "pointsChange": 1
-    },
-    {
-      "team": "深圳新鵬城",
-      "rank": 9,
-      "rankChange": -1,
-      "points": 26,
-      "pointsChange": 0
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "大连英博",
-      "rank": 6,
-      "rankChange": 0,
-      "points": 33,
-      "pointsChange": 1
-    },
-    {
-      "team": "上海海港",
-      "rank": 8,
-      "rankChange": 1,
-      "points": 26,
-      "pointsChange": 1
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
