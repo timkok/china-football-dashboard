@@ -1,13 +1,134 @@
 {
-  "generatedAt": "2026-08-29T06:05:12.713Z",
+  "generatedAt": "2026-08-29T16:21:13.318Z",
   "summary": {
-    "rankingChanges": 0,
-    "pointsChanges": 0,
+    "rankingChanges": 10,
+    "pointsChanges": 7,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [],
-  "pointsChanges": [],
+  "rankingChanges": [
+    {
+      "team": "成都蓉城",
+      "rank": 1,
+      "rankChange": 0,
+      "points": 51,
+      "pointsChange": 3
+    },
+    {
+      "team": "青岛西海岸",
+      "rank": 3,
+      "rankChange": 1,
+      "points": 37,
+      "pointsChange": 1
+    },
+    {
+      "team": "大连英博",
+      "rank": 4,
+      "rankChange": -1,
+      "points": 37,
+      "pointsChange": 0
+    },
+    {
+      "team": "重庆铜梁龙",
+      "rank": 8,
+      "rankChange": 0,
+      "points": 31,
+      "pointsChange": 1
+    },
+    {
+      "team": "浙江队",
+      "rank": 10,
+      "rankChange": 1,
+      "points": 28,
+      "pointsChange": 3
+    },
+    {
+      "team": "深圳新鵬城",
+      "rank": 11,
+      "rankChange": -1,
+      "points": 27,
+      "pointsChange": 0
+    },
+    {
+      "team": "河南队",
+      "rank": 12,
+      "rankChange": 1,
+      "points": 25,
+      "pointsChange": 1
+    },
+    {
+      "team": "辽宁铁人",
+      "rank": 13,
+      "rankChange": -1,
+      "points": 25,
+      "pointsChange": 0
+    },
+    {
+      "team": "天津津门虎",
+      "rank": 14,
+      "rankChange": 0,
+      "points": 19,
+      "pointsChange": 1
+    },
+    {
+      "team": "武汉三镇",
+      "rank": 15,
+      "rankChange": 0,
+      "points": 19,
+      "pointsChange": 3
+    }
+  ],
+  "pointsChanges": [
+    {
+      "team": "成都蓉城",
+      "rank": 1,
+      "rankChange": 0,
+      "points": 51,
+      "pointsChange": 3
+    },
+    {
+      "team": "青岛西海岸",
+      "rank": 3,
+      "rankChange": 1,
+      "points": 37,
+      "pointsChange": 1
+    },
+    {
+      "team": "重庆铜梁龙",
+      "rank": 8,
+      "rankChange": 0,
+      "points": 31,
+      "pointsChange": 1
+    },
+    {
+      "team": "浙江队",
+      "rank": 10,
+      "rankChange": 1,
+      "points": 28,
+      "pointsChange": 3
+    },
+    {
+      "team": "河南队",
+      "rank": 12,
+      "rankChange": 1,
+      "points": 25,
+      "pointsChange": 1
+    },
+    {
+      "team": "天津津门虎",
+      "rank": 14,
+      "rankChange": 0,
+      "points": 19,
+      "pointsChange": 1
+    },
+    {
+      "team": "武汉三镇",
+      "rank": 15,
+      "rankChange": 0,
+      "points": 19,
+      "pointsChange": 3
+    }
+  ],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
@@ -15,7 +136,7 @@
       {
         "team": "成都蓉城",
         "rank": 1,
-        "points": 48
+        "points": 51
       },
       {
         "team": "北京国安",
@@ -23,14 +144,14 @@
         "points": 37
       },
       {
-        "team": "大连英博",
+        "team": "青岛西海岸",
         "rank": 3,
         "points": 37
       },
       {
-        "team": "青岛西海岸",
+        "team": "大连英博",
         "rank": 4,
-        "points": 36
+        "points": 37
       },
       {
         "team": "山东泰山",
@@ -50,7 +171,7 @@
       {
         "team": "重庆铜梁龙",
         "rank": 8,
-        "points": 30
+        "points": 31
       },
       {
         "team": "上海申花",
@@ -58,34 +179,34 @@
         "points": 28
       },
       {
-        "team": "深圳新鵬城",
+        "team": "浙江队",
         "rank": 10,
+        "points": 28
+      },
+      {
+        "team": "深圳新鵬城",
+        "rank": 11,
         "points": 27
       },
       {
-        "team": "浙江队",
-        "rank": 11,
-        "points": 25
-      },
-      {
-        "team": "辽宁铁人",
+        "team": "河南队",
         "rank": 12,
         "points": 25
       },
       {
-        "team": "河南队",
+        "team": "辽宁铁人",
         "rank": 13,
-        "points": 24
+        "points": 25
       },
       {
         "team": "天津津门虎",
         "rank": 14,
-        "points": 18
+        "points": 19
       },
       {
         "team": "武汉三镇",
         "rank": 15,
-        "points": 16
+        "points": 19
       },
       {
         "team": "青岛海牛",
