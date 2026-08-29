@@ -1,134 +1,13 @@
 {
-  "generatedAt": "2026-08-29T16:21:13.318Z",
+  "generatedAt": "2026-08-29T20:33:38.622Z",
   "summary": {
-    "rankingChanges": 10,
-    "pointsChanges": 7,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "成都蓉城",
-      "rank": 1,
-      "rankChange": 0,
-      "points": 51,
-      "pointsChange": 3
-    },
-    {
-      "team": "青岛西海岸",
-      "rank": 3,
-      "rankChange": 1,
-      "points": 37,
-      "pointsChange": 1
-    },
-    {
-      "team": "大连英博",
-      "rank": 4,
-      "rankChange": -1,
-      "points": 37,
-      "pointsChange": 0
-    },
-    {
-      "team": "重庆铜梁龙",
-      "rank": 8,
-      "rankChange": 0,
-      "points": 31,
-      "pointsChange": 1
-    },
-    {
-      "team": "浙江队",
-      "rank": 10,
-      "rankChange": 1,
-      "points": 28,
-      "pointsChange": 3
-    },
-    {
-      "team": "深圳新鵬城",
-      "rank": 11,
-      "rankChange": -1,
-      "points": 27,
-      "pointsChange": 0
-    },
-    {
-      "team": "河南队",
-      "rank": 12,
-      "rankChange": 1,
-      "points": 25,
-      "pointsChange": 1
-    },
-    {
-      "team": "辽宁铁人",
-      "rank": 13,
-      "rankChange": -1,
-      "points": 25,
-      "pointsChange": 0
-    },
-    {
-      "team": "天津津门虎",
-      "rank": 14,
-      "rankChange": 0,
-      "points": 19,
-      "pointsChange": 1
-    },
-    {
-      "team": "武汉三镇",
-      "rank": 15,
-      "rankChange": 0,
-      "points": 19,
-      "pointsChange": 3
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "成都蓉城",
-      "rank": 1,
-      "rankChange": 0,
-      "points": 51,
-      "pointsChange": 3
-    },
-    {
-      "team": "青岛西海岸",
-      "rank": 3,
-      "rankChange": 1,
-      "points": 37,
-      "pointsChange": 1
-    },
-    {
-      "team": "重庆铜梁龙",
-      "rank": 8,
-      "rankChange": 0,
-      "points": 31,
-      "pointsChange": 1
-    },
-    {
-      "team": "浙江队",
-      "rank": 10,
-      "rankChange": 1,
-      "points": 28,
-      "pointsChange": 3
-    },
-    {
-      "team": "河南队",
-      "rank": 12,
-      "rankChange": 1,
-      "points": 25,
-      "pointsChange": 1
-    },
-    {
-      "team": "天津津门虎",
-      "rank": 14,
-      "rankChange": 0,
-      "points": 19,
-      "pointsChange": 1
-    },
-    {
-      "team": "武汉三镇",
-      "rank": 15,
-      "rankChange": 0,
-      "points": 19,
-      "pointsChange": 3
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
