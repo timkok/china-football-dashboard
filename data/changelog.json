@@ -1,120 +1,13 @@
 {
-  "generatedAt": "2026-09-05T14:45:41.482Z",
+  "generatedAt": "2026-09-05T20:03:10.060Z",
   "summary": {
-    "rankingChanges": 8,
-    "pointsChanges": 7,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "大连英博",
-      "rank": 2,
-      "rankChange": 2,
-      "points": 40,
-      "pointsChange": 3
-    },
-    {
-      "team": "北京国安",
-      "rank": 3,
-      "rankChange": -1,
-      "points": 38,
-      "pointsChange": 1
-    },
-    {
-      "team": "青岛西海岸",
-      "rank": 4,
-      "rankChange": -1,
-      "points": 38,
-      "pointsChange": 1
-    },
-    {
-      "team": "山东泰山",
-      "rank": 5,
-      "rankChange": 0,
-      "points": 37,
-      "pointsChange": 1
-    },
-    {
-      "team": "上海海港",
-      "rank": 7,
-      "rankChange": 0,
-      "points": 33,
-      "pointsChange": 1
-    },
-    {
-      "team": "深圳新鵬城",
-      "rank": 11,
-      "rankChange": 0,
-      "points": 28,
-      "pointsChange": 1
-    },
-    {
-      "team": "武汉三镇",
-      "rank": 14,
-      "rankChange": 1,
-      "points": 20,
-      "pointsChange": 1
-    },
-    {
-      "team": "天津津门虎",
-      "rank": 15,
-      "rankChange": -1,
-      "points": 19,
-      "pointsChange": 0
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "大连英博",
-      "rank": 2,
-      "rankChange": 2,
-      "points": 40,
-      "pointsChange": 3
-    },
-    {
-      "team": "北京国安",
-      "rank": 3,
-      "rankChange": -1,
-      "points": 38,
-      "pointsChange": 1
-    },
-    {
-      "team": "青岛西海岸",
-      "rank": 4,
-      "rankChange": -1,
-      "points": 38,
-      "pointsChange": 1
-    },
-    {
-      "team": "山东泰山",
-      "rank": 5,
-      "rankChange": 0,
-      "points": 37,
-      "pointsChange": 1
-    },
-    {
-      "team": "上海海港",
-      "rank": 7,
-      "rankChange": 0,
-      "points": 33,
-      "pointsChange": 1
-    },
-    {
-      "team": "深圳新鵬城",
-      "rank": 11,
-      "rankChange": 0,
-      "points": 28,
-      "pointsChange": 1
-    },
-    {
-      "team": "武汉三镇",
-      "rank": 14,
-      "rankChange": 1,
-      "points": 20,
-      "pointsChange": 1
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
