@@ -1,13 +1,120 @@
 {
-  "generatedAt": "2026-09-05T10:07:21.213Z",
+  "generatedAt": "2026-09-05T14:45:41.482Z",
   "summary": {
-    "rankingChanges": 0,
-    "pointsChanges": 0,
+    "rankingChanges": 8,
+    "pointsChanges": 7,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [],
-  "pointsChanges": [],
+  "rankingChanges": [
+    {
+      "team": "大连英博",
+      "rank": 2,
+      "rankChange": 2,
+      "points": 40,
+      "pointsChange": 3
+    },
+    {
+      "team": "北京国安",
+      "rank": 3,
+      "rankChange": -1,
+      "points": 38,
+      "pointsChange": 1
+    },
+    {
+      "team": "青岛西海岸",
+      "rank": 4,
+      "rankChange": -1,
+      "points": 38,
+      "pointsChange": 1
+    },
+    {
+      "team": "山东泰山",
+      "rank": 5,
+      "rankChange": 0,
+      "points": 37,
+      "pointsChange": 1
+    },
+    {
+      "team": "上海海港",
+      "rank": 7,
+      "rankChange": 0,
+      "points": 33,
+      "pointsChange": 1
+    },
+    {
+      "team": "深圳新鵬城",
+      "rank": 11,
+      "rankChange": 0,
+      "points": 28,
+      "pointsChange": 1
+    },
+    {
+      "team": "武汉三镇",
+      "rank": 14,
+      "rankChange": 1,
+      "points": 20,
+      "pointsChange": 1
+    },
+    {
+      "team": "天津津门虎",
+      "rank": 15,
+      "rankChange": -1,
+      "points": 19,
+      "pointsChange": 0
+    }
+  ],
+  "pointsChanges": [
+    {
+      "team": "大连英博",
+      "rank": 2,
+      "rankChange": 2,
+      "points": 40,
+      "pointsChange": 3
+    },
+    {
+      "team": "北京国安",
+      "rank": 3,
+      "rankChange": -1,
+      "points": 38,
+      "pointsChange": 1
+    },
+    {
+      "team": "青岛西海岸",
+      "rank": 4,
+      "rankChange": -1,
+      "points": 38,
+      "pointsChange": 1
+    },
+    {
+      "team": "山东泰山",
+      "rank": 5,
+      "rankChange": 0,
+      "points": 37,
+      "pointsChange": 1
+    },
+    {
+      "team": "上海海港",
+      "rank": 7,
+      "rankChange": 0,
+      "points": 33,
+      "pointsChange": 1
+    },
+    {
+      "team": "深圳新鵬城",
+      "rank": 11,
+      "rankChange": 0,
+      "points": 28,
+      "pointsChange": 1
+    },
+    {
+      "team": "武汉三镇",
+      "rank": 14,
+      "rankChange": 1,
+      "points": 20,
+      "pointsChange": 1
+    }
+  ],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
@@ -18,24 +125,24 @@
         "points": 51
       },
       {
-        "team": "北京国安",
+        "team": "大连英博",
         "rank": 2,
-        "points": 37
+        "points": 40
+      },
+      {
+        "team": "北京国安",
+        "rank": 3,
+        "points": 38
       },
       {
         "team": "青岛西海岸",
-        "rank": 3,
-        "points": 37
-      },
-      {
-        "team": "大连英博",
         "rank": 4,
-        "points": 37
+        "points": 38
       },
       {
         "team": "山东泰山",
         "rank": 5,
-        "points": 36
+        "points": 37
       },
       {
         "team": "云南玉昆",
@@ -45,7 +152,7 @@
       {
         "team": "上海海港",
         "rank": 7,
-        "points": 32
+        "points": 33
       },
       {
         "team": "重庆铜梁龙",
@@ -65,7 +172,7 @@
       {
         "team": "深圳新鵬城",
         "rank": 11,
-        "points": 27
+        "points": 28
       },
       {
         "team": "河南队",
@@ -78,12 +185,12 @@
         "points": 25
       },
       {
-        "team": "天津津门虎",
+        "team": "武汉三镇",
         "rank": 14,
-        "points": 19
+        "points": 20
       },
       {
-        "team": "武汉三镇",
+        "team": "天津津门虎",
         "rank": 15,
         "points": 19
       },
