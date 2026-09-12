@@ -1,13 +1,57 @@
 {
-  "generatedAt": "2026-09-12T10:15:45.494Z",
+  "generatedAt": "2026-09-12T15:10:36.199Z",
   "summary": {
-    "rankingChanges": 0,
-    "pointsChanges": 0,
+    "rankingChanges": 3,
+    "pointsChanges": 3,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [],
-  "pointsChanges": [],
+  "rankingChanges": [
+    {
+      "team": "河南队",
+      "rank": 12,
+      "rankChange": 0,
+      "points": 27,
+      "pointsChange": 1
+    },
+    {
+      "team": "天津津门虎",
+      "rank": 14,
+      "rankChange": 0,
+      "points": 25,
+      "pointsChange": 3
+    },
+    {
+      "team": "武汉三镇",
+      "rank": 15,
+      "rankChange": 0,
+      "points": 21,
+      "pointsChange": 1
+    }
+  ],
+  "pointsChanges": [
+    {
+      "team": "河南队",
+      "rank": 12,
+      "rankChange": 0,
+      "points": 27,
+      "pointsChange": 1
+    },
+    {
+      "team": "天津津门虎",
+      "rank": 14,
+      "rankChange": 0,
+      "points": 25,
+      "pointsChange": 3
+    },
+    {
+      "team": "武汉三镇",
+      "rank": 15,
+      "rankChange": 0,
+      "points": 21,
+      "pointsChange": 1
+    }
+  ],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
@@ -70,7 +114,7 @@
       {
         "team": "河南队",
         "rank": 12,
-        "points": 26
+        "points": 27
       },
       {
         "team": "辽宁铁人",
@@ -80,12 +124,12 @@
       {
         "team": "天津津门虎",
         "rank": 14,
-        "points": 22
+        "points": 25
       },
       {
         "team": "武汉三镇",
         "rank": 15,
-        "points": 20
+        "points": 21
       },
       {
         "team": "青岛海牛",
