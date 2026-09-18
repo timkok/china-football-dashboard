@@ -1,29 +1,13 @@
 {
-  "generatedAt": "2026-09-18T15:59:53.156Z",
+  "generatedAt": "2026-09-18T20:33:48.757Z",
   "summary": {
-    "rankingChanges": 1,
-    "pointsChanges": 1,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "浙江队",
-      "rank": 10,
-      "rankChange": 0,
-      "points": 31,
-      "pointsChange": 3
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "浙江队",
-      "rank": 10,
-      "rankChange": 0,
-      "points": 31,
-      "pointsChange": 3
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
