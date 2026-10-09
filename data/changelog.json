@@ -1,13 +1,78 @@
 {
-  "generatedAt": "2026-10-09T12:45:14.096Z",
+  "generatedAt": "2026-10-09T22:23:09.997Z",
   "summary": {
-    "rankingChanges": 0,
-    "pointsChanges": 0,
+    "rankingChanges": 5,
+    "pointsChanges": 4,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [],
-  "pointsChanges": [],
+  "rankingChanges": [
+    {
+      "team": "北京国安",
+      "rank": 2,
+      "rankChange": 1,
+      "points": 41,
+      "pointsChange": 3
+    },
+    {
+      "team": "大连英博",
+      "rank": 3,
+      "rankChange": -1,
+      "points": 40,
+      "pointsChange": 0
+    },
+    {
+      "team": "上海海港",
+      "rank": 7,
+      "rankChange": 0,
+      "points": 36,
+      "pointsChange": 3
+    },
+    {
+      "team": "深圳新鵬城",
+      "rank": 11,
+      "rankChange": 0,
+      "points": 29,
+      "pointsChange": 1
+    },
+    {
+      "team": "河南队",
+      "rank": 12,
+      "rankChange": 0,
+      "points": 28,
+      "pointsChange": 1
+    }
+  ],
+  "pointsChanges": [
+    {
+      "team": "北京国安",
+      "rank": 2,
+      "rankChange": 1,
+      "points": 41,
+      "pointsChange": 3
+    },
+    {
+      "team": "上海海港",
+      "rank": 7,
+      "rankChange": 0,
+      "points": 36,
+      "pointsChange": 3
+    },
+    {
+      "team": "深圳新鵬城",
+      "rank": 11,
+      "rankChange": 0,
+      "points": 29,
+      "pointsChange": 1
+    },
+    {
+      "team": "河南队",
+      "rank": 12,
+      "rankChange": 0,
+      "points": 28,
+      "pointsChange": 1
+    }
+  ],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
@@ -18,14 +83,14 @@
         "points": 52
       },
       {
-        "team": "大连英博",
+        "team": "北京国安",
         "rank": 2,
-        "points": 40
+        "points": 41
       },
       {
-        "team": "北京国安",
+        "team": "大连英博",
         "rank": 3,
-        "points": 38
+        "points": 40
       },
       {
         "team": "云南玉昆",
@@ -45,7 +110,7 @@
       {
         "team": "上海海港",
         "rank": 7,
-        "points": 33
+        "points": 36
       },
       {
         "team": "上海申花",
@@ -65,12 +130,12 @@
       {
         "team": "深圳新鵬城",
         "rank": 11,
-        "points": 28
+        "points": 29
       },
       {
         "team": "河南队",
         "rank": 12,
-        "points": 27
+        "points": 28
       },
       {
         "team": "辽宁铁人",
