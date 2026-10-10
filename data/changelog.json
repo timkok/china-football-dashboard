@@ -1,13 +1,71 @@
 {
-  "generatedAt": "2026-10-10T12:03:56.069Z",
+  "generatedAt": "2026-10-10T21:17:15.596Z",
   "summary": {
-    "rankingChanges": 0,
-    "pointsChanges": 0,
+    "rankingChanges": 6,
+    "pointsChanges": 2,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [],
-  "pointsChanges": [],
+  "rankingChanges": [
+    {
+      "team": "青岛西海岸",
+      "rank": 4,
+      "rankChange": 1,
+      "points": 38,
+      "pointsChange": 0
+    },
+    {
+      "team": "云南玉昆",
+      "rank": 5,
+      "rankChange": -1,
+      "points": 38,
+      "pointsChange": 0
+    },
+    {
+      "team": "上海申花",
+      "rank": 8,
+      "rankChange": 0,
+      "points": 34,
+      "pointsChange": 3
+    },
+    {
+      "team": "天津津门虎",
+      "rank": 12,
+      "rankChange": 2,
+      "points": 28,
+      "pointsChange": 3
+    },
+    {
+      "team": "河南队",
+      "rank": 13,
+      "rankChange": -1,
+      "points": 28,
+      "pointsChange": 0
+    },
+    {
+      "team": "辽宁铁人",
+      "rank": 14,
+      "rankChange": -1,
+      "points": 25,
+      "pointsChange": 0
+    }
+  ],
+  "pointsChanges": [
+    {
+      "team": "上海申花",
+      "rank": 8,
+      "rankChange": 0,
+      "points": 34,
+      "pointsChange": 3
+    },
+    {
+      "team": "天津津门虎",
+      "rank": 12,
+      "rankChange": 2,
+      "points": 28,
+      "pointsChange": 3
+    }
+  ],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
@@ -28,12 +86,12 @@
         "points": 40
       },
       {
-        "team": "云南玉昆",
+        "team": "青岛西海岸",
         "rank": 4,
         "points": 38
       },
       {
-        "team": "青岛西海岸",
+        "team": "云南玉昆",
         "rank": 5,
         "points": 38
       },
@@ -50,7 +108,7 @@
       {
         "team": "上海申花",
         "rank": 8,
-        "points": 31
+        "points": 34
       },
       {
         "team": "重庆铜梁龙",
@@ -68,17 +126,17 @@
         "points": 29
       },
       {
-        "team": "河南队",
+        "team": "天津津门虎",
         "rank": 12,
         "points": 28
       },
       {
-        "team": "辽宁铁人",
+        "team": "河南队",
         "rank": 13,
-        "points": 25
+        "points": 28
       },
       {
-        "team": "天津津门虎",
+        "team": "辽宁铁人",
         "rank": 14,
         "points": 25
       },
