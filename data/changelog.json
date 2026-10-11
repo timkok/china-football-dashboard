@@ -1,48 +1,83 @@
 {
-  "generatedAt": "2026-10-11T12:17:08.975Z",
+  "generatedAt": "2026-10-11T21:36:51.984Z",
   "summary": {
-    "rankingChanges": 4,
-    "pointsChanges": 1,
+    "rankingChanges": 6,
+    "pointsChanges": 4,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
   "rankingChanges": [
     {
-      "team": "大连英博",
-      "rank": 2,
-      "rankChange": 1,
-      "points": 43,
-      "pointsChange": 3
-    },
-    {
-      "team": "北京国安",
-      "rank": 3,
-      "rankChange": -1,
-      "points": 41,
-      "pointsChange": 0
+      "team": "山东泰山",
+      "rank": 4,
+      "rankChange": 2,
+      "points": 38,
+      "pointsChange": 1
     },
     {
       "team": "云南玉昆",
-      "rank": 4,
-      "rankChange": 1,
+      "rank": 5,
+      "rankChange": -1,
       "points": 38,
       "pointsChange": 0
     },
     {
       "team": "青岛西海岸",
-      "rank": 5,
+      "rank": 6,
       "rankChange": -1,
       "points": 38,
       "pointsChange": 0
+    },
+    {
+      "team": "重庆铜梁龙",
+      "rank": 9,
+      "rankChange": 0,
+      "points": 32,
+      "pointsChange": 1
+    },
+    {
+      "team": "辽宁铁人",
+      "rank": 14,
+      "rankChange": 0,
+      "points": 26,
+      "pointsChange": 1
+    },
+    {
+      "team": "武汉三镇",
+      "rank": 15,
+      "rankChange": 0,
+      "points": 22,
+      "pointsChange": 1
     }
   ],
   "pointsChanges": [
     {
-      "team": "大连英博",
-      "rank": 2,
-      "rankChange": 1,
-      "points": 43,
-      "pointsChange": 3
+      "team": "山东泰山",
+      "rank": 4,
+      "rankChange": 2,
+      "points": 38,
+      "pointsChange": 1
+    },
+    {
+      "team": "重庆铜梁龙",
+      "rank": 9,
+      "rankChange": 0,
+      "points": 32,
+      "pointsChange": 1
+    },
+    {
+      "team": "辽宁铁人",
+      "rank": 14,
+      "rankChange": 0,
+      "points": 26,
+      "pointsChange": 1
+    },
+    {
+      "team": "武汉三镇",
+      "rank": 15,
+      "rankChange": 0,
+      "points": 22,
+      "pointsChange": 1
     }
   ],
   "attendanceChanges": [],
@@ -65,19 +100,19 @@
         "points": 41
       },
       {
-        "team": "云南玉昆",
+        "team": "山东泰山",
         "rank": 4,
         "points": 38
       },
       {
-        "team": "青岛西海岸",
+        "team": "云南玉昆",
         "rank": 5,
         "points": 38
       },
       {
-        "team": "山东泰山",
+        "team": "青岛西海岸",
         "rank": 6,
-        "points": 37
+        "points": 38
       },
       {
         "team": "上海海港",
@@ -92,7 +127,7 @@
       {
         "team": "重庆铜梁龙",
         "rank": 9,
-        "points": 31
+        "points": 32
       },
       {
         "team": "浙江队",
@@ -117,12 +152,12 @@
       {
         "team": "辽宁铁人",
         "rank": 14,
-        "points": 25
+        "points": 26
       },
       {
         "team": "武汉三镇",
         "rank": 15,
-        "points": 21
+        "points": 22
       },
       {
         "team": "青岛海牛",
