@@ -1,13 +1,50 @@
 {
-  "generatedAt": "2026-10-11T04:36:10.657Z",
+  "generatedAt": "2026-10-11T12:17:08.975Z",
   "summary": {
-    "rankingChanges": 0,
-    "pointsChanges": 0,
+    "rankingChanges": 4,
+    "pointsChanges": 1,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [],
-  "pointsChanges": [],
+  "rankingChanges": [
+    {
+      "team": "大连英博",
+      "rank": 2,
+      "rankChange": 1,
+      "points": 43,
+      "pointsChange": 3
+    },
+    {
+      "team": "北京国安",
+      "rank": 3,
+      "rankChange": -1,
+      "points": 41,
+      "pointsChange": 0
+    },
+    {
+      "team": "云南玉昆",
+      "rank": 4,
+      "rankChange": 1,
+      "points": 38,
+      "pointsChange": 0
+    },
+    {
+      "team": "青岛西海岸",
+      "rank": 5,
+      "rankChange": -1,
+      "points": 38,
+      "pointsChange": 0
+    }
+  ],
+  "pointsChanges": [
+    {
+      "team": "大连英博",
+      "rank": 2,
+      "rankChange": 1,
+      "points": 43,
+      "pointsChange": 3
+    }
+  ],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
@@ -18,22 +55,22 @@
         "points": 52
       },
       {
-        "team": "北京国安",
+        "team": "大连英博",
         "rank": 2,
+        "points": 43
+      },
+      {
+        "team": "北京国安",
+        "rank": 3,
         "points": 41
       },
       {
-        "team": "大连英博",
-        "rank": 3,
-        "points": 40
-      },
-      {
-        "team": "青岛西海岸",
+        "team": "云南玉昆",
         "rank": 4,
         "points": 38
       },
       {
-        "team": "云南玉昆",
+        "team": "青岛西海岸",
         "rank": 5,
         "points": 38
       },

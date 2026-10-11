@@ -7,7 +7,7 @@
   "source": "新浪体育中超积分榜",
   "sourceUrl": "https://sports.sina.com.cn/csl/table/",
   "isOfficial": false,
-  "fetchedAt": "2026-10-11T04:35:57.598Z",
+  "fetchedAt": "2026-10-11T12:16:50.676Z",
   "status": "ok",
   "disclaimer": "非官方 fallback 数据，如有变化，以中足联或中国足协官方公告为准。",
   "data": [
@@ -47,6 +47,40 @@
     },
     {
       "rank": 2,
+      "team": "大连英博",
+      "name": "大连英博",
+      "shortName": "英博",
+      "city": "大连",
+      "played": 27,
+      "wins": 13,
+      "draws": 4,
+      "losses": 10,
+      "goalsFor": 42,
+      "goalsAgainst": 42,
+      "goalDiff": 0,
+      "points": 43,
+      "form": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "homeRecord": {
+        "wins": 9,
+        "draws": 1,
+        "losses": 3,
+        "points": 28
+      },
+      "awayRecord": {
+        "wins": 4,
+        "draws": 3,
+        "losses": 7,
+        "points": 15
+      }
+    },
+    {
+      "rank": 3,
       "team": "北京国安",
       "name": "北京国安",
       "shortName": "国安",
@@ -80,75 +114,7 @@
       }
     },
     {
-      "rank": 3,
-      "team": "大连英博",
-      "name": "大连英博",
-      "shortName": "英博",
-      "city": "大连",
-      "played": 26,
-      "wins": 12,
-      "draws": 4,
-      "losses": 10,
-      "goalsFor": 38,
-      "goalsAgainst": 42,
-      "goalDiff": -4,
-      "points": 40,
-      "form": [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W"
-      ],
-      "homeRecord": {
-        "wins": 9,
-        "draws": 1,
-        "losses": 3,
-        "points": 28
-      },
-      "awayRecord": {
-        "wins": 3,
-        "draws": 3,
-        "losses": 7,
-        "points": 12
-      }
-    },
-    {
       "rank": 4,
-      "team": "青岛西海岸",
-      "name": "青岛西海岸",
-      "shortName": "西海岸",
-      "city": "青岛",
-      "played": 26,
-      "wins": 8,
-      "draws": 14,
-      "losses": 4,
-      "goalsFor": 31,
-      "goalsAgainst": 32,
-      "goalDiff": -1,
-      "points": 38,
-      "form": [
-        "W",
-        "W",
-        "W",
-        "W",
-        "W"
-      ],
-      "homeRecord": {
-        "wins": 5,
-        "draws": 8,
-        "losses": 0,
-        "points": 23
-      },
-      "awayRecord": {
-        "wins": 3,
-        "draws": 6,
-        "losses": 4,
-        "points": 15
-      }
-    },
-    {
-      "rank": 5,
       "team": "云南玉昆",
       "name": "云南玉昆",
       "shortName": "玉昆",
@@ -179,6 +145,40 @@
         "draws": 3,
         "losses": 8,
         "points": 12
+      }
+    },
+    {
+      "rank": 5,
+      "team": "青岛西海岸",
+      "name": "青岛西海岸",
+      "shortName": "西海岸",
+      "city": "青岛",
+      "played": 27,
+      "wins": 8,
+      "draws": 14,
+      "losses": 5,
+      "goalsFor": 31,
+      "goalsAgainst": 36,
+      "goalDiff": -5,
+      "points": 38,
+      "form": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "W"
+      ],
+      "homeRecord": {
+        "wins": 5,
+        "draws": 8,
+        "losses": 1,
+        "points": 23
+      },
+      "awayRecord": {
+        "wins": 3,
+        "draws": 6,
+        "losses": 4,
+        "points": 15
       }
     },
     {
