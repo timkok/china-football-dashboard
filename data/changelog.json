@@ -1,85 +1,13 @@
 {
-  "generatedAt": "2026-10-11T21:36:51.984Z",
+  "generatedAt": "2026-10-12T04:51:15.575Z",
   "summary": {
-    "rankingChanges": 6,
-    "pointsChanges": 4,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "山东泰山",
-      "rank": 4,
-      "rankChange": 2,
-      "points": 38,
-      "pointsChange": 1
-    },
-    {
-      "team": "云南玉昆",
-      "rank": 5,
-      "rankChange": -1,
-      "points": 38,
-      "pointsChange": 0
-    },
-    {
-      "team": "青岛西海岸",
-      "rank": 6,
-      "rankChange": -1,
-      "points": 38,
-      "pointsChange": 0
-    },
-    {
-      "team": "重庆铜梁龙",
-      "rank": 9,
-      "rankChange": 0,
-      "points": 32,
-      "pointsChange": 1
-    },
-    {
-      "team": "辽宁铁人",
-      "rank": 14,
-      "rankChange": 0,
-      "points": 26,
-      "pointsChange": 1
-    },
-    {
-      "team": "武汉三镇",
-      "rank": 15,
-      "rankChange": 0,
-      "points": 22,
-      "pointsChange": 1
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "山东泰山",
-      "rank": 4,
-      "rankChange": 2,
-      "points": 38,
-      "pointsChange": 1
-    },
-    {
-      "team": "重庆铜梁龙",
-      "rank": 9,
-      "rankChange": 0,
-      "points": 32,
-      "pointsChange": 1
-    },
-    {
-      "team": "辽宁铁人",
-      "rank": 14,
-      "rankChange": 0,
-      "points": 26,
-      "pointsChange": 1
-    },
-    {
-      "team": "武汉三镇",
-      "rank": 15,
-      "rankChange": 0,
-      "points": 22,
-      "pointsChange": 1
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
