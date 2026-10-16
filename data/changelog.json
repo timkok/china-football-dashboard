@@ -1,43 +1,13 @@
 {
-  "generatedAt": "2026-10-16T16:14:58.082Z",
+  "generatedAt": "2026-10-16T20:37:04.672Z",
   "summary": {
-    "rankingChanges": 3,
-    "pointsChanges": 1,
+    "rankingChanges": 0,
+    "pointsChanges": 0,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [
-    {
-      "team": "天津津门虎",
-      "rank": 10,
-      "rankChange": 2,
-      "points": 31,
-      "pointsChange": 3
-    },
-    {
-      "team": "浙江队",
-      "rank": 11,
-      "rankChange": -1,
-      "points": 31,
-      "pointsChange": 0
-    },
-    {
-      "team": "深圳新鵬城",
-      "rank": 12,
-      "rankChange": -1,
-      "points": 29,
-      "pointsChange": 0
-    }
-  ],
-  "pointsChanges": [
-    {
-      "team": "天津津门虎",
-      "rank": 10,
-      "rankChange": 2,
-      "points": 31,
-      "pointsChange": 3
-    }
-  ],
+  "rankingChanges": [],
+  "pointsChanges": [],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
