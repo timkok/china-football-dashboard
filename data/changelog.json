@@ -1,13 +1,71 @@
 {
-  "generatedAt": "2026-10-18T10:33:05.167Z",
+  "generatedAt": "2026-10-18T15:31:17.546Z",
   "summary": {
-    "rankingChanges": 0,
-    "pointsChanges": 0,
+    "rankingChanges": 5,
+    "pointsChanges": 3,
     "attendanceChanges": 0,
     "anomalyChanges": 0
   },
-  "rankingChanges": [],
-  "pointsChanges": [],
+  "rankingChanges": [
+    {
+      "team": "北京国安",
+      "rank": 3,
+      "rankChange": 0,
+      "points": 44,
+      "pointsChange": 3
+    },
+    {
+      "team": "上海海港",
+      "rank": 5,
+      "rankChange": 2,
+      "points": 39,
+      "pointsChange": 3
+    },
+    {
+      "team": "云南玉昆",
+      "rank": 6,
+      "rankChange": -1,
+      "points": 39,
+      "pointsChange": 0
+    },
+    {
+      "team": "青岛西海岸",
+      "rank": 7,
+      "rankChange": -1,
+      "points": 38,
+      "pointsChange": 0
+    },
+    {
+      "team": "上海申花",
+      "rank": 8,
+      "rankChange": 0,
+      "points": 37,
+      "pointsChange": 3
+    }
+  ],
+  "pointsChanges": [
+    {
+      "team": "北京国安",
+      "rank": 3,
+      "rankChange": 0,
+      "points": 44,
+      "pointsChange": 3
+    },
+    {
+      "team": "上海海港",
+      "rank": 5,
+      "rankChange": 2,
+      "points": 39,
+      "pointsChange": 3
+    },
+    {
+      "team": "上海申花",
+      "rank": 8,
+      "rankChange": 0,
+      "points": 37,
+      "pointsChange": 3
+    }
+  ],
   "attendanceChanges": [],
   "anomalyChanges": [],
   "snapshot": {
@@ -25,7 +83,7 @@
       {
         "team": "北京国安",
         "rank": 3,
-        "points": 41
+        "points": 44
       },
       {
         "team": "山东泰山",
@@ -33,24 +91,24 @@
         "points": 41
       },
       {
-        "team": "云南玉昆",
+        "team": "上海海港",
         "rank": 5,
         "points": 39
       },
       {
-        "team": "青岛西海岸",
+        "team": "云南玉昆",
         "rank": 6,
-        "points": 38
+        "points": 39
       },
       {
-        "team": "上海海港",
+        "team": "青岛西海岸",
         "rank": 7,
-        "points": 36
+        "points": 38
       },
       {
         "team": "上海申花",
         "rank": 8,
-        "points": 34
+        "points": 37
       },
       {
         "team": "重庆铜梁龙",
