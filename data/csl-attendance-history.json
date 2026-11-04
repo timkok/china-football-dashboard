@@ -6,17 +6,17 @@
   "source": "Transfermarkt",
   "sourceUrl": "https://www.transfermarkt.co.uk/chinese-super-league/besucherzahlenentwicklung/wettbewerb/CSL",
   "isOfficial": false,
-  "fetchedAt": "2026-07-14T19:21:59.209Z",
+  "fetchedAt": "2026-11-04T05:16:19.459Z",
   "status": "ok",
   "seasons": [
     {
       "season": "25/26",
       "seasonEndYear": 2026,
-      "matches": 139,
-      "totalAttendance": 4203753,
-      "averageAttendance": 30243,
+      "matches": 232,
+      "totalAttendance": 6844478,
+      "averageAttendance": 29502,
       "highestAverageTeam": "Dalian Yingbo",
-      "highestAverageAttendance": 61032
+      "highestAverageAttendance": 61437
     },
     {
       "season": "24/25",
@@ -192,18 +192,18 @@
     {
       "season": "05/06",
       "seasonEndYear": 2006,
-      "matches": 156,
-      "totalAttendance": 1783500,
-      "averageAttendance": 11433,
+      "matches": 185,
+      "totalAttendance": 2026200,
+      "averageAttendance": 11012,
       "highestAverageTeam": "Shandong Luneng Taishan",
-      "highestAverageAttendance": 31300
+      "highestAverageAttendance": 31958
     },
     {
       "season": "00/01",
       "seasonEndYear": 2001,
-      "matches": 10,
-      "totalAttendance": 230000,
-      "averageAttendance": 23000,
+      "matches": 26,
+      "totalAttendance": 482000,
+      "averageAttendance": 18538,
       "highestAverageTeam": "Beijing Guoan",
       "highestAverageAttendance": 38000
     },
