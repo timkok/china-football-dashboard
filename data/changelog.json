@@ -1,14 +1,23 @@
 {
-  "generatedAt": "2026-11-15T22:34:27.538Z",
+  "generatedAt": "2026-11-16T05:19:07.934Z",
   "summary": {
     "rankingChanges": 0,
     "pointsChanges": 0,
-    "attendanceChanges": 0,
+    "attendanceChanges": 1,
     "anomalyChanges": 0
   },
   "rankingChanges": [],
   "pointsChanges": [],
-  "attendanceChanges": [],
+  "attendanceChanges": [
+    {
+      "team": "Chongqing Tonglianglong",
+      "teamCn": "重庆铜梁龙",
+      "averageAttendance": 33356,
+      "averageAttendanceChange": -667,
+      "occupancyRate": 0.5559333333333333,
+      "occupancyRateChange": -0.011116666666666775
+    }
+  ],
   "anomalyChanges": [],
   "snapshot": {
     "standings": [
@@ -116,8 +125,8 @@
       },
       {
         "team": "Chongqing Tonglianglong",
-        "averageAttendance": 34023,
-        "occupancyRate": 0.56705
+        "averageAttendance": 33356,
+        "occupancyRate": 0.5559333333333333
       },
       {
         "team": "Tianjin Jinmen Tiger",
